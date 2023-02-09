@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+
+{% block body_content %}
+<div class="row align-items-center pt-30">
+    <div class="col-md-12 mr-auto ml-auto">
+        <div class="mb-0">
+          <a href="{% url 'accounts-invitation-create-item' %}" class="float-right btn btn-primary" {% if not user.customer.subscription.can_add_more_users %} disabled="disabled" {%endif%}><i class="fa fa-plus mr-2"></i>Invite Users</a>
+            <h4>Manage Users</h4>
+        </div>
+    </div>
+</div>
+
+{% if not user.customer.subscription.can_add_more_users %}
+  <div class="row">
+    <div class="col-lg-12">
+        <div class="mt-30 alert alert-warning" role="alert">
+          You can have {{ user.customer.subscription.plan_users }} user{{ user.customer.subscription.plan_users|pluralize}} on your plan.  To add more users,
+          {% if user.customer.subscription.trialing %}
+            <a href="{% url 'accounts-settings-add-credit-card' %}?return={{request.get_full_path|urlencode}}">please change your plan here</a> (you're on a free trial until {{ user.customer.subscription.trial_end_date }}).
+          {% else %}
+            <a href="{% url 'accounts-settings-add-credit-card' %}?return={{request.get_full_path|urlencode}}{%if user.customer.subscription.no_card_on_file %}&add_card=1{% endif %}">please upgrade your plan here</a>.
+          {% endif %}
+        </div>
+    </div>
+  </div>
+{% endif %}
+
+<div class="row">
+  <div class="col-lg-12">
+    <div class="mb-30">
+      <div>
+        <ul class="nav nav-pills" role="tablist">
+          <li role="presentation" class="nav-item">
+           <a href="{% url 'accounts-user-list' %}" class="nav-link {% if 'users' in request.path %} active show {% endif %}" role="tab">Users</a>
+          </li>
+          <li role="presentation" class="nav-item">
+            <a href="{% url 'accounts-invitation-list' %}" class="nav-link {% if 'invites' in request.path %} active show {% endif %}" >Invites</a>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-12">
+    <div class="portlet-box mb-30">
+      <div class="portlet-body">
+        <div class="table-responsive">
+          <table class="table mb-0">
+            <thead>
+                <tr>
+                    {% if 'users' in request.path %}
+                      <th class="pt-0 bt-0">Name</th>
+                    {% endif %}
+                      <th class="pt-0 bt-0">Email</th>
+                      <th class="pt-0 bt-0">Role</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if 'users' in request.path %}
+                  {% for user in users %}
+                      <tr>
+                          <td>
+                              <strong><a href="{% url 'accounts-user-update-item' user.pk %}">{{user.first_name}} {{user.last_name}}</a></strong>
+                          </td>
+                          <td>
+                              {{user.email}}</a>
+                          </td>
+                          <td>
+                              {{user.get_role_display}}</a>
+                          </td>
+                          <td>
+                            <a href="{% url 'accounts-user-update-item' user.pk %}"><i class="fa fa-edit"></i></a>
+                          </td>
+                      </tr>
+                  {% empty %}
+                  <tr>
+                      <td colspan="6">
+                          <h4>You don't have any users yet... which if we're honest seems a bit surprising!</h4>
+                      </td>
+                  </tr>
+                  {% endfor %}
+                {% endif %}
+                {% if 'invites' in request.path %}
+                  {% for invite in invites %}
+                      <tr>
+                          <td>
+                              {{invite.email}}</a>
+                          </td>
+                          <td>
+                              {{invite.get_role_display}}</a>
+                          </td>
+                      </tr>
+                  {% empty %}
+                  <tr>
+                      <td colspan="6">
+                          <h4>You didn't send any invitations yet... which if we're honest seems a bit surprising!</h4>
+                      </td>
+                  </tr>
+                  {% endfor %}
+                {% endif %}                  
+            </tbody>
+          </table>
+          <hr>
+          {% if user.customer.subscription.can_add_more_users %}
+            <span class="text-muted"><i class="text-muted far fa-question-circle"></i> These are your teammates who have a Savio account. You can <a href="{% url 'accounts-user-create-item' %}">add a teammate here</a> or <a href="{% url 'accounts-invite-teammates' %}">let a teammate know to log in to Savio here</a>.</span>
+          {% else %}
+            <span class="text-muted"><i class="text-muted far fa-question-circle"></i> These are your teammates who have a Savio account. To add more, please first <a href="{% url 'accounts-settings-add-credit-card' %}?return={{request.get_full_path|urlencode}}{%if user.customer.subscription.no_card_on_file %}&add_card=1{% endif %}">upgrade your plan</a>.</span>
+
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

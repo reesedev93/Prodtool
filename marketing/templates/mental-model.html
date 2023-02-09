@@ -1,0 +1,93 @@
+{% extends "basic_page.html" %}
+{% load static %}
+{% load filters %}
+
+{% block meta_title %}
+Savio's Mental Model 
+{% endblock %}
+
+{% block meta_desc %}Understand how Savio hangs together{% endblock %}
+
+{% block title %}
+Savio's Mental Model
+{% endblock %}
+
+{% block content %}
+  <div class="container pt90 pb90">
+    <div class="row">
+      <div class="col-md-9 docs">
+        <h2>Savio's Mental Model</h2>
+        <p class="mb30">
+            This guide gives you a short overview of the high-level concepts in Savio, and how they relate to each other.  When you're done reading it, you'll have a much better grasp of the building blocks Savio uses to help you collect, manage, and analyze your customer feedback to make good product decisions. 
+        </p>
+        <h3>Savio's Building Blocks</h3>
+        <p>
+          Savio has three core building blocks: People, Feedback, and Feature Requests.
+        </p>
+
+        <p>
+          They're covered more in detail below, but here's a simple way of thinking about how Savio works:
+          <ol>
+            <li>People send in Feedback from tools your team uses, like Intercom, Zendesk, Salesforce, and Hubspot CRM</li>
+            <li>That Feedback lands in your Savio Feedback Inbox, <a href="{% url 'marketing-triage' %}">where your product team triages it</a></li>
+            <li>During Triage, Feedback is assigned to a Feature Request. A Feature Request can have many pieces of Feedback</li>
+            <li>During planning, you can filter your Feature Requests by number of People requesting it, MRR, Plan, and more.</li>
+            <li>You can also drill into a Feature Request to see who's requested it and to reach out to the Person for more information</li>
+          </ol>
+        </p>
+
+          <h4>1. People</h4>
+          <p>Each Person in Savio:</p>
+
+          <ul>
+              <li>has a name and email address</li>
+              <li>belongs to an optional Account (if you use Accounts).  </li>
+              <li>has MRR and Plan properties (if you use Accounts, we'll pull MRR and Plan from the Account)</li>
+          </ul>
+          <p>When you first sign up for Savio, we import People from <a href="{% url 'marketing-integrations-segment' %}">Segment</a>, <a href="{% url 'marketing-integrations-intercom' %}">Intercom</a>, or from your database using our API.</p>
+          
+          <h4>2. Feedback</h4>
+          <p>Each piece of Feedback has:</p>
+          <ul>
+              <li>a customer problem</li>
+              <li>the Person who submitted it</li>
+              <li>the type of person at that moment in time (a churned customer, active customer, lost deal, etc)</li>
+              <li>a link to a Feature Request</li>
+          </ul>
+
+          <p>
+              When Feedback is sent to Savio, it lands in your <a href="{% url 'marketing-triage' %}">Feedback Inbox</a>.  Feedback can be sent to Savio in one of eight ways:
+              <ul>
+                <li>by <a href="{% url 'marketing-integrations-intercom' %}#push">applying a tag to a message in Intercom</a></li>
+                <li>using the <a href="{% url 'marketing-chrome-extension' %}">Chrome Extension</a></li>
+                <li>it can be <a href="{% url 'marketing-integrations-slack' %}">pushed from Slack</a></li>
+                <li>because someone on your team <a href="{% url 'marketing-send-email' %}">emailed it to Savio</a></li>
+                <li>it's sent in using the Savio API</li>
+                <li>it can be entered directly in Savio</li>
+                <li>by applying a tag to a message in Zendesk (coming soon)</li>
+                <li>or by applying a tag to a message in Hubspot (coming soon)</li>
+              </ul>
+          </p>
+
+          <h4>3. Feature Requests</h4>
+          <p>Each Feature Request has:</p>
+          <ul>
+              <li>a title and description</li>
+              <li>links to many pieces of Feedback</li>
+              <li>the cumulative MRR of the people who've sent you Feedback</li>
+              <li>a Status (Untriaged, Under Consideration, Planned, In Progress, Shipped, Won't Do)</li>
+              <li>one or many Tags. A tag is a way to group Feature Requests together. They could be things like "Lower Churn", "Increase Activation", "Quality of Life Features", etc.</li>
+              <li>a Priority and Effort (none / low / medium / high)</li>
+          </ul>
+
+          <h3>Putting it together</h3>
+          <p>Now that you've got a good understanding of how Savio hangs together, here's a quick summary.</p>
+          <ol>
+            <li>You've got People (with MRR and Plan) who send Feedback to Savio. That Feedback gets assigned to a Feature Request.</li>
+            <li>You can filter your Feature Requests to see requests from People that meet an MRR threshold, or are on a specific plan.</li>
+            <li>You can drill into a Feature Request to see the People that requested it, and to reach out to those People to validate problem, solution, and to close the loop with them after it's built.</li>
+          </ol>
+      </div>
+    </div>
+  </div>
+{% endblock %}

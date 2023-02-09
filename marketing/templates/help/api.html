@@ -1,0 +1,114 @@
+{% extends "basic_page.html" %}
+{% load static %}
+
+{% block meta_title %}
+How to integrate with Savio using the Savio API
+{% endblock %}
+
+{% block meta_desc %}Add feedback to Savio using the Savio API{% endblock %}
+
+{% block title %}
+API Reference
+{% endblock %}
+
+{% block content %}
+  <div class="container pt90 pb90 ">
+    <div class="row">
+      <div class="col-md-9 docs">
+        <h2>Why use the Savio API?</h2>
+        <p>
+            You can use the Savio API to send feedback to Savio programmatically. You can also use the API with integration services like Zapier.
+        </p>
+
+        <h3>Authentication</h3>
+        <p>
+            The Savio API uses token based authentication. You can find your API token on your <a href="{% url 'accounts-my-settings-list' %}">My Settings</a> page.
+        </p>
+
+        <p>
+            When using the API as a webhook target in Zapier or similar service you need to include your API Token as an HTTP header:
+        </p>
+        <table class="table mb-0" style="width: 100%; min-height: 0px;">
+            <thead>
+                <tr>
+                    <th class="pt-0 bt-0" width="20%">HTTP Header</th>
+                    <th class="pt-0 bt-0" width="30%">Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="feedback-item">
+                    <td><code>Authorization</code></td>
+                    <td><code>Token YOUR_TOKEN_VALUE</code></td>
+                </tr>
+            </tbody>
+        </table>
+        <p>
+            Note that the value of the <code>Authorization</code> header must the word <code>Token</code> followed by a space and then your API token.
+        </p>
+
+        <h3>Reference</h3>
+
+        <h4 class="mt30">Methods</h4>
+        <p>The Savio API currently supports the following methods:</p>
+        <h5>create_feedback</h5>
+        <p>
+            Feedback can be created via a <code>POST</code> to <code>https://www.savio.io/app/api/create-feedback/</code>.
+        </p>
+
+        <h6>Return values</h6>
+        <p>
+            <table class="table mb-0" style="width: 100%; min-height: 0px;">
+                <thead>
+                    <tr>
+                        <th class="pt-0 bt-0" width="20%">Result</th>
+                        <th class="pt-0 bt-0" width="30%">Response Code</th>
+                        <th class="pt-0 bt-0" width="30%">Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="feedback-item">
+                        <td>Success</td>
+                        <td>201</td>
+                        <td><code>{"id": id_of_new_feedback}</code></td>
+                    </tr>
+                    <tr class="feedback-item">
+                        <td>Failed to authenticate</td>
+                        <td>401</td>
+                        <td></td>
+                    </tr>
+                    <tr class="feedback-item">
+                        <td>Failed to create feedback</td>
+                        <td>400</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </p>
+        <h6>Parameters</h6>
+        <p>
+
+          {% include "includes/create-feedback-api-parameters.html" %}
+
+        </p>
+        <h6>Example<h6>
+        <p>
+        <pre>
+$ curl https://www.savio.io/app/api/create-feedback/ \
+-X POST \
+-H 'Authorization:Token REPLACE_WITH_YOUR_API_TOKEN' \
+-H 'Accept: application/json' \
+-H 'Content-Type: application/json' -d '
+{
+    "problem": "You need a Zapier integration so I can wire up Google Forms.",
+    "feedback_type": "CHURNED",
+    "person_email": "bob@example.com",
+    "state": "ACTIVE",
+    "feature_request_title": "Feedback API",
+    "tags": ["red", "green"]
+}'
+        </pre>
+    </p>
+    </div>
+</div>  
+</div>
+{% endblock %}

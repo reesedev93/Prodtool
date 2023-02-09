@@ -1,0 +1,155 @@
+{% extends "blog-page.html" %}
+{% load static %}
+{% block meta_title %}
+Tracking feature requests in Help Scout
+{% endblock %}
+
+{% block meta_desc %}Learn three different options for setting up a high quality feature request tracking system for Help Scout.{% endblock %}
+
+
+{% block head %}
+  <!-- open graph tags -->
+  <meta property="og:url" content="{{ request.build_absolute_uri }}" />
+  <meta property="og:title" content="A guide to setting up feature request tracking in Help Scout" /> <!-- 57 chars -->
+  <meta property="og:type" content="website" />
+  <meta property="og:description" content="Learn how to set up a high quality feature request tracking system for Help Scout messages" /> <!-- 73 chars -->
+
+  <meta property="og:site_name" content="Savio" />
+  <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'images/savio-logo-1500x750.png' %}" />
+
+  <meta property="og:image:width" content="1500" />
+  <meta property="og:image:height" content="750" />
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:site" content="@savio_io" />
+
+  <!-- 115 chars max -->
+  <meta property="twitter:description" content="Learn three different options for setting up a high quality feature request tracking system for Help Scout." /> 
+
+  <!-- end open graph -->
+  
+  <!-- for content upgrade --> 
+  <script src="https://sendfox.com/js/form.js"></script>
+{% endblock %}
+
+
+{% block content %}
+
+  <div class="col-md-12 blog blog-title text-center">
+    <h1>Tracking feature requests in Help Scout</h1>
+  </div>
+    <div class="col-md-8 offset-md-2 blog">
+
+<p>If you’re using Help Scout as your support platform it’s highly likely that you’re getting Mailbox and Beacon messages that includes valuable customer feedback and product feature requests. If you’ve got a strong process in place for managing feature requests as they come in you’ll be able to use that feedback to help you build a better product and increase customer happiness.</p>
+
+<p>
+  <img class="img-fluid" style="border: 1px solid #ddd" src="/static/images/help/helpscout/helpscout-integration-animated.gif">
+</p>
+
+<h2>What Does a Good Process for Tracking Feature Requests from Help Scout Look Like?</h2>
+<p>A good system to <a href="{% url 'marketing-integrations-helpscout' %}">track feature requests from Help Scout</a> has four main attributes:</p>
+
+<ol><li>Low friction</li>
+<li>Makes it easy to spot trends</li>
+<li>Supports segmentation based on key user or company attributes</li>
+<li>Make it easy to close the loop and follow up with people for more information or to let them know you’ve implemented their request.</li></ol>
+<h3>Low Friction</h3>
+<p>If you want to make sure that every feature request that comes into your Help Scout Mailbox or lands in Beacon actually gets collected. To ensure that happens the process needs to be straightforward for your support people to execute. Ideally you don’t want your support reps to have to leave Help Scout as that adds friction to the process and makes it less likely the feedback will actually get captured.</p>
+<h3>Makes it Easy to Spot Trends</h3>
+<p>If you dump every feature request in a generic “feedback bucket” it’s going to be painful to extract the information you need to make better product decisions. No one wants to read through a thousand uncategorized feature requests. Instead you want a system that organizes feature requests into logical buckets and that includes some sort of <a href="{% url 'marketing-triage' %}">feature request triage process</a> to ensure the information is trusted. Once your feedback is well organized, it’s much easier to spot trends and drive prioritization decisions.</p>
+<h3>Supports Segmentation</h3>
+<p>Not all feature requests are created equal. If 100 Free Plan customers have asked for feature A and 50 Enterprise Plan customers have asked for feature B you might rightly decided to focus your energy on Feature B even though twice as many people have asked for Feature A.</p>
+<h3>Closes the Loop</h3>
+<p>Customers have been asking for a particular feature over and over. You’ve used those requests as evidence to drive a product enhancement to solve the problem customers have repeatedly pointed out. The next step is to let everyone that requested the feature know you’ve listened and given them what they asked for. Customers love feeling heard. Why miss the opportunity to let them know you’re listening! It’s a simple thing but it goes a long way to increasing customer happiness and reducing churn. You want your process to make it easy to close that loop.</p>
+<h2>Three Options for Your Help Scout Feature Request Tracking System</h2>
+<p>There are three main options for setting up a Help Scout feature request tracking system:</p>
+
+<ol><li>Use Help Scout tagging and reports.</li>
+<li>Use a general purpose tool like Google Sheets or Trello.</li>
+<li>Use a purpose built feedback management system with a deep Help Scout integration like Savio.</li></ol>
+
+<h3>Option 1: Use Help Scout Tagging and Reports</h3>
+<p>With this approach you:</p>
+<ol><li>Setup and maintain a set of tags for each feature request you are tracking. e.g. “Feature Request: A”, “Feature Request: B” etc.</li>
+<li>As feature requests come in you tag them in Help Scout with one of your “Feature Request” tags making a new tag if necessary.</li>
+<li>When you want to use the data you use Help Scouts Reports and Export all of the conversation.</li>
+<li>Using pivot tables in Excel or Google Sheets you do your analysis to determine which requests are the most important.</li>
+<li>When you want to close the loop you copy and paste all of the email addresses from your export and email them or you click each conversation link in your export and message them one at a time. </li></ol>
+
+<p>
+  <img class="img-fluid" style="border: 1px solid #ddd" src="/static/images/blog/helpscout-export-to-excel.png" width="600" height="375">
+</p>
+
+<p>
+  <img class="img-fluid" style="border: 1px solid #ddd" src="/static/images/blog/helpscout-feature-request-export.png" width="600" height="375">
+</p>
+
+<h4>Pros:</h4>
+<ul class="small"><li>No additional tools.</li>
+<li>Low friction for support reps. Just tag conversations. Some friction in maintaining your tags.</li></ul>
+
+<h4>Cons:</h4>
+<ul class="small"><li>Hard to see trends. You have to export all of your conversations to a csv and build your own analysis.</li>
+<li>Hard to segment feature requests based on user and company properties like plan and MRR. You’ll need to find a way to enrich the export if you want to do segmentation.</li>
+<li>Hard to close the loop with customers after you ship a requested feature. You’ll need to manually message each user from the export CSV.</li>
+<li>Poor centralization. Feature requests that come in via other channels like email, Slack, Salesforce etc. need to be handled with a different process.</li></ul>
+
+<h3>Option 2: Use a General Purpose Tool</h3>
+<p>With this approach you use a general purpose tool like Google Sheets, Air Table or Trello. As feedback comes in you manually paste it into the tool.</p>
+
+<h4>Pros:</h4>
+<ul class="small"><li>Don’t need to learn a new tool.</li>
+<li>With careful maintenance you can group related feature requests and highlight trends.</li>
+<li>Can be used to centralize feature requests from multiple channels not just Help Scout.</li></ul>
+
+<h4>Cons:</h4>
+<ul class="small"><li>High friction. You need to leave Help Scout and paste a bunch of info into another tool.</li>
+<li>Hard to segment feature requests based on user and company properties.</li>
+<li>Hard to close the loop. Have to manually email each user by copy and pasting their email address back to Help Scout.</li></ul>
+<h3>Option 3: Use a Purpose Built Tools Like Savio</h3>
+<p>With a purpose built tool like Savio you get a smooth, integrated process designed to make it easy to track feature requests from Help Scout as well as many other channels like email, Slack and Salesforce.</p>
+
+<p>
+  <img class="img-fluid" style="border: 1px solid #ddd" src="/static/images/help/helpscout/helpscout-integration-animated.gif">
+</p>
+
+<p>
+  <img src="/static/images/screenshots/marketing/feature-requests-close-up.png" style="border: 1px solid #aaa;" alt="" class="img-fluid">
+</p>
+
+<h4>Pros:</h4>
+<ul>
+<li>Low friction. Just tag a message in your Help Scout Mailbox or in Beacon and it gets added to your Feedback Vault. Only one tag to manage. No need to create a separate tag for every feature request.</li>
+<li>Easy to highlight trends and see at a glance what feature requests are most important.</li>
+<li>Easy to segment feature requests based on different user and company properties like monthly spend and plan even if those properties aren’t in Help Scout.</li>
+<li>Built in workflow for closing the loop after feature requests are shipped.</li>
+<li>Unified system for feedback from all your tools, not just feedback from Help Scout.</li>
+<li>Many additional features designed to give you a high quality feature request tracking system.</li></ul>
+
+<h4>Cons:</h4>
+<ul>
+<li>You need to learn a new tool.</li>
+<li>You have to pay for an additional tool.</li></ul>
+
+<h2>How to Choose an Option</h2>
+<p>If you are only getting a handful of feature requests a month, requests primarily come via Help Scout and you don’t care about segmentation, then consider using Help Scout + tags + CSV export. It’s low friction and it’s better to actually capture feature requests then not capture them.</p>
+
+<p>If your feedback is multi-channel, low volume and you’re price conscious consider a free general purpose tool like Google Sheets or Trello but only if you are confident that team members are really going to jump through the hoops required to capture the feedback. There is no point in starting the effort if it’s not actually going to get used and this approach takes more discipline on the part of the submitters.</p>
+
+<p>If you get a moderate amount of feedback, receive feedback from different channels including Help Scout, or care about segmentation then it’s worth investing in a purpose-built tool like Savio. By having a strong process around feature requests you can make a better product which will grow revenue while reducing customer acquisition costs and increasing retention. Your customers will appreciate your more thoughtful use of their feedback and the product improvements that come from it.</p>
+
+
+  </div>
+
+    {% include "includes/blog-cta.html" with title="Start Tracking Feature Requests Today" %}
+{% endblock %}
+
+{% block footer_scripts %}
+  <!-- for auto-creating anchor link --> 
+  <script type="text/javascript" src="{% static 'jquery-anchorify/anchorify.js' %}"></script>
+
+  <script type="text/javascript">
+      $(document).ready(function() {
+          jQuery('body').anchorify();
+      });
+  </script>
+{% endblock %}

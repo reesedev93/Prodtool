@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en"  prefix="og: http://ogp.me/ns#">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>{% block meta_title %}Savio{% endblock %}</title>
+        <meta name="description" content="{% block meta_desc %}Savio{% endblock %}">
+
+        <!-- Plugins CSS -->
+        <link href="{% static 'css/plugins/marketing_plugins.css' %}" rel="stylesheet">
+        <link href="{% static 'linearicons/fonts.css' %}" rel="stylesheet">
+        <link href="{% static 'font-awesome/css/all.min.css' %}" rel="stylesheet">
+        <link href="{% static 'css/style-saas-landing.css' %}" rel="stylesheet">
+        <link rel="icon" type="image/png" href="{% static 'images/favicon_48.png' %}" />
+
+        {% block head %}{% endblock %}
+
+        {% include "includes/tracking.html" %}
+    </head>
+
+    <body>
+        <div id="home" class="gradien-primary">
+            <div class="container">
+                <div class="row">
+                    <img src="{% static 'images/logo-white-no-background.png' %}" alt="" height="70" class='logo-trans'>
+                </div>
+            </div>
+        </div>
+
+        <main class="main-content">
+            <section id="content" class='gradient-faded'>
+                {% block content %}Content{% endblock %}
+            </section>
+        </main>
+
+        <footer class="footer">&nbsp;
+            <div class="container">
+                <div class="text-center copyright">
+                    <span>&copy; Copyright <a href="{% url 'marketing-home' %}">Savio.io</a> 2018-{% now "Y" %}</span>&nbsp;|
+                    <span><a href="{% url 'marketing-terms' %}">Terms & conditions</a></span>&nbsp;|
+                    <span><a href="{% url 'marketing-privacy' %}">Privacy Policy</a></span>
+                </div>
+            </div>
+        </footer>
+
+        <script type="text/javascript" src="{% static 'js/plugins/popper.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/plugins/marketing_plugins.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/saas.products.custom.js' %}"></script>
+        {% include 'includes/intercom_widget.html' %}
+        {% block footer %}{% endblock %}
+
+        {% block footer_scripts %}{% endblock %}
+
+    </body>
+</html>

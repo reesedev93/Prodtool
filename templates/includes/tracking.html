@@ -1,0 +1,97 @@
+
+
+  {% if not hide_recording %}
+    <!-- Fullstory -->
+    <script>
+      window['_fs_debug'] = false;
+      window['_fs_host'] = 'fullstory.com';
+      window['_fs_org'] = 'J3A37';
+      window['_fs_namespace'] = 'FS';
+      (function(m,n,e,t,l,o,g,y){
+          if (e in m) {if(m.console && m.console.log) { m.console.log('FullStory namespace conflict. Please set window["_fs_namespace"].');} return;}
+          g=m[e]=function(a,b,s){g.q?g.q.push([a,b,s]):g._api(a,b,s);};g.q=[];
+          o=n.createElement(t);o.async=1;o.src='https://'+_fs_host+'/s/fs.js';
+          y=n.getElementsByTagName(t)[0];y.parentNode.insertBefore(o,y);
+          g.identify=function(i,v,s){g(l,{uid:i},s);if(v)g(l,v,s)};g.setUserVars=function(v,s){g(l,v,s)};g.event=function(i,v,s){g('event',{n:i,p:v},s)};
+          g.shutdown=function(){g("rec",!1)};g.restart=function(){g("rec",!0)};
+          g.consent=function(a){g("consent",!arguments.length||a)};
+          g.identifyAccount=function(i,v){o='account';v=v||{};v.acctId=i;g(o,v)};
+          g.clearUserCookie=function(){};
+      })(window,document,window['_fs_namespace'],'script','user');
+
+      {% if request.user.is_authenticated %}
+        FS.identify('{{request.user.id}}', {
+          displayName: '{{request.user.first_name}} {{request.user.last_name}}',
+          email: '{{request.user.email}}',
+          customer: '{{request.user.customer.name}}',
+          customer_id_int: {{request.user.customer.id}},
+          team_str: '{{request.user.job}}'
+          // TODO: Add your own custom user variables here, details at
+          // http://help.fullstory.com/develop-js/setuservars
+          //  FS.reviewsWritten_int: 14,
+        });
+      {% endif %}
+    </script>
+  {% endif %}
+
+<!-- Begin Inspectlet Asynchronous Code -->
+  <script type="text/javascript">
+  (function() {
+  window.__insp = window.__insp || [];
+  __insp.push(['wid', 718224955]);
+  var ldinsp = function(){
+  if(typeof window.__inspld != "undefined") return; window.__inspld = 1; var insp = document.createElement('script'); insp.type = 'text/javascript'; insp.async = true; insp.id = "inspsync"; insp.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://cdn.inspectlet.com/inspectlet.js?wid=718224955&r=' + Math.floor(new Date().getTime()/3600000); var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(insp, x); };
+  setTimeout(ldinsp, 0);
+  })();
+
+  {% if request.user.is_authenticated %}
+
+    __insp.push(['identify', "{{request.user.email}}"]);
+    __insp.push(['tagSession', {email: "{{request.user.email}}", name: '{{request.user.first_name}} {{request.user.last_name}}', user_id: "{{request.user.id}}", "customer": '{{request.user.customer.name}}', "customer_id": '{{request.user.customer.id}}'}]);
+  {% endif %}
+  </script>
+  <!-- End Inspectlet Asynchronous Code -->
+
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-135502159-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-135502159-1');
+  </script>
+
+  <!-- Facebook Pixel Code -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+
+    // personal pixel
+    fbq('init', '495556621272519');
+    fbq('track', 'PageView');
+
+    // biz pixel
+    fbq('init', '3209192805858782');
+    fbq('track', 'PageView');
+  </script>
+  <noscript>
+    <!-- personal pixel -->
+    <img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=495556621272519&ev=PageView&noscript=1">
+
+    <!-- biz pixel -->
+    <img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=3209192805858782&ev=PageView&noscript=1"
+  />
+  /></noscript>
+  <!-- End Facebook Pixel Code -->
+

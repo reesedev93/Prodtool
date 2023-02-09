@@ -1,0 +1,54 @@
+<div class="modal fade" id="onboarding_add_feedback" tabindex="-1">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-content" style="width: 800px; border: 0; ">
+
+      <div class="modal-header" style="background-color: #000; border-radius: 0.3rem; border: 1px solid #000;">
+        <h5 class="modal-title" style="background-color: #000; color: #fff;">Add Customer Feedback</h5>
+      </div>
+        <div class="modal-body" >
+          <div class="portlet-box portlet-gutter ui-buttons-col">
+              <div class="portlet-body" >
+                  <div class="col-lg-11 col-xl-11 col-md-11" >
+                    <div id="onboarding-carousel" style="padding-left: 60px;" class="pt-10 carousel slide" data-interval="false">
+                        <div class="carousel-inner" >
+                          <div class="carousel-item active">
+                            <h4 class="pb-20 fs18 text-muted">Things to know</h4>
+                              <ol class="fs24">
+                                <li>When entering a Feature Request, you can create a new one by simply typing its name</li>
+                                <li>Mark Triaged skips the Triage process</li>
+                                <li>But you should click "Save to Inbox" so we can Triage your Feedback</li>
+                              </ol>
+                            <p><a href="#" class="close_modal btn btn-primary btn-sm">Got it. I'm going to enter feedback and Save to Inbox.</a>
+
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+              </div>
+          </div>
+        </div>
+<!--
+        <div class="modal-footer">
+footer
+        </div>
+-->
+    </div>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    if (params.onboarding_add_feedback == 1) {
+
+      $(".close_modal").click(function() {
+        $("#onboarding_add_feedback").modal('hide');
+      })
+
+      $(window).on('load',function(){
+        $('#onboarding_add_feedback').modal('show');
+      });
+    }
+  })
+</script>
+

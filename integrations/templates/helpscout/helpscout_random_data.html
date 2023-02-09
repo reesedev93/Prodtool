@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block head %}
+<script type="text/javascript">!function(e,t,n){function a(){var e=t.getElementsByTagName("script")[0],n=t.createElement("script");n.type="text/javascript",n.async=!0,n.src="https://beacon-v2.helpscout.net",e.parentNode.insertBefore(n,e)}if(e.Beacon=n=function(t,n,a){e.Beacon.readyQueue.push({method:t,options:n,data:a})},n.readyQueue=[],"complete"===t.readyState)return a();e.attachEvent?e.attachEvent("onload",a):e.addEventListener("load",a,!1)}(window,document,window.Beacon||function(){});</script>
+<script type="text/javascript">
+    window.Beacon('init', '69f4459f-2a2c-45d8-941b-28bbc7d76835')
+    {% if request.user.is_authenticated %}
+    window.Beacon('identify', {
+        name: '{{name}}',
+        email: '{{email}}',
+        company: "{{company_name}}",
+        user_id: "{{user_id}}",
+        mrr: {{user_mrr}},
+        doctor_province: "{{doctor_province}}",
+        plan: "{{plan_name}}",
+    })
+    {% endif %}
+</script>
+{% endblock %}
+
+{% block body_content %}
+<div class="row align-items-center pt-30">
+    <div class="col-md-12 mr-auto ml-auto">
+        <div class="mb-0">
+            <h4>Make me a random Help Scout User</h4>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-12">
+    <div class="portlet-box mb-30">
+      <div class="portlet-body">
+        <div class="table-responsive">
+            <ul>
+                <li><strong>name</strong>: {{name}}</li>
+                <li><strong>email</strong>: {{email}}</li>
+                <li><strong>user_id</strong>: {{user_id}}</li>
+                <li><strong>user_mrr</strong>: {{user_mrr}}</li>
+                <li><strong>doctor_province</strong>: {{doctor_province}}</li>
+                <li><strong>company_id</strong>: {{company_id}}</li>
+                <li><strong>company_name</strong>: {{company_name}}</li>
+                <li><strong>company_mrr</strong>: {{company_mrr}}</li>
+                <li><strong>plan_name</strong>: {{plan_name}}</li>
+                <li><strong>is_lighthouse</strong>: {{is_lighthouse}}</li>
+                <li><strong>is_customer</strong>: {{is_lighthouse}}</li>
+            </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block intercom %}{% endblock %}

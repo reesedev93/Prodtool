@@ -1,0 +1,32 @@
+{% extends 'onboarding.html' %}
+{% load crispy_forms_tags %}
+
+{% block head %}
+{{ form.media }}
+{% endblock %}
+
+{% block body_content %}
+<div class="row mb-30">
+  <div class="col-lg-12 ml-auto mr-auto">
+    <h2 class="mt-30 mb-30">Choose Intercom Feedback Tag</h2>
+
+      {% include "includes/onboarding-wizard.html" %}
+
+      <div class="wizard-content pb-40 pt-30">
+        <div class="col-md-12">
+            <p>When an Intercom message is tagged with this, Savio will import the message as a new piece of Feedback.
+            </p>
+
+            <form method="post">{% csrf_token %}
+              {{ form|crispy }}
+              <input type="submit" name="action" value="Save Intercom Feedback Tag" class="btn btn-primary">
+              or <a href="{{return}}">skip</a>
+            </form>
+
+          </div>
+      </div><!--portlet-->
+    </div>
+  </div>
+</div>
+{% endblock %}
+

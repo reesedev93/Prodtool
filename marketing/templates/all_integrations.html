@@ -1,0 +1,49 @@
+{% extends "basic_page.html" %}
+{% load static %}
+
+{% block meta_title %}
+Collect and centralize customer your feedback | Savio
+{% endblock %}
+
+{% block meta_desc %}Your customer feedback is locked up in your support tool and CRM. We help software teams centralize it and use it to build great products.{% endblock %}
+
+
+{% block title %}
+<div class="text-center">Track Customer Feature Requests</div>
+{% endblock %}
+
+{% block content %}
+
+<div class="bg-white pt90 pb50">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 docs text-center">
+        <h2>Painlessly centralize feature requests from all your tools</h2>
+        <h3>Capture requests from the tools you use with no disruption to your workflow</h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% for story in stories %}
+<div class="bg-white pt20 pb40">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-2 docs">
+
+        <div class="row mt50">
+          <div class="col-md-3">
+            <a href="/{{story.full_slug}}/"><img class="img-fluid" src="{{story.content.product_plus_ce_image}}" width="150" height="150"></a>
+          </div>
+
+          <div class="col-md-9">
+            <h5><a href="/{{story.full_slug}}/">Track feature requests from {{story.name}}</a></h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
+
+{% endblock %}

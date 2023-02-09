@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block head %}
+{{ form.media }}
+{% endblock %}
+
+{% block body_content %}
+
+<div class="row align-items-center pt-30">
+    <div class="col-md-12 mr-auto ml-auto">
+        <div class="mb-0">
+          <h4>Create User</h4>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+  <div class="col-lg-9">
+    <div class="mb-30">
+      <div class="portlet-box portlet-gutter ui-buttons-col mb-30">
+        <div class="portlet-body">
+
+            {% if not user.customer.subscription.can_add_more_users %}
+              <div class="row">
+                <div class="col-lg-12">
+                    <div class="mt-30 alert alert-danger" role="alert">
+                      You can have {{ user.customer.subscription.plan_users }} user{{ user.customer.subscription.plan_users|pluralize}} on your plan.  To add more users, first <a href="{% url 'accounts-settings-add-credit-card' %}{%if user.customer.subscription.no_card_on_file %}?add_card=1{% endif %}">upgrade your plan here</a>.
+                    </div>
+                </div>
+              </div>
+            {% else %}
+
+              {% if is_plan_per_seat %}
+                  <div class="alert alert-warning" role="alert">
+                    <strong>Creating an 'Owner' or 'Admin' user adds a seat to your subscription.</strong>
+                  </div>
+              {% endif %}
+
+              <form method="post">{% csrf_token %}
+                {{ form|crispy }}
+                <input type="submit" name="action" value="Save New User" class="btn btn-primary">
+                or <a href="{% url 'accounts-user-list' %}">cancel</a>
+              </form>
+            {% endif %}
+          </div> <!--portlet-body -->
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

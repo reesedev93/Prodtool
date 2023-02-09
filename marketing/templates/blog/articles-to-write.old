@@ -1,0 +1,35 @@
+- How to prioritize features
+- Closing the loop vs. marketing release email (two different emails - close the loop first and get feedback.  then refine and launch more widely.)
+- How to figure out features to put in your product marketing emails (use features shipped at field in sidebar)
+- Collect feedback widget vs. in-app (Clubhouse style).  For mobile. 
+- Use feature request filtering with custom attributes.
+- Collect feedback publically: yes or no?  What about mobile users?   
+- What a good feedback request looks like: tell us what you want.  Nothing fancy.  We want their own words, we don't want them to get lost in a sea of issues.  Goes to ticketing system to answer ==> if it's a FR, send to Savio.
+- Collect NPS cheaply (use Typeform)
+- Categorization -- want to see feedback at every level (e.g. Mobile vs. Ipad.  Mobile > Dashboard vs Ipad > Home Screen).  Potentially to figure out what to hire.
+- How Feedback Managers can work with dev tool (link to issue in JIRA.  Update status in Savio when issue in JIRA is updated).
+- How Feedback Managers can work with product (roadmap)
+- If you're early the last thing you want is to automate things.  You should have conversatinos.  Optimize for that (here are the N things we do to talk to customers)
+- Keep track of what you need to communicate to marketing by using "to-market" tag
+- Before getting on a call with a customer you should run the following filters…
+  Potential hot spots:
+  - What items have they requested that are standing for the person and/or company overall and since the last call you had.
+
+  What we’ve done for you:
+  - What items we’ve shipped that you or your company have requested overall (recently?) and since the last call.
+
+Asking for feedback:
+https://www.dropbox.com/s/3tlwjz3v9jrfyj0/Superhuman%20Browser%20Window.pdf?dl=0
+https://www.dropbox.com/s/c5mfiwh6xj08dvw/hiten-Superhuman%20Browser%20Window.pdf?dl=0
+
+Workflows:
+
+- How we prioritize (check out Indiehackers thread and re-post)
+
+- How we validate problem.  Go read FR verbatims.  Reach out quickly if we have a question.  Add clarification to FR's feedback when customer responds.  
+
+- How we validate solution. Build wireframe or screenshot.  Go to FR. Click through to thread. Send wireframe or screenshot. Refine.  E.g. https://mail.superhuman.com/k@savio.io/search/abbey.weber%40housecallpro.com%20/16ff95d954b40ea0#app
+
+- How we close the loop.  Build feature. Launch.  Go to FR. Open each link to thread (or copy their verbatim).  Send email: https://mail.superhuman.com/k@savio.io/search/nelson%40tettra.co%20/16ffc960d05ca8bb#app
+
+- Using feature requests at renewal time (run report for account to see how many you shipped for someone)

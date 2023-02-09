@@ -1,0 +1,74 @@
+{% extends "login-template.html" %}
+
+{% block title_content %}
+Welcome back! Log in here.
+{% endblock %}
+
+{% block body_content %}
+
+
+{% if form.errors %}
+  <div class="row mt-0 mb-20">
+    <div class="col-lg-12">
+      <div class="alert alert-danger fade show pb-0" role="alert">
+
+        {% if form.errors %}
+        <p>Your email and password didn't match. Please try again.</p>
+        {% endif %}
+
+      </div>
+    </div>
+  </div>
+{% endif %}
+
+{% if next %}
+  <div class="row mt-0 mb-20">
+    <div class="col-lg-12">
+      <div class="alert alert-info fade show pb-0" role="alert">
+
+        {% if next %}
+            {% if user.is_authenticated %}
+                <p>Your account doesn't have access to this page. To proceed,
+            please login with an account that has access.</p>
+            {% else %}
+                <p>Please login to see this page.</p>
+
+            {% endif %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+{% endif %}
+
+
+<form role="form" method="post" action="{% url 'accounts-chrome-extension-login' %}">
+
+    {% csrf_token %}
+    <div class="input-icon-group">
+        <div class='input-icon-append'>
+            <i class="fa fa-user"></i>
+            <input placeholder="Your Work Email Address" tabindex="1" type="text" name="username" value="" autofocus="" required="" id="id_username" class="form-control">
+<!--            {{ form.username }} -->
+
+<!--            <input placeholder="Username" type="text" class="form-control"> -->
+        </div>
+    </div>
+    <div class="input-icon-group">
+        <div class='input-icon-append'>
+            <i class="fa fa-lock"></i>
+            <input placeholder="Password" tabindex="2" class="form-control" type="password" name="password" required="" id="id_password">
+
+<!--            {{ form.password }} -->
+<!--            <input id="pass" placeholder="Password" type="password" class="form-control"> -->
+        </div>
+    </div>
+    <input type="hidden" name="next" value="{{ next }}">
+
+<!-- <input type="submit" value="login"> -->
+    <button type="submit" tabindex="3" class="btn btn-gradient-primary btn-block btn-lg">Sign In</button>
+    <div class="pt-20 text-center">
+        Don't have an account? <a tabindex="4" href="{% url 'accounts-chrome-extension-join' %}" class='text-primary ml-2 d-inline-block pb-1'>Sign Up Here</a>
+    </div>
+</form>
+
+{% endblock %}

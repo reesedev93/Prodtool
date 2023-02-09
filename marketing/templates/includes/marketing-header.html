@@ -1,0 +1,17 @@
+{% load static %}
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-white navbar-transparent-light navbar-sticky">
+            <div class="container">
+                <a class="navbar-brand" href="/">
+                    <img src="{% static 'images/logo-black-no-background.png' %}" alt="" height="70" class='logo-scroll'>
+                    <img src="{% static 'images/logo-white-no-background.png' %}" alt="" height="70" class='logo-trans'>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#landingkit-navbar" aria-controls="landingkit-navbar" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                {% include 'includes/topnav-linkbar.html' %}
+
+
+            </div>
+        </nav>

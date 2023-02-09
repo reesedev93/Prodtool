@@ -1,0 +1,274 @@
+{% extends "basic_page.html" %}
+{% load static %}
+
+{% block meta_title %}
+Collect and centralize customer your feedback | Savio 
+{% endblock %}
+
+{% block meta_desc %}Your customer feedback is locked up in your support tool and CRM. We help software teams centralize it and use it to build great products.{% endblock %}
+
+
+{% block title %}
+<div class="text-center">Track Customer Feature Requests</div>
+{% endblock %}
+
+{% block content %}
+
+<div class="bg-white pt90 pb50">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 docs text-center">
+        <h2>Painlessly centralize feature requests from all your tools</h2>
+        <h3>Capture requests from the tools you use with no disruption to your workflow</h3>
+<!--
+          <h4>
+            Customers share feature requests with teams like<br>support, sales, services, success, marketing, and product
+          </h4>
+          <h4>
+            Using these requests to prioritize is difficult<br>(with spreadsheets, Trello, Airbrake and / or painful meetings)
+          </h4>
+          <h3>Savio can help.</h3>
+-->
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="bg-faded pt20 pb40">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-2 docs">
+        <div class="row mt50">
+          <div class="col-md-3">
+            <a href="{% url 'marketing-integrations-intercom' %}">
+              <img class="img-fluid" src="{% static 'images/intercom.png' %}" width="150" height="150">
+            </a>
+          </div>
+
+          <div class="col-md-9">
+            <h5>From Intercom</h5>
+            <p>
+              When you <a href="{% url 'marketing-integrations-intercom' %}">connect Savio to Intercom</a>, you'll give Savio the name of an Intercom tag that you want Savio to pull in. When your teammates add that tag to an Intercom message, Savio will pull that message in.  Tagging doesn't work in Intercom's mobile apps, but with Savio there's a way to push customer feedback from Intercom's mobile apps.   <a href="{% url 'marketing-integrations-intercom' %}">Learn more about tracking feature requests sent to Intercom →</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="bg-white pt20 pb40">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-2 docs">
+        <div class="row mt50">
+          <div class="col-md-3">
+            <a href="{% url 'marketing-integrations-helpscout' %}">
+              <img class="img-fluid"  src="{% static 'images/helpscout-icon-blue-800.png' %}" width="150" height="150">
+            </a>
+          </div>
+
+          <div class="col-md-9">
+            <h5>From Help Scout</h5>
+            <p>
+              When you <a href="{% url 'marketing-integrations-helpscout' %}">connect Savio to Help Scout</a>, you'll give Savio the name of an Help Scout tag.  When your support team adds that tag to a Help Scout conversation, Savio will pull that message in as new feedback.  <a href="{% url 'marketing-integrations-helpscout' %}">Learn more about tracking feature requests sent to Help Scout →</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="bg-faded pt20 pb40">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-2 docs">
+        <div class="row mt50">
+          <div class="col-md-3">
+            <a href="{% url 'marketing-chrome-extension' %}">
+              <img class="img-fluid" src="{% static 'images/chrome_icon_color.png' %}" width="150" height="150">
+            </a>
+          </div>
+
+          <div class="col-md-9">
+            <h5>With a Chrome Extension</h5>
+            <p>
+              Your probably have feedback that lives outside of Intercom or Slack (Google Docs, an NPS tool, and a CRM come to mind).   It's problematic to get that feedback into a single place. But with the <a href="{% url 'marketing-chrome-extension' %}">Savio Chrome Extension</a>, you can  push feedback to Savio from any web-based tool.  <a href="{% url 'marketing-chrome-extension' %}">Learn more about tracking feature requests with the Savio Chrome Extension →</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="bg-white pt20 pb40">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-2 docs">
+
+        <div class="row mt50">
+          <div class="col-md-3">
+            <a href="{% url 'marketing-integrations-slack' %}">
+              <img class="img-fluid"  src="{% static 'images/Slack_Mark_Web.png' %}" width="150" height="150">
+            </a>
+          </div>
+
+          <div class="col-md-8">
+            <h5>From Slack</h5>
+            <p>
+              When you <a href="{% url 'marketing-integrations-slack' %}">connect Savio to Slack</a>, Savio can listen to the channel where your team regularly post feedback.  Savio will ask the person who shared it if they want to to push it to Savio.  Savio also provides a way to push any public message in Slack to Savio. <a href="{% url 'marketing-integrations-slack' %}">Learn more about tracking feature requests shared in Slack →</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="bg-faded pt20 pb40">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-2 docs">
+
+        <div class="row mt50">
+          <div class="col-md-3">
+            <img class="img-fluid" src="{% static 'images/zapier-logomark.png' %}" width="150" height="150">
+          </div>
+
+          <div class="col-md-9">
+            <h5>From any tool via Zapier</h5>
+            <p>
+               Track feature requests in Savio from any tool with our <a href="{% url 'marketing-help-zapier' %}">Zapier integration</a>.  Customers have used Zapier to send feature requests to Savio from tools like Survey Monkey, NPS tools, and Typeform. <a href="{% url 'marketing-help-zapier' %}">Learn more about tracking feature requests via Zapier →</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="bg-white pt20 pb40">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-2 docs">
+        <div class="row mt50">
+          <div class="col-md-3">
+            <a href="{% url 'marketing-send-email' %}">
+              <img class="img-fluid" src="{% static 'images/send-email2.png' %}" width="150" height="150">
+            </a>
+          </div>
+
+          <div class="col-md-9">
+            <h5>From Your Email Client</h5>
+            <p>
+              If you're like us, you get tons of valuable feedback via email. With Savio, you can email that feedback from your inbox into your Vault. <a href="{% url 'marketing-send-email' %}">Learn more about tracking feature requests via email →</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="bg-faded pt20 pb40">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-2 docs">
+
+        <div class="row mt30">
+          <div class="col-md-3">
+            <img class="img-fluid" src="{% static 'images/api.png' %}" width="150" height="150">
+          </div>
+
+          <div class="col-md-9">
+            <h5>With the Savio API</h5>
+            <p>
+               Do you collect qualitative feedback in your app?  Want to keep it in the same place as your other feedback?  Send it to Savio with our API. <a href="{% url 'marketing-help-api' %}">Learn more about tracking feature requests with the Savio API →</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="bg-white pt20 pb40">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-2 docs">
+
+        <div class="row mt50">
+          <div class="col-md-3">
+            <img class="img-fluid" src="{% static 'images/logo-hex.png' %}" width="150" height="150">
+          </div>
+
+          <div class="col-md-9">
+            <h5>Directly in Savio</h5>
+            <p>
+               As you might expect, you can enter customer feedback directly into Savio after you log in.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="bg-faded pt20 pb40">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-2 docs">
+
+        <div class="row mt50">
+          <div class="col-md-3">
+            <img class="img-fluid" src="{% static 'images/hubspot-sprocket-web-color.png' %}" height="150" width="150">
+          </div>
+
+          <div class="col-md-9">
+            <h5>From HubSpot CRM</h5>
+            <p>
+               Your sales reps can tag conversations that contain valuable product feedback, and Savio will pull it in automagically.  Coming soon. 
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="bg-white pt20 pb40">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-2 docs">
+
+        <div class="row mt50">
+          <div class="col-md-3">
+            <img class="img-fluid" src="{% static 'images/zendesk.png' %}" width="150" height="150">
+          </div>
+
+          <div class="col-md-9">
+            <h5>From Zendesk</h5>
+            <p>
+               Your support team can tag conversations that contain valuable product feedback, and Savio will pull it in automagically.  Coming soon. 
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="bg-white mt50 mb70">
+  <div class="row  ml-auto mr-auto text-center">
+    <div class="col-md-4 pt20">
+      <a href="{% url 'marketing-features' %}" class="btn btn-primary">← Savio's Features</a>
+    </div>
+    <div class="col-md-4 offset-md-4 pt20">
+      <a href="{% url 'marketing-use-cases-prioritize-feedback' %}" class="btn btn-primary">Prioritize Feedback Requests →</a>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,138 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block head %}
+{{ form.media }}
+{% endblock %}
+
+{% block body_content %}
+
+<div class="row align-items-center pt-30">
+    <div class="col-md-9 mr-auto">
+
+        {% if onboarding %}
+          <div class="alert alert-warning" role="alert">
+            <i class="fa fa-exclamation-triangle"></i> <strong>Set up an Integration </strong>
+            <hr>
+            The most popular Savio integrations are Intercom and Help Scout (Slack is a close third).
+            <br><br>When integrated, you can simply tag an Intercom or Help Scout conversation to send customer feedback to Savio.  
+            <br><br>Set up your integrations below - it takes just a few seconds.
+          </div>
+        {% endif %}
+
+        <div class="mb-0">
+          <h4>Integrations</h4>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+  <div class="col-lg-9">
+    <div class="mb-30">
+      <div class="portlet-box portlet-gutter ui-buttons-col mb-30">
+        <div class="portlet-header flex-row flex d-flex align-items-center b-b">
+          <div class="flex d-flex flex-column text-left">
+            <h3>Track feature requests from Intercom</h3> 
+            <span class="portlet-subtitle">Track feature requests that you receive from customers in Intercom. <a target="_blank" href="{% url 'marketing-integrations-intercom' %}">Learn more</a>.</span>
+          </div>
+        </div>
+
+        <div class="portlet-body">
+          {% if intercom_enabled %}
+            <p><i class="fa fa-check-circle text-success"></i> Your account is connected to Intercom. Savio will pull in messages with the tag "{{ intercom_cfis.feedback_tag_name }}".</p>
+            <p><a href="{% url 'integrations-intercom-update-settings' %}">Manage settings</a> or <a href="{% url 'customer-feedback-importer-settings-delete-item' intercom_cfis.pk %}">turn integration off</a>.</p>
+
+          {% else %}
+            <p>
+              <a href="https://app.intercom.io/oauth?client_id={{client_id}}&state=settings"><img src="https://static.intercomassets.com/assets/oauth/primary-7edb2ebce84c088063f4b86049747c3a.png" srcset="https://static.intercomassets.com/assets/oauth/primary-7edb2ebce84c088063f4b86049747c3a.png 1x, https://static.intercomassets.com/assets/oauth/primary@2x-0d69ca2141dfdfa0535634610be80994.png 2x, https://static.intercomassets.com/assets/oauth/primary@3x-788ed3c44d63a6aec3927285e920f542.png 3x"/></a>
+            </p>
+
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="portlet-box portlet-gutter ui-buttons-col mb-30">
+        <div class="portlet-header flex-row flex d-flex align-items-center b-b">
+          <div class="flex d-flex flex-column text-left">
+            <h3>Track feature requests from Help Scout</h3> 
+            <span class="portlet-subtitle">Track feature requests that you receive from customers in Help Scout. <a target="_blank" href="{% url 'marketing-integrations-helpscout' %}">Learn more</a>.</span>
+          </div>
+        </div>
+
+        <div class="portlet-body">
+          
+          {% if helpscout_enabled %}
+            <p><i class="fa fa-check-circle text-success"></i> Your account is connected to Help Scout. Savio will pull in messages with the tag "{{ helpscout_cfis.feedback_tag_name }}".</p>
+            <p><a href="{% url 'integrations-helpscout-update-settings' %}">Manage settings</a> or <a href="{% url 'customer-feedback-importer-settings-delete-item' helpscout_cfis.pk %}">turn integration off</a>.
+          {% else %}
+            <p><a class="btn btn-primary" href="https://secure.helpscout.net/authentication/authorizeClientApplication?client_id={{helpscout_client_id}}&state=settings"><img src="{% static 'images/helpscout-icon-white-800.png' %}" width="25" height="25">&nbsp;&nbsp;<b>Connect Help Scout</b></a></p>
+          {% endif %}
+          </p>
+        </div>
+      </div>
+
+      <div class="portlet-box portlet-gutter ui-buttons-col mb-30">
+        <div class="portlet-header flex-row flex d-flex align-items-center b-b">
+          <div class="flex d-flex flex-column text-left">
+            <h3>Track feature requests from Slack</h3> 
+            <span class="portlet-subtitle">Send customer feature requests shared by your team in Slack.  <a href="{% url 'marketing-integrations-slack' %}" target="_blank">Learn more.</a></span>
+          </div>
+        </div>
+        <div class="portlet-body">
+              {% if slack_enabled %}
+                <p><i class="fa fa-check-circle text-success"></i> Savio is listening for customer feedback in the <a href="https://slack.com/app_redirect?channel={{ user.customer.slack_settings.slack_feedback_channel_id}}" target="_blank">#{{ user.customer.slack_settings.slack_feedback_channel_name }}</a> channel.</p>
+                <p><a href="{% url 'integrations-slack-choose-channel' %}">Manage settings</a> or <a href="{% url 'integrations-slack-disable' request.user.customer.slack_settings.pk %}">turn integration off</a>.</p>
+              {% else %}
+                  <a href="https://slack.com/oauth/authorize?scope=bot,chat:write:bot,channels:read,channels:history,commands&client_id={{ slack_client_id }}&state=needs_auth&redirect_uri={{host}}{% url 'integrations-slack-oauth-callback' %}"><img alt="Add to Slack" height="40" width="139" src="https://platform.slack-edge.com/img/add_to_slack.png" srcset="https://platform.slack-edge.com/img/add_to_slack.png 1x, https://platform.slack-edge.com/img/add_to_slack@2x.png 2x" /></a>
+              {% endif %}
+            </p>
+        </div><!--portlet-->
+    </div>
+
+      <div class="portlet-box portlet-gutter ui-buttons-col mb-30">
+        <div class="portlet-header flex-row flex d-flex align-items-center b-b">
+          <div class="flex d-flex flex-column text-left">
+            <h3>Track feature requests with a Chrome Extension</h3> 
+            <span class="portlet-subtitle">Track requests received in any web-based tool (like a CRM, Google Docs, etc).  <a href="{% url 'marketing-chrome-extension' %}" target="_blank">Learn more.</a></span>
+          </div>
+        </div>
+        <div class="portlet-body">
+           <p><a class="btn btn-primary" href="{% url 'download-chrome-extension' %}" target="_blank"><img src="{% static 'images/chrome_icon_color-200x200.png' %}" width="25" height="25">&nbsp;&nbsp;<b>Install Chrome Extension</b></a></p>
+        </div><!--portlet-->
+    </div>
+
+
+      <div class="portlet-box portlet-gutter ui-buttons-col mb-30">
+        <div class="portlet-header flex-row flex d-flex align-items-center b-b">
+          <div class="flex d-flex flex-column text-left">
+            <h3>Track feature requests via Zapier</h3> 
+            <span class="portlet-subtitle">Use Zapier to send features requests to Savio from any tool.  <a href="{% url 'marketing-help-zapier' %}" target="_blank">Learn more.</a></span>
+          </div>
+        </div>
+        <div class="portlet-body">
+           <p><a class="btn btn-primary" href="https://zapier.com/developer/public-invite/83232/c3c4829b3f2a1f8c16472dd8427b4133/" target="_blank"><img src="{% static 'images/zapier-logomark.png' %}" width="25" height="25">&nbsp;&nbsp;<b>Build a Zap</b></a></p>
+        </div><!--portlet-->
+    </div>
+
+      <div class="portlet-box portlet-gutter ui-buttons-col mb-30">
+        <div class="portlet-header flex-row flex d-flex align-items-center b-b">
+          <div class="flex d-flex flex-column text-left">
+            <h3>Import customers From Segment</h3> 
+            <span class="portlet-subtitle">Set Savio up as a Segment destination. <a target="_blank" href="{% url 'marketing-integrations-segment' %}">Learn more</a>.</span>
+          </div>
+        </div>
+        <div class="portlet-body">
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Segment API Key</label>
+                <div class="col-sm-9">
+                 <input disabled type="text" class="form-control" value="{{segment_cfis.webhook_secret}}">
+                </div>
+            </div>
+        </div>
+      </div>
+
+  </div>
+</div>
+{% endblock %}

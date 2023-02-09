@@ -1,0 +1,162 @@
+{% extends "basic_page.html" %}
+{% load static %}
+
+{% block meta_title %}
+Prioritize your customer feature requests | Savio 
+{% endblock %}
+
+{% block meta_desc %}Once you centralize your feature requests, you can prioritize your requests using data.{% endblock %}
+
+
+{% block title %}
+<div class="text-center">Prioritize Customer Feature Requests</div>
+{% endblock %}
+
+{% block content %}
+<div class="bg-white pt90 pb50">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 docs text-center">
+
+            <h2>Prioritize your Customer Feature Requests</h2>
+
+              <h3>Find your most requested features</h3>
+              <h5 class="mt50">
+                Each customer that requests a feature counts as a vote, and sorting by number of votes is easy </h5>
+                <img class="img-fluid image" src="{% static 'images/help/prioritize/total-votes2.png' %}">
+        </div>
+      </div>
+    </div>
+</div>
+
+<div class="bg-faded pt50 pb50">
+    <div class="container">
+        <div class="row">
+            <div class='col-lg-12 docs pb40 text-center' >
+
+        <h2 >Find your most valuable feature requests</h2>
+
+        <h3>
+          Sort by cumulative MRR for each feature request</h3>
+          <img class="img-fluid image" src="{% static 'images/help/prioritize/cumulative-mrr6.png' %}">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="bg-white pt50 pb50">
+    <div class="container">
+        <div class="row">
+            <div class='col-lg-12 pb40 docs text-center' >
+
+              <h2>Find important features for your key customer segment</h2>
+              <h3>Identify top requests for important customer segments<br>like customers on a specific plan, or who meet an MRR threshold</h3> 
+
+              <h5 class="pt40 mb0">See requests from customers on your enterprise plan</h5>
+              <img class="img-fluid image" src="{% static 'images/help/prioritize/filter-plan4.png' %}" width="800">
+
+
+              <h5 class="pt90 mb0">See requests from customers paying more than $750/m</h5>
+              <img class="img-fluid image" src="{% static 'images/help/prioritize/filter-mrr3.png' %}" width="800">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="bg-faded pt50 pb50">
+    <div class="container">
+        <div class="row">
+            <div class='col-lg-12 pb40 docs text-center' >
+
+
+              <h2>Identify features to build to reduce churn</h2>
+              <h3>
+                View all feature requests from churned customers
+                </h3>
+              <img class="img-fluid image" src="{% static 'images/help/prioritize/churn.png' %}">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="bg-white pt50 pb50">
+    <div class="container">
+        <div class="row">
+            <div class='col-lg-12 pb40 docs text-center' >
+
+                <h2>Build features to win more deals</h2>
+                <h3>View feature requests from lost deals</h3>
+                <img class="img-fluid image" src="{% static 'images/help/prioritize/lost-deals.png' %}">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="bg-faded pt50 pb50">
+    <div class="container">
+        <div class="row">
+            <div class='col-lg-12 pb40 docs text-center' >
+
+                <h2>Identify low-hanging feature requests</h2>
+                <h3>
+                  Quickly find features that are valuable (high priority) and easy (low effort)</h3> 
+                  <img class="img-fluid image" src="{% static 'images/help/prioritize/high-pri-low-effort.png' %}">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="bg-white pt50 pb50">
+    <div class="container">
+        <div class="row">
+            <div class='col-lg-12 pb40 docs text-center' >
+
+
+                <h2>Find feature requests from a specific user or account</h2>
+                <h3>
+                  See the features you've shipped (or not) for a user or account<br>- great before the renewal conversation!</h3> 
+                  <img class="img-fluid image" src="{% static 'images/help/prioritize/by-user.png' %}">
+
+
+<!--
+        <h3>Dig into your feedback</h3>
+        <p>You can <a href="{% url 'marketing-feature-request' %}">dig into the customer feedback about a feature request</a>.  You'll see:</p>
+        <ul>
+          <li>each person who's left feedback</li>
+          <li>their MRR and plan</li>
+          <li>the specific feedback they left and when they left it</li>
+          <li>whether the feedback was from a churned customer, a lost deal, an active customer, a teammate, a prospect, or someone else</li>
+        </ul>
+
+        <p>You can use this information to figure out the surface area of the customer's problem, inform what a good solution would look like, figure out what kinds of users and accounts have this problem, and <a href="{% url 'marketing-use-cases-use-feedback' %}">reach out to customers to validate problem and solution.  You can <a href="{% url 'marketing-feature-request' %}">learn more about digging into the feedback for a given feature request here</a>.
+        </p>
+-->      </div>
+
+    </div>
+
+      <div class="row mt30 ml-auto mr-auto text-center">
+        <div class="col-md-4 pt20">
+          <a href="{% url 'marketing-use-cases-collect-feedback' %}" class="btn btn-primary">← Track feature requests</a>
+        </div>
+
+        <div class="col-md-4 offset-md-4 pt20">
+          <a href="{% url 'marketing-use-cases-use-feedback' %}" class="btn btn-primary">Use your feature requests →</a>
+        </div>
+      </div>
+  
+  </div>
+{% endblock %}
+
+{% block footer_scripts %}
+
+  <script type="text/javascript" src="{% static 'jquery.toc/jquery.toc.js' %}"></script>
+  <script type="text/javascript">
+      $(document).ready(function() {
+        $("#toc-list").toc({content: "div.container", headings: "h3", excludedClass: "no-anchor"});
+      });
+  </script>
+{% endblock %}

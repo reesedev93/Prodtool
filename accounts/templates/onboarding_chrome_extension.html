@@ -1,0 +1,85 @@
+{% extends 'onboarding.html' %}
+
+{% block body_content %}
+<div class="row mb-30">
+  <div class="col-lg-12 ml-auto mr-auto">
+    <h2 class="mt-30 mb-30">Collect feedback from anywhere on the web</h2>
+
+      {% include "includes/onboarding-wizard.html" %}
+
+      <div class="wizard-content pb-40 pt-30">
+        <div class="row">
+          <div class="col-md-5">
+            <h4>Install Chrome Extension</h4>
+            <p>The Chrome Extension is the fastest way of saving customer feedback to Savio from your CRM, Support tool, and other places feedback lives.</p>
+            <p>With the Chrome Extension:<br>
+              <ul>
+                <li>You can put feedback into your Savio Vault without having to leave the app where it lives</li>
+                <li>Your teammates can add feedback to Savio</li>
+              </ul>
+            </p>
+
+            <div style="text-align: center;" id="is_chrome">
+              <a class="btn btn-primary btn-xl" target="_blank" href="{% url 'download-chrome-extension' %}">Install Chrome Extension</a> or <a class="text-muted" href="{% url 'accounts-onboarding-done' %}">next</a>
+            </div>  
+
+            <div style="display: none;" id="not_chrome">
+              <div class="alert alert-primary" role="alert">
+                Since you're not using Chrome, you can't install the extension. You can add feedback from inside Savio though.<br><br>Visit Savio later while using Chrome to install the extension.
+              </div>
+              <div style="text-align: center">
+                <a class="btn btn-primary" href="{% url 'accounts-onboarding-done' %}">Onwards</a>
+              </div>
+            </div>  
+
+          </div>
+
+          <div class="col-md-6" style="text-align: center;">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/KY4ohuinCLs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+
+  </div>
+</div>
+
+{% endblock %}
+
+{% block script %}
+
+<script>
+$(document).ready(function() {
+  // please note, 
+  // that IE11 now returns undefined again for window.chrome
+  // and new Opera 30 outputs true for window.chrome
+  // but needs to check if window.opr is not undefined
+  // and new IE Edge outputs to true now for window.chrome
+  // and if not iOS Chrome check
+  // so use the below updated condition
+  var isChromium = window.chrome;
+  var winNav = window.navigator;
+  var vendorName = winNav.vendor;
+  var isOpera = typeof window.opr !== "undefined";
+  var isIEedge = winNav.userAgent.indexOf("Edge") > -1;
+  var isIOSChrome = winNav.userAgent.match("CriOS");
+
+  if (isIOSChrome) {
+     // is Google Chrome on IOS
+  } else if(
+    isChromium !== null &&
+    typeof isChromium !== "undefined" &&
+    vendorName === "Google Inc." &&
+    isOpera === false &&
+    isIEedge === false
+  ) {
+     // is Google Chrome
+     $("#is_chrome").show();
+     $("#not_chrome").hide();
+  } else { 
+     // not Google Chrome 
+     $("#is_chrome").hide();
+     $("#not_chrome").show();
+  }
+})
+</script>
+{% endblock %}

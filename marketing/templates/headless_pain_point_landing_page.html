@@ -1,0 +1,164 @@
+{% extends "basic_page.html" %}
+{% load static %}
+{% load filters %}
+
+{% block meta_title %}{{story.content.title}}{% endblock %}
+
+{% block meta_desc %}{{story.content.description}}{% endblock %}
+
+{% block head %}
+
+
+
+  <!-- open graph tags -->
+  <meta property="og:url" content="{{ request.build_absolute_uri }}" />
+  <meta property="og:title" content="{{story.content.og_title}}" /> <!-- 57 chars -->
+  <meta property="og:type" content="website" />
+  <meta property="og:description" content="{{story.content.og_description}}" /> <!-- 73 chars -->
+
+  <meta property="og:site_name" content="Savio" />
+  <meta property="og:image" content="{{story.content.og_image}}" />
+
+  <meta property="og:image:width" content="1500" />
+  <meta property="og:image:height" content="750" />
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:site" content="@savio_io" />
+
+  <!-- 115 chars max -->
+  <meta property="twitter:description" content="{{story.content.twitter_description}}" />
+
+  <!-- end open graph -->
+
+{% endblock %} <!-- head -->
+
+
+{% block title %}<div class="text-center">{{story.content.h1_title}}</div>{%endblock%}
+
+{% block content %}
+
+  <div class="bg-white pt70 pb20">
+      <div class="container">
+
+          <div class="row">
+              <div class='col-lg-12 pb40 text-center' >
+                  <h2>{{story.content.h2_subhead}}</h2>
+
+                  <h4 class="mt20">{{story.content.h4_text}}</h4>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  {% for item in story.content.body %}
+    <div class="{% landing_page_class forloop.counter0 %} feature-img-section pt50 pb50">
+       <div class="container">
+          <div class="row">
+              <div class='col-lg-12 pb40 text-center' >
+                  <h2>{{ item.h2|safe|markdownify }}</h2>
+              </div>
+          </div>
+
+          <div class="row">
+            {% if item.left_col is True %}
+              <div class="col-lg-6">
+                  {% headless_markdownify item.body True %}
+                  {% headless_markdownify item.list False 'list-unstyled feature-list' %}
+              </div>
+              <div class="col-lg-6">
+                  <img src="{{ item.image.filename }}" alt="" class="img-fluid img-border">
+                  <div class='font12 text-center pt10'>{{item.image_caption}}</div>
+                </div>
+            {% else %}
+              <div class="col-lg-6 pr30">
+                  <img src="{{ item.image.filename }}" alt="" class="img-fluid img-border text-right pt10">
+                  <div class='font12 text-center pt10'>{{item.image_caption}}</div>
+                </div>
+              <div class="col-lg-6">
+                  {% headless_markdownify item.body True %}
+                  {% headless_markdownify item.list False 'list-unstyled feature-list' %}
+              </div>
+            {% endif %}
+          </div>
+      </div>
+    </div>
+  {% endfor %}
+
+
+  <div class="bg-faded pt50 pb50">
+      <div class="container">
+
+          <div class="row">
+              <div class='col-lg-12 pb40 text-center' >
+                  <h3>Use ALL your qualitative customer feedback. Build better software.</h3>
+              </div>
+          </div>
+
+          <div class="row">
+              <div class="col-lg-6 pb40">
+                <p>With Savio you can:
+                </p>
+
+                <ul class="feature-list list-unstyled">
+                  <li><a href="{% url 'marketing-use-cases-collect-feedback' %}">Centralize feature requests from all your tools</a></li>
+                  <li>Use powerful filtering to <a href="{% url 'marketing-use-cases-prioritize-feedback' %}">prioritize your feature requests</a></li>
+                  <li><a href="{% url 'marketing-use-cases-use-feedback' %}">Read customer verbatims to understand feature requirements</a></li>
+                  <li><a href="{% url 'marketing-use-cases-close-loop' %}">Close the loop with your customers</a></li></ul>
+              </div>
+              <div class='col-lg-6 pb40 text-center' >
+                <img src="{% static 'images/screenshots/marketing/feature-requests-close-up.png' %}" style="border: 1px solid #aaa;" alt="" class="img-fluid">
+                <div class='font12 text-center pt10'>Filter your feature list by MRR, customer plan, and more</div>
+              </div>
+          </div>
+
+      </div>
+  </div>
+
+  <div class="bg-white pt50 pb50">
+      <div class="container">
+
+        {% include "includes/integration_logos.html" %}
+
+      </div>
+  </div>
+{% endblock %} <!-- content -->
+
+{% block footer %}
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $("#helpscout_switch").click(function(e){
+        $("#helpscout_gif").removeClass("hide");
+        $("#intercom_gif").addClass("hide");
+        e.preventDefault();
+      })
+
+      $("#intercom_switch").click(function(e){
+        $("#helpscout_gif").addClass("hide");
+        $("#intercom_gif").removeClass("hide");
+        e.preventDefault();
+      })
+
+
+      $(".switch").hover(
+        function(){
+          $(".switch").each(function(){
+            $(this).text( $(this).text().replace("👇", ""));
+          })
+          $(this).prepend("👇");
+        },
+        function(){
+          $(".switch").each(function(){
+            $(this).text( $(this).text().replace("👇", ""));
+          })
+          if ($("#helpscout_gif").hasClass("hide")) {
+            $("#intercom_switch").prepend("👇");
+          } else {
+            $("#helpscout_switch").prepend("👇");
+          }
+        }
+      )
+    });
+  </script>
+{% endblock %}
+
+

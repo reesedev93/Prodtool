@@ -1,0 +1,51 @@
+<div class="modal fade" id="onboarding_inbox" tabindex="-1">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-content" style="width: 800px; border: 0; ">
+
+      <div class="modal-header" style="background-color: #000; border-radius: 0.3rem; border: 1px solid #000;">
+        <h5 class="modal-title" style="background-color: #000; color: #fff;">Time to Triage</h5>
+      </div>
+        <div class="modal-body" >
+          <div class="portlet-box portlet-gutter ui-buttons-col">
+              <div class="portlet-body" >
+                  <div class="col-lg-11 col-xl-11 col-md-11" >
+                    <div id="onboarding-inbox" style="padding-left: 60px;" class="pt-10 carousel slide" data-interval="false">
+                        <div class="carousel-inner" >
+                          <div class="carousel-item active">
+                            <h4 class="pb-20 fs18 text-muted">Nice work!</h4>
+                            <p class="fs24">Click the Feedback you just entered.  We're going to Triage it.<br><br>
+                            
+                            <a href="#" class="close_modal btn btn-primary btn-sm">Sounds good</a>
+
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+              </div>
+          </div>
+        </div>
+<!--
+        <div class="modal-footer">
+footer
+        </div>
+-->
+    </div>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    if (params.onboarding_inbox == 1) {
+
+      $(".close_modal").click(function() {
+        $("#onboarding_inbox").modal('hide');
+      })
+
+      $(window).on('load',function(){
+        $('#onboarding_inbox').modal('show');
+      });
+    }
+  })
+</script>
+

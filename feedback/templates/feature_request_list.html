@@ -1,0 +1,231 @@
+{% extends "base-with-sidebar.html" %}
+{% load humanize %}
+{% load filters %}
+{% load sortable_table_headers %}
+{% load static %}
+
+{% block title_tag %}Feature Requests List | Savio{% endblock%}
+
+{% block page_title %}
+Feature Requests
+{% endblock %}
+
+{% block right_title %}
+  <a href="{% url 'feature-request-create-item' %}?return={{request.get_full_path|urlencode}}" class=" btn btn-primary"><i class="fa fa-plus mr-2"></i>Add New Feature</a>
+    <a href="#" class="btn-icon-o btn btn-outline-secondary" id="toggle_filter"><i class="fas fa-filter"></i></a>
+{% endblock %}
+
+{% block sidebar_content %}
+
+<div class="flex d-flex sidebar-body pl-3 pr-4">
+    <div class="flex-column" style="height: 100% !important">
+
+
+    <div class="row">
+      <div class="col-lg-12">
+
+        <div class="portlet-box mb-30">
+
+          <div class="portlet-body">
+            {% if onboarding %}
+              <div class="alert alert-warning" role="alert">
+                <i class="fa fa-exclamation-triangle"></i> <strong>These are your tracked Feature Requests </strong>
+                <hr>
+                Here's where you can compare the features your customers have asked for and prioritize what to build next.<br><br>
+                {% if has_features %}
+                  Click a request below to see the customers who requested it and the feedback they left.
+                {% else %}
+                  Add a new feature request at right to track one of your customers' problems.
+                {% endif %}
+              </div>
+            {% endif %}
+
+              <div class="portlet-tools pt-10 b-b mb-30">
+
+                  <ul class="nav btn-group" role="group" aria-label="Filter feature requests">
+                      <li class="nav-item ">
+                          <a href="?state=ALL_ACTIVE" class="{% active_class 'state=ALL_ACTIVE' %} btn btn-light btn-sm">
+                            Active
+                          </a>
+                      </li>
+                      <li class="nav-item ">
+                          <a href="?state=UNTRIAGED" class="{% active_class 'state=UNTRIAGED' %} btn btn-light btn-sm">Untriaged</a>
+                      </li>
+                      <li class="nav-item ">
+                          <a href="?state=PLANNED" class="{% active_class 'state=PLANNED' %} btn btn-light btn-sm">Planned</a>
+                      </li>
+                      <li class="nav-item ">
+                          <a href="?state=IN_PROGRESS" class="{% active_class 'state=IN_PROGRESS' %} btn btn-light btn-sm">In Progress</a>
+                      </li>
+                      <li class="nav-item x">
+                          <a href="?state=SHIPPED" class="{% active_class 'state=SHIPPED' %} btn-sm btn btn-light btn-sm">Shipped</a>
+                      </li>
+                      <li class="nav-item ">
+                          <a href="?state=ALL_ACTIVE&priority=3_HIGH&effort=1_LOW" class=" {% active_class 'state=ALL_ACTIVE&priority=3_HIGH&effort=1_LOW' %} btn btn-light btn-sm">High Pri / Low Effort</a>
+                      </li>
+                      <li class="nav-item ">
+                          <a href="?" class="{% active_class '' %} btn-sm btn btn-light">All</a>
+                      </li>
+                  </ul>
+                </div>
+
+
+            <div class="table-responsive">
+              <table class="table mb-40 b-b">
+                <thead>
+                    <tr>
+                    {% table_header headers %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for fr in feature_requests %}
+                        <tr class="feature-request">
+                            <td>
+
+                              {% if onboarding %}
+                                <a href="{% url 'feature-request-feedback-details' fr.pk %}?onboarding=yes&return={{request.get_full_path|urlencode}}&{{filter_params}}"><strong>{{fr.title}}</strong></a>
+                              {% else %}
+                                <a href="{% url 'feature-request-feedback-details' fr.pk %}?return={{request.get_full_path|urlencode}}&{{filter_params}}"><strong>{{fr.title}}</strong></a>
+                              {% endif %}
+
+                                {% if fr.themes.all.exists %}
+                                    {% for theme in fr.themes.all %}
+                                      <a href="{% url 'feature-request-list' %}?theme={{ theme.id }}"><span class="small-badge badge badge-text badge-light">{{ theme}}</span></a>
+                                    {% endfor %}
+                                {% endif %}
+
+                                {% if fr.description %}
+                                  &nbsp;&nbsp;<i class="text-muted far fa-sticky-note" data-original-title="{{ fr.description|remove_markdown }}" data-toggle="tooltip" data-placement="right"></i>
+                                {% endif %}
+                                <span class="edit-link hide"><a class="text-muted pl-5" href="{% url 'feature-request-update-item' fr.pk %}?return={{request.get_full_path|urlencode}}&{{filter_params}}"><i data-toggle="tooltip" data-original-title="Edit Feature Request" class="fa fa-edit fs14"></i></a></span>
+                            </td>
+                            <td style="text-align: right">
+                                {{fr.total_feedback}}
+                            </td>
+                            <td style="text-align: right">
+                                {{fr.total_mrr|floatformat:2|intcomma|default:"-"}}
+                            </td>
+                            <td>
+                                <a href="{% url 'feature-request-list' %}?state={{ fr.state }}">{{fr.get_state_display}}</a>
+
+                                {% if fr.shipped_at %}
+                                  <i class="text-muted fas fa-rocket" data-original-title="Marked shipped on {{fr.shipped_at.date}}" data-toggle="tooltip"></i>
+                                {% endif %}
+                            </td>
+                            <td>
+                                <a href="{% url 'feature-request-list' %}?priority={{ fr.priority|default:'NOT_SET' }}">{{fr.get_priority_display|default:"-"}}</a>
+                            </td>
+                            <td>
+                                <a href="{% url 'feature-request-list' %}?effort={{ fr.effort|default:'NOT_SET' }}">{{fr.get_effort_display|default:"-"}}</a>
+                            </td>
+                        </tr>
+                    {% empty %}
+                    <tr>
+                        {% if has_features %}
+                          <td colspan="7" style="text-align: center; padding: 50px">
+                              No features matching filter
+                          </td>
+                        {% else %}
+                          <td colspan="7" style="text-align: center; padding: 50px">
+                            <div class="alert alert-primary" role="alert" style="text-align: left">
+                              <h4>No Feature Requests Yet</h4>
+                              This is where your list of Feature Requests live. You can drill down into a Feature Request to see the people who want it. If the requester is a customer (versus a teammate, prospect, or lost deal) you'll also see the customer's MRR, plan, and more.
+                              <br><br>Want to load your existing feature requests into Savio?  We can import a spreadsheet or connect to an API for you.  Email <a href="mailto:founders@savio.io">founders@savio.io</a> and we'll help.<br><br>
+                              <a href="{% url 'feature-request-create-item' %}?return={{request.get_full_path|urlencode}}" class="btn btn-sm btn-primary">Create Your First Feature Request →</a>
+                            </div>
+                          </td>
+                        {% endif %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+              </table>
+              {% include 'includes/pagination.html' %}
+              <div class="small text-muted pl-10">
+                <a class="text-muted" href="?{{request.GET.urlencode}}&format=csv"><i data-toggle="tooltip" data-original-title="Export to CSV" class="fa fa-file-export"></i> Export to CSV</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block body_content %}
+
+  {% show_filters as filters %}
+
+  <!-- sidebar content -->
+  <aside class="sidebar sidebar-sm pr-4 ml-0 {% if not filters %} hide {% endif %}" id="flex-sidebar">
+    <div class="flex-column d-flex bg-light">
+        <div class="b-l b-r b-b b-t slimScrollDiv" id="sidebar">
+          <div class="flex slim-scroll p-3">
+            <div class="b-b pb-10 mb-20"><strong>Filter Feature Requests</strong></div>
+            {% include "filter_bar.html" %}
+          </div>
+        </div>
+        <div class="sidebar-footer pl-3 pr-3 b-t align-items-center d-flex">
+        </div>
+    </div>
+  </aside>
+{% endblock %}
+
+
+{% block script %}
+
+<script type="text/javascript" src="{% static 'js/init-daterangepicker.js' %}"></script> 
+
+<script>
+  $(document).ready(function() {
+
+    // Method that shows or hides help message div.  Shows it if
+    // there's a "shipped at" date range AND state is not All Active or Shipped 
+    function showHideStateMessage() {
+        if ($('#id_shipped_date_range').val() != "" && ($("#id_state").val() != "" && $("#id_state").val() != "SHIPPED")) {
+            $("#hint_id_shipped_date_range").show();
+        } else {
+            $("#hint_id_shipped_date_range").hide();
+        }
+    }
+
+    // Set up date range picker for feedback created input and shipped at input 
+    initDateRangePicker("#id_feedback_date_range", "feedback");
+    initDateRangePicker("#id_shipped_date_range", "shipped");
+
+    // Default hide message about setting state to view shipped features
+    showHideStateMessage();
+
+    // If state changes, show or hide message about setting state
+    $("#id_state").change(function(t) { 
+      showHideStateMessage();
+    })
+
+    // If date range changes, show or hide message about setting state
+    $('#id_shipped_date_range').on('apply.daterangepicker', function(ev, picker) {
+        showHideStateMessage();
+    });
+
+    $("#toggle_filter").click(function(e) {
+      if (!$("#flex-sidebar").hasClass("hide")) {
+        // we're hiding sidebar.  Remove filter=1 from querystring.
+        window.history.replaceState({},"", removeURLParameter(window.location.href, "filter"));
+      }
+      $(e.currentTarget).toggleClass("btn-outline-secondary btn-secondary");
+      $("#flex-sidebar").toggleClass("hide", 100);
+      e.preventDefault();
+    });
+
+    $(".feature-request").hover(
+      function() {
+        $( this ).find(".edit-link").removeClass( "hide" );
+      },
+      function() {
+        $( this ).find(".edit-link").addClass( "hide" );
+      }
+    )
+  })
+</script>
+
+
+{% endblock %}

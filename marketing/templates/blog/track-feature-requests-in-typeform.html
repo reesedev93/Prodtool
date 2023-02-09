@@ -1,0 +1,345 @@
+{% extends "blog-page.html" %}
+{% load static %}
+{% block meta_title %}
+Track feature requests received in Typeform surveys
+{% endblock %}
+
+{% block meta_desc %}Track feature requests received in Typeform surveys alongside requests received in all your other tools. Prioritize with data and delight your customers.{% endblock %}
+
+
+{% block head %}
+  <!-- open graph tags -->
+  <meta property="og:url" content="{{ request.build_absolute_uri }}" />
+  <meta property="og:title" content="Track feature requests received in Typeform" /> <!-- 57 chars -->
+  <meta property="og:type" content="website" />
+  <meta property="og:description" content="Learn how to track feature requests received in Typeform." /> <!-- 73 chars -->
+
+  <meta property="og:site_name" content="Savio" />
+  <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'images/typeform-and-savio.png' %}" />
+
+  <meta property="og:image:width" content="1500" />
+  <meta property="og:image:height" content="750" />
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:site" content="@savio_io" />
+
+  <!-- 115 chars max -->
+  <meta property="twitter:description" content="Learn how to track feature requests received in Typeform surveys" />
+
+  <!-- end open graph -->
+
+  <!-- for content upgrade -->
+  <script src="https://sendfox.com/js/form.js"></script>
+{% endblock %}
+
+
+{% block content %}
+
+  <div class="col-md-12 blog blog-title text-center pb40">
+    <h1>Track feature requests from Typeform Surveys</h1>
+  </div>
+
+  <div class="col-md-8 offset-md-2 blog">
+
+<p>Do you use the excellent survey tool <a href="https://www.typeform.com" target="_blank">Typeform</a> to collect customer feedback?  Maybe you collect Net Promoter Score (NPS) or Customer Satisfaction (CSAT) feedback, or send satisfaction or churn surveys to customers?</p>
+
+<p>If you do, you probably have feature requests sitting in Typeform that you'd like to track:
+<img class="img-fluid image" src="{% static 'images/integrations/typeform/typeform-results.png' %}" >
+<small class="caption">If you want to track feature requests from Typeform, read on</small></p>
+
+
+<p>Read on to see a step-by-step process to automatically track feature requests from Typeform in Savio (Savio <a href="{% url 'marketing-home' %}">centralizes your customer feature requests</a> from all your tools so you can prioritize what to build using data).</p>
+
+<h3>What you'll need</h3>
+<p>Here's what you'll need:</p>
+<ul>
+  <li>A Typeform account (obviously)</li>
+  <li>A Savio account (sign up for <a href="https://www.savio.io/app/accounts/join/">Savio here</a>)</li>
+  <li>A Zapier account (sign up for <a href="https://zapier.com/sign-up">Zapier here</a>)</li>
+</ul>
+
+<p>Once you're signed up for everything...</p>
+
+<h3>1. Use the Savio Zap in Zapier</h3>
+
+<p><a href="https://zapier.com/developer/public-invite/83232/c3c4829b3f2a1f8c16472dd8427b4133/" target="_blank">Click here</a> and hit "Accept Invite and Build App":
+
+  <img class="img-fluid image" src="{% static 'images/integrations/typeform/join-zapier-annotated.png' %}" >
+</p>
+
+<h3>2. Make a New Zap</h3>
+
+<p class="text-center">
+
+  <img class="img-fluid image" src="{% static 'images/integrations/typeform/make-zap.gif' %}" width="300">
+</p>
+
+<h3>3. Choose Typeform</h3>
+
+<p>
+  <img class="img-fluid image" src="{% static 'images/integrations/typeform/choose-typeform.png' %}" >
+</p>
+
+
+<h3>4. Choose New Entry, then Continue</h3>
+
+<p>
+  <img class="img-fluid image" src="{% static 'images/integrations/typeform/new-entry-then-continue.png' %}" >
+</p>
+
+<h3>5. Authorize Zapier to talk to Typeform</h3>
+
+<p>
+  <img class="img-fluid image" src="{% static 'images/integrations/typeform/sign-into-typeform.png' %}" >
+</p>
+
+<p>
+
+  Enter your Typeform credentials and hit Log in to Typeform:
+  <img class="img-fluid image" src="{% static 'images/integrations/typeform/enter-typeform-credentials.png' %}" >
+</p>
+
+<p>
+
+  And authorize Zapier to talk to Typeform:
+  <img class="img-fluid image" src="{% static 'images/integrations/typeform/authorize-zapier-with-typeform.png' %}" >
+</p>
+
+
+<p>
+  Then hit Continue when you're done:
+  <img class="img-fluid image" src="{% static 'images/integrations/typeform/done-typeform.png' %}" >
+
+</p>
+
+<h3>6. Choose Typeform Survey</h3>
+
+<p>
+  Choose the survey you want to pull responses from:
+
+  <img class="img-fluid image" src="{% static 'images/integrations/typeform/choose-survey.png' %}" >
+
+</p>
+
+<h3>7. Test and Review Typeform Data</h3>
+
+<p>
+  Hit Test and Review:
+  <img class="img-fluid image" src="{% static 'images/integrations/typeform/test-and-review-typeform-data.png' %}" >
+</p>
+
+<p>
+  Look at the survey response to make sure it's from the survey you want.  Then hit Done Editing:
+
+  <img class="img-fluid image" src="{% static 'images/integrations/typeform/reviewed-data.gif' %}" >
+</p>
+
+<h3>8. Add a new step to grab the user's email address </h3>
+
+<p>
+  We'll need to grab the Typeform respondent's email address.  To do so, add a new step to your Zap:
+  <img class="img-fluid image" src="{% static 'images/integrations/typeform/typeform-new-step.png' %}" >
+</p>
+
+<p>
+
+  Choose Formatter:
+
+  <img class="img-fluid image" src="{% static 'images/integrations/typeform/choose-formatter.png' %}" >
+</p>
+
+<p>
+
+  Choose Text:
+
+  <img class="img-fluid image" src="{% static 'images/integrations/typeform/choose-text.png' %}" >
+
+</p>
+
+<p>
+  And hit continue:
+
+  <img class="img-fluid image" src="{% static 'images/integrations/typeform/formatter-continue.png' %}" >
+
+</p>
+
+<p>
+  Then Extract Email address from the Survey Response:
+
+  <img class="img-fluid image" src="{% static 'images/integrations/typeform/extract-email-address-annotated.png' %}" >
+</p>
+
+<h3>9. Test email extraction</h3>
+
+<p>
+  Let's make sure Typeform actually gets an email address out of your responses.  Hit Test and Review:
+  <img class="img-fluid image" src="{% static 'images/integrations/typeform/test-email-extraction.png' %}" >
+
+</p>
+
+<p>
+  If you see an email address in the "Output" section, hit Done Editing:
+
+  <img class="img-fluid image" src="{% static 'images/integrations/typeform/confirm-email-extraction.png' %}" >
+</p>
+
+<h3>10. Pipe Typeform feature requests to Savio</h3>
+
+<p>
+  Let's send this data to Savio.  Hit "Do This":
+  <img class="img-fluid image" src="{% static 'images/integrations/typeform/set-up-savio-app.png' %}" >
+
+</p>
+
+<p>
+  Select the Savio app:
+
+  <img class="img-fluid image" src="{% static 'images/integrations/typeform/choose-savio.png' %}" >
+
+</p>
+
+<p>
+  Choose "Create Feedback" and hit continue:
+
+  <img class="img-fluid image" src="{% static 'images/integrations/typeform/choose-create-feedback.png' %}" >
+
+</p>
+
+
+<h3>11. Authorize Zapier to talk to Savio</h3>
+
+<p>
+  <img class="img-fluid image" src="{% static 'images/integrations/typeform/auth-savio-annotated.png' %}" >
+
+</p>
+
+<p>
+  Open Savio to get your API key:
+
+  <img class="img-fluid image" src="{% static 'images/integrations/typeform/get-savio-api-key.png' %}" >
+
+</p>
+
+<p>
+  Copy it from Savio:
+
+  <img class="img-fluid image" src="{% static 'images/integrations/typeform/copy-savio-api-key.png' %}" >
+
+</p>
+
+<p>
+  Paste it into Zapier:
+
+  <img class="img-fluid image" src="{% static 'images/integrations/typeform/paste-savio-api-key-and-continue.png' %}" >
+
+</p>
+
+<p>
+  And hit continue:
+
+  <img class="img-fluid image" src="{% static 'images/integrations/typeform/continue-with-savio-zap.png' %}" >
+
+</p>
+
+<h3>12. Send Typeform info to Savio</h3>
+
+<p>
+
+  Put the Typeform response into the Customer Problem field:
+  <img class="img-fluid image" src="{% static 'images/integrations/typeform/customer-problem.png' %}" >
+
+</p>
+
+<p>
+  Choose the type of person the Typeform responses are from.  You can choose:</p>
+  <ul><li>Active (responses from current customers)</li><li>Churned (responses from churned customers)</li><li>Internal (from your teammates)</li> <li>Lost Deal</li><li>Prospect</li><li>Other (if none of the above)</li>
+  </ul>
+<p>
+  <img class="img-fluid image" src="{% static 'images/integrations/typeform/feedback-from.png' %}" >
+
+
+</p>
+
+<p>
+  Go to Typeform.com and grab the URL where survey results live and add it here.  This is so you can click through to the Typeform results in Savio:
+  <img class="img-fluid image" src="{% static 'images/integrations/typeform/typeform-results-source-url.png' %}" >
+
+</p>
+
+<p>
+  Enter the person's email.  You're going to grab the entry from Step 8, above:
+  <img class="img-fluid image" src="{% static 'images/integrations/typeform/persons-email.png' %}" >
+
+</p>
+
+<p>
+  Add any tags to apply to the feedback in Savio. We recommend adding a tag for the source tool - in this case Typeform - and a tag indicating the type of survey - in the example, churn-survey:
+  <img class="img-fluid image" src="{% static 'images/integrations/typeform/tags.png' %}" >
+
+</p>
+
+<p>
+  Choose the state you want the feedback to be in in Savio. If you want it to land in your Feedback Inbox so you can <a href="{% url 'marketing-triage' %}">triage your feedback</a>, choose "Active". If you want it to skip the inbox, mark it as Triaged.  We recommend "Active" so that you can assign this feedback to a Savio Feature Request:
+  <img class="img-fluid image" src="{% static 'images/integrations/typeform/savio-feedback-state.png' %}" >
+
+</p>
+
+<p>
+  Hit Continue:
+  <img class="img-fluid image" src="{% static 'images/integrations/typeform/continue-savio-app.png' %}" >
+</p>
+
+<h3>13. Test the Savio Zap</h3>
+
+<p>
+
+  Hit Test and Review:
+  <img class="img-fluid image" src="{% static 'images/integrations/typeform/test-savio-app.png' %}" >
+
+</p>
+
+<p>
+  If you get an ID, it worked:
+  <img class="img-fluid image" src="{% static 'images/integrations/typeform/savio-success.png' %}" >
+
+</p>
+
+<p>
+  Verify the test feedback is in Savio by replacing the id in the below URL with the id with the id from the "Test and Review" step:<pre style="display: inline">https://www.savio.io/app/inbox/id</pre>:
+  <img class="img-fluid image" src="{% static 'images/integrations/typeform/savio-typeform-feedback.png' %}" >
+</p>
+
+<p>
+ If all looks good, hit Done Editing:
+  <img class="img-fluid image" src="{% static 'images/integrations/typeform/done-editing.png' %}" >
+</p>
+
+<h3>14. Turn your Zap on!</h3>
+
+<p>
+
+  You're done!  Turn on your Zap and let the Feature Requests from Typeform flow in:
+  <img class="img-fluid image" src="{% static 'images/integrations/typeform/turn-on-zap.png' %}" >
+
+</p>
+
+<p>One you wire up Zapier to send customer feature requests from Typeform to Savio, you'll probably want to track feature requests you receive in other tools.  You can also <a href="{% url 'marketing-integrations-intercom' %}">track feature requests from Intercom</a>, <a href="{% url 'marketing-integrations-helpscout' %}">track feature requests from Help Scout</a>, <a href="{% url 'marketing-integrations-slack' %}">track feature requests from Slack</a>, <a href="{% url 'marketing-blog-using-zapier-to-collect-customer-feedback' %}">track feature requests using Zapier</a>, or <a href="{% url 'marketing-chrome-extension' %}">track feature requests with a Chrome Extension</a> from any other tool.</p>
+
+<p class="pb90">Once you <a href="{% url 'marketing-use-cases-collect-feedback' %}">centralize your feature requests</a>, you can <a href="{% url 'marketing-use-cases-prioritize-feedback' %}">prioritize feature requests using data</a>, <a href="{% url 'marketing-use-cases-use-feedback' %}">drive customer-centric product decisions</a>, and <a href="{% url 'marketing-use-cases-close-loop' %}">close the loop</a> with customers when you build a feature they asked for.</p>
+
+  </div>
+
+    {% include "includes/blog-cta.html" with title="Start Tracking Feature Requests Today" %}
+
+{% endblock %}
+
+
+{% block footer_scripts %}
+  <!-- for auto-creating anchor link -->
+  <script type="text/javascript" src="{% static 'jquery-anchorify/anchorify.js' %}"></script>
+
+  <script type="text/javascript">
+      $(document).ready(function() {
+          jQuery('body').anchorify();
+      });
+  </script>
+{% endblock %}

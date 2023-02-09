@@ -1,0 +1,26 @@
+{% load filters %}
+
+Hi {{user.first_name}},
+
+{% if ses.first_email_sent %} 
+    Here's what's happened in your {{customer.name}} Savio Vault in the last 24 hours.
+{% else %}
+    Here's what's going on in your {{customer.name}} Savio Vault.
+{% endif %}
+
+== New Feedback: {{total_new_feedback}} (Untriaged {{total_untriaged_feedback}}) ==
+{% for feedback in new_feedback %}
+* {{feedback.get_problem_snippet}}: {{host}}{% url 'feedback-item' feedback.pk %}
+{% endfor %}
+
+== New Feature Requests: {{total_new_feature_requests}} ==
+{% for fr in new_feature_requests %}
+* {{fr.title}}{{host}}{% url 'feature-request-feedback-details' fr.pk %}
+{% endfor %}
+
+You can change your notification settings here:
+{{host}}{% url 'accounts-my-settings-status-email-settings' ses.pk %}
+
+Unsubscribe:
+{{host}}{% url 'accounts-my-settings-status-email-unsubscribe' ses.unsubscribe_token %}
+

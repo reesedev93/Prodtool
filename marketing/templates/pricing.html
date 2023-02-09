@@ -1,0 +1,206 @@
+{% extends "basic_page.html" %}
+{% load static %}
+{% load filters %}
+
+{% block meta_title %}
+Savio Pricing
+{% endblock %}
+
+{% block title %}
+Pricing
+{% endblock %}
+
+{% block head %}
+{% endblock %}
+
+{% block content %}
+
+<section class="pricing py-5">
+  <div class="container">
+    <div class="row mb30">
+      <div class="col-lg-12 text-center">
+
+        <h2 class="pb10">Centralize your customer feature requests today</h2>
+        <h3>Get started free. No credit card required. Cancel any time.</h3>
+      </div>
+    </div>
+
+    <div class="row">
+
+      <!-- SMB Tier -->
+      <div class="col-sm-4 flex">
+        <div class="card mb-5 mb-lg-0"  style="width: 100%">
+          <div class="pricing-card">
+            <h4>Free Forever</h4>
+            <div class="price-value">
+              <h4 class="card-price pt-0">&nbsp;</h4>
+              Free
+            </div>
+
+            <h4 class="card-price text-center">for 1 user</h4>
+            <div class="pricing-footer">
+              <a href="{% url 'accounts-join' %}?plan=free" class="btn btn-block btn-primary text-uppercase">Create a Free Account</a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <!-- end SMB -->
+
+      <!-- Mid-market Tier -->
+
+      <div class="col-sm-4 flex">
+        <div class="card mb-5 mb-lg-0"  style="width: 100%">
+          <div class="pricing-card">
+            <h4>SMB</h4>
+
+            <div class="price-value">
+              <h4 class="card-price pt-0" ><strike>$49</strike></h4>
+              $25<sup>/m</sup>
+            </div>
+
+            <h4 class="card-price text-center">Up to 3 users</h4>
+            <div class="pricing-footer">
+              <a href="{% url 'accounts-join' %}?plan=smb" class="btn btn-block btn-primary text-uppercase">Try free for 14 days</a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      
+      <!-- end Mid-market -->
+      <div class="col-lg-4 flex">
+        <div class="mb-5 mb-lg-0 flex" style="width: 100%">
+          <div class="pricing-card active" >
+            <h4>Growth</h4>
+            <div class="price-value">
+              <h4 class="card-price pt-0 text-muted" ><strike>$99</strike></h4>
+              <div id="tiered-price">$49<sup>/m</sup></div>
+            </div>
+
+            <h4 class="card-price text-center">Unlimited users</h4>
+
+            <div class="pricing-footer">
+              <a href="{% url 'accounts-join' %}?plan=growth" class="btn btn-block btn-primary text-uppercase pay-plan">Try free for 14 days</a>
+            </div>
+         </div>
+        </div>
+      </div>
+      <!-- end Mid-market -->
+    </div>
+
+    <div class="row mt50" id="core-features">
+      <div class="col-sm-12">
+        <div class="card mb-5 mb-lg-0 flex">
+          <div class="pricing-card">
+
+            <h4>Core Features</h4> 
+
+            <div class="table-responsive">
+              <table class="table ">
+                <tr>
+                  <th>Feature</th>
+                  <th>Free Plan</th>
+                  <th>SMB ($25/m)</th>
+                  <th>Growth ($49/m)</th>
+                </tr>
+
+
+                <tr>
+                  <td style="text-align: left;">
+                    <span class="feature" data-toggle="tooltip" data-original-title="These are people who either log into Savio or use the Chrome Extension to send feedback to Savio.  People who send feedback from Slack, Intercom, or Help Scout do NOT need a Savio account.">Users with a Savio account <i class="fa fa-question-circle text-muted" ></i></span>
+                  </td>
+                  <td>
+                      1
+                  </td>
+                  <td>
+                      Up to 3
+                  </td>
+                  <td>
+                      Unlimited
+                  </td>
+                </tr>
+
+                {% include "includes/pricing-feature-table-row.html" with feature_name="Track feature requests from Slack " tooltip_text="Connect Slack to quickly send feature requests shared there to Savio." %}
+
+
+                {% include "includes/pricing-feature-table-row.html" with feature_name="Track feature requests from Intercom or Help Scout" tooltip_text="Tag an Intercom or Help Scout message with a feature request and it'll get tracked in Savio" %}
+
+                {% include "includes/pricing-feature-table-row.html" with feature_name="Track feature requests via email" tooltip_text="Email customer feature requests to Savio."  %}
+
+                {% include "includes/pricing-feature-table-row.html" with feature_name="Track Feature Requests with Chrome Extension" tooltip_text="Use the Savio Chrome Extension to track features from any web-based tool." %}
+
+                {% include "includes/pricing-feature-table-row.html" with feature_name="Triage inbound feedback" tooltip_text="Triage each feature request that arrives in Savio to keep your signal to noise ratio high."  %}
+
+                {% include "includes/pricing-feature-table-row.html" with feature_name="Import customers from Segment and Intercom" tooltip_text="You can attach feature requests to users (and the account they belong to) so you can filter requests by user or company." %}
+
+                {% include "includes/pricing-feature-table-row.html" with feature_name="Segment feedback by User and Account attributes" tooltip_text="Send in attributes you care about (like revenue, plan, region, product usage, number of account seats, user role, or really anything you can imagine). Then segment Feature Requests by those attributes to drill down to requests from your key customer segments." %}
+
+                {% include "includes/pricing-feature-table-row.html" with feature_name="View and filter your customer feedback" tooltip_text="See all your customer feedback, and filter your list by customer revenue, customer plan, requesting user or account, tag, or any customer or account attributes you send to Savio." %}
+
+                {% include "includes/pricing-feature-table-row.html" with feature_name="View and filter your feature requests" tooltip_text="See all all your feature requests along with number of requests and cumulative revenue.  Filter your list by customer revenue, customer plan, requesting user or account, tag, or any customer or account attributes you send to Savio."  %}
+
+                {% include "includes/pricing-feature-table-row.html" with feature_name="Read all feedback for any feature request" tooltip_text="Drill down into any feature to see all the customer feedback for the request along with the requester's name, account, revenue, plan, and any other properties you care about."  %}
+
+                {% include "includes/pricing-feature-table-row.html" with feature_name="Prioritize and plan your features" tooltip_text="Track features through the planning pipeline.  Identify features that are untriaged, planned, in progress, and shipped." %}
+
+                {% include "includes/pricing-feature-table-row.html" with feature_name="Close the loop with customers" tooltip_text="Easily identify who's requested a feature. Reach out quickly to let them know you built what they asked for."  %}
+
+                {% include "includes/pricing-feature-table-row.html" with feature_name="See feature list for product marketing" tooltip_text="Filter your feature requests by when you shipped them (for example, what you shipped last month).  Helps generate your Product Marketing emails quickly!"  %}
+
+                {% include "includes/pricing-feature-table-row.html" with feature_name="Founder Customer Support" tooltip_text="Founders do all customer support and write code. We will run through walls for you to succeed!" %}
+              </table>
+            </div>      
+          </div>      
+        </div>      
+      </div>
+    </div>
+
+    <div class="row mt50" id="testimonial">
+
+      <div class="col-lg-12 flex">
+        <div class="card ">
+          <div class="pricing-card">
+
+            <h4>Make informed decisions when improving your product</h4>
+
+            <div class="text-left pl60 pr60 pt20 pb20">
+                <p class="font16">"Savio has given more visibility into the value of our feature requests.  Having customer data about who submitted feature requests means <b>we can make informed decisions when analyzing product improvements.</b></p>
+
+                <div class="pb20 text-center">
+                  <img src="{% static 'images/social-proof/abbey-weber.jpeg' %}" alt="" class="img-fluid avatar rounded-circle" height="100" width="100">
+                </div>
+                <h5 class="text-center">Abbey, Program Analyst, Housecall Pro</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row mt50" id="faq">
+      <div class="text-center col-md-12 mt30">
+        <h4>Frequently Asked Questions</h4>
+      </div>
+      <div class="col-md-6 mt30">
+          <p><strong>What is a User?</strong><br>
+          A user is someone on your team that has a Savio account.  You need a Savio account to do things like collect feedback with the Savio Chrome Extension, manage feedback, prioritize features, or close the loop with your customers.</p>
+          <p>People who send feedback to Savio from Intercom, Slack, or Help Scout do NOT need a Savio account.</p>
+          <p><strong>How long do I have to try Savio?</strong><br>
+          You can try Savio for free with one user account for as long as you'd like. If you need more time to try it on either of the paid plans, we're happy to extend your trial. <a href="mailto:founders@savio.io">Drop us a line here</a>.</p>
+      </div>
+
+      <div class="col-md-6 mt30">
+
+          <p><strong>Is my data secure?</strong><br>
+          Absolutely. We're hosted on AWS, use HTTPS, and have been shipping software for companies like Microsoft and ESPN for 30+ years combined. You should rest assured that this isn't our first rodeo and your data is safe with Savio.</p>
+
+          <p><strong>I have another question.</strong><br>
+          Drop Ryan and Kareem (Savio's founders) <a href="mailto:founders@savio.io">a line here</a>.</p>
+
+    </div>
+  </div>
+  </div>
+</section>
+
+{% endblock %}

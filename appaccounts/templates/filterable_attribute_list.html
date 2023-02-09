@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block body_content %}
+<div class="row align-items-center pt-30">
+    <div class="col-md-12 mr-auto ml-auto">
+        <div class="mb-0">
+            <h4>Customer Attributes <a class="tooltip-large small text-muted" href="#"  data-placement="right" data-html="true" data-boundary="window" data-original-title="<h6>What are Customer Attributes?</h6><p>Savio pulls in your customer and account attributes that you send to Intercom and Segment.</p><p>On this page, you can control:<ul><li>What your attributes are named in Savio</li><li>Whether attributes appear in Feedback and Feature Request filters</li><li>Whether attributes appear alongside your customer's information</li></ul></a>"><i class="far fa-xs fa-question-circle"></i></a></h4>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-12">
+    <div class="portlet-box mb-30">
+      <div class="portlet-body">
+        <div class="table-responsive">
+          <table class="table mb-0">
+            <thead>
+                <tr>
+                    <th class="pt-0 bt-0">Attribute&nbsp;<i class="text-muted far fa-question-circle"  data-toggle="tooltip" data-original-title="The name of the attribute in the source tool"</th>
+                    <th class="pt-0 bt-0">Savio Name&nbsp;<i class="text-muted far fa-question-circle"  data-toggle="tooltip" data-original-title="The name Savio uses to display this attribute"</th>
+                    <th class="pt-0 bt-0">Filters&nbsp;<i class="text-muted far fa-question-circle"  data-toggle="tooltip" data-original-title="Does this filter Companies or People?"</th>
+                    <th class="pt-0 bt-0">Type&nbsp;<i class="text-muted far fa-question-circle"  data-toggle="tooltip" data-original-title="What data type is this attribute?"</th>
+<!--                    <th class="pt-0 bt-0">Widget</th> -->
+                    <th class="pt-0 bt-0" width="18%">Show in Filters&nbsp;<i class="text-muted far fa-question-circle"  data-toggle="tooltip" data-original-title="Can you filter feature requests and feedback by this attribute?"></i></th>
+                    <th class="pt-0 bt-0" width="20%">Show with User Info&nbsp;
+                        <i class="tooltip-large text-muted far fa-question-circle"  data-placement="bottom" data-html="true" data-boundary="window" data-original-title="Display this attribute wherever customers' details are show.<br><br><img src='{% static 'images/displayed-customer-attributes.png' %}' width='400'>"></i>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for fa in filterable_attributes %}
+                    <tr>
+                        <td>
+                            <strong>
+                                <a href="{% url 'filterable-attributes-update-item' fa.pk %}">
+                                    {{fa.name}}</a>
+                                  <img data-original-title="This attribute is imported from {{ fa.source.name }}" data-toggle='tooltip' style="margin-left: 3px;" src="{% static fa.source.icon_filename %}" width="12" height="12">
+
+                                {% if fa.is_mrr %}
+                                  <i data-original-title="This attribute contains your customers' MRR" data-toggle='tooltip' class="fas fa-dollar-sign fa-sm"></i>
+                                {% endif %}
+                                {% if fa.is_plan %}
+                                  <i data-original-title="This attribute contains your customers' Plan name" data-toggle='tooltip' class="fas fa-file-invoice-dollar fa-sm"></i>
+                                {% endif %}
+
+                            </strong>
+                        </td>
+                        <td>
+                            {{fa.friendly_name}}
+                        </td>
+                        <td nowrap>
+                            {{fa.get_related_object_type_display}}
+                        </td>
+                        <td nowrap>
+                            {{fa.get_attribute_type_display}}
+                        </td>
+<!--
+                        <td>
+                            {{fa.get_widget_display}}
+                        </td>
+-->
+                        <td class="center">
+                            {% if fa.show_in_filters %}
+                              <i class="text-muted fas fa-check"></i>
+                            {% else %}
+                              <i class="text-muted fas fa-times"></i>
+                            {% endif %}
+                        </td>
+                        <td class="center">
+                            {% if fa.show_in_badge %}
+                              <i class="text-muted fas fa-check"></i>
+                            {% else %}
+                              <i class="text-muted fas fa-times"></i>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="6">
+                        <h4>You don't have any attributes yet.</h4>
+                        <p>Customer Attributes allow you to filter feedback and feature requests based on Customer and Account attributes like MRR and Plan. Savio imports attributes that you send to Intercom and Segment, so <a href="{% url 'accounts-integration-settings-list' %}">connect one of those here</a> to use Customer Attributes.</p> 
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+{% endblock %}

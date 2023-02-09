@@ -1,0 +1,153 @@
+{% extends "base.html" %}
+{% load filters %}
+{% block title_tag %}{{feedbacks|length}} Untriaged in Feedback Inbox | Savio{% endblock %}
+
+
+{% block body_content %}
+
+{% include "includes/onboarding_carousel.html" %}
+{% include "includes/onboarding_feedback_inbox.html" %}
+{% include "includes/onboarding_features.html" %}
+
+<div class="row align-items-center pt-30">
+  <div class="col-md-12 mr-auto ml-auto">
+    <div class="mb-0">
+      <a id="add_feedback_button" href="{% url 'feedback-create-item' %}?{% if onboarding %}onboarding=yes&{%endif%}return={{request.path}}{% if onboarding %}?onboarding=yes{%endif%}" class="float-right btn btn-primary"><i class="fa fa-plus mr-2"></i>New Feedback</a>
+        <h4>Feedback Inbox</h4>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-12">
+    <div class="mb-30">
+      <div>
+        <ul class="nav nav-pills" role="tablist">
+          <li role="presentation" class="nav-item">
+           <a href="{% url 'feedback-inbox-list' 'active' %}" class="nav-link {% if 'active' in request.path %} active show {% endif %}" role="tab">Untriaged</a>
+          </li>
+          <li role="presentation" class="nav-item">
+            <a href="{% url 'feedback-inbox-list' 'pending' %}" class="nav-link {% if 'pending' in request.path %} active show {% endif %}" >Snoozed</a>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-12">
+    <div class="portlet-box mb-30" style="border-top: 0;">
+      <div class="portlet-body">
+
+        {% if onboarding %}
+          <div class="alert alert-warning" role="alert">
+            <i class="fa fa-exclamation-triangle"></i> Customer feedback lands in your inbox when it first hits Savio
+            <hr>Like an email inbox, you should triage your inbox regularly (you can triage quickly in Savio).<br><br>
+
+            {% if feedbacks.count == 1 %}
+              Click your feedback to triage it.
+            {% elif feedbacks.count > 1 %}
+              Click a piece of feedback below to triage it.
+            {% else %}
+              1. <a href="{% url 'feedback-create-item' %}?onboarding=yes&return={{request.path}}?onboarding=yes">Create a piece of feedback</a><br>
+              2. Then click it to triage
+            {% endif %}
+          </div>
+        {% endif %}
+
+
+        <div class="table-responsive">
+          <table class="table mb-0">
+              <thead>
+                  <tr>
+                      <th class="pt-0 bt-0" width="50%">Problem</th>
+                      <th class="pt-0 bt-0" width="15%">Person</th>
+                      <th class="pt-0 bt-0" width="20%">Feature</th>
+                      {% if state == 'PENDING' %}
+                      <th class="pt-0 bt-0"  width="25%">Snooze till</th>
+                      {% endif %}
+                  </tr>
+              </thead>
+              <tbody>
+                  {% for feedback in feedbacks %}
+                      <tr>
+                          <td>
+                              {% if onboarding %}
+                                <a href="{% url 'feedback-inbox-item' feedback.pk %}?onboarding=yes"><strong>{{feedback.get_problem_snippet}}</strong></a>
+                              {% else %}
+                                <a href="{% url 'feedback-inbox-item' feedback.pk %}"><strong>{{feedback.get_problem_snippet}}</strong></a>
+                              {% endif %}
+
+                              <span class="small text-muted">{{feedback.created|date:'M j Y'}}</span>
+                          </td>
+                          <td nowrap>
+                              {% if feedback.user %}
+                              <a href="{% url 'feature-request-list' %}?user={{ feedback.user.id }}&filter=1">{{feedback.user.get_name_or_email|default:"N/A"}}</a>
+                              {% else %}
+                              {{feedback.user.get_name_or_email|default:"N/A"}}
+                              {% endif %}
+                              <br>
+                              {% if feedback.user.company.name %}
+                                <a href="{% url 'feature-request-list' %}?company={{ feedback.user.company.id }}&filter=1" class="text-muted small">
+                                {{feedback.user.company.name}}</a>
+                              {% else %}
+                                <span class="small text-muted">Unknown</span></span>
+                              {% endif %}
+                              <span class="text-muted"><span class="small-badge badge badge-text badge-{{  feedback.feedback_type|badge}}"><strong>{{ feedback.feedback_type }}</strong></span></span>
+                          </td>
+                          <td>
+                            {% if feedback.feature_request %}
+                              <a href="{% url 'feature-request-feedback-details' feedback.feature_request.pk %}">
+                            {{feedback.feature_request}}</a>
+                            {% else %}
+                              N/A
+                            {% endif %}
+                          </td>
+                          {% if state == 'PENDING' %}
+                          <td>
+                            {{feedback.snooze_till}} UTC
+                          </td>
+                          {% endif %}
+                      </tr>
+                  {% empty %}
+                  {% if no_feedback %}
+                  <tr>
+                      <td colspan="6" style="text-align: center; padding: 50px">
+                        <div class="alert alert-primary" role="alert" style="text-align: left">
+                          <h4>Nothing in your Inbox</h4>
+                          This is where feedback arrives in Savio and waits to be triaged.<br><br>
+                          To Triage, you'll want to make sure each piece of feedback makes sense and is assigned to a Feature Request.
+                          <br><br>You can also import feedback into Savio via a spreadsheet or API.  Email <a href="mailto:founders@savio.io">founders@savio.io</a> and we'll help.<br><br>
+
+                          <a href="{% url 'feedback-create-item' %}?return={{request.get_full_path|urlencode}}" class="btn btn-sm btn-primary">Add your first piece of feedback here →</a >
+
+                        </div>
+                    </td>
+                  </tr>
+                  {% elif state == 'ACTIVE' %}
+                  <tr>
+                      <td colspan="6" style="text-align: center; padding: 50px">
+                          No feedback to triage. Nice work.<br><br>
+                          <a href="{% url 'feature-request-list' %}">You probably want to see your feature requests</a>, though you can also <a href="{% url 'feedback-list' %}">see all your triaged feedback</a>.
+                      </td>
+                  </tr>
+                  {% else %}
+                  <tr>
+                      <td colspan=7 style="text-align: center; padding: 50px">
+                        <div class="alert alert-primary" role="alert" style="text-align: left">
+                          <h4>No Snoozed Feedback</h4>
+                          This is where feedback sits while its snoozed.<br><br>
+                          You should snooze feedback when the customer problem is not clear, and you're waiting for the person who provided the feedback to clarify their issue.
+                        </div>
+                      </td>
+                  </tr>
+                  {% endif %}
+                  {% endfor %}
+              </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

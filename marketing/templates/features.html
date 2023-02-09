@@ -1,0 +1,229 @@
+{% extends "basic_page.html" %}
+{% load static %}
+
+{% block meta_title %}
+Track Feature Requests and make customer-centric decisions about what features to build
+{% endblock %}
+
+{% block meta_desc %}See how Savio helps you run your voice of customer program to make customer-centric product decisions{% endblock %}
+
+{% block title %}
+<div class="text-center">Savio's Features</div>
+{% endblock %}
+
+{% block content %}
+
+<div class="bg-white pt90 pb20">
+    <div class="container">
+        <div class="row">
+            <div class='col-lg-12 pb40 text-center' >
+                <h2>Track customer feedback. Build better products.</h2>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class='col-lg-12 pb40 text-center' >
+                <h3>Keep and prioritize a single list of feature requests</h3>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class='col-lg-6 pb40 text-center' >
+                <img src="{% static 'images/screenshots/marketing/feature-requests-close-up.png' %}" class="img-fluid" style="border: 1px solid #aaa;">
+                <div class='font12 text-center pt10'>A trusted place for your feature requests</div>
+            </div>
+            <div class="col-lg-5 ml-auto pb40">
+                <p>Ditch the spreadsheets and Trello boards.  Only put features into your issue tracker once you're going to build them.</p>
+
+                <p>With a single list you can:</p>
+                  <ul class="list-unstyled feature-list">
+                      <li>Compare how many customers asked for a feature</li>
+                      <li>Compare the cumulative MRR for each feature</li>
+                      <li>Sort and filter feature requests by customer plan or MRR, priority, effort, tags, keyword, and more</li>
+                  </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="bg-faded pt90 pb50">
+    <div class="container">
+
+        <div class="row">
+            <div class='col-lg-12 pb40 text-center' >
+                <h3>Centralize product feedback with no disruption to your teammates</h3>
+            </div>
+        </div>
+
+        <div class="row align-items-center">
+            <div class="col-lg-5 pb40">
+                <p>
+                    Your support and sales teams can send customer feedback to Savio just by tagging a conversation in their support tool or CRM. No Savio account required. 
+                </p>
+
+                <p>Save customer feedback to Savio when you:</p>
+                  <ul class="list-unstyled feature-list">
+                      <li>tag a message <a href="{% url 'marketing-integrations-intercom' %}#push">in Intercom</a> or <a href="{% url 'marketing-integrations-helpscout' %}#push">Help Scout</a></li>
+                      <li>share <a href="{% url 'marketing-integrations-slack' %}">feedback from Slack</a></li>
+                      <li>send <a href="{% url 'marketing-send-email' %}">an email to Savio</a>, or use the <a href="{% url 'marketing-chrome-extension' %}">Savio Chrome Extension</a> or API</li>
+                      <li>tag conversations in Zendesk or Hubspot CRM</li>
+                  </ul>                
+
+                  <a href="{% url 'marketing-use-cases-collect-feedback' %}" class='btn btn-outline-info btn-rounded'>Learn More</a>
+
+                </p>
+            </div>
+            <div class='col-lg-6 pb40 ml-auto'>
+                <div class="row">
+                  <div class='col-lg-12 ml-auto pb50 text-center logos'>
+                      <a href="{% url 'marketing-integrations-slack' %}">
+                        <img class="mr40" src="{% static 'images/Slack_Mark_Web.png' %}" width="125" height="125">
+                      </a>
+
+                      <a href="{% url 'marketing-integrations-intercom' %}">
+                          <img  class="mr40"  src="{% static 'images/intercom.png' %}" width="125" height="125">
+                      </a>
+
+                      <a href="{% url 'marketing-integrations-helpscout' %}">
+                        <img   src="{% static 'images/helpscout-icon-blue-800.png' %}" width="125" height="125">
+                      </a>
+
+                    </div>
+                  </div>
+
+                <!-- row 2 -->
+                <div class="row">
+                    <div class='col-lg-12 ml-auto text-center logos'>
+
+                      <a href="{% url 'marketing-chrome-extension' %}">
+                        <img  class="mr40" src="{% static 'images/chrome_icon_color.png' %}" width="125" height="125">
+                      </a>
+
+                      <img class="mr40"  src="{% static 'images/zendesk-transparent.png' %}" width="125" height="125">
+
+                      <img  src="{% static 'images/hubspot-sprocket-web-color.png' %}" height="125" width="125">
+
+                    </div>
+                </div>
+
+                <div class='font12 text-center pt30'>Native integrations with tools you use</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="bg-white pt90 pb20">
+    <div class="container">
+        <div class="row">
+            <div class='col-lg-12 pb40 text-center' >
+                <h3>Drill into feature requests to read related customer feedback</h3>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class='col-lg-6 pb40 text-center' >
+                <img src="{% static 'images/screenshots/marketing/feature-request-mobile.png' %}" class="img-fluid" style="border: 1px solid #aaa;">
+                <div class='font12 text-center pt10'>Your customer feedback, organized by feature request</div>
+            </div>
+            <div class="col-lg-5 ml-auto pb40">
+                <p>All the feedback about a specific feature request is at your fingertips. </p>
+
+                <p>No more digging through email, spreadsheets, your CRM, Google Docs (or other tools) to learn what your customers want you to build.</p>
+
+                <p></p>
+                  <ul class="list-unstyled feature-list">
+                      <li>Quickly contact customers to validate problem and solution</li>
+                      <li>Read the conversation in the source tool (Intercom, Help Scout, etc) to get more context if necessary</li>
+                      <li>See each customer's MRR and Plan</li>
+                      <li>Close the loop with customers once you launch the feature they requested</li>
+                  </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="bg-faded pt90 pb50">
+    <div class="container">
+
+        <div class="row">
+            <div class='col-lg-12 pb40 text-center' >
+                <h3>Powerful filtering to build for the customer segments you care about</h3>
+
+                  <h4 class="pt30">Not all feature requests are created equal. Don't treat them like they are. </h4>
+
+            </div>
+        </div>
+
+        <div class="row align-items-center">
+            <div class="col-lg-5 pb40">
+
+                <p><a href="{% url 'marketing-customer-attributes' %}">Filter feature requests</a> by customer plan, MRR, and any other customer attributes you care enough about to send to Savio. You can show feature requests from:</p> 
+
+                  <ul class="list-unstyled feature-list">
+                      <li>"lighthouse" customers</li>
+                      <li>Customers in a certain geography </li>
+                      <li>Free, trialing, active, or cancelled customers</li>
+                      <li>Customers with lots of expansion revenue potential</li>
+                      <li>Enterprise (or SMB) customers</li>
+                      <li>Users with different roles (admins, non-admins, account owners, etc)</li>
+                  </ul>                
+                  
+                  <a href="{% url 'marketing-customer-attributes' %}" class='btn btn-outline-info btn-rounded'>Learn More</a>
+
+                </p>
+            </div>
+
+            <div class='col-lg-6 pb40 ml-auto'>
+                <img src="{% static 'images/screenshots/marketing/custom-attributes.png' %}" class="img-fluid" style="border: 1px solid #aaa;">
+                <div class='font12 text-center pt30'>Filter feature requests by any customer attributes you care about</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="bg-white pt90 pb50">
+    <div class="container">
+
+        <div class="row">
+            <div class='col-lg-12 pb40 text-center' >
+                <h3>Close the loop with customers and reduce churn</h3>
+            </div>
+        </div>
+
+        <div class="row align-items-center">
+            <div class='col-lg-6 pb40 text-center' >
+                <img class="img-fluid image" src="{% static 'images/help/close-loop/email-customers.png' %}">
+                <div class='font12 text-center pt30'>Close the loop with customers at scale</div>
+            </div>
+            <div class="col-lg-5 ml-auto pb40">
+                  <ul class="list-unstyled feature-list">
+                      <li>See who requested features you shipped so you can close the loop with them</li>
+                      <li>Quickly notify any number of requesters with a few clicks</li>
+                      <li>Notify even faster with an email template</li>
+                      <li>BCC your CRM to track who you contacted</li>
+                      <li>Set replies go to your help desk</li>
+                      <li>Keep track of which customers have been notified</li>
+                  </ul>                
+                  
+                  <a href="{% url 'marketing-use-cases-close-loop' %}" class='btn btn-outline-info btn-rounded'>Learn More</a>
+
+                </p>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="bg-white pt20 pb40">
+
+      <div class="row mt30">
+        <div class="col-md-4 offset-md-8 ml-auto mr-auto text-center">
+          <a href="{% url 'marketing-use-cases-collect-feedback' %}" class="btn btn-primary">Track Feature Requests →</a>
+        </div>
+      </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

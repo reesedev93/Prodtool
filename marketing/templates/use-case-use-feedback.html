@@ -1,0 +1,128 @@
+{% extends "basic_page.html" %}
+{% load static %}
+{% load filters %}
+
+{% block head %}
+
+<meta property="og:url" content="{{ request.build_absolute_uri }}" />
+
+<!-- og:title should be 85 chars max -->
+<meta property="og:title" content="Use customer feedback to build a great product and lower churn" />
+
+<meta property="og:type" content="article" />
+
+<!-- og:description should be 200 chars max. Make sure first 150 make sense. -->
+<meta property="og:description" content="Use customer feedback to build a great product and lower churn" />
+<meta property="og:site_name" content="Savio" />
+
+<!-- 115 chars max -->
+<meta property="twitter:description" content="Use customer feedback to build a great product and lower churn" /> 
+
+{% endblock %}
+
+{% block meta_title %}
+Use the customer feedback you collect | Savio 
+{% endblock %}
+
+{% block meta_desc %}When you centralize your customer feedback in Savio, you're able to use the feedback your customers want.{% endblock %}
+
+{% block title %}
+<div class="text-center">Use requests to drive customer-centric product development</div>
+{% endblock %}
+
+{% block content %}
+
+<div class="bg-white pt90">
+    <div class="container">
+
+        <div class="row">
+            <div class='col-lg-12 pb40 text-center' >
+                <h2>Drive customer-centric product decisions</h2>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class='col-lg-12 pb40 text-center' >
+              <h3>See each feature's customer feedback on one page</h3>
+              <img class="img-fluid image" src="{% static 'images/help/use-feedback/feedback-in-one-place.png' %}" width="800">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="bg-faded pt90">
+    <div class="container">
+
+        <div class="row">
+            <div class='col-lg-12 pb40 text-center' >
+                <h2>Understand your customers' exact problems</h2>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class='col-lg-12 pb40 text-center' >
+              <h3>Read your customers' exact words to build a solution that helps them</h3>
+              <img class="img-fluid image" src="{% static 'images/help/use-feedback/exact-words.png' %}" width="800">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="bg-white pt90">
+    <div class="container">
+
+        <div class="row">
+            <div class='col-lg-12 pb40 text-center' >
+                <h2>Get your team on the same page</h2>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class='col-lg-12 pb40 text-center' >
+              <h3>Share direct customer feedback with your team to align on product priorities</h3>
+              <img class="img-fluid image" src="{% static 'images/help/use-feedback/share-feedback.png' %}" width="600">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="bg-faded pt90">
+    <div class="container">
+
+        <div class="row">
+            <div class='col-lg-12 text-center' >
+                <h2>Contact customers to clarify their problems<br>(and your solution)</h2>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class='col-lg-12  text-center' >
+              <h4 class="mt50 mb0">Reach out where customers requested the feature so they have context</h4>
+              <img class="img-fluid image" src="{% static 'images/help/use-feedback/reach-out.png' %}" width="600">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class='col-lg-12 pb40 text-center' >
+              <h4 class="mt90 mb0">Or email customers directly from Savio</h4>
+              <img class="img-fluid image" src="{% static 'images/help/use-feedback/email-customers.png' %}" width="600">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="bg-white mt50 mb70">
+  <div class="container">
+    <div class="row   ml-auto mr-auto text-center">
+      <div class="col-md-4 pt20">
+        <a href="{% url 'marketing-use-cases-prioritize-feedback' %}" class="btn btn-primary">← Prioritize feature requests</a>
+      </div>
+      <div class="col-md-4 offset-md-4 pt20">
+        <a href="{% url 'marketing-use-cases-close-loop' %}" class="btn btn-primary">Close the loop →</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

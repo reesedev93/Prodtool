@@ -1,0 +1,9 @@
+{% autoescape off %}
+Hiya friend,
+
+Thanks for signing up for {{ site_name }}.
+
+Please click this link to activate your account:
+{{ domain }}{% url 'accounts-activate' uid=user.pk token=token %}
+
+{% endautoescape %}

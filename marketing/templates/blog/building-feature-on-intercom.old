@@ -1,0 +1,145 @@
+Building a feature: Intercom integration.  
+
+Current Approach
+
+Savio centralizes and tracks customer feedback from different tools to help software teams make better product decisions.  Customers use a Chrome Extension to pull from support tools, CRMs, Google Docs, NPS tools, and more.  
+
+The Problem
+
+We'd gotten feedback that minimizing the burden on support and sales teams to push feedback to Savio way key.  For some, installing a Chrome Extension and signing up for a Savio account was too high a barrier for support teams.  Support wanted to resolve tickets and make customers happy. Any friction that got in the way of that was a burden.
+
+The Solution
+
+Goals:
+1. Make sure we'd collect feedback from Intercom
+2. Make it painless for support team to push feedback to Savio
+3. Support pushing feedback to Savio from Intercom's mobile apps 
+
+Approach
+
+If you're not famliar with Intercom, it's a tool where a website's customers can chat with a support team.  Intercom's organizing principle is a conversation, which is an iMessage-like back and forth between customer and company. 
+
+[screenshot]
+
+Options were: 
+1. pull in all conversations
+2. pull in conversations with a specific tag
+3. pull in a single message with a specific tag
+
+
+1. Pull in all conversations
+When a Savio customer connected Intercom, we could pull in all their conversations. There's a lot of noise in Intercom conversations.  As product managers, we don't want "how do I reset my password" conversations in the tool we use to make better product decision.  We want feature requests.  So this didn't seem like a great option.   
+
+2. Pull in conversations with a specific tag
+We could pull all a conversation's messages when a tag got applied to the conversation. 
+
+We discarded this approach because:
+1. Intercom is a chat interface, which means a feature request can be scattered across multiple messages in the conversation.  
+
+2. Pull in conversations with a specific tag
+
+There were issues with this approach too:
+- Some Intercom conversations span weeks or months and cover different issues.  How would we deal with a conversation from months ago that had a bunch of unrelated feedback and got pushed to Savio yesterday?  
+- If we pull in the whole conversation, we'd have to figure out how Savio users would keep just the messages they wanted.  We could have created an iMessage-type UI to display and select the messages you wanted to keep.  Or we could have concatenated the messages into a single messages on import, and then the PM would have to erase the stuff they didn't want during triage in Savio.  
+
+It wasn't a no-brainer that having the entire conversation in Savio was a win.  And because it also involved building a way to select the messages to keep, we discarded this approach too. 
+
+3. Pull in a single message with a specific tag
+This seemed like the most straightforward approach.  When a message was tagged in Intercom, Savio would pull it in.
+
+
+Requests that span multiple messages, and Mobile tagging
+
+Sometimes feature requests would come into Intercom over multiple messages.  It would look something like this:
+
+[screenshot]
+
+Tagging N messages in Intercom would create N pieces of feedback in Savio, which isn't ideal.  To pave this scenario, we decided to import notes from Intercom that had the tag in the form of a hash tag.  For example, if you're importing messages with the tag "product-feedback", adding the "#product-feedback" hashtag to an internal Intercom note would push it to Savio.
+
+[screenshot]  
+
+The bonus of this approach is that people using Intercom's mobile app would be able to send feedback to Savio.  The Intercom mobile app doesn't support adding tags to messages.  We considered @mention a user called e.g. @savio to push feedback to Savio, but users cost money in Intercom, and we didn't want our customers to spend more money on Intercom unnecessarily.  So we decided to use a hashtag.
+
+Savio Acknowledgment
+
+Giving feedback to users is important to let them know things worked.  When a message is successfully pushed to Savio, Savio will add an internal note to the Intercom conversation:
+
+[screenshot]
+
+Historical import
+One feature we decided note to do was a historical import of feedback from Intercom when you first set the integration up.  It was lots of work to do, we'd potentially need a new UI, and we weren't  sure it was a win because it wasn’t clear that old feedback was valuable to import.  This was also a feature we could build later if it made sense.
+
+Process
+
+1. Write a spec
+2. Make trade offs
+3. Build
+4. Test, fix, and make more trade offs
+5. Launch
+
+Write a spec
+
+We always write a length-appropriate spec when building a feature.  It's worthwhile because writing things down
+
+1. Forces clarity of thought. If you can't write down exactly what's going to be built, you're not going to get a good feature. 
+
+2. Surfaces unresolved issues.  For example, in this case it forced us to go look at the Intercom API to see if we could pull in a *message* with a tag, versus a conversation with a tag.  The only way to pull in a single tagged message is with a webhook, not with the server-side API.  If we hadn't written down the spec, we would have caught this issue at implementation time, when it would have been more expensive to change.  
+
+3. Gets people on the same page about what's going to be built.  When you share a short document with lots of wireframes, it helps others on the team understand what you want to build.
+
+4. Ensures maximum brainpower on the issue. When you have a written document, anybody on the team can read and comment on a tangible approach.  Without a written document "words are wind". 
+
+5. Is efficient. It's a lot of work for the person writing the spec.  But the written word is the most effective way to communicate.  It's why Amazon starts meetings by reading written memos.
+
+In this case, our spec caught things like:
+- acknowledgement, should we do it?
+- Historical import, should we do it?
+- what additional permissions do we need from intercom?
+- the need to update our intercom App Store listing
+
+It also helped us:
+- discuss and agree on what was important: eg historical import? Acknowledgement?
+- Helped others in the organization understand what the feature would look like
+
+Make Trade Offs
+
+- something useful?
+
+Building
+
+- Something useful?
+
+Testing
+
+In testing, we caught some issues and had to make more trade offs:
+https://app.clubhouse.io/savio/story/1015/we-re-not-100-sure-about-who-added-a-tag-should-we-just-skip-who-added-a-tag.  
+
+In Savio we display who sent feedback to Savio.  But with this feature we had a challenge: we knew who created feedback when it was a note that was pushed to Savio, but not when feedback was added via tagging.  This is because Intercom doesn't send the name of the Intercom used that added the tag in the webhook payload.  We could have pulled the entire conversation when a new message got pushed to Savio, but you can't tell who added a tag to a conversation in Intercom either.  
+
+So we decided to show "Intercom Savio Bot" as the person who created the feedback instead of the person who created a note and "Intercom Savio Bot" who tagged feedback.  
+
+For three reasons:
+1. Not sure it's that important to users to know who created feedback in Savio.  The most likely case is that you'd want to know who added feedback if it was confusing.  Odds are that if the feedback wasn't clear, you'd go to Intercom to read the feedback and see who owned the conversation and read the thread.  Knowing who added it in Savio isn't that helpful.
+
+2. It would be confusing to users to sometimes have "Savio Intercom Bot" and sometimes have the user's name. We'd need to help them understand that this was an Intercom limitation and though it looked funky was actually "working" properly.
+
+3. We're planning on using this infrastructure to add more integrations with other tools.  We don't know how those work and what their limitations are, so we didn't want to support and maintain an edge case with unclear benefit.  If lots of customers asked us to improve this, we would.  But we decided to start with the cheap, maintainable solution.
+
+We also caught an issue.  There are two ways to Oauth Intercom in Savio. One in onboarding and one in Settings when you turn on an integration.  The Settings approach didn't take you through the flow to select a tag for Savio to pull in, so we had to change that:
+
+We also found an edge case:
+https://app.clubhouse.io/savio/story/1021/should-deleting-feedback-in-savio-delete-note-in-intercom
+
+Launch
+
+Good product marketing is one of the most neglected aspects of making software.  We wanted to make sure we put a good foot forward.  The things we needed to change to talk about this feature were:
+
+1. The Intercom App Directory
+2. Savio's marketing site
+3. Savio's "enable integration" page
+
+Lots of frantic copywriting and screenshot taking ensued.  It took a few days for Intercom to approve our new listing, but once it went live we were good to go.
+
+We also wanted to let customers know that we launched a feature they asked for.  Thankfully this is a key scenario that Savio enables so doing this was easy.
+
+

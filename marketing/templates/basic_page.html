@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en"  prefix="og: http://ogp.me/ns#">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>{% block meta_title %}Savio{% endblock %}</title>
+        <meta name="description" content="{% block meta_desc %}Savio{% endblock %}">
+
+        <!-- Plugins CSS -->
+        <link href="{% static 'css/plugins/marketing_plugins.css' %}" rel="stylesheet">
+        <link href="{% static 'linearicons/fonts.css' %}" rel="stylesheet">
+        <link href="{% static 'font-awesome/css/all.min.css' %}" rel="stylesheet">
+        <link href="{% static 'css/style-saas-landing.css' %}" rel="stylesheet">
+        <link rel="icon" type="image/png" href="{% static 'images/favicon_48.png' %}" />
+
+        {% block head %}{% endblock %}
+
+        {% include "includes/tracking.html" %}
+    </head>
+
+    <body data-spy="scroll" data-target="#landingkit-navbar" data-offset="75">
+
+        {% include "includes/marketing-header.html" %}
+
+
+        <div id="home" class="hero-gradient-dark-small gradien-primary">
+            <div class="container">
+                <div class="row align-items-center">
+                    <!-- switch to col-lg-6 to put image carousel back -->
+                    <div class="col-lg-12 mr-auto ml-auto pb50">
+                        <h1 class="mb20 text-white h1">{% block title %}Title{% endblock %}</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <main class="main-content">
+            <section id="content" class='gradient-faded'>
+                {% block content %}Content{% endblock %}
+            </section>
+        </main>
+
+        {% block footer_cta %}
+          {% include "includes/join_cta.html" %}
+        {% endblock %}
+
+        {% include "includes/footer.html" %}
+
+        <script type="text/javascript" src="{% static 'js/plugins/popper.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/plugins/marketing_plugins.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/saas.products.custom.js' %}"></script>
+        {% include 'includes/intercom_widget.html' %}
+        {% block footer %}{% endblock %}
+
+        {% block footer_scripts %}{% endblock %}
+
+    </body>
+</html>

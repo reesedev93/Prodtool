@@ -1,0 +1,215 @@
+{% extends "basic_page.html" %}
+{% load static %}
+
+{% block head %}
+
+<meta property="og:url" content="{{ request.build_absolute_uri }}" />
+
+<!-- og:title should be 85 chars max -->
+<meta property="og:title" content="Track customer feature requests from Help Scout with Savio" />
+
+<meta property="og:type" content="article" />
+
+<!-- og:description should be 200 chars max. Make sure first 150 make sense. -->
+<meta property="og:description" content="Tag feature requests in Help Scout for your product team to use. With Savio, Product Leaders can make data-driven prioritization decisions with their feature requests." />
+<meta property="og:site_name" content="Savio" />
+
+<meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'images/helpscout-and-savio-512x1024.png' %}" />
+
+<meta property="og:image:width" content="1024" />
+<meta property="og:image:height" content="512" />
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:site" content="@savio_io" />
+
+<!-- 115 chars max -->
+<meta property="twitter:description" content="Track feature requests that come into Help Scout. Make data-informed decisions about what to build next." /> 
+
+{% endblock %}
+
+{% block meta_title %}
+Track feature requests in Help Scout 
+{% endblock %}
+
+{% block meta_desc %}Track feature requests in Help Scout to send to your product team. With Savio, Product Managers use product feedback to make data-driven prioritization decisions.{% endblock %}
+
+{% block title %}<div class="text-center">
+Track Feature Requests in Help Scout</div>{% endblock %}
+
+{% block content %}
+<div class="bg-white pt70">
+    <div class="container">
+        <div class="row">
+            <div class='col-lg-12 pb40 text-center' >
+              <h5>Are you a Product Leader?</h5>
+                <a href="{% url 'marketing-integrations-helpscout-product' %}" class="btn btn-sm btn-info">See how the integration helps you →</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="bg-white pt20 pb20">
+    <div class="container">
+
+        <div class="row">
+            <div class='col-lg-12 pb40 text-center' >
+                <h2>Tag conversations to send them to your Product team</h2>
+
+                <h4 class="mt20">No more spreadsheets or digging through Trello cards. Focus on answering support emails.</h4>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class='col-lg-12 pb40 text-center' >
+                <img class="img-fluid" src="{% static 'images/helpscout-and-savio-200x500.png'  %}"><br>
+                <span class="text-muted">Help Scout, meet Savio</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="bg-faded pt90 pb50">
+    <div class="container">
+        <div class="row pt40">
+            <div class='col-lg-12 pb40 text-center' >
+                <h3 class="pb40">Tag your conversation. Send it to Savio. Profit. </h3>
+                <img class="img-fluid" style="border: 1px solid #ddd" src="{% static 'images/help/helpscout/helpscout-integration-animated.gif'  %}"><br>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="bg-white pt90 pb50">
+    <div class="container">
+        <div class="row pt40">
+            <div class='col-lg-12 pb40 text-center' >
+                <h3>Start tracking features requests in Help Scout in 10 seconds</h3>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-5 ml-auto pb40">
+              <p>How it works:</p>
+              <ul>
+                <li>Your PM will pick a Help Scout tag that Savio will listen for</li>
+                <li>When a customer sends good product feedback into Help Scout, apply this tag to the conversation</li>
+                <li>Savio will pull in the conversation for your Product Managers to act on</li>
+              </ul>
+            </div>
+            <div class='col-lg-6 pb40 text-center' >
+                <img class="img-fluid" style="border: 1px solid #ddd" src="{% static 'images/help/helpscout/012-pick-helpscout-tag-fat.png' %}">
+                <div class='font12 text-center pt10'>Choose the Help Scout tag to import</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="bg-faded pt90 pb50">
+    <div class="container">
+
+        <div class="row">
+            <div class='col-lg-12 pb40 text-center' >
+                <h3>👋 Toodles, spreadsheets. Hello, supporting customers.</h3>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class='col-lg-6 pb40 text-center' >
+                <img class="img-fluid  " style="border: 1px solid #ddd" src="{% static 'images/help/helpscout/013-fat-tag-helpscout-message-no-annotation.png' %}">
+                <div class='font12 text-center pt10'>Add your pre-defined tag to import feature requests</div>
+            </div>
+            <div class="col-lg-5 ml-auto pb40">
+              <p>No need to use another tool to track feature requests for your Product team.  Just:</p>
+              <ul class="list-unstyled feature-list">
+                  <li>Add your pre-defined tag to a conversation</li>
+                  <li>Savio pulls it in for your Product Managers</li>
+                  <li>You get back to helping your customers</li>
+                  <li>You don't even need a Savio account</li>
+              </ul> 
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="bg-white pt90 pb50">
+    <div class="container">
+
+        <div class="row">
+            <div class='col-lg-12 pb40 text-center' >
+                <h3>Ensure customer feature requests reach your Product Team</h3>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-5 ml-auto pb40">
+              <p>Savio adds a private note when you tag a conversation.</p>
+              <p>That way, you can be 100% sure your feedback arrived safely for your Product Managers to read.</p>
+            </div>
+            <div class='col-lg-6 pb40 text-center' >
+                <img class="img-fluid  " style="border: 1px solid #ddd" src="{% static 'images/help/helpscout/014-fat-tag-helpscout-message-ack-no-annotation.png' %}">
+                <div class='font12 text-center pt10'>An internal note confirms Savio received the feedback</div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<div class="bg-faded pt90 pb50">
+    <div class="container">
+
+        <div class="row">
+            <div class='col-lg-12 pb40 text-center' >
+                <h3>All the context for your Product Team. Without the hallway conversations.</h3>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class='col-lg-6 pb40 text-center' >
+                <img class="img-fluid  " style="border: 1px solid #ddd" src="{% static 'images/help/helpscout/015-fat-link-to-helpscout-source-conversation.png' %}">
+                <div class='font12 text-center pt10'>Click to Help Scout to read the whole conversation</div>
+            </div>
+            <div class="col-lg-5 ml-auto pb40">
+              <p>In Savio, your Product Managers can click through to the full Help Scout conversation.</p>
+              <p>If your PM needs to clarify the feedback, they can either ask the customer directly via Help Scout, or leave you an internal Help Scout note to ask the customer on their behalf.</p>
+            </div>
+        </div>
+
+    </div>
+</div>  
+
+<div class="bg-white pt90 pb50">
+    <div class="container">
+
+        <div class="row">
+            <div class='col-lg-12 pb40 text-center' >
+                <h3>Track feature requests from all your teams. Build better software.</h3>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-5 ml-auto pb40">
+              <p>Use Savio to:
+              </p>
+
+                {% include "includes/feature-list.html" %}
+            </div>
+            <div class='col-lg-6 pb40 text-center' >
+              <img src="{% static 'images/screenshots/marketing/feature-requests-close-up.png' %}" style="border: 1px solid #aaa;" alt="" class="img-fluid">
+              <div class='font12 text-center pt10'>Filter your feature list by MRR, customer plan, and more</div>
+            </div>
+        </div>
+
+      {% include "includes/integration_logos.html" %}
+
+
+
+    </div>
+</div>
+  </div>
+{% endblock %}
+
+{% block footer_cta %}
+
+    {% include "includes/footer-cta.html" with app_name="Help Scout" %}
+{% endblock %}

@@ -1,0 +1,53 @@
+{% load filters %}
+{% get_done_step as done_step %}
+
+{% onboarding_step_done this_step='tour' done_step=done_step as tour_step_done %}
+{% onboarding_step_done this_step='customer-data' done_step=done_step as customer_data_step_done %}
+{% onboarding_step_done this_step='chrome-extension' done_step=done_step as chrome_extension_step_done %}
+{% onboarding_step_done this_step='whitelist' done_step=done_step as whitelist_step_done %}
+{% onboarding_step_done this_step='done' done_step=done_step as done_step_done %}
+
+      <div class="wizard wizard-example clearfix" >
+        <ul class="wizard-steps nav nav-justified">
+
+          <li class="{% onboarding_current_class 'tour' %} {{ tour_step_done }} nav-item">
+            {% if tour_step_done == "done" %}
+              <a href="{% url 'accounts-onboarding-tour' %}"><i class="fa fa-hand-spock mr-2"></i> Welcome</a>
+            {% else %}
+              <i class="fa fa-hand-spock mr-2"></i> Welcome
+            {% endif %}
+          </li>
+
+          <li  class="nav-item {% onboarding_current_class 'customer-data' %}  {% onboarding_step_done this_step='customer-data' done_step=done_step %} ">
+            {% if customer_data_step_done == "done" %}
+              <a href="{% url 'accounts-onboarding-customer-data' %}">
+                <i class="fa fa-cloud-download-alt mr-2"></i> Import Customers
+              </a>
+            {% else %}
+              <i class="fa fa-cloud-download-alt mr-2"></i> Import Customers
+            {% endif %}
+          </li>
+
+          <li role="tab" class="nav-item {% onboarding_current_class 'chrome-extension' %}  {% onboarding_step_done this_step='chrome-extension' done_step=done_step %} " >
+            {% if chrome_extension_step_done == "done" %}
+              <a href="{% url 'accounts-onboarding-chrome-extension' %}">
+             <i class="fa fa-puzzle-piece mr-2"></i> Install Extension
+              </a>
+            {% else %}
+             <i class="fa fa-puzzle-piece mr-2"></i> Install Extension
+            {% endif %}
+          </li>
+
+          <li role="tab" class="nav-item {% onboarding_current_class 'done' %}  {% onboarding_step_done this_step='done' done_step=done_step %} ">
+
+            {% if done_step_done == "done" %}
+              <a href="{% url 'accounts-onboarding-done' %}">
+                <i class="fa fa-check-circle mr-2"></i> Done
+              </a>
+            {% else %}
+               <i class="fas fa-check-circle mr-2"></i> Done
+            {% endif %}
+          </li>
+
+        </ul>
+      </div>

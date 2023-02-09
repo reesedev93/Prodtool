@@ -1,0 +1,19 @@
+Hi {{first_name}},
+
+(I hate automated emails too, but replies to these are literally my favorite emails to get.  Even better than the forwards from my mom 😄)
+
+Saw you signed up for Savio - I'm a co-founder and personally greet and help everybody who signs up.
+
+Can you do me a favour?  It would really help our two-person startup if you hit "reply" and answer one question:
+
+Why did you sign up for Savio?
+
+I'm asking because knowing why you signed up helps us deliver on what you want.  
+
+Just hit reply and let me know.
+
+Thanks {{first_name}},
+
+Kareem
+
+PS> If Savio's not a fit for you, it would be helpful to understand why not.  Please be brutally honest, my feelings won't be hurt!

@@ -1,0 +1,6 @@
+{% block body_content %}
+Coming soon...<br>
+{% if not PRODUCTION %}
+  <a href="{% url 'login' %}">Login</a> or <a href="{% url 'accounts-join' %}">Join!</a>
+{% endif %}
+{% endblock %}

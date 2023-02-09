@@ -1,0 +1,462 @@
+{% extends "blog-page.html" %}
+{% load static %}
+{% block meta_title %}
+Use product feedback to grow your SaaS revenue
+{% endblock %}
+
+{% block meta_desc %}Learn how and why you should systematize collecting your customer feedback so your Product Managers can grow SaaS revenue{% endblock %}
+
+
+{% block head %}
+  <!-- open graph tags -->
+  <meta property="og:url" content="{{ request.build_absolute_uri }}" />
+  <meta property="og:title" content="A guide to using product feedback to grow SaaS revenue" /> <!-- 57 chars -->
+  <meta property="og:type" content="website" />
+  <meta property="og:description" content="SaaS Product Leaders: use product feedback to grow revenue" /> <!-- 73 chars -->
+
+  <meta property="og:site_name" content="Savio" />
+  <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'images/savio-logo-1500x750.png' %}" />
+
+  <meta property="og:image:width" content="1500" />
+  <meta property="og:image:height" content="750" />
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:site" content="@savio_io" />
+
+  <!-- 115 chars max -->
+  <meta property="twitter:description" content="Systematize using your customers' feedback to drive revenue growth: a how-to guide for B2B SaaS Product Leaders." />
+
+  <!-- end open graph -->
+
+  <!-- for content upgrade -->
+  <script src="https://sendfox.com/js/form.js"></script>
+{% endblock %}
+
+
+{% block content %}
+
+  <div class="col-md-12 blog blog-title text-center">
+    <h1>Using customer feedback to drive growth: a guide for SaaS Product Leaders</h1>
+  </div>
+    <div class="col-md-8 offset-md-2 blog">
+
+    <p>This guide is a comprehensive overview of why you should use a system to gather and use customer feedback to build better software and drive growth at your company.  </p>
+
+    <p>It’s for Product Leaders at B2B SaaS companies.</p>
+
+    <p>It’s based on in-depth conversations with hundreds of Product Managers at B2B SaaS companies that make products - great products - that you know and love.</p>
+
+    <p>It’s also born from our experience working on and running product and engineering teams at large companies like Microsoft and ESPN.com, startups like Predictable Revenue, and our own bootstrapped companies.</p>
+
+    <p>We’ve started and sold multiple businesses, and felt the pain of trying to use customer feedback to make good product decisions.</p>
+
+    <p>Sure, we’d cobbled together piecemeal solutions.  But we always felt nagging doubts. Perhaps we could be building things that our customers wanted MORE than the things we were building.</p>
+
+    <p>It seemed like the answer to that question lay in getting a more comprehensive picture of our feedback.  </p>
+
+    <p>And after talking to Product Leaders at some of the world’s fastest growing and customer-focused companies, it was clear they felt the same way.  </p>
+
+    <p>So, below is the guide we wish we had when we were starting our careers.</p>
+    <blockquote>This guide describes how to create a feedback system to collect and use product feedback to build better software and grow your business.  </blockquote>
+
+    <p>Hope you enjoy! And, of course, <a href="mailto:help@savio.io?subject=Customer+Feedback+Feedback">your feedback is always welcome</a>. 😉</p>
+
+<!--
+    <h2>Table of Contents</h2>
+
+    <p>Who should read this?</p>
+    <p>Goals</p>
+    <p>Context</p>
+    <p>Macro Trends favor customer-centric companies</p>
+    <p>Slack: A Case Study in Product-Led Growth</p>
+    <p>Using Customer Feedback is critical to grow your business</p>
+    <p>Why NOT having a system is problematic</p>
+    <p><strong>What does a good feedback system look like?</strong></p>
+    <p>Key Channels to Collect Feedback From</p>
+    <p>The human side of collecting product feedback</p>
+    <p>The software side of collecting feedback</p>
+    <p>Collect Feedback</p>
+    <p>Organize Feedback to be Useful</p>
+    <p>Butterfield talks about how they organize feedback at Slack</p>
+    <p>Analyze Your Feedback</p>
+    <p>Use your feedback to build a good solution</p>
+    <p>Communicate Status</p>
+    <p>Close the loop</p>
+    <p>How to start</p>
+    <p>Summary</p>
+-->
+
+    <h2>Who should read this?</h2>
+    <p>You should read this if you wear the Product Manager hat in any capacity at a B2B SaaS company.  In small companies you might be a founder.  In larger companies you may be somewhere on the spectrum between line Product Manager up to Chief Product Officer.  </p>
+
+    <p>In short: if you manage software products, we think you’ll learn a few things to help you build more of what your customers want. </p>
+    <h2>What you're about to learn</h2>
+    <p>When you’re done reading this, you should better understand:</p>
+    <ol><li>The macro trends that are favoring customer-centric companies</li>
+    <li>Why "product led growth" is becoming a critical way to grow software companies, and how feedback drives the PLG approach</li>
+    <li>The problems with not having a feedback system</li>
+    <li>What a good feedback system looks like</li>
+    <li>The key channels to gather feedback from</li>
+    <li>A deeper understanding of the human and software side of implementing a good feedback system</li>
+    <li>How you can start implementing a feedback system</li></ol>
+
+    <h2>Context</h2>
+    <h3>Macro Trends favor customer-centric companies </h3>
+
+    <p>There are two trends that favor putting customers at the center of the product development process: rising acquisition costs and the increasing decision making power of end users.</p>
+
+    <h4>1. Rising customer acquisition costs</h4>
+    <p>Marketing channels have become more competitive so customer acquisition costs (CAC) have risen. <a href="https://www.bondcap.com/report/itr19/" target="_blank">Mary Meeker's 2019 internet trends report</a> describes how <a href="https://www.bondcap.com/report/itr19/#view/28" target="_blank">customer acquisition costs are rising</a>, especially in highly competitive or capitalized sectors.
+
+    <p><a href="https://www.bondcap.com/report/itr19/#view/30" target="_blank">Meeker outlines on approach to drive down CAC on Slide 30 of her deck</a>:
+    <img src="{% static 'images/blog/meeker-plg.png' %}" class="img-fluid img-border" /></p>
+
+    <p>A great product inspires word of mouth which drives down customer acquisition costs. A great product also has high retention. And central to building a great product is a deep understanding of a customer’s problems and well-designed solutions to solve them.</p>
+
+    <p><a href="https://medium.com/high-alpha/5-traits-of-successful-product-led-growth-companies-a4cbc26af29" target="_blank">Blake Bartlett, a partner at OpenView Venture Partners, says:</a></p>
+
+    <blockquote>"You most likely won’t hear about the best SaaS products through a cold call. It will be through word of mouth."</blockquote>
+
+    <h4>2. Users have more say in tools they use</h4>
+    <p>Users are playing an increasingly larger role in the purchasing decisions that their company makes. There are multiple options for any software tool that a customer might need.  So if you’re using a tool that’s not meeting your needs, you’re not as locked in as you used to be.  This ease with which customers can switch tools puts more emphasis on building a great product.</p>
+
+    <p>Building a great product to lower CAC and increase retention are the core ideas around "product-led growth".   As competition for customers intensifies, a great product becomes increasingly important to grow.</p>
+
+    <p><a href="https://openviewpartners.com/blog/why-i-wrote-the-book-on-product-led-growth/" target="_blank">Wes Bush, author of "Product Led Growth", puts it well:</a>
+    <blockquote>Trying a product is and always will be an essential part of the buying process. When it comes to software, consumers demand the same experience. Companies that embrace <a href="https://openviewpartners.com/blog/product-led-growth-the-secret-behind-some-of-todays-fastest-growing-saas-companies/" target="_blank">product led growth</a> align their business model with an undeniable consumer trend that is not going anywhere."</blockquote>
+
+    <h4>PM decisions determine ROI</h4>
+    <p>And as a product becomes increasingly important to grow revenue, the role of Product Manager is growing in stature and is subject to increased scrutiny.  Product managers make decisions that determine how a company’s developer budget is spent.  If you have a product manager directing the efforts of 10 to 15 developers, that PM is responsible for somewhere between $1-2 million in annual spend on your Dev budget. And you want to get good ROI on that spend. </p>
+    <blockquote>When your product team makes bad decisions, the result is existential (in early stage companies) or wasteful (in established ones).</blockquote>
+
+    <h2>The Importance of Customer Feedback in Product-Led Growth</h2>
+
+    <h3>Slack: A Case Study</h3>
+    <p>When you look at the success of companies like Slack, it’s clear they’re an example of how the world is bifurcating into two camps: those that care (passionately) about customer feedback and use it to grow, and those that don’t.</p>
+
+    <p>Stewart Butterfield, Slack’s CEO, <a href="https://www.fastcompany.com/3041905/slacks-founder-on-how-they-became-a-1-billion-company-in-two-years" target="_blank">describes how they use feedback to grow</a>:</p>
+
+    <blockquote><p>The company keeps track of how many people are asking for a certain feature, or how many want a new kind of integration. "Of course hard numbers tell an important story; user stats and sales numbers will always be key metrics. But every day, your users are sharing a huge amount of qualitative data, too–and a lot of companies either don’t know how or forget to act on it."</p>
+
+    <p>"We will take user feedback any way we can get it.  We probably get 8,000 Zendesk help tickets and 10,000 tweets per month, and we respond to all of them."</p>
+
+    <p>Every customer interaction is a marketing opportunity. If you go above and beyond on the customer service side, people are much more likely to recommend you.</p></blockquote>
+
+    <p>Slack used this fanatical customer-focused approach <a href="https://www.businessinsider.com/slack-ceo-stewart-butterfield-no-salespeople-2016-3" target="_blank">to grow to 2.3 million monthly active users and a $64 million annual run rate in two years, without hiring a single salesperson</a> (though they've since hired a sales team).</p>
+
+    <h2>Using Customer Feedback is critical to grow YOUR business</h2>
+    <p>Your product's job is to solve customers’ problems so they stay customers.  And the best way to understand your customers’ problems is to listen to what they have to say.</p>
+
+    <p>You can listen to what they have to say in two ways: </p>
+    <ol><li>Proactively solicit feedback at key points in their customer life cycle. </li>
+    <li>Listen when they send you unsolicited feedback.</li></ol>
+
+    <p>But it’s not just listening to your customers that matters.  Collecting and acting on your customer feedback is what matters.  And if you don’t have a system to gather and analyze your feedback, you’re at a disadvantage compared to your competition.</p>
+    <h2>Why not having a system is problematic</h2>
+    <p>Since we’re in a SaaS world, the number of possible channels that a software company gathers feedback from has exploded.  Even tiny SaaS businesses doing $500k+ ARR get feedback from tools like these:</p>
+    <ul><li>a support tool like <a target="_blank" href="https://helpscout.com">Help Scout</a>, <a target="_blank" href="https://zendesk.com">Zendesk</a>, or <a target="_blank" href="https://freshdesk.com">Freshdesk</a></li>
+    <li>a CRM like <a target="_blank" href="https://pipedrive.com">Pipedrive</a>, <a target="_blank" href="https://hubspot.com/product/crm">Hubspot CRM</a>, or <a target="_blank" href="https://salesforce.com">Salesforce</a></li>
+    <li>live chat like <a target="_blank" href="https://helpscout.com/live-chat">Beacon</a>, <a target="_blank" href="https://intercom.com">Intercom</a>, or <a target="_blank" href="https://crisp.chat">Crisp</a></li>
+    <li>notes in <a target="_blank" href="https://docs.google.com">Google Docs</a></li>
+    <li>feedback collected from teammates in <a target="_blank" href="https://slack.com">Slack</a> or <a target="_blank" href="https://teams.microsoft.com/start">MS Teams</a></li></ul>
+
+    <p>Since the best way to understand your customers’ problems is to listen to what they have to say about them, you should use as much feedback as you can to figure out what to build and how to solve your customers’ problems.  </p>
+
+    <p>Put simply: if you don’t take advantage of the heaps of data about how to build a better product (and a better business), you’re going to fall behind companies that serve your customers better than you do.</p>
+
+    <blockquote>Today, it's possible to easily centralize your feedback and bring data-informed rigor to making prioritization decisions.</blockquote>
+
+    <h2>What does a good feedback system look like?</h2>
+    <p>Broadly, a good solution involves a <strong>tool</strong> and <strong>process</strong> to centralize your feedback from all the channels where it comes into your company.  It allows product teams to organize, analyze, and use product feedback.  And it should also provide transparency to the team (and optionally customers) about why you’re building what you’re building.  </p>
+
+    <p>Here’s what a good system looks like:</p>
+    <ol><li>It lets you capture feedback from each key "feedback channel" that customers use to send feedback to your company  </li>
+    <li>That feedback is captured and communicated to the product team with minimal friction.  Low friction is essential so that teammates in support, sales, and success  will actually use it to send feedback to Product teams</li>
+    <li>In addition to feedback, your system captures the customer’s context (MRR, Plan, etc) so you can segment feedback by those details</li>
+    <li>In your system, feedback gets triaged by the product team and structured in a way for product to use it later to prioritize what to build. </li>
+    <li>In addition to prioritization, Product can use product feedback to validate problem and solution, communicate to their team what’s being built (and why), and follow up with customers when their features are built</li>
+    <li>Your system is transparent enough to the person who sends in feedback (your customer or your teammates) so that they don’t feel like their feedback is being sent into the void, never to be seen again</li>
+    <li>You’re able to trust that the data in your system is good, so you can feel confident making decisions with it  </li></ol>
+    <h2>Key Channels to Collect Feedback From</h2>
+    <p>We’ve spoken to over 100 PMs at both unicorn and non-unicorn B2B SaaS companies.  Most PMs we spoke with underestimated how many channels they were dealing with.  Once they got talking about the problem, most of them realized that the system they had in place probably wasn’t helping them as much as it should.</p>
+
+    <p>The key channels to collect feedback from include:</p>
+    <ul>
+    <li>A support tool like Zendesk, Help Scout, and Freshdesk</li>
+    <li>A CRM like Pipedrive, Hubspot CRM, or Salesforce to capture win/loss data</li>
+    <li>An NPS tool like <a target="_blank"  href="https://delighted.com">Delighted</a> to look at feedback to get detractors and neutrals to promoters </li>
+    <li>Live chat like Beacon, Intercom, or Crisp</li>
+    <li>Notes from Google Docs or similar</li>
+    <li>Feedback collected from teammates in Slack or MS Teams</li>
+    <li>Support or sales calls in tool like <a target="_blank"  href="https://aircall.io">AirCall</a>, <a target="_blank"  href="https://gong.io">Gong</a>, or <a target="_blank"  href="https://chorus.ai">Chorus</a></li>
+    <li>A survey tool like <a target="_blank"  href="https://typeform.com">Typeform</a> or <a target="_blank"  href="https://surveymoney.com">SurveyMonkey</a></li>
+    <li>Solicited feedback at key points in the customer journey (like answers to "why did you convert from a trial" or "why did you churn")</li>
+    <li>Ideas sent around in both internal and customer emails</li></ul>
+
+    <p>The key channel for most teams is support (and/or live chat).  Because it’s high volume and good quality, gathering feedback from support is the first place most teams start.  Then they layer in other channels depending on feedback volume and how easy it is to collect.</p>
+
+    <p><a href="https://producthabits.com/top-customer-support-workflows-product-focused-companies/" target="_blank">Hiten Shah talks about the value of feedback from the support channel</a>:</p>
+    <blockquote>A lot of companies [don’t do] enough with their customer support requests. Each support request, form, and ticket is a valuable input that you can use to build better products. If you treat each support request as a one-off interaction between a support rep and a customer, you stick this feedback in a black box and cripple your ability to improve.</blockquote>
+
+    <h2>The human side of collecting product feedback</h2>
+    <p>A good solution requires two parts: the human side, and the software side.  We’ll unpack each part in turn.</p>
+
+    <p>The main challenge with collecting feedback outside the Product organization is getting buy-in from the head of the team that you want to collect feedback on your behalf.  In most B2B SaaS companies this includes support, customer success and sales teams. It may also include marketing or any other functions that bring in feedback that you would like to use in your feature prioritization process. </p>
+
+    <p>You also need the buy-in of the actual folks on the ground who are talking to customers, but this usually trickles down from the head of that team.  Frontline support reps, salespeople, and customer success folks need to understand:</p>
+    <ul><li>What kind of feedback to send you</li>
+    <li>How to send you feedback in as painless a way as possible</li>
+    <li>Ideally, how to dig a little bit with customers to get to the root issue (e.g. they don’t send you "customer needs red buttons instead of blue ones", they send you "customer is color blind and can’t differentiate between shades of blue on our buttons")</li></ul>
+
+    <p>Helping you get buy-in from teams outside Product that collect feedback is beyond the scope of this article. But one approach that tends to work well is to frame the behavior change in terms that benefit those teams.</p>
+
+    <p>For example, with support it might be something like "Look, you guys get a ton of useful feedback.  We’re not using it effectively because [insert your reason here].  With this new, non-disruptive process, you can trust that your feedback will be seen and acted on by the Product team, reduce support volume and customer frustration.  And ultimately make your lives easier!"  </p>
+
+    <h2>The software side of collecting feedback</h2>
+    <p>Obviously, you’ll want to store your feedback in a single place so you can act on it.  A good software tool will help you:</p>
+      <ol><li>Collect feedback</li>
+        <li>Organize it to be useful</li>
+        <li>Analyze and prioritize your features</li>
+        <li>Use your feedback to validate problems and solutions directly with customers</li>
+        <li>Communicate status to your team</li>
+        <li>Close the loop with customers</li></ol>
+
+    <p>We’ll break down each of the above in turn.</p>
+
+    <h3>1. Frictionlessly collect feedback from your key channels</h3>
+    <p>You want a tool that's going to let your teammates send customer feedback from their line of business tool to your feedback collection tool <i>with minimal friction</i>.  That’s because more friction will decrease the likelihood that your teammates will send it to you.</p>
+
+    <p>You may think it’s a good idea to centralize feedback from EVERY customer conversation your teammates have.  But this approach is suited more to research teams than product teams.  If you’re a product manager, you want a system to help prioritize what to work on next and deep-dive into the particulars of the problem.  You don’t want one that’s polluted with "I can’t reset my password"-type support requests.  It’s much more effective to have a human decide what’s collected instead of automatically slurping everything into your feedback system.</p>
+
+    <h3>2. Organize feedback to be useful</h3>
+    <p>You want the tool to provide a structure to organize your feedback so you can use it later.  </p>
+
+    <p>This really means four things:</p>
+
+    <h4>1. Capture customer problem and context</h4>
+    <p>You want to be able to capture key details about the problem and customers:</p>
+    <ul><li>The problem (ideally in the words of the customer)</li>
+    <li>A link to the source conversation so you, as the product manager, can get additional color and context on top of the customer’s words</li>
+    <li>The customer’s name and contact information (so you can reach out to validate and to close the loop once you build it)</li>
+    <li>The customer’s context (account name, plan, MRR, and any other information you might want to segment by). You may want to segment feature requests by Role ("show me features from admins of my app vs. regular users"), Geography ("show me features from North American vs. European customers"), Plan ("show me features requested by Enterprise plan customers"), etc.  </li></ul>
+
+    <h4>2. Triage collected feedback</h4>
+    <p>There should be a triage process to quickly categorize inbound feedback and discard it if it’s not useful.  You’ll want to answer questions like: </p>
+    <ol><li>Do we understand this feedback? </li>
+    <li>Can we imagine acting on this feedback one day?</li>
+    <li>Is this feedback about something we can change in our product? </li></ol>
+
+    <p>It’s important to have this step, because otherwise your system will fill up with noisy feedback that’s not useful.</p>
+
+    <h4>3. Aggregate your feedback</h4>
+    <p>You should be able to aggregate feedback to a higher level concept like a "feature request" or "customer problem" (we use both interchangeably to mean "a statement that describes what the customer needs".)  A "feature request" can have many pieces of related feedback.</p>
+
+<!--
+    <p>[image that shows relationship between people, feedback, and feature requests]</p>
+-->
+    <h4>4. Display a feature's status</h4>
+    <p>Finally, your feature requests should have a status to help you figure out which features can be worked on next, which are in flight, and which are done.  Statuses might include "Under consideration", "Planned", "Working on", etc.</p>
+
+    <p>Slack CEO Butterfield <a href="https://firstround.com/review/From-0-to-1B-Slacks-Founder-Shares-Their-Epic-Launch-Strategy/" target="_blank">talks about how they organize feedback at Slack:</a></p>
+    <blockquote>Whatever form it takes, incoming user feedback must be processed, stored and studied. "We’re pretty fastidious about tagging all of these incoming messages, collating and entering and retaining the data that people are sending us."</blockquote>
+
+    <h3>3. Analyze and prioritize your feature requests</h3>
+    <p>You can use the list of feature requests and associated data to guide the features that your product team decides to build.  </p>
+
+    <p>The core function here is to be able to compare features so that you can prioritize which are most important to the business.</p>
+
+    <p>Some jobs you’ll want to be able to do to compare and prioritize your features:</p>
+
+    <h4>1. Search</h4>
+    <p>You should be able to find all feature requests with a certain keyword (for example, "show me all feedback about Search and their related feature requests").  You should be able to drill into each feature request to read its related feedback.</p>
+
+    <h4>2. Segment feedback</h4>
+
+    <p>Here's Butterfield again <a href="https://firstround.com/review/From-0-to-1B-Slacks-Founder-Shares-Their-Epic-Launch-Strategy/" target="_blank">on how they care more about feedback from certain customers</a>:</p>
+
+    <blockquote>"Sometimes you will get feedback that is contrary to your vision," Butterfield says. "You may be trying to drive in a particular direction that people don’t necessarily understand at first. In our case, we knew the users we had in mind for this product. So in the early days, we looked at our customers, really just testers at that point, <strong>and we paid extra attention to the teams we knew should be using Slack successfully." </strong></blockquote>
+
+    <p>You focus on different customers at different times.  This quarter you might care about Enterprise customers, and next might have a mid-market focus.  Because that’s the case, you should be able to segment your customer feedback by customer attributes.  Here are some different ways you might want to segment feature requests:</p>
+    <ul><li>from churned customers, lost deals, or unconverted trials. </li>
+    <li>from customers on your Enterprise plan</li>
+    <li>from customers paying you more than $500/m</li>
+    <li>from users of your app who have the "admin" role</li>
+    <li>from users in Europe</li></ul>
+
+    <p>This is a critical piece of building a product-led customer feedback system.</p>
+    <blockquote>If you’re not able to figure out what your key customer segment cares about, how can you be sure you’re building the right features for them?</blockquote>
+
+    <h4>3. Use data to inform prioritization</h4>
+    <p>You should be able to use some <i>quantitative</i> heuristics about your feedback to help you prioritize. </p>
+
+    <p>The two that are most obvious are:</p>
+    <ol><li>Cumulative MRR for a feature. You should be able to look at your feature requests by the cumulative MRR of all of the accounts or all of the customers that have asked for a feature. So if you have 10 customers have asked for a feature and each customer pays you $200 a month the cumulative MRR of that feature is $2,000. </li>
+    <li>Total requests.  You also should be able to look at your feature requests by number of people who've asked for it.</li></ol>
+
+    <p>You should be able to segment these metrics based on other customer attributes. For example, let's say you're focusing on Enterprise customers this month and you have the following data:</p>
+      <ul><li>10 people have asked for Feature 1 (but only 3 of them are enterprise customers)</li>
+      <li>8 people have asked for Feature 2 (but ALL of them are enterprise customers)</li></ul>
+
+    <p>Assuming everything else is equal, you should probably build Feature 2 to make more Enterprise customers happier.  But if you can't segment feature requests by plan, you wouldn't have that critical insight.</p>
+
+    <blockquote>When you can't segment feature requests by customer attributes, you're most likely to build the wrong features.</blockquote>
+
+      <a href="{% static 'images/blog/segment-customers.jpg' %}"><img src="{% static 'images/blog/segment-customers.jpg' %}" class="img-fluid image mb30" /></a>
+
+    <h3>4. Use your feedback to build a good solution</h3>
+
+    <p>Once you've decided on the features you're going to build, you should be able to:</p>
+    <ul><li>See the specific feedback that each customer left about the feature</li>
+    <li>See who the customer is and the account they belong to</li>
+    <li>See any other customer attributes you care about (are they an admin user in your app? Are they a strategic account?  etc)</li></ul>
+
+    <p>You should also be able to reach out to those customers to validate your understanding of the problem that they're talking about and validate your solution.  So their contact info should be at your fingertips so you can get in touch.</p>
+
+    <h3>5. Communicate Status</h3>
+    <p>You should be able to use your tool to keep track of a feature’s status: is it planned? Unplanned? In progress? Etc.  </p>
+
+    <p>You should also be able to share a request’s related feedback with stakeholders to help them understand why you’re building it vs. another feature.  This is particularly helpful with development teams since you need their buy-in to deliver on your responsibilities.</p>
+
+    <p>Optionally you may want to be able to share features (but perhaps not the actual feedback) with customers on a public roadmap.  Whether you provide this view of data to your customers and what you show to them largely depends on your company culture.  You may:</p>
+    <ul><li>Show nothing to customers until a feature is launched</li>
+    <li>Show all customer-submitted feature requests, along with those under consideration, planned, in progress, and delivered.  You may show every piece of customer-submitted feedback, or just a short summary</li></ul>
+
+    <h3>6. Close the loop with customers</h3>
+
+    <p>Once you've built a feature that a customer has asked for, the least you can do is let them know!  Being heard goes a long way to reducing churn: customers pay you to solve their problems.  So when you show customers you care enough to both solve the problems they specifically told you they had, but also let them know - ideally <em>personally</em> - that you've solved them, it's hard to imagine they would churn for product-related reasons.</p>
+
+    <p>There are a variety of ways to let customers know that you've built features they might care about. This touches on product marketing, but it's really about product adoption. Since your customer-driven features should be driven from your feedback system, there are a handful of ways that your feedback system should be able to drive the notification part of your product marketing.</p>
+
+    <p>Here are a series of approaches you can use to close the loop with your customers:</p>
+    <ul><li>Personal outreach. You should be able to reach out directly to customers who requested a feature that you just built. </li>
+    <li>Publish a change log.  You can use tools like <a target="_blank" href="https://headwayapp.co">Headway</a> to publish a list of your feature updates.</li>
+    <li>Publish a marketing email. So this would be an email that would go out from your marketing team or product marketing team to the segment of your customers who would be very interested in this feature.  These aren’t necessarily people who've asked for this feature.  <a href="https://www.helpscout.com/blog/august-2019-release-notes/" target="_blank">Help Scout does an excellent job sending these emails</a> every month.</li>
+    <li>A Beta program.  If you use feature flags or a tool like <a target="_blank" href="https://launchdarkly.com">Launch Darkly</a>, you might make a feature available to a handful of customers and get early feedback before you launch it more widely. </li>
+    <li>A customer-facing roadmap.  You might publish a feature (or move its status to "shipped")  on a customer-facing roadmap.</li>
+    <li>In-app notifications.  You could use a tool like Intercom or Crisp to pop up alerts about a feature.</li>
+    <li>Feature tours. <a target="_blank" href="https://appcues.com">AppCues</a> enables you to create in-app tours that show off your new feature. </li>
+    <li>Customer Success. If you have a high-touch customer success team, you’d want to train up your team on how to introduce and drive adoption of your new feature. </li></ul>
+
+    <h2>How to start with a customer feedback system</h2>
+
+    <p>There are four ways you can start using customer feedback to grow your product.</p>
+    <p>In increasing order of maturity they are:</p>
+    <ol><li>"Marinate" in your feedback</li>
+      <li>Use a general-purpose tool</li>
+      <li>Have feedback champions</li>
+      <li>Use a purpose-built tool</li></ol>
+
+
+    <h3>1. "Marinate" in your feedback</h3>
+    <p>The simplest approach - and one that works well enough for very early stage companies - is to read all your feedback, "marinate" in it, and use your gut to decide what to build.  </p>
+
+    <p>To get started with this approach you just need a way to read all the feedback that comes in. This is easy to do when you have a single feedback channel (e.g. a support tool) but starts to break down when you add more channels or want to add more structure around using your feedback to prioritize your features.</p>
+
+    <p>The easiest way to get started with this is have all feedback arrive in one place for Product Managers to read.  For example, if you’re using a support tool, you would read every customer support email that comes in.  Or if you’re a Slack company, your support team could send all relevant feedback to a channel in Slack for you to review regularly. </p>
+
+    <h3>2. Use a general purpose tool</h3>
+    <p>The key drivers that cause people to move to a general purpose tool like a spreadsheet or Trello board are:</p>
+    <ol><li>You have more than one support channel and it’s difficult to read it all</li>
+    <li>You want to be able to see how many people have asked for a given feature </li>
+    <li>You want to close the loop with customers when you build features they’ve asked for</li></ol>
+
+    <p>Here’s the actual spreadsheet we used to collect feedback in a previous business:</p>
+    <p>
+      <a href="{% static 'images/blog/feature-request-tracking-spreadsheet.png' %}"><img src="{% static 'images/blog/feature-request-tracking-spreadsheet.png' %}" class="img-fluid img-border mb30" /></a></li>
+    </p>
+
+    <p>A single Pivot Table will help you tally up what your customers care about:</p>
+
+    <a href="{% static 'images/blog/feature-request-tracking-pivot-table.png' %}"><img src="{% static 'images/blog/feature-request-tracking-pivot-table.png' %}" class="img-fluid img-border mb30" height="500" width="349" /></a>
+
+    <form method="post" action="https://sendfox.com/form/1dze03/1jj781" class="sendfox-form" id="1jj781" data-async="true" style=" border: 1px solid #aaa; padding: 20px 20px; background-color: #eee; margin-bottom: 40px;">
+
+    <h3 class="mb20">Get the feature prioritization spreadsheet</h3>
+    <p>Enter your email address to get the spreadsheet and pivot table template from above:</p>
+    <p><input class="form-control" type="text" placeholder="Your First Name" name="first_name" required /></p>
+    <p><input class="form-control" type="email" placeholder="Email Address" name="email" required /></p>
+    <!-- no botz please -->
+    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="a_password" tabindex="-1" value="" autocomplete="off" /></div>
+    <p class="text-center"><button class="btn btn-primary" type="submit">Send me the feature prioritization spreadsheet template</button></p>
+    </form>
+
+    <p>Using a general purpose tool like a spreadsheet usually breaks down in three ways:</p>
+    <ol>
+    <li>Moving feedback to your spreadsheet is a manual and time consuming process. Moving feedback from a (for example) support tool to a spreadsheet involves having both tools open, and cutting and pasting several fields.  Because this happens manually, it happens less often than it should, which means valuable feedback doesn’t get to the product team. </li>
+    <li>Since Product can’t triage feedback as it’s entered, this can break down if the support, sales, etc teammates enter feedback that isn’t super useful.  This will add a lot of noise when you’re prioritizing features.</li>
+    <li>It's difficult to segment and sort your feature requests by customer attributes that you care about. At some point not being able to find "all feature request from Enterprise customers" becomes growth limiting.</li>
+  </ol>
+
+
+    <h3>3. Have feedback champions</h3>
+
+    <p>In this model, there’s one person for each N support or success people who is a "feedback champion".  Part of this person’s job is to collect and aggregate feedback from their teammates and share it with Product on a regular basis.</p>
+
+    <h3>4. Use a purpose-build tool for your feedback system</h3>
+
+    <p>There are a handful of tools on the market that do this. The basics to look for in a tool are:</p>
+    <ol><li>Is it easy to get feedback into your tool?  This is best accomplished by a native integration with the support tool, CRM, etc that you use.  A Chrome extension lets you put feedback in from unsupported tools.</li>
+    <li>Is there a Triage process to filter out feedback that you don’t care about?  </li>
+    <li>Are you able to get the cumulative MRR of a feature request?  And see the number of people that have asked for it?</li>
+    <li>Can you look at feedback from key customer segments so you can build features that the customer group cares about?</li>
+    <li>Can you easily get the contact information of customers who’ve asked for a feature from the tool? </li>
+    <li>How does the tool help you close the loop with customers? </li></ol>
+
+    <p>These key workflows come from conversations with 100+ B2B SaaS Product Managers.  And (shameless plug) they’re workflows that <a href="https://www.savio.io">Savio</a> supports. </p>
+
+    <p>Other things you might care about in a purpose-built tool:</p>
+    <ul><li>Can you share a roadmap of your features to customers or stakeholders?  Most Product Managers we’ve talked to would prefer to take their features and put them on a set of slides in a presentation that’s framed appropriately for the audience.  But some care about being able to create a beautiful Roadmap driven off the feedback.</li>
+    <li>Can you solicit feedback publicly from customers?  Some people find that a tool that enables this channel is valuable, and some don’t want it. </li></ul>
+
+    <h2>Summary</h2>
+    <p>The key is to begin centralizing your feedback.</p>
+
+    <p>It takes a little work to get up and running, but the payoff is huge:</p>
+    <ul><li>You can evaluate the breadth and depth of all your feedback in a single place</li>
+      <li>You can feel confident that the prioritization decisions you’re making are good ones that are based on a deep understanding of your qualitative data</li>
+      <li>You’re able to isolate and build features for important customer segments</li>
+      <li>You’re able to grow revenue while reducing customer acquisition costs and increasing retention</li></ul>
+
+    <p>Ultimately, having a feedback system provides a structured and thoughtful approach to using product feedback to grow revenue.</p>
+
+    <p>If you're not yet convinced, <a href="mailto:help@savio.io">drop us a line and tell us why</a>.</p>
+
+    <i class="text-muted">Last updated August 8 2019</i>
+
+    <div class="row mr0 ml0" >
+      <div class="col-md-3 mt40 pt30 pb30 mb40 info-block">
+          <img src="{% static 'images/founder-headshot-kareem.png' %}" style="border-radius: 50%;border: 1px solid #ccc;" alt="" class="img-fluid" height="150" width="150">
+      </div>
+      <div class="col-md-9 mt40 pt30 pb30 mb40 info-block">
+          <h4 class="no-anchor">Kareem Mayan</h4>
+          <p class="small">Kareem is a co-founder at <a href="{% url 'marketing-home' %}">Savio</a>. He's been prioritizing customer feedback professionally since 2001. He likes tea and tea snacks, and dislikes refraining from eating lots of tea snacks.</p>
+      </div>
+    </div>
+
+    <form method="post" action="https://sendfox.com/form/1dze03/1y0wom" class="sendfox-form" id="1y0wom" data-async="true" style=" border: 1px solid #aaa; padding: 20px 20px; background-color: #eee; margin-bottom: 40px;">
+
+    <h4 class="mb20 alert-heading no-anchor">Want more articles like this?</h4>
+    <p>Product Leaders from Slack, Zapier, and AppCues read our newsletter to level up their PM game.</p>
+    <p><input class="form-control" type="email" placeholder="Email Address" name="email" required /></p>
+
+    <!-- no botz please -->
+    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="a_password" tabindex="-1" value="" autocomplete="off" /></div>
+    <p class="text-center pb10"><button class="btn btn-primary" type="submit">Send me more articles like this</button></p>
+    <div class="text-muted text-center">Max 2 emails/month. Unsub anytime.</div>
+
+    </form>
+
+  </div>
+
+    {% include "includes/blog-cta.html" with title="Start Tracking Feature Requests Today" %}
+{% endblock %}
+
+{% block footer_scripts %}
+  <!-- for auto-creating anchor link -->
+  <script type="text/javascript" src="{% static 'jquery-anchorify/anchorify.js' %}"></script>
+
+  <script type="text/javascript">
+      $(document).ready(function() {
+          jQuery('body').anchorify();
+      });
+  </script>
+{% endblock %}

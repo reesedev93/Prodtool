@@ -1,0 +1,99 @@
+{% extends "basic_page.html" %}
+{% load static %}
+{% load filters %}
+
+{% block meta_title %}
+Save feedback from anywhere with the Savio Chrome Extension
+{% endblock %}
+
+{% block meta_desc %}Use the Savio Chrome Extension to save customer feedback from your support, sales, and customer success tools{% endblock %}
+
+{% block title %}
+The Savio Chrome Extension
+{% endblock %}
+
+{% block content %}
+  <div class="container pt90 pb90">
+    <div class="row">
+      <div class="col-md-9 docs">
+        <h2>What's the Chrome Extension For?</h2>
+        <p>
+            If you're like most folks, you and your teammates probably use a handful of tools where customers will send you feedback.  The basics would be a support tool, a CRM, and maybe Google Docs to keep notes from customer calls.   
+        </p>
+        <p>
+            But you may also have feedback posted to Slack, or use an NPS tool, a customer success tool, a tool for sending surveys, a tool to transcribe sales calls... the list goes on.   
+        </p>
+
+        <p>
+            It's problematic to get that feedback into a single place: you're emailing spreadsheets, or pasting links to a Trello board, or feeling bad about your unread #customer-feedback notification count in Slack.  
+        </p>
+
+        <p>
+            Which is why we built the <a href="{% url 'download-chrome-extension' %}" target="_blank">Savio Chrome Extension</a>.  
+        </p>
+
+        <p>
+            With it, you and your teammates can save customer feedback to Savio without leaving the tool it lives in.  It's a small change to your workflow with a large impact for your product and customers.  
+        </p>
+
+        <h4>Using the Chrome Extension</h4>
+        <div class="row">
+          <div class="col-md-8">
+            <h5 class="mt0 pt0">Chrome Extension Fields</h5>
+            <p>
+              Here are the fields you'll see when you open the Chrome Extension:
+            </p>
+            <p>
+              <strong>Customer Problem</strong>: This is where you enter the customer's feedback. Ideally you add a verbatim quote about the <em>problem</em> the customer's having.  Other things you might include are a solution to the problem ("a blue button") and other notes (for example "this customer 'gets it' and I think we should definitely pay attention to what they say".)</p>
+
+            <p>
+              <strong>Person</strong>: Choose the person who's providing the feedback.  If they're not in the dropdown (and thus haven't yet been imported into Savio), just type their name in - the Chrome Extension will create the person in Savio when you save the feedback.  
+            </p>
+
+            <p>
+              <strong>Feedback From</strong>: Who is the person providing feedback? Your product team can filter by this later to find (for example) "feature requests from churned customer".</p>
+
+              <p>You can choose from this list:</p>
+
+              <ul><li>Active Customer: this person is a customer</li>
+              <li>Churned Customer: this person was a customer but has cancelled</li>
+              <li>Internal User: this person is a teammate and works for your company</li>
+              <li>Lost Deal: this person is someone who might have purchased your software, but decided not to</li>
+              <li>Prospect: this person is someone who is considering purchasing your software</li>
+              <li>Other: this person does not fit into the above categories</li>
+              </ul>
+
+            <p>
+              <strong>Feature Request</strong> (optional): search your list of Feature Requests in Savio and assign this feedback to that Feature Request.  If there's no Feature Request in Savio, you can create a new one.  Or you can always leave it blank - your product team will assign it to a feature request in Savio during the Triage process. 
+            </p>
+          </div>
+
+          <div class="col-md-4" style="text-align: right">
+
+            <div class="text-center" style="width: 100%;">
+              <small>The Savio Chrome Extension</small>
+            </div>
+
+            <img src="{% static 'images/screenshots/marketing/chrome-extension.png' %}" height="515" width="250" alt="Savio Chrome Extension" class="img-fluid" style="border: 1px solid #aaa;"></p>
+
+          </div>
+        </div>
+
+        <h4>Download the Savio Chrome Extension</h4>
+          <p>
+            You can <a href="{% url 'download-chrome-extension' %}" target="_blank">download the Savio Chrome Extension here</a>.</p>
+          <p>To use it, you'll need to have a free or paid Savio account, so <a href="{% url 'accounts-join' %}">sign up for one here</a>.
+        </p>  
+      </div>
+    </div>
+
+    <div class="row mt30">
+      <div class="col-md-4 offset-md-4">
+        <a href="{% url 'marketing-features' %}" class="btn btn-primary">Savio's Features ↑</a>
+      </div>
+    </div>
+
+  </div>
+
+  </div>
+{% endblock %}

@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title_tag %}Close the loop | Savio{% endblock %}
+
+{% block head %}
+{{ form.media }}
+
+<script>
+$(document).ready(function() {
+  $('#toggle_reply_to_bcc').click(function(e) {
+    $('#reply-to-bcc-fieldset').show();
+    $(this).hide();
+    e.preventDefault();
+  })
+
+
+  $(".js-app-send-test-email-form").click(function () {
+    $.ajax({
+      url: "{% url 'feature-request-send-test-email' %}",
+      type: 'get',
+      dataType: 'json',
+      beforeSend: function () {
+        $("#id_test_message_flash_message_container").hide();
+        $("#modal-send-test-email").modal("show");
+      },
+      success: function (data) {
+        $("#modal-send-test-email .modal-content").html(data.html_form);
+      }
+    });
+  });
+
+  $("#modal-send-test-email").on("submit", ".js-app-send-test-email-form", function () {
+    var form = $(this);
+    $("#id_test_subject").val($("#id_subject").val())
+    $("#id_test_body").val($("#id_body").val())
+    $("#id_test_reply_to").val($("#id_reply_to").val())
+    $.ajax({
+      url: form.attr("action"),
+      data: form.serialize(),
+      type: form.attr("method"),
+      dataType: 'json',
+      success: function (data) {
+        if (data.form_is_valid) {
+          $("#modal-send-test-email").modal("hide");
+          $("#id_test_message_flash_message").empty();
+          $("#id_test_message_flash_message").html(`
+            <div class="mt-30 alert alert-success alert-dismissible fade show" role="alert">
+            Your test message has been sent
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+          `);
+          $("#id_test_message_flash_message_container").show();
+        }
+        else {
+          $("#modal-send-test-email .modal-content").html(data.html_form);
+        }
+      }
+    });
+    return false;
+  });
+});
+</script>
+
+{% endblock %}
+
+{% block body_content %}
+<div id="id_test_message_flash_message_container" class="row mt-0 mb-20" style="display: none;">
+  <div id="id_test_message_flash_message" class="col-lg-12">
+  </div>
+</div>
+
+<div class="row align-items-center pt-30">
+    <div class="col-md-12 mr-auto ml-auto">
+        <div class="mb-0">
+          <h4>Email Customers</h4>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-9">
+    <div class="mb-30">
+      <div class="portlet-box portlet-gutter ui-buttons-col mb-30">
+
+          <div class="portlet-body">
+              {% crispy form %}
+          </div>
+      </div><!--portlet-->
+    </div>
+  </div>
+</div>
+
+<!-- Model for send test email -->
+<div class="modal fade" id="modal-send-test-email">
+  <div class="modal-dialog">
+    <div class="modal-content">
+    </div>
+  </div>
+</div>
+{% endblock %}

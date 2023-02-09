@@ -1,0 +1,111 @@
+{% load filters %}
+{% load static %}
+
+<aside id="page-aside" class="page-aside {% hide_sidebar 'sidebar' %}">
+    <div class="sidenav darkNav">
+        <div>
+          <a href="{% url 'feedback-inbox-list' 'active' %}" class="app-logo d-flex flex flex-row align-items-center overflow-hidden justify-content-center">
+            <img src="{% static 'images/logo600x187.png' %}" width="155" height="48">
+          </a>
+        </div>
+        <div class="flex">
+            <div class="aside-content">
+                <ul class="metisMenu" id="metisMenu">
+                  <li {% if 'inbox' in request.path %} class="active show" {% endif %} >
+<!--
+                    <a href="{% url 'feedback-inbox-list' 'active' %}" style="white-space: normal !important; padding-left: 0px !important; width: 15px !important; display: block !important; overflow: auto !important"> 
+                      <i class="icon-Inbox nav-thumbnail" style="display: block !important; float: right !important;"></i>
+                    </a>
+-->
+                    <i class="icon-Inbox nav-thumbnail"></i>
+
+                    <a href="{% url 'feedback-inbox-list' 'active' %}" style="{% hide_sidebar 'sidebar_link' %}" >
+                      <span class="nav-text">
+                        Inbox ({{request.user.customer.untriaged_feedback_count}}/{{request.user.customer.pending_feedback_count}})
+                      </span>
+                    </a>
+                  </li><!--Menu-item-->
+                  <li {% if 'feature-request' in request.path and 'state=SHIPPED' not in request.get_full_path %} class="active" show {% endif %} >
+                    <i class="icon-Wizard nav-thumbnail"></i>
+                    <a href="{% url 'feature-request-list' %}?state=ALL_ACTIVE" style="{% hide_sidebar 'sidebar_link' %}">
+                      <span class="nav-text">
+                        Feature Requests
+                      </span>
+                    </a>
+                  </li>
+                  <li {% if 'feedback' in request.path and 'feature-request' not in request.path %} class="active" show {% endif %} >
+                    <i class="icon-Speach-Bubble nav-thumbnail"></i>
+                    <a href="{% url 'feedback-list' %}" style="{% hide_sidebar 'sidebar_link' %}">
+                      <span class="nav-text">
+                        All Feedback 
+                      </span>
+                    </a>
+                  </li>
+                  <li {% if 'theme' in request.path %} class="active" show {% endif %} >
+                    <i class="icon-Palette nav-thumbnail"></i>
+                    <a href="{% url 'theme-list' %}" style="{% hide_sidebar 'sidebar_link' %}">
+                      <span class="nav-text">
+                        Tags
+                      </span>
+                    </a>
+                  </li>
+                  <li>
+                    <i class="icon-Open-Book nav-thumbnail"></i>
+                    <a href="{% url 'feedback-inbox-list' 'active' %}?onboarding_modal=1"  style="{% hide_sidebar 'sidebar_link' %}">
+                      <span class="nav-text">
+                        How Savio Works
+                      </span>
+                    </a>
+                  </li>
+
+<!--
+                  <li class="checklist-narrow">
+                  <a href="{% url 'accounts-onboarding-checklist' %}" style="{% hide_sidebar 'sidebar_link' %}">
+                    <span class="nav-text">Onboarding Checklist</span>
+                  </a>
+                    <div style="font-size: 14px;" class="nav-thumbnail text-center ">
+                      40%
+                    </div>
+                  </li>
+-->
+                {% if show_onboarding %}
+                  <li class="mt-10">
+                    <div class="ml-20 mr-20 ">
+                      <div class="nav-text mb-10"><a href="{% url 'accounts-onboarding-checklist' %}">Onboarding Checklist</a></div>
+                        <span class="nav-thumbnail onboarding">
+                          {{percent_complete_onboarding_tasks}}%
+                        </span>
+
+                      <a href="{% url 'accounts-onboarding-checklist' %}">
+                        <div class="progress" style="height: 20px; width: 75%">
+                          <div class="progress-bar bg-primary progress-bar-striped" style="width: {{percent_complete_onboarding_tasks}}%">{{percent_complete_onboarding_tasks}}%
+                          </div>
+                        </div>
+                      </a>
+                      {% if percent_complete_onboarding_tasks < 100 %}
+                        <p class="mt-5"><a href="{% url 'accounts-onboarding-checklist' %}" style="color: #0084ff">Complete checklist →</a></p>
+                        {% endif %}
+                    </div>
+                  </li>
+                {% endif %}
+
+                {% if request.user.customer.subscription.is_usage_tiered and request.user.customer.subscription.under_free_feedback_limit and request.user.customer.subscription.no_card_on_file %}
+                  <!--<li class="mt-10">
+                    <div class="ml-20 mr-20 ">
+                      <div class="nav-text mb-10"><a href="{% url 'accounts-settings-add-credit-card' %}">Upgrade</a></div>
+                    </div>
+                  </li>-->
+                {% endif %}
+
+                </ul>
+
+            </div><!-- aside content end-->
+        </div><!-- aside hidden scroll end-->
+        <div class="aside-footer p-3 pl-25">
+            <div>
+              <!--- sidenav footer --> 
+                <!-- App Version - 1.0 -->
+            </div>
+        </div><!-- aside footer end-->
+    </div><!-- sidenav end-->
+</aside><!-- page-aside end-->

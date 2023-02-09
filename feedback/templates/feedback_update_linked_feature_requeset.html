@@ -1,0 +1,264 @@
+{% extends "base.html" %}
+{% load gravatar %}
+{% load filters %}
+{% load humanize %}
+{% load widget_tweaks %}
+{% load static %}
+
+{% block title_tag %}Triage Feedback | Savio{% endblock %}
+
+{% block head %}
+{{ form.media }}
+
+<!-- Because we can't use "form.media" in the fr ajax form (see form for details) hardcode the things we need for easymde here -->
+<link href="https://unpkg.com/easymde/dist/easymde.min.css" type="text/css" media="screen" rel="stylesheet">
+
+<script type="text/javascript" src="https://unpkg.com/easymde/dist/easymde.min.js"></script>
+<script type="text/javascript" src="https://unpkg.com/mousetrap@1.6.5/mousetrap.min.js"></script>
+
+<!-- these CSS files included for problem splitter feature -->
+<link href="{% static 'tether/tether-147.css' %}" rel="stylesheet">
+<link href="{% static 'selectionMenu/selectionMenu.css' %}" rel="stylesheet">
+<!-- end problem splitter feature -->
+
+{% endblock %}
+
+{% block body_content %}
+
+{% include "includes/onboarding_triage.html" %}
+
+<div class="row align-items-center  pt-30">
+  <div class="col-md-12">
+    <div class="mb-0">
+      <h4>Triage Feedback <a class="tooltip-large small text-muted" href="#"  data-placement="right" data-html="true" data-boundary="window" data-original-title='<h6>How To Triage</h6><p class="small"><strong>Can you imagine solving this problem one day?</strong><br>→ If not, delete or mark the Feedback as triaged.</p><p  class="small"><strong>Does it make sense?</strong><br>→ If not, ask the creator or customer for clarification.</p><p class="small"><strong>Which feature request does this belong to?</strong><br>→ Link the feedback to an existing feature request, or create one in the dropdown.</p>'><i class="far fa-xs fa-question-circle"></i></a></h4>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-10">
+    <div class="mb-30">
+      <div class="portlet-box portlet-gutter ui-buttons-col mb-30">
+        <div class="portlet-body">
+
+          {% if onboarding %}
+            <div class="alert alert-warning" role="alert">
+              <i class="fa fa-exclamation-triangle"></i> <strong>How to triage feedback</strong>
+              <hr class="message-inner-separator">
+              1. Pick or create a feature request that solves this problem<br>
+              2. Mark the feedback as Triaged
+            </div>
+          {% endif %}
+
+            <div class="p-2 mt-0">
+
+                {% include "includes/feedback-user-info.html" %}
+
+
+              <div class="pt-4 pb-3">
+
+
+                <span class="text-muted">Problem</span><br>
+
+                <span class="fs18" id="problem">{{feedback.problem|default:"N/A"|markdownify}}</span>
+
+                <form method="post">{% csrf_token %}
+                  {{form.errors}}
+                    {% for field in form.visible_fields %}
+                      <div class="form-group">
+                        <span class="text-muted">{{ field|as_bootstrap_label }}</span>
+                        {{ field|add_class:'form-control' }}
+                        {{ field|as_bootstrap_help_text }}
+                        {% for error in field.errors %}
+                          <span class="form-text text-danger">{{ error }}</span>
+                        {% endfor %}
+                      </div>
+                    {% endfor %}
+
+                    {% for field in form.hidden_fields %}
+                      {{field}}
+                    {% endfor %}
+
+                    <input type="hidden" name="initial_state" value={{feedback.state}}>
+                    <div class="row pt-10">
+                      <div class="col-lg-12">
+
+                        {% if not onboarding %}
+
+                        <p class="pb-30">
+                          {% include "includes/feedback-created-info.html" %}
+                        </p>
+
+                        {% endif %}
+
+                        <input class="btn btn-primary" type="submit" name="action" value="Mark Triaged">&nbsp;&nbsp;
+
+                        {% if not feedback.is_pending %}
+                          {% if not onboarding %}
+
+                            <div class="dropdown" style="display: inline;">
+
+                              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Snooze
+                              </button>
+                              <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                <button type="submit" class="dropdown-item" name="snooze_for" value="1">1 day</button>
+                                <button class="dropdown-item" name="snooze_for" value="3">3 days</button>
+                                <button class="dropdown-item" name="snooze_for" value="7">7 days</button>
+                                <button class="dropdown-item" name="snooze_for" value="14">14 days</button>
+                              </div>
+                            </div>
+
+
+                            {% if previous_feedback %}
+                            &nbsp;&nbsp;<a id="previous_feedback_link" style="display: inline;" href="{% url 'feedback-inbox-item' previous_feedback.pk %}">previous</a>&nbsp;|
+                            {% endif %}
+
+                            {% if next_feedback %}
+                            <a id="next_feedback_link" style="display: inline;" href="{% url 'feedback-inbox-item' next_feedback.pk %}">next</a>
+                            {% endif %}
+                            or
+                            <a style="display: inline;" href="{% url 'feedback-inbox-list' 'active' %}">back to inbox</a>
+                          {% endif %}
+                        {% else %}
+                            <input class="btn btn-secondary" type="submit" name="action" value="Unsnooze">
+                            &nbsp;&nbsp;<a href="{% url 'feedback-inbox-list' 'pending' %}">back to inbox</a>
+                      {% endif %}
+                      </div>
+                    </div>
+                    <input type="hidden" name="return" value="{{ return }}">
+                </form>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Model for making AppUser -->
+<div class="modal fade" id="modal-create-feature-request">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+    </div>
+  </div>
+</div>
+
+{% include "includes/problem-splitter-menu.html" %}
+
+{% endblock %}
+{% block script %}
+<script type="text/javascript">
+    // Shortcut keys...
+
+    // Move down to older item (next)
+    Mousetrap.bind('j', function() {
+      document.getElementById('next_feedback_link').click();
+    });
+
+    // Move up to earlier item (previous)
+    Mousetrap.bind("k", function() {
+      document.getElementById('previous_feedback_link').click();
+    });
+</script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  // Set "Copied to clipboard" tooltips to open manually
+  $('[data-toggle="tooltip_manual"]').tooltip({trigger: "manual"});
+
+  // "Copy to clipboard" Links should not jump page
+  $(".clipboard_link").click(function(e) {
+      e.preventDefault();
+  })
+
+  // Copy email address to clipboard
+  var clipboard = new ClipboardJS('.email_to_clipboard', {
+      text: function(trigger) {
+          return trigger.getAttribute('data-email-address');
+      }
+  });
+
+  // Show and hide "copied to clipboard" tooltip
+  clipboard.on('success', function(e) {
+      var ele = $(e.trigger);
+      ele.tooltip("show");
+      setTimeout(function() { ele.tooltip('hide') } , 500);
+  });
+
+  // HACK ALERT:
+  // This little shit sandwitch is b/c we need to change the width of the select2
+  // it's wrapped up in dal widget and there isn't an easy way to apply a class
+  // to the underlying select2 widget.
+  // To get around that we are using a MutationObserver to track when the select2
+  // span we need shows up and then fiddling with the width.
+  // If that seems gross you are right.
+  var targetNodes = $('form');
+  var MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
+  var myObserver = new MutationObserver (mutationHandler);
+  var obsConfig = {childList: true, subtree: true};
+  var haveFixedUserSelect2Width = false;
+
+  targetNodes.each ( function () {
+    myObserver.observe (this, obsConfig);
+  } );
+
+  function mutationHandler(mutationRecords) {
+    if ($(".select2-container")) {
+      $(".select2-container").tooltip({
+        title: function() {
+          return $(this).prev().attr("data-original-title");
+        },
+        placement: "right"
+      });
+    }
+  }
+  // END HACK ALERT
+
+  // Begin hardcoded stuff for fr ajax form
+  $(".js-create-feature-request").click(function () {
+    $.ajax({
+      url: "{% url 'feature-request-ajax-create' %}",
+      type: 'get',
+      dataType: 'json',
+      beforeSend: function () {
+        $("#modal-create-feature-request").modal("show");
+      },
+      success: function (data) {
+        $("#modal-create-feature-request .modal-content").html(data.html_form);
+      }
+    });
+  });
+
+  $("#modal-create-feature-request").on("submit", ".js-create-feature-request-form", function () {
+    var form = $(this);
+    $.ajax({
+      url: form.attr("action"),
+      data: form.serialize(),
+      type: form.attr("method"),
+      dataType: 'json',
+      success: function (data) {
+        if (data.form_is_valid) {
+          $("#modal-create-feature-request").modal("hide");
+          // The selects are dal widgets which are scoped to yl.jQuery not $
+          yl.jQuery("#id_feature_request").select2('trigger', 'select', {data: {id: data.id, text: data.text}});
+        }
+        else {
+          $("#modal-create-feature-request .modal-content").html(data.html_form);
+        }
+      }
+    });
+    return false;
+  });
+  // End hardcoded stuff for fr ajax form
+
+});
+</script>
+
+<!-- these three scripts included for problem splitter feature -->
+<script src="{% static 'tether/tether-147.js' %}"></script>
+<script src="{% static 'selectionMenu/selectionMenu.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/problem-splitter.js' %}"></script>
+<!-- end problem_splitter includes -->
+
+{% endblock %}

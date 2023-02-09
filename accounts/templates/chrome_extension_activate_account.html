@@ -1,0 +1,26 @@
+{% extends 'registration/login.html' %}
+
+{% block title_content %}
+    Account Activation
+{% endblock %}
+
+{% block body_content %}
+  {% if token_valid %}
+  <h2>Account Activated!</h2>
+  <p>
+    {{user.first_name.capitalize}}, your account has been verified and you're all set to add feedback using the Chrome Extension.  Just click the Savio icon in your browser toolbar to save Customer Feedback.
+  </p>
+
+  <p>
+    <h4>Watch this video</h4>
+    <!-- insert video -->
+    <iframe width="415" height="233" src="https://www.youtube.com/embed/KY4ohuinCLs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+  </p>
+  {% else %}
+  <h2>Invalid Token</h2>
+  <p>
+    Your account has not been activated. Please <a href="mailto:support@savio.io">contact support</a>.
+  </p>
+  {% endif %}
+{% endblock %}

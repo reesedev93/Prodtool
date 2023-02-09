@@ -1,0 +1,36 @@
+{% extends 'onboarding.html' %}
+
+{% block body_content %}
+<div class="row mb-30">
+  <div class="col-lg-12 ml-auto mr-auto">
+    <h2 class="mt-30 mb-30">Welcome! You'll be building better software soon.</h2>
+
+      {% include "includes/onboarding-wizard.html" %}
+
+      <div class="wizard-content pb-40 pt-30">
+
+        <div class="row">
+          <div class="col-sm-4 offset-sm-4">
+
+            <h4>Great decision, {{ user.first_name }}!</h4>
+            <div class="alert alert-primary" role="alert">
+
+              <h6>Once your Vault is set up, you can quickly answer questions like:</h6>
+              <ul>
+                <li>What features do my Enterprise Plan customers want?</li>
+                <li>Why did customers churn last month?</li>
+                <li>Which customers want improvements to our Search feature?</li>
+                <li>How much cumulative MRR does feature xyz have?</li>
+              </ul>
+            </div>
+            <div style="text-align: center">
+              <a class="btn btn-primary btn-lg"  href="{% url 'accounts-onboarding-customer-data' %}">Sounds great! Let's set up my Savio Feedback Vault →</a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+
+{% endblock %}

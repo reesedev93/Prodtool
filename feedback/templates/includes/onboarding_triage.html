@@ -1,0 +1,56 @@
+<div class="modal fade" id="onboarding_triage" tabindex="-1">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-content" style="width: 800px; border: 0; ">
+
+      <div class="modal-header" style="background-color: #000; border-radius: 0.3rem; border: 1px solid #000;">
+        <h5 class="modal-title" style="background-color: #000; color: #fff;">Triage Feedback</h5>
+      </div>
+        <div class="modal-body" >
+          <div class="portlet-box portlet-gutter ui-buttons-col">
+              <div class="portlet-body" >
+                  <div class="col-lg-11 col-xl-11 col-md-11" >
+                    <div id="onboarding-triage" style="padding-left: 60px;" class="pt-10 carousel slide" data-interval="false">
+                        <div class="carousel-inner" >
+                          <div class="carousel-item active">
+                            <h4 class="pb-20 fs18 text-muted">To Triage this Feedback</h4>
+                              <ol class="fs24">
+                                <li>Decide whether you'll act on this Feedback someday. If you won't, delete it</li>
+                                <li>Attach the Feedback to a Feature Request.  This "votes" up the Feature Request</li>
+                                <li>Mark it as Triaged. You can still find it by clicking "All Feedback" in the sidebar</li>
+                              </ol>
+
+                            <p class="fs24">
+                            <a href="#" class="close_modal btn btn-primary btn-sm">Got it.  Let's Triage this Puppy.</a>
+
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+              </div>
+          </div>
+        </div>
+<!--
+        <div class="modal-footer">
+footer
+        </div>
+-->
+    </div>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    if (params.onboarding_triage == 1) {
+
+      $(".close_modal").click(function() {
+        $("#onboarding_triage").modal('hide');
+      })
+
+      $(window).on('load',function(){
+        $('#onboarding_triage').modal('show');
+      });
+    }
+  })
+</script>
+

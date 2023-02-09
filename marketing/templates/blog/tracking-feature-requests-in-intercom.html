@@ -1,0 +1,144 @@
+{% extends "blog-page.html" %}
+{% load static %}
+{% block meta_title %}Tracking feature requests in Intercom{% endblock %}
+
+{% block meta_desc %}Learn three different options for setting up a high quality feature request tracking system for Intercom inbox messages.{% endblock %}
+
+
+{% block head %}
+  <!-- open graph tags -->
+  <meta property="og:url" content="{{ request.build_absolute_uri }}" />
+  <meta property="og:title" content="3 ways to track feature requests from your Intercom Inbox" /> <!-- 57 chars -->
+  <meta property="og:type" content="website" />
+  <meta property="og:description" content="Learn how to set up a high quality feature request tracking system for Intercom inbox messages" /> <!-- 73 chars -->
+
+  <meta property="og:site_name" content="Savio" />
+  <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'images/blog/intercom-og-graph-image.jpg' %}" />
+
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="628" />
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:site" content="@savio_io" />
+
+  <!-- 115 chars max -->
+  <meta property="twitter:description" content="Customer feature requests falling through the cracks? Here are 3 lightweight ways to track requests from your Intercom Inbox." />
+
+  <!-- end open graph -->
+
+  <!-- for content upgrade -->
+  <script src="https://sendfox.com/js/form.js"></script>
+{% endblock %}
+
+
+{% block content %}
+
+  <div class="col-md-12 blog blog-title text-center">
+    <h1>Tracking feature requests in Intercom</h1>
+  </div>
+    <div class="col-md-8 offset-md-2 blog">
+
+<p>If you are using Intercom as your support tool or to communicate with prospects you’re almost certainly getting messages that include valuable customer feedback and product feature requests. Those messages are pure gold. They can help you build a better product, be more customer focused and be seen as more responsive to your customers. You definitely don’t want to lose that valuable feedback. You want a well managed process that turns that feedback into results for customers.</p>
+
+<p>
+<img class="img-fluid" style="border: 1px solid #ddd" src="/static/images/help/intercom/intercom-integration-animated.gif" width="600" height="375">
+</p>
+
+<h2>Qualities of a Good Intercom Feature Request Tracking Process</h2>
+<p>What does a good <a href="{% url 'marketing-integrations-intercom' %}">Intercom feature request tracking system</a> look like? A good system has four main attributes.</p>
+<h3>Low Friction</h3>
+<p>If you want to make sure that every feature request that lands in your Intercom Inbox actually gets collected then the process better be easy. Ideally you don’t want your support reps to leave Intercom to track requests because that adds friction. If you ask people to jump through a bunch of hoops to collect feedback they are going to be less likely to do it.</p>
+<h3>Highlights Trends</h3>
+<p>If you dump every feature request in a generic “feedback bucket” it’s going to be painful to use. No one wants to read through a thousand uncategorized feature requests. Instead you want a system that organizes feature requests into logical buckets, <a href="{% url 'marketing-use-cases-prioritize-feedback' %}">groups related feature requests together</a> and makes it easy to spot trends.</p>
+<h3>Supports Segmentation</h3>
+<p>Not all feature requests are created equal and you want your process to capture that. One of the pluses of Intercom is that it makes it easy to send user and company properties to Intercom. For example, you can send properties like monthly spend (MRR) or what plan the company is paying for to Intercom and then tie that information back to the feature requests they have submitted. Imagine you have two feature requests: A and B. If 100 people have asked for feature A and 50 people have asked for feature B you might be tempted to think feature A is more important. But what if I told you that all 100 people who asked for feature A were on your free plan and all 50 people that asked for feature B were on your enterprise plan. Would you still think feature A is more important? That's why having a feature request tracking system that can <a href="{% url 'marketing-product-planning' %}">segment feature requests</a> is important.</p>
+<h3>Closes the Loop</h3>
+<p>You’ve collected a bunch of feature requests from customers. You’ve used those requests as evidence to make a product change. The feature has actually been added. Yay you! But if the customers that asked for the feature aren’t aware that it’s been added, or if you haven’t told them that their feature request was heard and influenced product direction then you’ve missed out on a big opportunity. Customers love feeling heard. By individually <a href="{% url 'marketing-use-cases-use-feedback' %}">messaging the customers that provided feedback</a> after you’ve shipped the feature you make them feel important and increase their affinity to your product and company. It’s a simple thing but it goes a long way to reducing churn. Intercom makes it easy to message users and you want your feedback process to tie into that.</p>
+<h2>Three Different Options for Setting up an Intercom Feature Request Tracking System</h2>
+<p>There are three main options for setting up an Intercom feature request tracking system:</p>
+<ol><li>Use Intercom tagging and reports.</li>
+<li>Use a general purpose tool like Google Sheets or Trello.</li>
+<li>Use a purpose built feedback management system with a deep Intercom integration like <a href="{% url 'marketing-home' %}">Savio</a>.</li></ol>
+<h3>Option 1: Using Intercom Tagging and Reports</h3>
+<p>With this approach you tag all feature requests as they come in with a set of tags you maintain in Intercom e.g. “Feature Request: A”, “Feature Request: B” etc. Then you use Inbox search and export to CSV process to work with the data.</p>
+
+<p>
+    <img class="img-fluid" style="border: 1px solid #ddd" src="/static/images/blog/intercom_export_inbox_messages.png" width="600" height="375">
+</p>
+
+<p>
+    <img class="img-fluid" style="border: 1px solid #ddd" src="/static/images/blog/intercom-excel-export.png" width="600" height="375">
+</p>
+
+</p>
+<h4>Pros:</h4>
+<ul class="small"><li>No additional tools.</li>
+<li>Low friction for support reps. Just tag conversations.</li></ul>
+
+<h4>Cons:</h4>
+<ul class="small"><li>Hard to see trends. You have to either build a search for each tag and walk the list of conversations manually or export all of your conversations to a csv and build your own analysis.</li>
+<li>Hard to segment feature requests based on user and company properties like plan and MRR.</li>
+<li>Hard to close the loop with customers after you ship a requested feature.</li>
+<li>Poor centralization. Feature requests that come in via other channels like email, Slack, Salesforce etc. need to be handled with a different process.</li></ul>
+
+<p>You can workaround the difficulties in spotting trends to some extent by:</p>
+<ol><li>Exporting all of your messages to CSV using: Inbox / Reports / Export.</li>
+<li>Building your own pivot table to analyze feature requests trends. Be aware that the export doesn’t include company or user attributes so you won’t be able to segment feature requests by plan, MRR or other attributes that might be important to you. The export also doesn’t include the message content. This means you won’t be able to use the export to dig deeper into what people really want. For that you’ll have to go back to the Inbox and walk each message individually.</li></ol>
+
+<p>You can workaround the difficulties in closing the loop by:</p>
+<ol><li>Exporting your message per above.</li>
+<li>Filtering the messages to only include the ones that have the tag you want. </li>
+<li>Copying and paste all of the email addresses back to Intercom or your email tool to send feature requesters messages.</li></ol>
+<h3>Option 2: Use a General Purpose Tools</h3>
+<p>With this approach you use a general purpose tool like Google Sheets, Air Table or Trello. As feedback comes in you manually paste it into the tool.</p>
+
+<h4>Pros:</h4>
+<ul class="small"><li>Don’t need to learn a new tool.</li>
+<li>With careful maintenance you can group related feature requests and highlight trends.</li>
+<li>Can be used to centralize feature requests from multiple channels not just Intercom.</li></ul>
+
+<h4>Cons:</h4>
+<ul class="small"><li>High friction. You need to leave Intercom and paste a bunch of info into another tool.</li>
+<li>Hard to segment feature requests based on user and company properties.</li>
+<li>Hard to close the loop. Have to manually email each user by copy and pasting their email address back to Intercom.</li></ul>
+<h3>Option 3: Use a Purpose Built Tool Like Savio</h3>
+<p>With a purpose built tool like <a href="{% url 'marketing-home' %}">Savio</a> you get a smooth, integrated process designed to make it easy to track feature requests from Intercom as well as many other channels like email, Slack and Salesforce.
+</p>
+
+<p>
+<img class="img-fluid" style="border: 1px solid #ddd" src="/static/images/help/intercom/intercom-integration-animated.gif" width="600" height="375">
+</p>
+
+<h4>Pros:</h4>
+<ul>
+<li>Low friction. Just tag a message and it gets added to your Feedback Vault.</li>
+<li>Easy to highlight trends and see at a glance what feature requests are most important.</li>
+<li>Easy to segment feature requests based on different user and company properties like monthly spend and plan.</li>
+<li>Built in workflow for closing the loop after feature requests are shipped.</li>
+<li>Unified system for all feedback not just feedback from Intercom.</li>
+<li>Many additional features designed to give you a high quality feature request tracking system.</li></ul>
+
+<h4>Cons:</h4>
+<ul>
+<li>You need to learn a new tool.</li>
+<li>You have to pay for an additional tool.</li></ul>
+<h2>How to Choose an Option</h2>
+<p>If you are only getting a handful of pieces feature requests a month, requests primarily come via Intercom and you don’t care about segmentation then consider using Intercom + tags + CSV export. It’s low friction and it’s better to actually capture feature requests then not capture them.</p>
+
+<p>If your feedback is multi-channel, low volume and you’re price conscious consider a free general purpose tool like Google Sheets or Trello but only if you are confident that team members are really going to jump through the hoops required to capture the feedback. There is no point in starting the effort if it’s not actually going to get used and this approach takes more discipline on the part of the submitters.</p>
+
+<p>If you get a moderate amount of feedback, receive feedback from different channels, or care about segmentation then it’s worth investing in a purpose built tool. By having a strong process around feature requests you’ll be able to grow revenue, reduce customer acquisition costs, and increase retention. Your customers will appreciate your more thoughtful use of their feedback and the product improvements that come from it.</p>
+
+  </div>
+    {% include "includes/blog-cta.html" with title="Start Tracking Feature Requests Today" %}
+{% endblock %}
+
+{% block footer_scripts %}
+  <!-- for auto-creating anchor link -->
+  <script type="text/javascript" src="{% static 'jquery-anchorify/anchorify.js' %}"></script>
+
+  <script type="text/javascript">
+      $(document).ready(function() {
+          jQuery('body').anchorify();
+      });
+  </script>
+{% endblock %}

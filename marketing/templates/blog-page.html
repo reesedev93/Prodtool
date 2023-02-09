@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>{% block meta_title %}Savio{% endblock %}</title>
+        <meta name="description" content="{% block meta_desc %}Savio{% endblock %}">
+
+        <!-- Plugins CSS -->
+        <link href="{% static 'css/plugins/marketing_plugins.css' %}" rel="stylesheet">
+        <link href="{% static 'linearicons/fonts.css' %}" rel="stylesheet">
+        <link href="{% static 'font-awesome/css/all.min.css' %}" rel="stylesheet">
+        <link href="{% static 'css/style-saas-landing.css' %}" rel="stylesheet">
+        <link rel="icon" type="image/png" href="{% static 'images/favicon_48.png' %}" />
+
+        <meta property="fb_app_id" content="333752754211489" />
+        <meta name="slack-app-id" content="AHB04HNE9">
+
+        {% block head %}{% endblock %}
+
+        {% include "includes/tracking.html" with hide_recording=True %}
+
+    </head>
+
+    <body >
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-white navbar-transparent-light navbar-sticky fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="/">
+                    <img src="{% static 'images/logo-black-no-background.png' %}" alt="" height="70" class='logo-scroll'>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#landingkit-navbar" aria-controls="landingkit-navbar" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                {% include 'includes/topnav-linkbar.html' %}
+
+
+            </div>
+        </nav>
+
+
+        <main class="main-content">
+            <section id="content" class='gradient-faded'>
+                <div class="container pt120 pb30">
+                  <div class="row">
+                      {% block content %}Content{% endblock %}
+                  </div>
+                </div>
+            </section>
+        </main>
+
+        {% include "includes/footer.html" %}
+
+<!--
+        <footer class="footer">
+            <div class="container">
+                <div class="text-center copyright">
+                    <span>&copy; Copyright Savio.io 2018-{% now "Y" %}</span>
+                </div>
+            </div>
+        </footer>
+-->
+
+        <!-- jQuery first, then Tether, then Bootstrap JS. -->
+        <script type="text/javascript" src="{% static 'js/plugins/marketing_plugins.js' %}"></script>
+        <!--tweet-scroller-->
+        <script type="text/javascript" src="{% static 'js/saas.products.custom.js' %}"></script>
+
+        {% block footer_scripts %} {% endblock %}
+
+        {% include 'includes/intercom_widget.html' %}
+    </body>
+</html>

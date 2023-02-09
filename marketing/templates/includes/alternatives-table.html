@@ -1,0 +1,41 @@
+{% load static %}
+    <table class="table pt20" style="width: 60% !important">
+      <tr>
+        <td width="40%">
+          <img src="{% static '/images/savio-wordmark.png' %}" height="25" width="92"> 
+        </td>
+        <td width="60%">
+          {% if savio_rating == "OK" %}
+            <span class="text-warning">
+             <i class="fa fa-exclamation-circle fa-lg"></i>
+          {% elif savio_rating == "Good" %}
+            <span class="text-success">
+             <i class="fa fa-check-circle fa-lg"></i>
+          {% elif savio_rating == "Not Good" %}
+            <span class="text-danger">
+             <i class="fa fa-times-circle fa-lg"></i>
+          {% endif %}          
+         {{savio_rating}}</span>
+       </td>
+      </tr>
+
+      <tr class="b-b">
+        <td>
+          <img src="{% static competitor_image %}" height="25" >    
+        </td>
+        <td>
+          {% if comp_rating == "OK" %}
+            <span class="text-warning">
+             <i class="fa fa-exclamation-circle fa-lg"></i>
+          {% elif comp_rating == "Good" %}
+            <span class="text-success">
+             <i class="fa fa-check-circle fa-lg"></i>
+          {% elif comp_rating == "Not Good" %}
+            <span class="text-danger">
+             <i class="fa fa-times-circle fa-lg"></i>
+          {% endif %}          
+         {{comp_rating}}</span>
+
+        </td>
+      </tr>
+    </table>

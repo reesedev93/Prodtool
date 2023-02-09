@@ -1,0 +1,110 @@
+{% extends "admin/base_site.html" %}
+{% load crispy_forms_tags %}
+
+{% block head %}
+{{ form.media }}
+{% endblock %}
+
+{% block content %}
+
+<div class="row align-items-center pt-30">
+    <div class="col-md-12 mr-auto ml-auto">
+        <div class="mb-0">
+          <h4>Upload Feedback</h4>
+        </div>
+        <strong>Read Carefully</strong>
+        <p>
+          You will definitely want to test this in your local before using in a live account.
+        </p>
+        <p>
+          Upload assumes you've a csv file in just the format we want. You'll need to format the csv file you received from the customer to match what we require <strong>before</strong> uploading. Take a look at <a target="_blank" href="https://drive.google.com/drive/u/0/folders/1QL1PfIy65x5NqdNnuVyl7f9rhsy3-1n8">for some examples</a>. At some point we should make this smarter. Perhapse create a dropdowns to map the fields.
+        </p>
+        <p>
+          Here are the requried columns. If you don't have all this data and empty columns:
+        </p>
+        <p>
+          <strong>AppCompany</strong>
+          <ul>
+            <li>AppCompany.name: <strong>company_name</strong></li>
+            <li>AppCompany.internal_id: <strong>company_internal_id</strong></li>
+            <li>AppCompany.filterable_attributes: 
+              <ul>
+                <li><strong>company_fa_monthly_spend</strong> (float)</li>
+                <li><strong>company_fa_plan</strong> (string)</li>
+                <li>Keep in mind that you'll need to make the FilterableAttributes yourself manually via the Django Admin after you've imported the data.</li>
+                <li>The FA names themselves are hardcoded. That should probably change.</li>
+              </ul>
+          </ul>
+          <strong>AppUser</strong>
+          <ul>
+            <li>AppUser.email: <strong>user_email</strong></li>
+            <li>AppUser.name: <strong>user_name</strong></li>
+            <li>AppUser.internal_id: <strong>user_internal_id</strong></li>
+          </ul>
+          <strong>FeatureRequest</strong>
+          <ul>
+            <li>FeatureRequest.title: <strong>fr_title</strong></li>
+            <li>FeatureRequest.description: <strong>fr_description</strong></li>
+            <li>FeatureRequest.state: <strong>fr_state</strong></li>
+            <li>FeatureRequest.priority: <strong>fr_priority</strong></li>
+            <li>For cases like Canny where we only have votes you can make placeholder Feedbacks for a FR using: <strong>fr_votes</strong></li>
+          </ul>
+          <strong>FeatureRequest Tags</strong>
+          <ul>
+            <li>Themes.title: <strong>fr_tags</strong></li>
+            <li>Multiple tags are supported via a comma seperated list.</li>
+          </ul>
+          <strong>Feedback Tags</strong>
+          <ul>
+            <li>Themes.title: <strong>feedback_tags</strong></li>
+            <li>Multiple tags are supported via a comma seperated list.</li>
+          </ul>
+          <strong>Feedback</strong>
+          <ul>
+            <li>Feedback.problem: <strong>feedback_problem</strong></li>
+            <li>Feedback.created: <strong>feedback_created</strong></li>
+            <li>Feedback.source_url: <strong>feedback_source_url</strong></li>
+          </ul>
+        </p>
+    </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-9">
+    <div class="mb-30">
+      <div class="portlet-box portlet-gutter ui-buttons-col mb-30">
+          <div class="portlet-body">
+            <form method="post" enctype="multipart/form-data" action="">{% csrf_token %}
+              {{ form|crispy }}
+              <input type="submit" name="action" value="Upload Feature Requests" class="btn btn-primary">
+              or <a href="{% url 'admin:feedback_featurerequest_changelist' %}">cancel</a>
+            </form>
+
+            {% if total_imported %}
+            <h3>Imported {{total_imported}} Feeback. Import Token: {{import_token}}</h3>
+            {% endif %}
+            {% if invalid_rows %}
+            <h3>Skipped {{invalid_rows|length}} invalid rows.</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Reason</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row, reasons in invalid_rows %}
+                    <tr>
+                        <td>{{row}}</td>
+                        <td>{{reasons|join:", "}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% endif %}
+          </div>
+      </div><!--portlet-->
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,72 @@
+{% extends "basic_page.html" %}
+{% load static %}
+
+{% block meta_title %}
+Send feedback to Savio with the Zapier Integration 
+{% endblock %}
+
+{% block meta_desc %}Send feedback to Savio with the Zapier Integration{% endblock %}
+
+{% block title %}
+Zapier Integration
+{% endblock %}
+
+{% block content %}
+  <div class="container pt90 pb90 ">
+    <div class="row">
+      <div class="col-md-9 docs">
+        <h2>Why use the Zapier integration?</h2>
+        <p>
+            If you have feedback in a tool that Savio doesn't have a native integration with, you can use Zapier to send feedback to Savio.
+        </p>
+
+        <h3>Setting it up</h3>
+        <p>
+        <h4>1. Grab your API token on your <a href="{% url 'accounts-my-settings-list' %}">My Settings</a> page</h4>
+
+            <img src="{% static 'images/help/zapier/001-api-token.png' %}" class="img-fluid image">
+
+        </p>
+
+        <p>
+            <h4>2. In your Zap, add a "Webhooks by Zapier" step with a POST</h4>
+
+            <img src="{% static 'images/help/zapier/002-new-zap.png' %}" class="img-fluid image">
+
+        </p>
+        <p>
+            <h4>3. Make sure the app is "Webhooks by Zapier" and the Action Event is POST</h4> 
+            <img src="{% static 'images/help/zapier/003-create-zap.png' %}" class="img-fluid image">
+        </p>
+
+           
+        <p>
+            <h4>4. URL and Payload Type</h4>
+            In the <pre style="display: inline;">URL</pre> field enter <pre style="display: inline;">https://www.savio.io/app/api/create-feedback/</pre>.
+            <br><br>In the <pre style="display: inline;">Payload Type</pre> field enter <pre style="display: inline;">Json</pre>.<br>
+            <img src="{% static 'images/help/zapier/004-zap-url-and-payload.png' %}" class="img-fluid image">
+        </p>
+
+          <h4>5. Customize data to send to Savio</h4>
+          <p>
+            Depending on the information in the source tool, you'll want to customize the fields you send to Savio.  Below are the possible fields you can send to Savio.</p>
+            <img src="{% static 'images/help/zapier/005-zap-fields.png' %}" class="img-fluid image">
+
+            <h5 class="mt30">Field Descriptions</h5>
+            <p>Here's a description of each field that you can send to Savio.</p>
+            {% include "includes/create-feedback-api-parameters.html" %}
+
+        <p>
+            <h4>6. Add Auth Header</h4>
+            6. Scroll down to the Headers section.  You'll want to enter a header called <pre style="display: inline;">Authorization</pre>.  Its value should be the word "Token" followed by a space and the API Token you grabbed in Step 1:<br>
+
+            <img src="{% static 'images/help/zapier/006-auth-header.png' %}" class="img-fluid image">
+        </p>
+        <h4>You're done</h4>
+        <p>Test your Zap and you should be good to go.  Questions?  Email <a href="mailto:help@savio.io">help@savio.io</a> and we'll get you sorted.</p>  
+
+    </div>
+</div>
+  
+</div>
+{% endblock %}

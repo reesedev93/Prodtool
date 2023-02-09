@@ -1,0 +1,77 @@
+{% load static %}
+{% load filters %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        
+        <!-- don't index this page -->
+        <meta name="robots" content="noindex,nofollow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>{% block meta_title %}Savio{% endblock %}</title>    
+        <meta name="description" value="{% block meta_desc %}Savio{% endblock %}">
+
+        <!-- Plugins CSS -->
+        <link href="{% static 'css/plugins/marketing_plugins.css' %}" rel="stylesheet">
+        <link href="{% static 'linearicons/fonts.css' %}" rel="stylesheet">
+        <link href="{% static 'font-awesome/css/fontawesome-all.min.css' %}" rel="stylesheet">
+        <link href="{% static 'css/style-saas-landing.css' %}" rel="stylesheet">
+        <link rel="icon" type="image/png" href="{% static 'images/favicon_48.png' %}" />
+        
+        <script>
+          window.intercomSettings = {
+            app_id: "wtjp1cpi",
+            {% if request.user.is_authenticated %}
+            name: "{{request.user.first_name}} {{request.user.last_name}}",
+            email: "{{request.user.email}}",
+            user_id: "{{request.user.id}}",
+            company: {
+                id: "{{request.user.customer.id}}",
+                name: "{{request.user.customer.name}}",
+                created_at: {{request.user.customer.created.timestamp}},
+                plan: "Pro", 
+                monthly_spend: 750, 
+                upgraded_at: {{request.user.customer.created.timestamp}}
+            }
+            {% endif %}
+          };
+        </script>
+        <script>(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/wtjp1cpi';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();</script>
+
+    </head>
+
+    <body data-spy="scroll" data-target="#landingkit-navbar" data-offset="75">
+
+        {% include "includes/marketing-header.html" %}
+
+
+        <div id="home" class="hero-gradient-dark-small gradien-primary">
+            <div class="container">
+                <div class="row align-items-center">
+                    <!-- switch to col-lg-6 to put image carousel back -->
+                    <div class="col-lg-12 mr-auto ml-auto pb50">
+                        <h1 class="mb20 text-white h1">{% block title %}Start conversation with INtercom test instance{% endblock %}</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <main class="main-content">
+            <section id="content" class='gradient-faded'>
+
+
+            </section>
+        </main>
+
+        {% include "includes/join_cta.html" %}
+
+        {% include "includes/footer.html" %}
+
+        <!-- jQuery first, then Tether, then Bootstrap JS. -->
+        <script type="text/javascript" src="{% static 'js/plugins/popper.js' %}"></script> 
+        <script type="text/javascript" src="{% static 'js/plugins/marketing_plugins.js' %}"></script> 
+        <script type="text/javascript" src="{% static 'js/saas.products.custom.js' %}"></script> 
+    </body>
+</html>

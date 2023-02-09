@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block title_tag %}Delete Tag | Savio{% endblock %}
+
+{% block head %}
+{{ form.media }}
+{% endblock %}
+
+{% block body_content %}
+
+<div class="row align-items-center pt-30">
+    <div class="col-md-12 mr-auto ml-auto">
+        <div class="mb-0">
+          <h4>Delete Tag?</h4>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+  <div class="col-lg-9">
+    <div class="mb-30">
+      <div class="portlet-box portlet-gutter ui-buttons-col mb-30">
+          <div class="portlet-body">
+            <form method="post">{% csrf_token %}
+                <p>
+                  {% if total_fr_links and total_feedback_links %} 
+                      Deleting <strong>{{theme}}</strong> will unlink it from <a href="{% url 'feature-request-list' %}?theme={{ theme.id }}">{{total_fr_links}} feature{{ total_fr_links|pluralize }}</a> and <a href="{% url 'feedback-list' %}?theme={{ theme.id }}">{{total_feedback_links}} piece{{ total_feedback_links|pluralize }} of feedback</a>.
+                  {% elif total_fr_links %}
+                      Deleting <strong>{{theme}}</strong> will unlink it from <a href="{% url 'feature-request-list' %}?theme={{ theme.id }}">{{total_fr_links}} feature{{ total_fr_links|pluralize }}</a>.
+                  {% elif total_feedback_links %}
+                      Deleting <strong>{{theme}}</strong> will unlink it from <a href="{% url 'feedback-list' %}?theme={{ theme.id }}">{{total_feedback_links}} feature{{ total_feedback_links|pluralize }}</a>.
+                  {% endif %}
+
+                  Are you sure you want to delete <strong>{{theme}}</strong>?
+                </p>
+                <input type="submit" value="Delete Tag" class="btn btn-danger">
+            </form>
+          </div>
+      </div><!--portlet-->
+    </div>
+  </div>
+</div>
+{% endblock %}

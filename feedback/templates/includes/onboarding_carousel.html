@@ -1,0 +1,151 @@
+<div class="modal fade" id="onboarding_modal" tabindex="-1">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-content" style="width: 800px; border: 0; ">
+
+      <div class="modal-header" style="background-color: #000; border-radius: 0.3rem; border: 1px solid #000;">
+        <h5 class="modal-title" style="background-color: #000; color: #fff;">How Savio Works</h5>
+      </div>
+        <div class="modal-body" >
+          <div class="portlet-box portlet-gutter ui-buttons-col">
+              <div class="portlet-body" >
+                  <div class="col-lg-11 col-xl-11 col-md-11" >
+                    <div id="onboarding-carousel" style="padding-left: 60px;" class="pt-10 carousel slide" data-interval="false">
+                        <div class="carousel-inner" >
+                          <div class="carousel-item active">
+                            <p class="fs24" >Your customers' <strong>Feedback</strong> comes into Savio from many different <strong>Sources</strong>. It lands in your <strong>Feedback Inbox</strong>, where you <strong>Triage</strong> it.</p>
+                          </div>
+                          <div class="carousel-item">
+                            <p class="fs24">To <strong>Triage</strong> your  <strong>Feedback</strong>, you <strong>attach</strong> your Feedback to a <strong>Feature Request</strong>.</p>
+                            <p class="fs24">A <strong>Feature Request</strong> can have <strong>many pieces</strong> of attached <strong>Feedback</strong>.</p>
+                          </div>
+                          <div class="carousel-item">
+                            <p class="fs24">Once <strong>Feedback </strong> is attached to a <strong>Feature Request</strong>, you can rank requests by Feedback count and cumulative customer MRR.</p>
+
+                            <p class="fs24">Drill into a Feature Request to see who left Feedback about it, along with their plan and revenue information.</p>
+                          </div>
+                          <div class="carousel-item">
+                            <p class="fs24" id="cta_div">👏 Nice job! Now you know how Savio hangs together.<br><br>The next step is to add some Customer Feedback.<br><br>
+                              <a href="{% url 'feedback-create-item' %}?onboarding_add_feedback=1&return={% url 'feedback-inbox-list' 'active' %}%3Fonboarding_inbox=1" class="btn btn-primary btn-sm">Add Feedback directly in Savio</a> <span id="or_use_ce">or</span> <a href="#" class="add_using_extension btn-primary  btn btn-sm">Add Feedback using the Chrome Extension</a>
+                            </p>
+                            <div id="cta_ce" style="display: none;">
+                                <p class="fs24">👍 Here's what to do next:</p>
+                                <ol class="fs24">
+                                  <li>Open a new tab and navigate to where your customer feedback lives</li>
+                                  <li>Use the Savio Extension to enter some feedback</li>
+                                  <li>Come back here once that's done</li>
+                                </ol>
+
+                              <a href="{% url 'feedback-inbox-list' 'active' %}?onboarding_inbox=1" class="btn btn-primary btn-sm">Done entering feedback? Let's triage it.</a> <small>or <a href="{% url 'feedback-create-item' %}?onboarding_add_feedback=1&return={% url 'feedback-inbox-list' 'active' %}%3Fonboarding_inbox=1" class="text-muted" id="go_back_cta">enter directly into Savio instead</a></small>
+                            </div>
+
+                            <p class="fs24" id="cta_no_ce" style="display: none;">
+                              👍 Here's what to do next:<br><br>
+                              1. <a href="{% url 'download-chrome-extension' %}" target="_blank">Install the Savio Chrome Extension</a><br>
+                              2. Come back here when finished
+
+                              <br><br><a href="#" class="cta_use_ce btn btn-primary btn-sm">I've installed the Chrome Extension. Let's use it!</a> <small class="fs14">or <a href="{% url 'feedback-create-item' %}?onboarding_add_feedback=1&return={% url 'feedback-inbox-list' 'active' %}%3Fonboarding_inbox=1" class="text-muted" id="go_back_cta">enter feedback directly into Savio</a></small>
+
+                            </p>
+
+<!--
+                            <a href="{% url 'feature-request-create-item' %}?return={{request.get_full_path|urlencode}}">I've added feedback: let's go Triage it</a>
+-->
+                          </div>
+
+                          <div class="pt-30">
+                            <ol class="carousel-indicators" style="position: relative !important;">
+                              <li data-target="#onboarding-carousel" data-slide-to="0" class="active"></li>
+                              <li data-target="#onboarding-carousel" data-slide-to="1"></li>
+                              <li data-target="#onboarding-carousel" data-slide-to="2"></li>
+                              <li data-target="#onboarding-carousel" data-slide-to="3"></li>
+                            </ol>
+                            <div style="text-align: center;"><a class="text-muted" href="{% url 'feedback-inbox-list' 'active' %}">I'd rather explore on my own</a></div>
+                          </div>
+
+                        </div>
+                    </div>
+                  </div>
+                  <a class="carousel-control-prev" href="#onboarding-carousel" role="button" data-slide="prev">
+                      <i class="fas fa-chevron-circle-left fa-3x" style="color: #aaa;"></i>
+                      <span class="sr-only">Previous</span>
+                  </a>
+                  <a class="carousel-control-next" href="#onboarding-carousel" role="button" data-slide="next">
+                      <i class="fas fa-chevron-circle-right fa-3x" style="color: #aaa;"></i>
+                      <span class="sr-only">Next</span>
+                  </a>
+
+              </div>
+          </div>
+        </div>
+<!--
+        <div class="modal-footer">
+footer
+        </div>
+-->
+    </div>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+  $(document).ready(function() {
+
+    // From https://stackoverflow.com/a/9851769/70057
+    var isChrome = !!window.chrome && (!!window.chrome.webstore || !!window.chrome.runtime);
+
+    if (params.onboarding_modal == 1) {
+
+      if (isChrome) {
+
+        // Extension ID is different if we're on prod.
+        if (window.location.hostname == "www.savio.io") {
+          var extensionId = "iihflnhbcjoeneakjblkjhmmfiggjakf";
+        } else {
+          var extensionId = "mjbkboaiemnhfljoefofgmkemonpodnf";
+        }
+
+        var hasExtension = false;
+
+        chrome.runtime.sendMessage(extensionId, { message: "installed" }, function (reply) {
+          try {
+            if (reply && reply.installed === true) {
+              hasExtension = true;
+            } else {
+              hasExtension = false;
+            }
+          } catch (e) {
+            // console.log(e)
+          }
+        });
+
+        $(".add_using_extension").click(function(e) {
+          if (hasExtension) {
+            $("#cta_div").hide();
+            $("#cta_no_ce").hide();
+            $("#cta_ce").show();
+          } else {
+            $("#cta_div").hide();
+            $("#cta_ce").hide();
+            $("#cta_no_ce").show();
+          }
+
+          e.preventDefault();
+        })
+
+        $(".cta_use_ce").click(function(e) {
+          $("#cta_div").hide();
+          $("#cta_no_ce").hide();
+          $("#cta_ce").show();
+        })
+      } else {
+        $(".add_using_extension").hide();
+        $("#or_use_ce").hide();
+      }
+
+      //$(window).on('load',function(){
+        $('#onboarding_modal').modal('show');
+      //});
+    }
+  })
+</script>
+

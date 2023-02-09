@@ -1,0 +1,212 @@
+{% extends "basic_page.html" %}
+{% load static %}
+
+{% block head %}
+
+<meta property="og:url" content="{{ request.build_absolute_uri }}" />
+
+<!-- og:title should be 85 chars max -->
+<meta property="og:title" content="Track feature requests in SurveyMonkey with Savio" />
+
+<meta property="og:type" content="article" />
+
+<!-- og:description should be 200 chars max. Make sure first 150 make sense. -->
+<meta property="og:description" content="Track feature requests received in SurveyMonkey surveys alongside requests received in all your other tools. Prioritize with data and delight your customers." />
+<meta property="og:site_name" content="Savio" />
+
+<meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'images/surveymonkey-and-savio.png' %}" />
+
+<meta property="og:image:width" content="1024" />
+<meta property="og:image:height" content="512" />
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:site" content="@savio_io" />
+
+<!-- 115 chars max -->
+<meta property="twitter:description" content="Track feature requests received in SurveyMonkey surveys. Make data-driven decisions about what to build next." /> 
+
+{% endblock %}
+
+{% block meta_title %}
+Track feature requests received in SurveyMonkey surveys 
+{% endblock %}
+
+{% block meta_desc %}Track feature requests received in SurveyMonkey surveys alongside requests received in all your other tools. Prioritize with data and delight your customers.{% endblock %}
+
+{% block title %}
+<div class="text-center">
+Track Feature Requests from SurveyMonkey</div>{% endblock %}
+
+{% block content %}
+
+<div class="bg-white pt50">
+    <div class="container">
+
+        <div class="row">
+            <div class='col-lg-12 pb40 text-center' >
+                <h2>Track Feature Requests sent to SurveyMonkey</h2>
+
+                <h4 class="mt20">Keep track of requests you receive in SurveyMonkey.</h4>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class='col-lg-12 pb40 text-center' >
+                <img class="img-fluid" src="{% static 'images/surveymonkey-and-savio.png'  %}" width="500" height="200"><br>
+                <span class="text-muted">SurveyMonkey, meet Savio</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="bg-faded pt50 pb50">
+    <div class="container">
+        <div class="row">
+            <div class='col-lg-12 pb40 text-center' >
+                <h3 class="pb40">Tag your conversation. Send it to Savio. Profit. </h3>
+                <img class="img-fluid" style="border: 1px solid #ddd" src="{% static 'images/help/intercom/intercom-integration-animated.gif' %}" width="600" height="375"><br>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="bg-white pt50 pb50">
+    <div class="container">
+        <div class="row">
+            <div class='col-lg-12 pb40 text-center' >
+                <h3>Start capturing Intercom feedback in 10 seconds</h3>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-5 ml-auto pb40">
+              <p>How it works:</p>
+              <ul>
+                <li>Pick an Intercom tag that Savio will listen for</li>
+                <li>When a customer sends a feature request to Intercom, apply this tag to the conversation</li>
+                <li>Savio will pull in the conversation for your Product Managers to act on</li>
+              </ul>
+            </div>
+            <div class='col-lg-6 pb40 text-center' >
+                <img class="img-fluid  " style="border: 1px solid #ddd" src="{% static 'images/help/intercom/pick-intercom-tag-fat.png' %}">
+                <div class='font12 text-center pt10'>Choose the Intercom tag to import</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="bg-faded pt50 pb30">
+    <div class="container">
+
+        <div class="row">
+            <div class='col-lg-12 pb40 text-center' >
+                <h3>👋 See ya, spreadsheets. Hello, supporting customers.</h3>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class='col-lg-6 pb40 text-center' >
+                <img class="img-fluid  " style="border: 1px solid #ddd" src="{% static 'images/help/intercom/fat-tag-intercom-message-no-annotation.png' %}">
+                <div class='font12 text-center pt10'>Add your pre-defined tag to a conversation and Savio will import it</div>
+            </div>
+            <div class="col-lg-5 ml-auto pb40">
+              <p>Don't use another tool to send feature requests to Product. Here's how Savio works:</p>
+              <ul class="list-unstyled feature-list">
+                  <li>Just add your pre-defined tag to a conversation</li>
+                  <li>Savio pulls it in for your Product Managers</li>
+                  <li>You get back to helping your customers</li>
+                  <li>You don't even need a Savio account</li>
+              </ul> 
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="bg-white pt90 pb50">
+    <div class="container">
+
+        <div class="row">
+            <div class='col-lg-12 pb40 text-center' >
+                <h3>Ensure feature requests reach your Product Team</h3>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-5 ml-auto pb40">
+              <p>Savio adds a private note when you tag a conversation.</p>
+              <p>That way, you can be 100% sure your feedback arrived safely for your Product Managers to read.</p>
+            </div>
+            <div class='col-lg-6 pb40 text-center' >
+                <img class="img-fluid  " style="border: 1px solid #ddd" src="{% static 'images/help/intercom/fat-tag-helpscout-message-ack-no-annotation.png' %}">
+                <div class='font12 text-center pt10'>An internal note confirms Savio received the feedback</div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<div class="bg-faded pt90 pb50">
+    <div class="container">
+
+        <div class="row">
+            <div class='col-lg-12 pb40 text-center' >
+                <h3>All the context for your Product Managers. Without hallway conversations.</h3>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class='col-lg-6 pb40 text-center' >
+                <img class="img-fluid  " style="border: 1px solid #ddd" src="{% static 'images/help/intercom/fat-link-to-helpscout-source-conversation.png' %}">
+                <div class='font12 text-center pt10'>Click to Intercom to read the whole conversation</div>
+            </div>
+            <div class="col-lg-5 ml-auto pb40">
+              <p>Your Product Managers can read the full Intercom conversation from Savio.</p>
+              <p>If your PM needs to clarify the feedback, they can either ask the customer directly in Intercom, or leave you an internal Intercom note to ask the customer on their behalf.</p>
+            </div>
+        </div>
+
+    </div>
+</div>  
+
+<div class="bg-white pt90 pb50">
+    <div class="container">
+
+        <div class="row">
+            <div class='col-lg-12 pb40 text-center' >
+                <h3>Use ALL your qualitative customer feedback. Build better software.</h3>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-5 ml-auto pb40">
+              <p>Use Savio to:
+              </p>
+
+              <ul class="feature-list list-unstyled">
+                <li><a href="{% url 'marketing-use-cases-collect-feedback' %}">Centralize product feedback from anywhere</a></li>
+                <li>Answer questions like "What features do my Enterprise customers want?" or "Which customers have asked for a better Search feature?"</li>
+                <li><a href="{% url 'marketing-product-planning' %}">Build features for the <em>right</em> customers</a></li>
+                <li>Close the loop with your customers</li></ul>
+            </div>
+            <div class='col-lg-6 pb40 text-center' >
+              <img src="{% static 'images/screenshots/marketing/feature-requests-close-up.png' %}" style="border: 1px solid #aaa;" alt="" class="img-fluid">
+              <div class='font12 text-center pt10'>Filter your feature list by MRR, customer plan, and more</div>
+            </div>
+        </div>
+
+      {% include "includes/integration_logos.html" %}
+
+
+
+    </div>
+</div>
+  </div>
+{% endblock %}
+
+{% block footer_cta %}
+    {% include "includes/footer-cta.html" with app_name="Surveymonkey" %}
+
+{% endblock %}
+    

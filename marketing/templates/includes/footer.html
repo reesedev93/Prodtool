@@ -1,0 +1,165 @@
+        <footer class="footer">&nbsp;
+            <div class="container">
+<!--
+                <div class="row">
+                    <div class="social-buttons col-lg-3 mb30">
+                        <h5 class=" mb20">Follow Us</h5>
+                        <span>
+                            <a href="#" class="social-icon si-dark si-facebook si-dark-round">
+                                <i class="fa fa-facebook"></i>
+                                <i class="fa fa-facebook"></i>
+                            </a>
+                            <a href="#" class="social-icon si-dark si-twitter si-dark-round">
+                                <i class="fa fa-twitter"></i>
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                            <a href="#" class="social-icon si-dark si-g-plus si-dark-round">
+                                <i class="fa fa-google-plus"></i>
+                                <i class="fa fa-google-plus"></i>
+                            </a>
+                            <a href="#" class="social-icon si-dark si-skype si-dark-round">
+                                <i class="fa fa-skype"></i>
+                                <i class="fa fa-skype"></i>
+                            </a>
+                        </span>
+                    </div>
+                    <div class='col-lg-3'>
+                        <h5 class=" mb20">Call Us</h5>
+                        <p class='lead'>+01 123-4567-089</p>
+                    </div>
+                     <div class='col-lg-3'>
+                        <h5 class=" mb20">Mail Us</h5>
+                        <p class='lead'>support@assan.com</p>
+                    </div>
+                     <div class='col-lg-3'>
+                        <h5 class=" mb20">We're Hiring</h5>
+                        <a class='btn btn-primary'>Apply Now</a>
+                    </div>
+                </div><hr class="mb70">
+              -->
+                <div class="row mt70 align-items-start">
+                    <div class="col-lg-4 ml-auto mb30">
+                        <h5 class="mb20">About us</h5>
+                        <ul class="list-unstyled">
+<!--                            <li>
+                                <a href="#">About us</a>
+                            </li>
+ -->
+                            <li>
+                                <a href="{% url 'marketing-about' %}">About Savio</a>
+                            </li>
+                            <li>
+                                <a href="mailto:founders@savio.io">Contact Us</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'marketing-blog-index' %}">Savio Blog</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'marketing-terms' %}">Terms & conditions</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'marketing-privacy' %}">Privacy Policy</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'marketing-data-processing-agreement' %}">Data Processing Agreement</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'marketing-alternatives-pb' %}">The best Productboard Alternative</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'marketing-alternatives-canny' %}">The best Canny Alternative</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'marketing-alternatives-trello' %}">Trello vs Savio</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'marketing-alternatives-uservoice' %}">The best UserVoice alternative</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'marketing-alternatives-aha' %}">Aha vs Savio</a>
+                            </li>
+                       </ul>
+                    </div>
+                    <div class="col-lg-4 mr-auto mb30 text-left">
+                        <h5 class="mb20">Use cases</h5>
+                        <ul class="list-unstyled">
+                            <li>
+                                <a href="{% url 'marketing-use-cases-collect-feedback' %}">Collect feature requests in one place</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'marketing-use-cases-prioritize-feedback' %}">Prioritize feature requests</a>
+                            </li>
+                            <li>
+                              <a href="{% url 'marketing-use-cases-use-feedback' %}">Drive customer-centric product decisions</a>
+                            </li>
+                            <li>
+                              <a href="{% url 'marketing-use-cases-close-loop' %}">Close the loop with customers when you build features they asked for</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'marketing-triage' %}">Triage Customer Feedback</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'marketing-product-planning' %}">Product Planning</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'marketing-feature-request' %}">Viewing a Feature Request's Feedback</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'marketing-customer-attributes' %}">Segment Feature Requests by Customer Attributes</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'marketing-icp-support' %}">Savio for Support Teams</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'marketing-use-cases' %}">All use cases</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 offset-lg-1 mr-auto mb30">
+                        <h5 class="mb20">More</h5>
+                        <ul class="list-unstyled">
+                            <li>
+                                <a href="{% url 'marketing-mental-model' %}">Savio's Mental Model</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'marketing-integrations-slack' %}">Slack Integration</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'marketing-integrations-segment' %}">Segment Integration</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'marketing-integrations-intercom' %}">Intercom Integration</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'marketing-integrations-helpscout' %}">Help Scout Integration</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'marketing-chrome-extension' %}">Chrome Extension</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'marketing-send-email' %}">Send Email to Savio</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'marketing-help-api' %}">API</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'marketing-help-zapier' %}">Integrate with Zapier</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'marketing-blog-track-feature-requests-in-typeform' %}">Track Feature Requests from Typeform</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'marketing-integrations-all' %}">More integrations</a>
+                            </li>
+                            <li>
+                                <a href="https://changelog.savio.io/" target="_blank">Savio's Changelog</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div><hr>
+
+                <div class="text-center copyright">
+                    <span>&copy; Copyright Savio.io 2018-{% now "Y" %}</span>
+                </div>
+            </div>
+        </footer>

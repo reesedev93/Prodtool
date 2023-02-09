@@ -1,0 +1,212 @@
+{% extends "blog-page.html" %}
+{% load static %}
+{% block meta_title %}
+Tracking feature requests from Hubspot CRM
+{% endblock %}
+
+{% block meta_desc %}Learn how to setup a high quality feature request tracking system for customer feedback that comes in via Hubspot.{% endblock %}
+
+
+{% block head %}
+  <!-- open graph tags -->
+  <meta property="og:url" content="{{ request.build_absolute_uri }}" />
+  <meta property="og:title" content="Track your feature requests from Hubspot CRM" /> <!-- 57 chars -->
+  <meta property="og:type" content="website" />
+  <meta property="og:description" content="Track feature requests from Hubspot CRM" /> <!-- 73 chars -->
+
+  <meta property="og:site_name" content="Savio" />
+  <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'images/savio-logo-1500x750.png' %}" />
+
+  <meta property="og:image:width" content="1500" />
+  <meta property="og:image:height" content="750" />
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:site" content="@savio_io" />
+
+  <!-- 115 chars max -->
+  <meta property="twitter:description" content="Learn how to track feature requests stored in Hubspot CRM" /> 
+
+  <!-- end open graph -->
+  
+  <!-- for content upgrade --> 
+  <script src="https://sendfox.com/js/form.js"></script>
+{% endblock %}
+
+
+{% block content %}
+
+  <div class="col-md-12 blog blog-title text-center">
+    <h1>Four Ways for Sales Teams to track feature requests in Hubspot CRM</h1>
+  </div>
+    <div class="col-md-8 offset-md-2 blog">
+
+
+<p>Hubspot CRM is a great tool for fast and lean sales teams that don't want the overhead of a huge, complex CRM that they need to heavily customize. It's tightly integrated with marketing and support workflows, which provides for a nice solution for SaaS teams.</p>
+<p>If your sales team uses Hubspot CRM, the odds are high that you have valuable voice of customer feature requests locked up there. Requests might be captured in deal notes, win/loss data, emails exchanged with prospects, or other places.</p>
+<p>There's no doubt your customer experience and product teams would love to get ahold of those requests to incorporate into their product planning sessions.</p>
+<p>We've identified four ways to track feature requests from Hubspot CRM which we share below. But a quick note first: for feature requests to be useful to your CX and product teams, the feature requests need to be <strong>structured</strong>.</p>
+
+<h3>Structured Feature Requests</h3>
+<p>To be useful, requests need to have some structure around them. That means you'll need to separate some basic information into different fields (like customer name, email address, customer words, URL, etc). </p>
+<p>With this small amount of effort your product and voice of customer teams will be able to do things like:</p>
+<ul>
+<li>See your most popular feaure requests</li>
+<li>See all the requests a customer (or account) has asked for</li>
+<li>Go read the full note in Hubspot for more context</li>
+</ul>
+<p>The good news is that the four solutions below all involve lightly structuring your requests so they're useful to your product and CX teams!</p>
+<h2>Tracking track Feature Requests from Hubspot is tricky (but there are several solutions)</h2>
+<p>Hubspot's a bit tricky. Their API doesn't have ways to get certain data out of the tool that you might like. For example, one way you might track a feature request is by creating a Deal Note:</p>
+<p><img alt="" class="img-fluid image" src="{% static 'images/blog/hubspot/hubspot-deal-note.png' %}" /></p>
+<p>But Hubspot doesn't have a great way of exporting Deal Notes via an API, so you can't use Zapier or other tools that can slurp those requests from Hubspot automatically. It's also limited in other ways that you might track feature requests.</p>
+<p>That said, here are four ways we've found that you can track feature requests that are put into Hubspot.</p>
+<h2>Four ways for Sales teams to track feature requests captured in Hubspot CRM</h2>
+<p>We've found four relatively painless ways for sales teams to track feature requests that are put into Hubspot CRM. Note all of them involve sending them somewhere - to a spreadsheet or <a href="{% url 'marketing-home' %}">feature request tracking tool</a>.</p>
+<p>Here are four ways to track requests that land in Hubspot CRM:</p>
+<ol>
+<li>Cutting and pasting to a spreadsheet</li>
+<li>Send Closed (Lost) deals somewhere via Zapier</li>
+<li>Use a Chrome Extension to get them out of Hubspot</li>
+<li>Post them to a feature request channel in Slack</li>
+</ol>
+<h2>1. Cutting and pasting to a spreadsheet</h2>
+<p>The first way to track feature requests sent to Hubspot CRM is to cut and paste them into a spreadsheet. We recommend using Google Sheets or Microsoft Excel Online as your whole team can collaborate on the same sheet.</p>
+<p>You'll want to set up a sheet with five columns:</p>
+<ul>
+<li>Customer</li>
+<li>Email</li>
+<li>Feedback</li>
+<li>Feature Request</li>
+<li>URL</li>
+</ul>
+<p>It'll look something like this:</p>
+<p><img alt="" class="img-fluid image" src="{% static 'images/blog/hubspot/hubspot-spreadsheet.png' %}" /></p>
+<p>The pros of this method are:</p>
+<ol>
+<li>You can set it up quickly</li>
+<li>It's cheap</li>
+<li>Your whole team can participate</li>
+<li>You can capture feedback stored in any Hubspot CRM field (deal note, Closed (Lost) reason, etc)</li>
+</ol>
+<p>The cons:</p>
+<ol>
+<li>It's highly manual, which means it often doesn't happen</li>
+<li>It requires switching back and forth between two tools</li>
+<li>It provides decent but limited sorting and filtering options </li>
+</ol>
+<h2>2. Track Closed (Lost) reasons via Zapier</h2>
+<p>Hubspot CRM has a Deal property field called Closed (Lost) Reason. You fill it out with the reason a deal is lost. When companies lose deals because of a missing feature, it's important to track and send this info to a Product Team so they can "close the feature gap".</p>
+<p>Thankfully, if you track feature requests in this field, you can send them to a spreadsheet or <a href="{% url 'marketing-home' %}">feature request tracking tool like Savio</a> with Zapier. Here's how.</p>
+<p>First, set up a Zap with the trigger set to "New Deal Property Change in HubSpot":</p>
+<p><img alt="" class="img-fluid image" src="{% static 'images/blog/hubspot/zap-choose-event.png' %}" /></p>
+<p>Then, choose "Closed Lost Reason" as the trigger field. This ensures that this Zap will fire when Closed Lost Reason is updated on a deal:</p>
+<p><img alt="" class="img-fluid image" src="{% static 'images/blog/hubspot/zap-close-lost-reason.png' %}" /></p>
+<p>You've now got a Zap that will fire whenever the "Closed Lost Reason" property on a deal is updated. At this point you'll want to send the Closed Lost Reason to where you're tracking feature requests. Here's how you can store that information in the above Google Sheet.</p>
+<p>Set up Google Sheets as the recipient of your data:</p>
+<p><img alt="" class="img-fluid image" src="{% static 'images/blog/hubspot/sheets-create-row.png' %}" /></p>
+<p>Due to a limitation with Hubspot CRM's API, the ONLY relevant piece of info you can get out of Hubspot is the Closed (Lost) Reason:</p>
+<p><img alt="" class="img-fluid image" src="{% static 'images/blog/hubspot/zapier-google-sheet-closed-lost.png' %}" /></p>
+<p>You can't get customer name, email, or the URL to the Deal.</p>
+<p>Pros:</p>
+<ul>
+<li>Automatable</li>
+</ul>
+<p>Cons:</p>
+<ul>
+<li>Can only get Closed (Lost) Reasons, no emails or deal notes</li>
+<li>Can't get related structured information like customer name, email, or Hubspot CRM Deal URL </li>
+</ul>
+<p><strong>Because of Hubspot's API limitations we don't recommend using Zapier to track Closed (Lost) Deal reasons from Hubspot CRM.</strong></p>
+<h2>3.  Use a Chrome Extension to track Feature Requests from Hubspot CRM (best way)</h2>
+<p>Using a <a href="{% url 'marketing-chrome-extension' %}">Chrome Extension to track feature requests</a> provides a nice balance between capturing all the key information and taking the time to structure it.</p>
+<p>Using a Chrome Extension means you'll need to use a service like <a href="{% url 'marketing-home' %}">Savio, which centralizes all your customer feature requests</a> from tools like Hubspot CRM (along with <a href="{% url 'marketing-integrations-intercom' %}">Intercom</a>, <a href="{% url 'marketing-integrations-helpscout' %}">Help Scout</a>, and others).</p>
+<p>Here's how it works.</p>
+<p>When you're on a page in Hubspot CRM that has feedback you want to track - whether it's a deal note, Closed (Lost) Reason, or received email - you're able to use the Savio Chrome Extension.</p>
+<p>Just highlight and copy the customer feedback, open the Chrome Extension, and paste the feature request's details in:</p>
+<p><img alt="" class="img-fluid image" src="{% static 'images/blog/hubspot/track-hubspot-feature-request-chrome-extension-small.gif' %}" /></p>
+<p>The feedback will be sent to Savio, where your customer experience or product team will assign it to the "Slack Integration" feature request and thus add one more vote to that request:</p>
+<p><img alt="" class="img-fluid image" src="{% static 'images/blog/hubspot/savio-feedback-from-chrome-extension.png' %}" /></p>
+<p>They'll also be able to:</p>
+<ul>
+<li>See your most popular feaure requests</li>
+<li>See all the requests a customer (or account) has asked for</li>
+<li>Go read the full note in Hubspot for more context (by clicking the "View in Source App link")</li>
+</ul>
+<p><a href="{% url 'marketing-chrome-extension' %}">The Chrome Extension is a powerful tool to track feature requests</a> from Hubspot CRM (and any other web-based tools you use).</p>
+<p>Pros:</p>
+<ul>
+<li>Don't need to leave Hubspot CRM to track feature requests</li>
+<li>Tracks and structured all feature request data </li>
+<li>Your whole team can track requests </li>
+</ul>
+<p>Cons:</p>
+<ul>
+<li>Need to use Google Chrome browser</li>
+<li>Slightly manual process</li>
+<li>Modest monthly fee</li>
+</ul>
+<p><strong>Of the four alternatives, we believe this is the best way track feature requests from Hubspot.</strong></p>
+<h2>4.  Post feature requests to Slack and track them from there</h2>
+<p>If you use Slack, it's probably the hub of your company.  One common way to <a href="{% url 'marketing-integrations-slack' %}">track feature requests in Slack</a> is to share them in a channel called something like "customer feedback".</p>
+<p>On benefits to this approach is that anybody on your team who subscribes to the channel can see them.</p>
+<p>To take this approach is simple.  You cut and paste the request and share it in Slack:</p>
+<p><img alt="" class="img-fluid image" src="{% static 'images/blog/hubspot/share-feedback-inslack-channel.png' %}" /></p>
+<p>The downside to this approach is that these requests are often lost in the "stream" of Slack messages.</p>
+<p>Pros:</p>
+<ul>
+<li>If you already post feedback to Slack today, keep your existing process</li>
+<li>Anybody in Slack can track feature requests this way</li>
+<li>Track feature requests from any tool, not just Hubspot CRM</li>
+<li>Visibility to rest of team about what customers are asking for</li>
+</ul>
+<p>Cons:</p>
+<ul>
+<li>Feature requests are a stream of data that disappears into the Slack void</li>
+<li>Feature requests are unstructured.  You can't identify how many people want a request, or what requests Joe (or Acme Corp) want.  </li>
+</ul>
+<h3>Turbocharging Slack to track Hubspot CRM Feature Requests</h3>
+<p>You can turbocharge <a href="{% url 'marketing-integrations-slack' %}">sharing feature requests in Slack</a> with a tool like Savio.  </p>
+<p>When you post in your designated "customer feedback" channel, you can also choose to track it in Savio:</p>
+
+<p>
+<iframe class="video" width="700" height="393" src="https://www.youtube.com/embed/KOwnybk_clU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</p>
+<p><img alt="" class="img-fluid image" src="{% static 'images/blog/hubspot/send-feedback-from-slack.png' %}" /></p>
+<p>Using Savio to track Hubspot CRM feature requests posted to Slack means you can keep your existing "customer feedback" channel active.  But it also means you centralize them in a tool that you can use to tally up most popular requests, etc.</p>
+<p>Pros:</p>
+<ul>
+<li>Structured requests mean you can count your most popular requests, see which requests specific customers or accounts want, etc </li>
+<li>If you already post feedback to Slack today, keep your existing process</li>
+<li>Anybody in Slack can track feature requests this way</li>
+<li>Track feature requests from any tool, not just Hubspot CRM</li>
+<li>Visibility to rest of team about what customers are asking for</li>
+</ul>
+<p>Cons:</p>
+<ul>
+<li>Slightly manual process</li>
+<li>Modest monthly fee</li>
+</ul>
+<h2>Tracking Feature Requests from Hubspot CRM Summary</h2>
+<p>Hubspot CRM's a great tool to drive a software company's sales process.  Plus, it's a great repository of customer feedback that your customer experience and product teams can mine.  With a few small process changes, you can track feature requests from Hubspot CRM in one of four ways:</p>
+<ul>
+<li>manually</li>
+<li>via Zapier</li>
+<li>with a chrome extension</li>
+<li>in Slack  </li>
+</ul>
+<p>If you want to <a href="{% url 'marketing-chrome-extension' %}">track feature requests from Hubspot CRM with a Chrome Extension</a> or <a href="{% url 'marketing-integrations-slack' %}">track feature requests with a Slack integration</a>, you can use <a href="{% url 'marketing-home' %}">Savio</a>.  Savio centralizes your feature requests so founders, customer experience, and product management teams can delight customers, reduce churn, and drive upsells.  <a href="{% url 'marketing-home' %}">Learn more about Savio here</a>.</p>
+
+
+  </div>
+    {% include "includes/blog-cta.html" with title="Start Tracking Feature Requests Today" %}
+{% endblock %}
+
+{% block footer_scripts %}
+  <!-- for auto-creating anchor link --> 
+  <script type="text/javascript" src="{% static 'jquery-anchorify/anchorify.js' %}"></script>
+
+  <script type="text/javascript">
+      $(document).ready(function() {
+          jQuery('body').anchorify();
+      });
+  </script>
+{% endblock %}

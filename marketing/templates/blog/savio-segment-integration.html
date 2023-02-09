@@ -1,0 +1,47 @@
+{% extends "blog-page.html" %}
+{% load static %}
+{% block meta_title %}
+Announcing the Savio integration with Segment.com
+{% endblock %}
+
+{% block meta_desc %}Use Segment.com to enrich customer feedback in Savio with MRR, Plan, and Account{% endblock %}
+
+{% block content %}
+    <div class="col-md-12 blog blog-title text-center">
+      <h1>Enrich your customer feedback with data from Segment</h1>
+  </div>
+
+  <div class="col-md-8 offset-md-2 blog">
+      <p>
+        <a href="https://segment.com" target="_blank">Segment</a> is an incredible platform that collects, cleans, and stores your customer data.  You install a single snippet of Javascript on your site, and then can send customer information (like name, userId, email address, MRR, plan, account name, and more) and event information (did_some_key_action) to other platforms with <em>no additional coding.</em>
+      </p>
+
+      <p>And as of today, you can send your customer data from Segment to Savio.</p>
+
+      <h4>Why connect Savio to Segment?</h4>
+      <p>
+        Savio centralizes your team's customer feedback so you can do things like quickly see "features requested by customers on your 'Enterprise' plan", or decide between building Feature A or Feature B by seeing the Total MRR of customers who've asked for each one.</p>
+
+        <p>Your team centralizes customer feedback into Savio from anywhere they handle it: a support tool, CRM, survey tool, etc. Teammates use a Chrome Extension to enter feedback directly into Savio, which means they don't leave their support tool (or  CRM, etc)  to do it.  When your teammates enter customer feedback, they also pick the customer who sent it in.  This is where Segment comes in: when you connect Savio as a Segment Destination, Savio pulls in your list of customers, their MRR, and plan information. To have a list of customers to choose from when entering feedback, you need to tell Savio how to get them.</p>
+
+        <p>When you pull your list of customers, and their Plan and MRR into Savio, you're able to choose from your list of customers when entering feedback:</p>
+
+      <img class="img-fluid image mb30" src="{% static 'images/blog/chrome-extension-pick-customer.png' %}" width="337" height="670">
+
+      <p>You'll see the total MRR for all customers who asked for a feature in Savio:</p>
+      <img class="img-fluid image mb30" src="{% static 'images/blog/feature-requests.png' %}" width="620" height="242">
+
+      <p>And you'll also see plan and MRR for each customer that provided feedback:</p>
+      <img class="img-fluid image mb30" src="{% static 'images/blog/feature-request-integrations.png' %}" width="620" height="680">
+
+
+      <h4>How Segment Helps Product Teams</h4>
+      <p>With Segment, Product Managers only need a developer once to add Segment's Javascript to their site.  That Javascript will send customer and event data to Segment.  All subsequent integrations that require customer and event data get turned on by clicking buttons in the Segment.com UI.  Segment will then relay customer and event data from your site on to the new integration without adding any more code.  It's a massive time-savings tool for Product Managers like you.  And it lets your development team focus on building the features your customers want instead of doing necessary but time consuming third-party integrations.</p>  
+
+      <h4>How to connect Segment to Savio</h4>
+      <p>To get started, <a href="https://segment.com" target="_blank">sign up for Segment</a>, and turn on the Savio Destination.</p>  
+
+      <p>You can also <a href="https://segment.com/docs/destinations/savio/" target="_blank">learn more about the integration here</a> and <a href="{{ settings.HOST }}{% url 'marketing-integrations-segment' %}">see how to turn it on here</a>.</p>  
+  </div>
+    {% include "includes/blog-cta.html" with title="Start Tracking Feature Requests Today" %}
+{% endblock %}

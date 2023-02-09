@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title_tag %}Edit Feature | Savio{% endblock %}
+
+{% block head %}
+{{ form.media }}
+
+<script>
+  $(document).ready(function() {
+
+    // HACK ALERT:
+    // This little shit sandwitch is b/c we need to change the width of the select2
+    // it's wrapped up in dal widget and there isn't an easy way to apply a class
+    // to the underlying select2 widget.
+    // To get around that we are using a MutationObserver to track when the select2
+    // span we need shows up and then fiddling with the width.
+    // If that seems gross you are right.
+    var targetNodes = $('#div_id_themes');
+    var MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
+    var myObserver = new MutationObserver (mutationHandler);
+    var obsConfig = {childList: true, subtree: true};
+
+    targetNodes.each ( function () {
+      myObserver.observe (this, obsConfig);
+    } );
+
+    function mutationHandler(mutationRecords) {
+      if ($(".select2-container")) { 
+        $(".select2-container").tooltip({
+          title: function() {
+            return $(this).prev().attr("data-original-title");
+          },
+          placement: "right"
+        }); 
+      }
+    }
+    // END HACK ALERT
+  });
+
+  </script>
+
+
+{% endblock %}
+
+{% block body_content %}
+<div class="row align-items-center pt-30">
+    <div class="col-md-12 mr-auto ml-auto">
+        <div class="mb-0">
+          <h4>Edit Feature</h4>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-9">
+    <div class="mb-30">
+      <div class="portlet-box portlet-gutter ui-buttons-col mb-30">
+
+          <div class="portlet-body">
+
+            <form method="post">{% csrf_token %}
+              {{ form|crispy }}
+              <input type="submit" name="action" value="Save Feature" class="btn btn-primary">
+              or <a href="{{return}}">cancel</a>
+            </form>
+
+          </div>
+      </div><!--portlet-->
+    </div>
+  </div>
+</div>
+{% endblock %}

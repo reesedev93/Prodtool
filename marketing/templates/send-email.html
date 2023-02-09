@@ -1,0 +1,61 @@
+{% extends "basic_page.html" %}
+{% load static %}
+{% load filters %}
+
+{% block meta_title %}
+Put customer feedback in Savio by sending an email 
+{% endblock %}
+
+{% block meta_desc %}Send an email to your secret feedback email address to save customer feedback in Savio{% endblock %}
+
+{% block title %}
+You Secret Feedback Email Address
+{% endblock %}
+
+{% block content %}
+  <div class="container pt90 pb90">
+    <div class="row">
+      <div class="col-md-9 docs">
+        <h2>Why would I send email to Savio?</h2>
+        <p>
+            If you're like us, we regularly get emails from customers or teammates that have data or good theories about customer problems and potential solutions to solve them.  We wanted a system to capture these alongside all the other customer feedback we get from channels like our support tool, CRM, live chat tool, etc.  
+        </p>
+        <p>
+            You could use the <a href="{% url 'marketing-chrome-extension' %}">Savio Chrome Extension</a> if you receive email in your browser.  
+        </p>
+
+        <p>
+            But you may be using a mobile device, desktop client, or just want to fire it into your Savio inbox to triage it later.  Which is exactly why you have a secret feedback email address to send your customer feedback to Savio. 
+        </p>
+
+        <h2>How your secret feedback email address works</h2>
+
+        <p>When you send email to your feedback email address, your message ends up in the Feedback Inbox so you can triage it later.</p> 
+
+        <h4>Using your secret feedback email address</h4>
+
+        <p>
+            To use your secret feedback email address:<br><br>
+            1. Log in to your Savio Vault, click your name in the top right corner, and click settings:<br>
+            <img class="img-fluid image mb30" src="{% static 'images/help/send-email/send-email001.png' %}">
+
+            2. Scroll to the "Email Feedback to Savio" section and copy your Feedback Email:<br>
+            <img class="img-fluid image mb30" src="{% static 'images/help/send-email/send-email002.png' %}">
+
+            3. Send Savio some customer feeback to your Feedback Email:<br>
+            <img class="img-fluid image mb30" src="{% static 'images/help/send-email/send-email003.png' %}">
+
+            4. Your email will appear in your Feedback Inbox:<br>
+            <img class="img-fluid image mb30" src="{% static 'images/help/send-email/send-email004.png' %}">
+
+            5. Finally, you'll want to Triage it.  Be sure to pick the Person who gave you the feedback and select whether they're an active customer, churned customer, etc:<br>
+            <img class="img-fluid image mb30" src="{% static 'images/help/send-email/send-email005.gif' %}">
+
+
+        </p>
+      </div>
+    </div>
+    {% include "includes/features-cta.html" %}
+
+  </div>
+{% endblock %}

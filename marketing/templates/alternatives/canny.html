@@ -1,0 +1,285 @@
+{% extends "blog-page.html" %}
+{% load static %}
+{% block meta_title %}Canny alternative | The best alternative to Canny | Savio{% endblock %}
+
+{% block meta_desc %}A Canny.io alternative to help software product managers track feature requests from Intercom and other tools{% endblock %}
+
+{% block head %}
+  <!-- open graph tags -->
+  <meta property="og:url" content="{{ request.build_absolute_uri }}" />
+  <meta property="og:title" content="The best Uservoice alternative for tracking feature requests | Savio" /> <!-- 57 chars -->
+  <meta property="og:type" content="website" />
+  <meta property="og:description" content="See why Savio is the best alternative to Canny to track feature requests" /> <!-- 73 chars -->
+
+  <meta property="og:site_name" content="Savio" />
+  <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'images/alternatives/savio-or-canny.png' %}" />
+
+  <meta property="og:image:width" content="1500" />
+  <meta property="og:image:height" content="750" />
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:site" content="@savio_io" />
+
+  <!-- 115 chars max -->
+  <meta property="twitter:description" content="See why Savio is the best alternative to Canny to track feature requests" />
+
+  <!-- end open graph -->
+  {% endblock %}
+
+
+{% block content %}
+
+  <div class="col-md-12 blog blog-title text-center">
+    <h1>The best alternative to Canny to track feature requests</h1>
+    <h2 class="text-muted">Canny vs Savio: how they compare</h2>
+    <img src="{% static 'images/alternatives/savio-or-canny.png' %}" class="image img-fluid" width="500"><br>
+  </div>
+    <div class="col-md-8 offset-md-2 blog">
+
+    <h3 class="no-anchor pt40">Summary</h3>
+    <ul>
+      <li>Both tools are strong at capturing feature requests from Intercom.</li>
+      <li>Choose <strong>Canny</strong> if your main requirement is public voting boards.</li>
+      <li>Choose <strong>Savio</strong> if you want to centralize feature requests from all of your tools.</li>
+      <li>Read on for the full comparison</li></ul>
+    </ul>
+
+
+    <div id="toc">
+      <h2>Table of contents</h2>
+      <p>See how Canny and Savio compare across these dimensions.</p>
+      <ul id="toc-list"></ul>
+    </div>
+
+    <h3 class="pt20 pb20">Centralize feature requests from all your tools</h3>
+    {% include "includes/alternatives-table.html" with savio_rating="Good" competitor_image="images/canny.jpeg" comp_rating="OK" %}
+    <h4>Savio</h4>
+    <p>Savio helps you centralize requests from any place your team receives them. This means you can: track feature requests sent to <a href="{% url 'marketing-integrations-intercom-product'%}">Intercom</a>, <a href="{% url 'marketing-integrations-helpscout-product'%}">Help Scout</a>, or posted <a href="{% url 'marketing-integrations-slack'%}">in Slack</a>.  You can use a <a href="{% url 'marketing-chrome-extension'%}">Chrome Extension to track feature requests</a> in any web-based tool that your team uses.  You can <a href="{% url 'marketing-send-email'%}">send feature requests in via email</a>, <a href="{% url 'marketing-help-zapier'%}">send feature requests from any tool via Zapier</a>, or <a href="{% url 'marketing-help-api'%}">use an API to track feature requests</a>.  Each of these minimizes the disruption to your team's workflow to centralize your feature requests.</p>
+    <p>Once centralized, you can confidently prioritize your features knowing they're all in one place.</p>
+
+    <div class="text-center">
+    <img class="img-fluid image" src="{% static 'images/help/intercom/intercom-integration-animated.gif' %}" width="600" height="375"><br>
+    <div class="text-center mb30">Tag a feature request in Intercom to send it to Savio.</div>
+  </div>
+
+
+    <h4>Canny</h4>
+    <p>Canny tracks feature requests from Intercom, Zendesk, and by letting users upvote Feature Requests in a public voting portal.  If you have features that come in to a CRM, or are taken during calls in a tool like Google Docs, or an NPS tool, or a tool like Typeform or SurveyMonkey, you're going to be cutting and pasting a lot of data from that tool to Canny.</p>
+    <p>In fact, because it's so labor intensive, most teams just won't cut and paste from tools that Canny doesn't support.  Which means when you prioritize with Canny, you're not using your master list of feature requests, which means you're probably not making the best decision you can.</p>
+
+    <h3 class="pt20 pb20">Predictable pricing</h3>
+    {% include "includes/alternatives-table.html" with savio_rating="Good" competitor_image="images/canny.jpeg" comp_rating="OK" %}
+    <h4>Savio</h4>
+    <p>Savio is free for one user, $25/m for three, $49/m for unlimited.  Your fees are predictable, transparent, and capped at $49/month.  You can also afford to pay for them with a credit card.  You can <a href="{% url 'marketing-pricing' %}">see Savio's pricing here.  Pricing is one reason people love Savio as a Canny alternative.</a></p>
+
+    <h4>Canny</h4>
+    <p>Canny charges based on the number of users who vote, leave a feature request, or comment on a feature request. This means that your fees are variable and will only go up: the more users that engage with your board, the more you'll pay.  If a user engaged with your board a year ago you'll still be paying for them.</p>
+
+    <h3 class="pt20 pb20">Track requests from users at different points in customer journey</h3>
+    {% include "includes/alternatives-table.html" with savio_rating="Good" competitor_image="images/canny.jpeg" comp_rating="OK" %}
+    <h4>Savio</h4>
+    <p>With Savio, you can track when a feature request comes from a churned user, active user, lost deal, prospect, or teammate.</p>
+    <p>So when you're trying to reduce churn you can see all feature requests from churned customers, and then build some of them.  Or if you're trying to lose fewer deals, you can build features from lost deals. This information is entered when a feature request is captured, so there's no technical integration necessary.</p>
+    <div class="text-center">
+    <img src="{% static 'images/alternatives/savio-feedback-type.png' %}" class="img-fluid  img-border" /><br><br></div>
+    <div class="text-center mb30">In Savio, select who the feature request is from when you enter it.<br>No technical integration necessary.</div>
+
+    <h4>Canny</h4>
+    <p>With Canny, you can track requests from active customers, trials, or churned customers.  Getting this information is dependent on your app sending it to Intercom or Zendesk, or implementing their Javascript API.</a></p>
+
+
+    <h3 class="pt40 pb20">Collect Feature Requests From Any Web-Based Tool</h3>
+    {% include "includes/alternatives-table.html" with savio_rating="Good" competitor_image="images/canny.jpeg" comp_rating="Not Good" %}
+    <h4>Savio</h4>
+    <p>You can <a href="{% url 'marketing-chrome-extension'%}">track feature requests from any tool with the Savio Chrome extension</a>.  This means that your teammate is able to stay in their support tool, CRM, etc when they send feature requests to Savio.  Just click the Chrome Extension, enter the data, and you're done.  One tab, one tool, and no logging into other tools required: minimal disruption.  </p>
+    <p>Savio's less disruptive workflow is highly beneficial to your teammates. The Chrome Extension ensures they're going to track more feature requests because it's a lower friction process than cutting and pasting between two different apps.  This makes Savio a great alternative to Canny.</p>
+
+    <h4>Canny</h4>
+    <p>With Canny, you can easily track feature requests from Intercom or Zendesk.  Tracking from other tools gets complicated.  To track a feature request that doesn't live in Intercom or Zendesk, your sales, success, or support team has to be bought into the process to submit feedback in the first place.  Assuming you can get buy-in from your other teams, your teammates must have both tools open in two different windows, and has to toggle back and forth to ensure the right feature request is tracked in Canny. </p>
+
+
+
+    <h3 class="pt40 pb20">Collect feature requests from Slack</h3>
+    {% include "includes/alternatives-table.html" with savio_rating="Good" competitor_image="images/canny.jpeg" comp_rating="Not Good" %}
+    <h4>Savio</h4>
+    <p>Savio has a native integration with Slack. With it you can <a href="{% url 'marketing-integrations-slack' %}">collect feature requests from Slack</a> and send them to Savio with the click of a button.  So when your teammates share feedback or feature requests from customers in Slack, those feature requests won't be lost.  They'll be centralized with feature requests from other tools, and you can use them later on to prioritize what features to build.</p>
+
+    <div class="text-center">
+      <iframe class="video" width="560" height="315" src="https://www.youtube.com/embed/KOwnybk_clU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <div class="text-center mb30">Savio can listen to a Slack channel for feature requests</div>
+
+    <h4>Canny</h4>
+    <p>With Canny there's no straightforward way to track feature requests shared in Slack.</p>
+
+    <h3 class="pt40 pb20">Collect feature requests from Help Scout</h3>
+    {% include "includes/alternatives-table.html" with savio_rating="Good" competitor_image="images/canny.jpeg" comp_rating="Not Good" %}
+    <h4>Savio</h4>
+    <p>Savio has a native integration that allows you to <a href="{% url 'marketing-integrations-helpscout-product' %}">track feature requests from Help Scout</a>.  When your support teammates get a Help Scout message with a Feature Request, they just add a predefined tag to the conversation. Savio will pull the feature request in.  Savio will also add an internal note to the Help Scout Conversation confirming that the feature has been pulled in. This means that your teammates don't need to leave Help Scout to track feature requests in Savio. They don't even need a Savio account. </p>
+
+    <div class="text-center">
+      <img class="img-fluid image" src="{% static 'images/help/helpscout/helpscout-integration-animated.gif'  %}">
+    </div>
+    <div class="text-center mb30">Tag a conversation to send Feature Requests from Help Scout to Savio</div>
+
+
+    <h4>Canny</h4>
+    <p>Canny doesn't have a Help Scout integration.  So tracking feature requests from Help Scout in Canny is either a manual process or might be possible with Zapier.</p>
+
+    <h3 class="pt40 pb20">Record customers' actual words about problems, not just votes</h3>
+    {% include "includes/alternatives-table.html" with savio_rating="Good" competitor_image="images/canny.jpeg" comp_rating="OK" %}
+    <h4>Savio</h4>
+    <p>In Savio, you can record and see the actual words that a customer used to describe their problem.  Additionally, each piece of customer feedback is a vote for a feature.  So you get BOTH votes AND actual customer words.</p>
+
+    <h4>Canny</h4>
+    <p>With Canny, you get votes and users can leave comments. But you often get a wide spread between the number of votes and the number of comments.<br><br>
+    <img src="{% static 'images/alternatives/canny-votes-and-comments.png' %}" class="img-fluid img-border" /><br>
+    <div class="text-center">What do the 27 people who voted but didn't comment think?</div></p>
+
+    <p>It can't be understated how important it is to have customers' words instead of just upvotes to make good prioritization decisions. A customers' words help you understand the context and boundaries of the problem to build a good solution.</p>
+
+    <h3 class="pt40 pb20">Triage new feedback to keep quality high</h3>
+    {% include "includes/alternatives-table.html" with savio_rating="Good" competitor_image="images/canny.jpeg" comp_rating="Not Good" %}
+    <h4>Savio</h4>
+    <p>When customer feedback is sent into Savio, it lands in your inbox where somebody on your team triages it. What this means is they: </p>
+    <ul>
+      <li>link the feedback to a feature request, which means the feedback is a "vote" for the feature request</li>
+      <li>they determine whether the feedback was from an active customer, a churned customer, a lost deal, a prospect or an or a teammate.  This is so you can (for example) find all feature requests from Churned customers later on.</li></ul>
+
+    <p><a href="{% url 'marketing-integrations-helpscout-product' %}">Triaging customer feedback</a> means that every feature request in Savio has been vetted by somebody on your product team.  It means you can trust the data you're going to  prioritize with and spend your valuable developer budget on.</p>
+
+    <h4>Canny</h4>
+    <p>In Canny there is no triage step and all customer feedback is treated as good.</p>
+
+    <h3 class="pt40 pb20">Use tags to group and sort feedback</h3>
+    {% include "includes/alternatives-table.html" with savio_rating="Good" competitor_image="images/canny.jpeg" comp_rating="Not Good" %}
+    <h4>Savio</h4>
+    <p>In Savio, you can add tags to customer feedback.  You might want to tag feedback with things like "Q3 Power Users Survey" or "Feb Voice of Customer Interviews" or even by component like "UX" or "Onboarding Experience".  When you do this, you can look at all of the feedback you've gotten from your Power Users, February Customer calls, or all your UX or Onboarding improvements.</p>
+
+    <h4>Canny</h4>
+    <p>In Canny there is no way to add tags to feedback, so you can't look at your feedback across these kinds of dimensions.</p>
+
+    <h3 class="pt40 pb20">Public or private voting portal</h3>
+    {% include "includes/alternatives-table.html" with savio_rating="Not Good" competitor_image="images/canny.jpeg" comp_rating="Good" %}
+    <h4>Savio</h4>
+    <p>Savio does not have a public place where customers can see and vote on feature requests.</p>
+
+    <h4>Canny</h4>
+    <p>Canny does have a public voting portal.</p>
+    <p>The advantage of having a portal is that you get feedback without anybody on your team needing to screen or vet it.</p>
+    <p>There are a few downsides to having a portal.  Chief among them are:</p>
+    <ul><li>Customers being frustrated that you haven't built a feature ("This feature has been open for three years, why haven't you built it yet!")</li>
+    <li>It gives your competition ideas about where your product is weak</li>
+    <li>it over-indexes for the "squeaky wheels". Are the people who leave feedback really representative of your customer base as a whole?</li></ul>
+
+    <p>If a public voting portal is what you're after, Savio's probably not the right fit for you.</p>
+
+    <h3 class="pt40 pb20">Customer-facing roadmap</h3>
+    {% include "includes/alternatives-table.html" with savio_rating="Not Good" competitor_image="images/canny.jpeg" comp_rating="Good" %}
+    <h4>Savio</h4>
+    <p>With Savio, there's no public roadmap option. Of course, you have the option to share what you're building privately with customers.</p>
+
+    <h4>Canny</h4>
+    <p>Canny has an option to share your roadmap publicly with your customers.</p>
+    <p>The two big downsides to sharing your roadmap publicly are:</p>
+    <ul>
+      <li>Competitors can see what you're working on and considering</li>
+      <li>Priorities change so you can set the wrong expectations with customers</li>
+    </ul>
+    <p><img src="{% static 'images/alternatives/canny-public-roadmaps.png' %}" class="img-fluid img-border" /><br>
+    <div class="text-center">
+    <small>It's possible to set the wrong expectations with a public roadmap</small></div></p>
+
+    <p>If it's important to you to have a public roadmap in the same tool that you track feature requests, Savio might not be the right fit.  If you're comfortable using two different tools - one to track feature requests and one for a public Roadmap, we find Trello to be a good Roadmapping option.</p>
+
+    <h3 class="pt40 pb20">See detailed feedback for every Feature Request</h3>
+    {% include "includes/alternatives-table.html" with savio_rating="Good" competitor_image="images/canny.jpeg" comp_rating="OK" %}
+    <h4>Savio</h4>
+    <p>With Savio, when you click on a feature request you'll see:</p>
+    <ul><li>everybody who asked for that feature
+      <li>each customer's exact words they used when they asked for the feature</li>
+      <li>their company, MRR, plan, and any other <a href="{% url 'marketing-customer-attributes'%}">customer attributes</a> you've sent in</li>
+      <li>whether they're churned, active, a lost deal, a prospect, or a teammate</li>
+      <li>And you can even click through to the source tool where the feedback came in from.</li>
+    </ul>
+
+    <div class="text-center">
+        <img class="img-fluid image" src="{% static 'images/help/product-planning/feature-request-feedback-close-up.png' %}">
+    </div>
+    <div class="text-center mb30">See all details about a feature in one place (in this case, a request for "Better Permissions")</div>
+
+    <h4>Canny</h4>
+    <p>In Canny, when you view a Feature Request you can see the original request, everybody who's voted for it, and any comments left by your teammates or voters.  You don't get as much context about who those people are or the nature of their feature request.</p>
+
+    <h3 class="pt40 pb20">Easily reach out to customers that provided feedback</h3>
+    {% include "includes/alternatives-table.html" with savio_rating="Good" competitor_image="images/canny.jpeg" comp_rating="OK" %}
+    <h4>Savio</h4>
+    <p>In Savio, you can easily reach out to customers that have asked for a specific feature to better understand their problem and validate your solution. Every user's email address is on the page that describes your feature request.</p>
+
+    <h4>Canny</h4>
+    <p>In Canny, each user's address is on their own page.  So if you want to email 10 users you need to open the feature request, click the user, get their email address, click back, click to the next user, etc.  It's painful, especially if you're going to email 10+ customers to understand more detail about the feature that they want.</p>
+
+    <h3 class="pt40 pb20">Import users without adding and customizing Javascript</h3>
+    {% include "includes/alternatives-table.html" with savio_rating="Good" competitor_image="images/canny.jpeg" comp_rating="OK" %}
+    <h4>Savio</h4>
+    <p>In Savio, you can import users without adding custom JavaScript to your site.  This means that you can import customers without needing a developer. You can either import your users from Intercom or you can import your users from Segment, just by clicking a few buttons. You can get up and running in seconds rather than hours or even days.</p>
+
+    <h4>Canny</h4>
+    <p>If you're using Canny and NOT using Intercom, you DO need to add custom Javascript to your page to track users. This means you need a developer in order to get up and running and get full value from Canny.</p>
+
+    <h3 class="pt40 pb20">Export your data to CSV</h3>
+    {% include "includes/alternatives-table.html" with savio_rating="Good" competitor_image="images/canny.jpeg" comp_rating="Not Good" %}
+    <h4>Savio</h4>
+    <p>With Savio, it's straightforward to export your data to a CSV.  You just click a link and you'll be emailed a CSV within minutes containing all of your feature requests, customer feedback, user names, accounts, MRR, Plan, tags, etc. It's your data and you should be able to take it out whenever you want.</p>
+
+    <h4>Canny</h4>
+    <p>With Canny, there is no link to export your data to a CSV. It's a much more complicated process and either involves going back and forth with their support team or requires you to write custom code to get the data that you need from their API.</p>
+
+    <h3 class="pt40 pb20">Can your support team add feedback on behalf of a customer?</h3>
+    {% include "includes/alternatives-table.html" with savio_rating="Good" competitor_image="images/canny.jpeg" comp_rating="OK" %}
+    <h4>Savio</h4>
+    <p>Nothing is more frustrating as a customer than to send a feature request to support, and have support tell you to go to another tool to input that feature request. It makes you feel like the company doesn't care about your feature requests because they won't do it themselves - they ask you to send in that feedback twice.</p>
+    <p>With Savio that never happens. Customer can send feature requests to support and your support rep can send that feedback directly into Savio.</p>
+
+    <h4>Canny</h4>
+    <p>When you use Canny to track your feature requests, your support rep either has to log into Canny themselves and upvote the Feature Request on the customer's behalf (but can't leave the customer's verbatim feedback), OR they have to tell the customer to go to the Canny public portal, search for their Feature Request, and to upvote it there.  Your support rep cannot add the customer's feedback on behalf of the customer. The customer has to do it themself.</p>
+
+    <h3 class="pt40 pb20">Can users provide feedback without logging in</h3>
+    {% include "includes/alternatives-table.html" with savio_rating="Good" competitor_image="images/canny.jpeg" comp_rating="Not Good" %}
+    <h4>Savio</h4>
+    <p>With Savio, there is no public voting portal. So when a customer sends feedback to support, your rep can send that feedback directly to Savio. The customer doesn't need to login or create an account for a tool they don't have a relationship with (e.g. Canny).</p>
+
+
+    <h4>Canny</h4>
+    <p>When a user wants to leave feedback publicly with Canny, they must create a Canny account in order to leave feedback:<br>
+    <p><img src="{% static 'images/alternatives/canny-login-required.gif' %}" class="img-fluid img-border" /><br>
+    <div class="text-center">
+    <small>Your customers must create a Canny account to create a new Feature Request or Upvote an existing one</small></div></p>
+
+
+    <p>You can also use the advanced Single Sign-on Feature, which Canny does not recommend for most cases.</p>
+
+
+    <div class="row mr0 ml0" >
+      <div class="col-md-12 mt40 pt30 pb30 mb40 text-center info-block">
+          <h4 class="no-anchor">Import your Canny Data</h4>
+          <p>Want to try a Canny alternative? We'll import your data for free.</p>
+          <img src="{% static 'images/alternatives/canny-to-savio.png' %}" class="img-fluid pb30" height="300" width="150">
+          <p><a class="btn btn-primary" href="mailto:founders@savio.io?Import+Canny+data">Contact Us to Import Data</a>
+      </div>
+    </div>
+
+    {% include "includes/blog-cta.html" with title="Switch from Canny Today" %}
+
+
+  </div>
+{% endblock %}
+
+{% block footer_scripts %}
+
+  <script type="text/javascript" src="{% static 'jquery.toc/jquery.toc.js' %}"></script>
+  <script type="text/javascript">
+      $(document).ready(function() {
+        $("#toc-list").toc({content: "div.container", headings: "h3", excludedClass: "no-anchor"});
+      });
+  </script>
+{% endblock %}

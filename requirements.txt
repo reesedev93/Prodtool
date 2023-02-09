@@ -1,0 +1,21 @@
+Django==2.1.3
+psycopg2-binary==2.8.3
+celery==4.2.1
+kombu==4.2.2-post1
+redis==2.10.6
+-e git+git://github.com/rstocker99/python-intercom@master#egg=python-intercom
+#-e /Users/ryan/repos/prodtool/python-intercom
+djangorestframework==3.9
+django-autocomplete-light==3.3.2
+django-crispy-forms==1.7.2
+django-widget-tweaks==1.4.3
+django-celery-email==2.0.1
+sentry-sdk==0.6.9
+analytics-python==1.2.9
+stripe==2.48.0
+beautifulsoup4==4.7.1
+html2text==2018.1.9
+Markdown==3.1.1
+prependnewline==1.2
+django-debug-toolbar==2.1
+django-ratelimit==3.0.1

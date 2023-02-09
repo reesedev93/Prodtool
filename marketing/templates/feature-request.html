@@ -1,0 +1,115 @@
+{% extends "basic_page.html" %}
+{% load static %}
+{% load filters %}
+
+{% block meta_title %}
+See a Feature Request's Feedback in Savio 
+{% endblock %}
+
+{% block meta_desc %}Want to see all the feedback, people, and accounts who asked for a feature? This is the page you're looking for.{% endblock %}
+
+{% block title %}
+The Feature Request Page
+{% endblock %}
+
+{% block content %}
+  <div class="container pt90 pb90">
+    <div class="row">
+      <div class="col-md-9 docs">
+        <h2>See all Feedback for a Feature Request</h2>
+        <p>
+          Maybe you're deciding whether to build a specific feature.  Or you've decided you're going to build a feature, and want to more deeply understand the problem you're solving. 
+        </p>
+
+        <p>
+        In either case, you'll be looking at the Feature Request page:<br>
+          <img class="img-fluid image" src="{% static 'images/help/product-planning/planning005.png' %}">
+        </p>
+
+        <p>
+          Let's take a closer look at this page.
+        </p>
+
+        <h3>The feedback summary</h3>
+        <p>
+          The widgets at the top of the page summarize all feedback about the feature request. You'll see:
+        </p>
+        <div class="row mb20">
+          <div class="col-md-3 mt-0 mb-0">
+            <img class="img-fluid image mt-0" src="{% static 'images/help/product-planning/widget-feedback.png' %}">
+
+          </div>
+          <div class="col-md-9 mt-0 mb-0" >
+            <h4 class="mt-0">The amount of feedback about the feature request</h4>
+          </div>
+        </div>
+
+        <div class="row mb20">
+          <div class="col-md-3 mt-0 mb-0">
+            <img class="img-fluid image mt-0" src="{% static 'images/help/product-planning/widget-people.png' %}">
+          </div>
+          <div class="col-md-9 mt-0 mb-0" >
+            <h4 class="mt-0">The number of people who've left feedback about the feature request</h4>
+          </div>
+        </div>
+
+        <div class="row mb20">
+          <div class="col-md-3 mt-0 mb-0">
+            <img class="img-fluid image mt-0" src="{% static 'images/help/product-planning/widget-companies.png' %}">
+          </div>
+          <div class="col-md-9 mt-0 mb-0">
+            <h4 class="mt-0">The number of companies feedback has come from</h4>
+          </div>
+        </div>
+
+        <div class="row mb20">
+          <div class="col-md-3 mt-0 mb-0">
+            <img class="img-fluid image mt-0" src="{% static 'images/help/product-planning/widget-mrr.png' %}">
+          </div>
+          <div class="col-md-9 mt-0 mb-0">
+            <h4 class="mt-0">The cumulative MRR of all accounts who've asked for the feature</h4>
+          </div>
+        </div>
+
+        <div class="row mb20">
+          <div class="col-md-3 mt-0 mb-0">
+            <img class="img-fluid image mt-0" src="{% static 'images/help/product-planning/widget-open-for.png' %}">
+          </div>
+          <div class="col-md-9 mt-0 mb-0">
+            <h4 class="mt-0">When the first piece of feedback was assigned to this feature request</h4>
+          </div>
+        </div>
+
+        <div class="row mb20">
+          <div class="col-md-3 mt-0 mb-0">
+            <img class="img-fluid image mt-0" src="{% static 'images/help/product-planning/widget-most-recent.png' %}">
+          </div>
+          <div class="col-md-9 mt-0 mb-0">
+            <h4 class="mt-0">When the most recent piece of feedback was received for this feature request</h4>
+          </div>
+        </div>
+
+        <h3>Your customers' feedback about the feature</h3>
+        <p>
+          Below is the section that shows:
+          <ul>
+            <li>each person who's left feedback</li>
+            <li>their MRR and plan</li>
+            <li>the specific feedback they left and when they left it</li>
+            <li>whether the feedback was from a churned customer, a lost deal, an active customer, a teammate, a prospect, or someone else</li>
+          </ul>
+          <img class="img-fluid image" src="{% static 'images/help/product-planning/feature-request-feedback-close-up.png' %}">
+        </p>
+
+        <h3>Contact your customers</h3>
+        <p>
+          Need to email a customer to ask them about their problem (or your potential solution)? Click their name to copy their email address to your clipboard so you can email them.
+
+          <img class="img-fluid image" src="{% static 'images/help/product-planning/feature-request-copy-email.png' %}">
+        </p>
+      </div>
+    </div>
+
+    {% include "includes/features-cta.html" %}
+  </div>
+{% endblock %}

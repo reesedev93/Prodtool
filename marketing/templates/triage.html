@@ -1,0 +1,47 @@
+{% extends "basic_page.html" %}
+{% load static %}
+{% load filters %}
+
+{% block meta_title %}
+Triaging customer feature requests
+{% endblock %}
+
+{% block meta_desc %}How to triage your list of customer feature requests and product feedback{% endblock %}
+
+{% block title %}
+Triaging your Customer Feedback
+{% endblock %}
+
+{% block content %}
+  <div class="container pt90 pb90">
+    <div class="row">
+      <div class="col-md-9 docs">
+        <h2>Triaging your Feedback Inbox</h2>
+        <p>
+            When customer feedback is sent to Savio, it lands in your Feedback Inbox.
+            <img class="img-fluid image" src="{% static 'images/help/triage/triage001.png' %}">
+            <div class="text-center mb30"><small>Two pieces of feedback in this Inbox need Triaging</small></div>
+        </p>
+        <p>
+          Like an email inbox, you'll triage your Feedback regularly. Triaging your Feedback means answering three questions:
+            <ol>
+              <li>Can you imagine solving the problem described in the Feedback one day?  If not, delete it.</li>
+              <li>Does the Feedback make sense?  If not, ask the person who submitted it to Savio (or the customer) for clarification.</li>
+              <li>Which Feature Request does the feedback relate to?  Link the Feedback to an existing Feature Request, or create a new one</li>
+            </ol>
+
+            Once you've answered these questions, you can mark the Feedback as Triaged.
+        </p>
+
+        <p>
+            Triaging regularly ensures you've got your finger on the pulse of your incoming Feedback.
+        </p>
+        <p>
+          It also makes sure that triaged Feedback is linked to the correct Feature Request (a Feature Request has many pieces of linked Feedback).  So when it comes to deciding what to work on next, you can trust your list of Feature Requests -- and the number of customers who've asked for it, their cumulative MRR, etc -- is linked to cold, hard Feedback.
+        </p>
+      </div>
+    </div>
+
+    {% include "includes/features-cta.html" %}
+  </div>
+{% endblock %}

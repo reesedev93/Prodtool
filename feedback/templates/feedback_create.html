@@ -1,0 +1,184 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+{% load filters %}
+{% block title_tag %}Create Feedback | Savio{% endblock %}
+
+{% block head %}
+{{ form.media }}
+
+<script>
+$(document).ready(function() {
+  // HACK ALERT:
+  // This little shit sandwitch is b/c we need to change the width of the select2
+  // it's wrapped up in dal widget and there isn't an easy way to apply a class
+  // to the underlying select2 widget.
+  // To get around that we are using a MutationObserver to track when the select2
+  // span we need shows up and then fiddling with the width.
+  // If that seems gross you are right.
+  var targetNodes = $('#user-input-group');
+  var MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
+  var myObserver = new MutationObserver (mutationHandler);
+  var obsConfig = {childList: true, subtree: true};
+  var haveFixedUserSelect2Width = false;
+
+  targetNodes.each ( function () {
+    myObserver.observe (this, obsConfig);
+  } );
+
+  function mutationHandler(mutationRecords) {
+    // Grab the span we care about and fix it's width
+    $userSelect2Span = $("#id_user").siblings(".select2.select2-container.select2-container--default").first();
+    if($userSelect2Span && !haveFixedUserSelect2Width) {
+      $userSelect2Span.addClass("select2-container-user");
+      haveFixedUserSelect2Width = true;
+    }
+
+    if ($(".select2-container")) {
+      $(".select2-container").tooltip({
+        title: function() {
+          return $(this).prev().attr("data-original-title");
+        },
+        placement: "right"
+      });
+    }
+  }
+  // END HACK ALERT
+
+
+  $(".js-create-app-user").click(function () {
+    $.ajax({
+      url: "{% url 'app-user-ajax-create' %}",
+      type: 'get',
+      dataType: 'json',
+      beforeSend: function () {
+        $("#modal-app-user").modal("show");
+      },
+      success: function (data) {
+        $("#modal-app-user .modal-content").html(data.html_form);
+      }
+    });
+  });
+
+  $("#modal-app-user").on("submit", ".js-app-user-create-form", function () {
+    var form = $(this);
+    $.ajax({
+      url: form.attr("action"),
+      data: form.serialize(),
+      type: form.attr("method"),
+      dataType: 'json',
+      success: function (data) {
+        if (data.form_is_valid) {
+          $("#modal-app-user").modal("hide");
+          // The selects are dal widgets which are scoped to yl.jQuery not $
+          yl.jQuery("#id_user").select2('trigger', 'select', {data: {id: data.id, text: data.text}});
+        }
+        else {
+          $("#modal-app-user .modal-content").html(data.html_form);
+        }
+      }
+    });
+    return false;
+  });
+
+});
+</script>
+{% endblock %}
+
+{% block body_content %}
+{% include "includes/onboarding_add_feedback.html" %}
+
+<div class="row align-items-center pt-30">
+    <div class="col-md-12 mr-auto ml-auto">
+        <div class="mb-0">
+          <h4>Create Feedback</h4>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-9">
+    <div class="mb-30">
+      <div class="portlet-box portlet-gutter ui-buttons-col mb-30">
+        <div class="portlet-body">
+          {% if onboarding %}
+            <div class="alert alert-warning" role="alert">
+              <i class="fa fa-exclamation-triangle"></i> <strong>Feedback describes a customer problem that is solved by building a feature.</strong>
+              <hr>For example: the customer <i>feedback</i> "I want to print reports" could be solved by a <i>feature request</i> called "Printable PDF Reports".
+              Feedback usually arrives in Savio from your support tool, CRM, or Slack.<br><br>
+              Enter a frequently-heard customer problem below and save it.
+            </div>
+          {% endif %}
+          <form method="post">{% csrf_token %}
+            {% for hidden in form.hidden_fields %}
+              {{ hidden }}
+            {% endfor %}
+
+            {% for field in form.visible_fields %}
+            {% if field.name == 'user' %}
+              <div class="form-group">
+                {{ field|as_bootstrap_label }}
+                <div id="user-input-group" class="input-group" id="choose_user_div" data-toggle="tooltip" data-placement="right" data-trigger="hover" data-original-title="Who shared this feedback? You'll see them alongside the feature request. Required.">
+                  {{ field|add_class:'form-control' }}
+                  {{ field|as_bootstrap_help_text }}
+                  {% for error in field.errors %}
+                    <span class="form-text text-danger">{{ error }}</span>
+                  {% endfor %}
+                    &nbsp;&nbsp;<a href="#" name="create-app-user" value="Add User" class="js-create-app-user"><i class="fa fa-plus-circle"></i> Add New</a>
+                </div>
+              </div>
+            {% else %}
+              <div class="form-group">
+                {{ field|as_bootstrap_label }}
+                {{ field|add_class:'form-control' }}
+                {{ field|as_bootstrap_help_text }}
+                {% for error in field.errors %}
+                  <span class="form-text text-danger">{{ error }}</span>
+                {% endfor %}
+              </div>
+            {% endif %}
+            {% endfor %}
+
+            {% if not onboarding %}
+            <div class="tooltip-wrapper">
+              <input type="submit" name="save-and-archive" value="Save and Mark Triaged" class="btn btn-primary">
+            </div>
+            {% endif %}
+
+            <input type="submit" name="save-to-inbox" value="Save to Inbox" class="btn btn-secondary">
+            or <a href="{{return}}">cancel</a>
+          </form>
+        </div><!--portlet-->
+    </div>
+  </div>
+</div>
+
+<!-- Model for making AppUser -->
+<div class="modal fade" id="modal-app-user">
+  <div class="modal-dialog">
+    <div class="modal-content">
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block script %}
+
+
+  <style>
+    .tooltip-wrapper {
+      display: inline-block; /* display: block works as well */
+    }
+
+    .tooltip-wrapper .btn[disabled] {
+      /* don't let button block mouse events from reaching wrapper */
+      pointer-events: none;
+    }
+
+    .tooltip-wrapper.disabled {
+      /* OPTIONAL pointer-events setting above blocks cursor setting, so set it here */
+      cursor: not-allowed;
+    }
+  </style>
+
+{% endblock %}
+

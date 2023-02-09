@@ -1,0 +1,15 @@
+{% load filters %}
+            {% if messages %}
+              <div class="row">
+                <div class="col-lg-12">
+                  {% for message in messages %}
+                    <div class="mt-30 alert alert-{{ message.level|notification_class_type }} alert-dismissible fade show" role="alert">
+                      {{ message }}<br>
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                  {% endfor %}
+                </div>
+              </div>
+            {% endif %}

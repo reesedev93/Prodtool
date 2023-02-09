@@ -1,0 +1,121 @@
+{% extends "basic_page.html" %}
+{% load static %}
+{% load filters %}
+
+{% block meta_title %}
+Product Planning in Savio 
+{% endblock %}
+
+{% block meta_desc %}How to use your customer feedback to decide what features to build {% endblock %}
+
+{% block title %}
+Planning Your Features
+{% endblock %}
+
+{% block content %}
+  <div class="container pt90 pb90">
+    <div class="row">
+      <div class="col-md-9 docs">
+        <h2>Planning Your Features</h2>
+        <p>
+            Planning the next set of features to build is a challenge. You've got competitive pressure, your Hippos (HIghest Paid Person's Opinion) and teammates, the customer feedback you can remember, strategic priorities, and your intuition.  It's a combination of art and science, with often more art than science.
+        </p>
+
+        <p>
+            As a Product Manager, you're able to make great decisions when you're closer to the customer than anybody else in your organization.  Which is why we built Savio: there's an opportunity to use (and, if necessary, wield) data about what your customers want to drive the product's direction.      
+        </p>
+
+        <p>
+            In Savio, we give you a simple set of tools to cover many of the scenarios you have during Feature Planning.  Specifically, we help you:
+        </p>
+
+        <ol>
+          <a id="segment"></a> <!-- moved higher in page to account for title bar -->
+          <li><a href="#segment">Segment Feature Requests by MRR, plan, and more</a></li>
+          <li><a href="#prio">Find high priority, low effort features</a></li>  
+          <li><a href="#lifecycle">Use the Feature Request lifecycle to figure out and communicate what to build</a></li>
+        </ol>
+
+        <h3>1. Segment Feature Requests by MRR, Plan, and more</h3>
+        <p>
+            Fundamental to product management is answering "who is this feature for".  When you're planning your next set of features, you frequently want to build something for <a href="{% url 'marketing-customer-attributes' %}">a segment of customers</a>.  For example:
+        </p>
+        <ul>
+          <li>you may focus on your Enterprise customers this quarter</li>
+          <li>or look to increase revenue from your low-paying segment</li>  
+          <li>or want to build features that churned customers asked for</li>  
+        </ul>
+
+        <p>
+            In order to be able to find Feature Requests based on things like Plan ("Show me feature requests from Enterprise plan customers"), Savio needs to pull in your Customers, their Account (if Customers belong to Accounts), their plan, and their revenue data.  You'll do that by <a href="{% url 'marketing-integrations-segment' %}">importing from Segment</a> or <a href="{% url 'marketing-integrations-intercom' %}">importing from Intercom</a>.
+          </p>
+
+        <p>
+          Savio also imports your customers' custom attributes from Intercom or Segment.  You can <a href="{% url 'marketing-customer-attributes' %}">use these custom attributes to filter your feature requests</a>, which is extremely powerful and one of the key things you can do with Savio that you can't do with any other tool.
+        </p>
+
+        <p>
+            Once you've added and <a href="{% url 'marketing-triage' %}">triaged some customer feedback</a>, you can hone in on feature requests from key customer segments.  For example, we can easily find features from the three customer segments we outlined above.
+
+        <h4>Feature Requests from Enterprise Customers</h4>
+        <img class="img-fluid image" src="{% static 'images/help/product-planning/planning0-3.png' %}"><br>
+
+
+        <h4>Feature Requests from lowest-paying Customers</h4>
+        <img class="img-fluid image" src="{% static 'images/help/product-planning/planning0-2.png' %}"><br>
+
+
+        <h4>Feature Requests from Churned Customers</h4>
+        <img class="img-fluid image" src="{% static 'images/help/product-planning/planning0-1.png' %}"><br>
+
+        <a id="prio"></a> <!-- moved higher in page to account for header -->
+        <h4>Stacking Filters</h4>
+        <p>
+             You can also stack filters:
+            <img class="img-fluid image" src="{% static 'images/help/product-planning/planning000.png' %}"><br>
+        </p>
+
+        <h3>2. High Priority, Low Effort Features</h3>
+        <p>
+            Deceptively simple and yet crushingly effective: Priority and Effort are workhorses of prioritization.  When you assign a Priority and Effort to your Feature Requests, you're able to see <em>at a glance</em> the features where a small investment will produce large rewards. <br>
+
+            <img class="img-fluid image" src="{% static 'images/help/product-planning/planning001.png' %}">
+        <a id="lifecycle"></a> <!-- moved higher in page to account for header -->
+        </p>
+
+        <h3>3. The Feature Request Lifecycle</h3>
+        <p>
+             Feature Requests go through a lifecycle.  Savio captures each stage of that lifecycle in a Feature Request's "status" field so you can understand where your features are.<br>
+            <img class="img-fluid image" src="{% static 'images/help/product-planning/planning002.png' %}"><br>
+        </p>
+
+        <h4>Scenario: What Features Should We Build Next?</h4>
+        <p>
+            Thanks to the little ol' Status field, you're able to filter features where Status is "Under Consideration".  These should be the feature requests you're considering building next:<br>
+            <img class="img-fluid image" src="{% static 'images/help/product-planning/planning003.png' %}"><br>
+        </p>
+
+        <h4>Scenario: Communicate What You're Building Next</h4>
+        <p >
+            You get asked all the time what you're building next, and why.  To get a quick view on your Planned features, filter your Feature Requests to a Status of - you guessed it - "Planned".  
+            <img class="mb30 img-fluid image" src="{% static 'images/help/product-planning/planning004.png' %}"><br>
+            If your teammates want to know why you're building some features and not others, you can screenshot or print the page of customer feedback to help them understand your rationale and get them on the same page: 
+            <img class="img-fluid image" src="{% static 'images/help/product-planning/planning005.png' %}"><br>
+
+        </p>
+
+        <h4>Other Scenarios</h4>
+        <p>
+            <strong>"What are we working on?"</strong><br> 
+            To see what your development team is working on, view your Feature Requests where status is "In Progress" (we'll skip the screenshot - you get the point!)<br><br>
+
+            <strong>"What have we shipped?"</strong><br> 
+            To see what you've shipped, view your  Feature Requests where status is "Shipped".
+        </p>
+
+      </div>
+    </div>
+    {% include "includes/features-cta.html" %}
+
+  </div>
+{% endblock %}

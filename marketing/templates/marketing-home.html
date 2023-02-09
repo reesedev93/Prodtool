@@ -1,0 +1,479 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- open graph tags -->
+        <meta property="og:url" content="{{ request.build_absolute_uri }}" />
+        <meta property="og:title" content="Track feature requests and make data-driven product decisions" />
+        <meta property="og:type" content="website" />
+        <meta property="og:description" content="Centralize feature requests and prioritize based on MRR, plan, and more." />
+
+        <meta property="og:site_name" content="Savio" />
+        <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'images/savio-logo-1500x750.png' %}" />
+
+        <meta property="og:image:width" content="1500" />
+        <meta property="og:image:height" content="750" />
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:site" content="@savio_io" />
+
+        <!-- 115 chars max -->
+        <meta property="twitter:description" content="Centralize feature requests and prioritize based on MRR, plan, and more." />
+
+        <!-- end open graph -->
+
+
+        <!-- Slack App ID so Slack will respond with app suggestions when savio.io links pasted in Slack -->
+        <meta property="fb_app_id" content="333752754211489" />
+        <meta name="slack-app-id" content="AHB04HNE9">
+        <title>Track feature requests from Intercom, Help Scout, and Slack | Savio</title>
+        <meta name="description" content="Track customer feature requests and product feedback from your support and NPS tools, CRM, Google Docs, etc. Prioritize your roadmap with data.">
+
+        <!-- Plugins CSS -->
+        <link href="{% static 'css/plugins/marketing_plugins.css' %}" rel="stylesheet">
+        <link href="{% static 'linearicons/fonts.css' %}" rel="stylesheet">
+        <link href="{% static 'font-awesome/css/all.min.css' %}" rel="stylesheet">
+        <link href="{% static 'css/style-saas-landing.css' %}" rel="stylesheet">
+        <link rel="icon" type="image/png" href="{% static 'images/favicon_48.png' %}" />
+        {% include "includes/tracking.html" %}
+        {% block head %}{% endblock %}
+
+        <link rel="canonical" href="https://www.savio.io{% url 'marketing-home' %}">
+
+    </head>
+
+    <body data-spy="scroll" data-target="#landingkit-navbar" data-offset="75">
+
+        {% include "includes/marketing-header.html" %}
+
+        <div id="home" class="hero-gradient-dark gradien-primary">
+            <div class="transparent-angle angle-top-right"></div>
+            <div class="container">
+                <div class="row align-items-center">
+                    <!-- switch to col-lg-6 to put image carousel back -->
+                    <div class="col-lg-12 mr-auto ml-auto pb50">
+                        <h1 class="mb20 text-white h1">Track feature requests from <a href="{% url 'marketing-integrations-intercom' %}">Intercom</a>, <a href="{% url 'marketing-integrations-helpscout' %}">Help Scout</a>, <a href="{% url 'marketing-integrations-slack' %}">Slack</a>, and <a href="{% url 'marketing-chrome-extension' %}">more</a></h1>
+                        <h2 class=" mb30 lead text-white-gray">
+                            Founders, Customer Success, and Product Management teams track voice of customer requests to delight customers, reduce churn, and drive upsells
+                        </h2>
+                        <div>
+                            <a data-scroll href="{% url 'marketing-features' %}" class="btn btn-primary mr-3 my-3">Explore Features</a>
+                             <a class="btn btn-white-outline my-3" href="{% url 'accounts-join' %}">Try Savio</a>
+
+<!--                            <br>
+                            <span class="font12 text-white-gray">V3.7</span>
+-->
+                        </div>
+                    </div>
+<!--
+                    <div class="col-lg-6 mr-auto ml-auto">
+                        <div class="carousel-outer">
+                            <img src="{% static 'images/screenshots/marketing/feature-requests-no-filter-cropped.png' %}" alt="" class="img-fluid">
+
+                            <div class="owl-carousel owl-theme carousel-browser">
+                                <div class="item">
+                                    <img src="{% static 'images/slide1.png' %}" alt="">
+                                </div>
+                                <div class="item">
+                                    <img src="{% static 'images/slide2.png' %}" alt="">
+                                </div>
+                                <div class="item">
+                                    <img src="{% static 'images/slide3.png' %}" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+-->
+                </div>
+            </div>
+        </div><!--hero-->
+
+        <main class="main-content">
+
+          <section class="bg-white">
+            <div class="container pt50 pb50 ">
+                <div class="row">
+                    <div class='col-lg-12 text-center' >
+                      <h6 class="text-center section-subtitle">Trusted By companies like</h6>
+
+                        <img class="img-fluid logo not-last" src="{% static 'images/logos/docspring3-ddd.png'  %}" height="55" width="227">
+
+                        <img class="img-fluid logo not-last" src="{% static 'images/logos/hcp-ddd.png'  %}" height="55" width="333">
+
+                        <img class="img-fluid logo" src="{% static 'images/logos/tettra-ddd.png'  %}" height="55" width="233">
+
+<!--
+                        <img class="img-fluid" src="{% static 'images/logos/optinmonster-color.png'  %}" height="55" width="368">
+-->
+
+                    </div>
+                </div>
+          </div>
+        </section>
+            <section id="features" class="bg-faded">
+                <div class="container pt90">
+<!--
+                    <h6 class="text-center section-subtitle">Features</h6>
+-->
+                    <h3 class="text-center section-title mb40">Track feature requests to drive expansion and retention revenue</h3>
+                    <div class="row">
+                        <div class="col-lg-4 border border-faded border-top-0 border-left-0 feature-icon text-center">
+                            <i class="icon-layers text-primary"></i>
+                            <h4><a href="{% url 'marketing-use-cases-collect-feedback' %}">Track requests from any customer-facing tool</a></h4>
+                            <p class="text-left">
+                                <a href="{% url 'marketing-use-cases-collect-feedback' %}">Centralize feature requests in one place</a> with no workflow disruption. Your teammates never leave their Support tool, CRM, or Google doc to track feature requests in Savio with <a href="{% url 'marketing-chrome-extension' %}">a Chrome extension</a>.
+                            </p>
+                        </div>
+                        <div class="col-lg-4 feature-icon border border-faded border-left-0 border-top-0 border-right-0 text-center">
+                            <i class="icon-file-code text-danger"></i>
+                            <h4><a href="{% url 'marketing-use-cases-collect-feedback' %}">Tight integrations mean painless tracking</a></h4>
+                            <p class="text-left">
+                                Quickly <a href="{% url 'marketing-integrations-slack' %}">push customer feedback shared in Slack</a>, <a href="{% url 'marketing-integrations-intercom' %}">Intercom</a>, or <a href="{% url 'marketing-integrations-helpscout' %}">Help Scout</a> to Savio.  Integrations to push feature requests from Zendesk, Salesforce, and Hubspot CRM coming soon.
+                            </p>
+                        </div>
+                        <div class="col-lg-4 feature-icon border border-faded border-left-0 border-top-0 text-center">
+                            <i class="icon-paper-plane text-success"></i>
+                            <h4>Bring data to your product team</h4>
+                            <p class="text-left">
+                                Share your most popular requests with your Product Team. Make your case with customers' MRR, number of requests, plan, and more.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4 feature-icon border border-faded border-left-0 border-top-0 border-bottom-0 text-center">
+                            <i class="icon-folder-download text-warning"></i>
+                            <h4><a href="{% url 'marketing-use-cases-prioritize-feedback' %}">Identify feature requests for your key customer segments</a></h4>
+                            <p class="text-left">
+                                Feature requests are not created equal.
+                                See your most popular requests, most valuable requests, requests by customer plan, <a href="{% url 'marketing-use-cases-prioritize-feedback' %}">and a lot more</a>.
+                            </p>
+                        </div>
+                        <div class="col-lg-4 mb40 feature-icon border border-faded border-bottom-0 border-top-0 border-left-0 border-right-0 text-center">
+                            <i class="icon-users-plus text-dark"></i>
+                            <h4><a href="{% url 'marketing-use-cases-use-feedback' %}">Make customer-centric product decisions</a></h4>
+                            <p class="text-left">
+                                Contact customers to validate their problem and your solution. Rally stakeholders around your customers' product problems. See all your feature requests in a single place. <a href="{% url 'marketing-use-cases-use-feedback' %}">And more</a>.
+                            </p>
+                        </div>
+                        <div class="col-lg-4 feature-icon border border-faded border-top-0 border-left-0 border-bottom-0 text-center">
+                            <i class="icon-palette text-info"></i>
+                            <h4>Drive expansion revenue and increase retention</h4>
+                            <p class="text-left">
+                                Delight your customers by giving them the features they need to succeed with your app. Then thrill your customers and <a href="{% url 'marketing-use-cases-close-loop' %}">close the loop when you build what they asked for</a>.
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <section id="drill-down">
+              <div class="bg-white pt50 pb50">
+                  <div class="container">
+                      <div class="row">
+                          <div class="col-lg-12 pb40 text-center">
+                            <h2>Who uses Savio?</h2>
+                          </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-4 feature-icon border border-faded border-left-0 border-top-0 text-center">
+                            <h4>Founders</h4>
+                            <ul class="text-left feature-list">
+                              <li>Have a system you can depend on to track requests</li>
+                              <li><a href="{% url 'marketing-use-cases-prioritize-feedback' %}">Prioritize and build for your key customer segments</a></li>
+                              <li>Create product marketing emails in a snap</li>
+                              <li><a href="{% url 'marketing-use-cases-close-loop' %}">Close the loop with customers</a></li>
+                              <li>Review features you've built for key users and accounts (great before the renewal conversation)</li>
+                              <li>Track features through the dev process (coming soon)</li>
+
+                            </ul>
+                        </div>
+                        <div class="col-lg-4 feature-icon border border-faded border-left-0 border-top-0 text-center">
+                            <h4>Customer Success</h4>
+                            <ul class="text-left feature-list">
+                              <li><a href="{% url 'marketing-use-cases-collect-feedback' %}">Track feature requests in one place</a> with minimal disruption</li>
+                              <li>Use data to build a case for Product management to <a href="{% url 'marketing-use-cases-prioritize-feedback' %}">prioritize oft-requested features</a></li>
+                              <li><a href="{% url 'marketing-use-cases-close-loop' %}">Close the loop with customers when your team builds what they asked for</a></li>
+                              <li>Review features you've built for key users and accounts (great before the renewal conversation)</li>
+                              <li>Track features through the dev process (coming soon)</li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-4 feature-icon border border-faded border-left-0 border-top-0 text-center">
+                            <h4>Product Managers</h4>
+                            <ul class="text-left feature-list">
+                              <li>Identify product opportunities to drive expansion revenue and keep retention high</li>
+                              <li><a href="{% url 'marketing-use-cases-prioritize-feedback' %}">Identify the features your key customer segments want built</a></li>
+                              <li>Align your dev team and other stakeholders around customer problems</a></li>
+                              <li>Quickly identify new features for Product Marketing to promote</li>
+                              <li>Tell customer success when they need to <a href="{% url 'marketing-use-cases-close-loop' %}">close the loop</a> with customers</li>
+                              <li>Track features through the dev process (coming soon)</li>
+                            </ul>
+                        </div>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="bg-primary-dark feature-img-section pt90 pb50">
+  <!--
+                  <div class='no-padding feature-img pos-right pt70 text-center'>
+                      <img src="{% static 'images/screenshots/marketing/all-feedback-close-up.png' %}" alt='' class='img-fluid center-img'>
+                      <div class='font12 text-center text-white-gray pt10'>&nbsp;</div>
+                  </div>
+  -->
+                  <div class="container">
+                      <div class="row">
+                          <div class="col-lg-12 pb40 text-center">
+                              <h2 class='text-white'>Centralize your feature requests and use data to prioritize</h2>
+                          </div>
+                          <div class="col-lg-6">
+  <!--                            <h6 class='section-subtitle text-white'></h6> -->
+                              <h5 class="text-white-gray">
+                                With Savio, Success and Product teams can answer questions like:
+                              </h5>
+                              <ul class="list-unstyled feature-list text-white-gray mt20">
+                                  <li>What are our most-requested features?</li>
+                                  <li>What's the cumulative MRR of each feature request?</li>
+                                  <li>What features do my Enterprise plan customers want?</li>
+                                  <li>Which customers have asked for a better Search feature?</li>
+                                  <li>How many customers have asked for better reporting vs. single sign on?</li>
+                              </ul>
+                          </div>
+                          <div class="col-lg-6">
+                            <div class='img-fluid text-right'>
+                              <img src="{% static 'images/screenshots/marketing/all-feedback-close-up.png' %}" alt='' class='img-fluid center-img'>
+                              <div class='font14 text-center text-white-gray pt10'>All your customer feedback in one place</div>
+                            </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+
+
+
+            <div class="bg-white pt90 pb20">
+                  <div class="container">
+                      <div class="row">
+                          <div class="col-lg-12 pb40 text-center">
+                            <h2>Centralize requests from all your customer-facing tools</h2>
+                            <h4 class="pt20">Faster and less disruptive than centralizing in spreadsheets, Trello, or Airtable</h4>
+                          </div>
+                          <div class='col-lg-6 pb40 text-center' >
+                              <img src="{% static 'images/screenshots/marketing/slack-dialog.png' %}" height="406" width="378" alt="" class="img-fluid" style="border: 1px solid #aaa;">
+                              <div class='font14 text-center pt10'>Capture feature requests shared in Slack</div>
+                          </div>
+                          <div class="col-lg-6 ml-auto pb40">
+                              <h5>Track feature requests:</h5>
+                                <ul class="mt20 list-unstyled feature-list">
+                                    <li>with a <a href="{% url 'marketing-chrome-extension' %}">Chrome Extension</a></li>
+                                    <li>when shared <a href="{% url 'marketing-integrations-slack' %}">from Slack</a></li>
+                                    <li>by tagging <a href="{% url 'marketing-integrations-intercom' %}#push">a message in Intercom</a></li>
+                                    <li>by tagging <a href="{% url 'marketing-integrations-helpscout' %}#push">a message in Help Scout</a></li>
+                                    <li>by sending an email to <a href="{% url 'marketing-send-email' %}">your secret Savio email address</a></li>
+                                    <li> using our <a href="{% url 'marketing-help-zapier' %}">Zapier integration</a></li>
+                                    <li> with the <a href="{% url 'marketing-help-api' %}">Savio API</a></li>
+                                    <li>directly in Savio</li>
+                                    <li>in Zendesk, Hubspot CRM, and Salesforce (coming soon)</li>
+                                </ul>
+                                <a href="{% url 'marketing-use-cases-collect-feedback' %}" class='btn btn-outline-info btn-rounded'>Learn More</a>
+
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="bg-faded pt90 pb50">
+                  <div class="container">
+                      <div class="row ">
+                          <div class="col-lg-12 pb40 text-center">
+                            <h2>Prioritize top requests for important customer segments</h2>
+                            <h4 class="pt20">Keep key customers happy to drive expansion and retention revenue</h4>
+                          </div>
+
+                          <div class="col-lg-5 pb40">
+                              <p>
+                                Focusing on your Enterprise customers this quarter? See feature requests that they've asked for.
+                              </p>
+
+                              <p>
+                                Just care about customers paying more than $500 / month?  See the features they've requested instead.
+                              </p>
+                              <p>
+                                Savio imports your customers from <a href="{% url 'marketing-integrations-intercom' %} ">Intercom</a>, <a href="{% url 'marketing-integrations-segment' %} ">Segment</a>, or via API, along with MRR, plan, and <a href="{% url 'marketing-customer-attributes' %}">customer attibutes</a>. So you can isolate the feature requests that your key customer segments want.
+                              </p>
+                              <a href="{% url 'marketing-use-cases-prioritize-feedback' %}" class='btn btn-outline-info btn-rounded'>Learn More</a>
+                          </div>
+                          <div class='col-lg-6 ml-auto '>
+                              <img src="{% static 'images/screenshots/marketing/feature-requests-close-up.png' %}" style="border: 1px solid #aaa;" alt="" class="img-fluid">
+                              <div class='font14 text-center pt10'>Filter your feature list by number of votes, MRR, plan, and more</div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="bg-white pt90 pb50">
+                  <div class="container">
+                      <div class="row">
+                          <div class="col-lg-12 pb40 text-center">
+                            <h2>Drive customer-centric product decisions</h2>
+                            <h4 class="pt20">Use customer feedback to build better software, faster</h4>
+                          </div>
+
+                          <div class="col-lg-6 pb40">
+                            <div class='img-fluid text-right'>
+                              <a href="{% static 'images/help/use-feedback/feedback-in-one-place.png' %}"><img src="{% static 'images/help/use-feedback/feedback-in-one-place-cropped.png' %}" alt='' class='img-fluid center-img' style="border: 1px solid #aaa;"></a>
+                              <div class='font14 text-center pt10'>All a Feature Request's data on one page</div>
+                            </div>
+                          </div>
+                          <div class="col-lg-5 offset-lg-1">
+                              <h5>When your feedback is centralized, you can:</h5>
+                              <ul class="mt20 list-unstyled feature-list">
+                                  <li>See all customer requests for a feature on one page</li>
+                                  <li>Read your customers' exact words to build a solution that helps them</li>
+                                  <li>Share customer feedback with your team to align on product priorities</li>
+                                  <li>Contact customers to clarify their problems (and your solution)</li>
+                              </ul>
+                              <a href="{% url 'marketing-use-cases-use-feedback' %}" class='btn btn-outline-info btn-rounded'>Learn More</a>
+
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+
+              <div class="bg-faded pt90 pb50">
+                  <div class="container">
+                      <div class="row">
+                          <div class="col-lg-12 pb40 text-center">
+                            <h2>Close the loop with your customers</h2>
+                            <h4 class="pt20">Delight customers when you build features they asked for</h4>
+                          </div>
+
+                          <div class="col-lg-5">
+                              <h5>When you build features customers asked for:</h5>
+                              <ul class="mt20 list-unstyled feature-list">
+                                  <li>Quickly see features that you need to close the loop on</li>
+                                  <li>Close the loop with any number of requesters in just a few clicks</li>
+                                  <li>Track who you closed the loop with in your CRM</li>
+                                  <li>Keep customer retention high</li>
+                              </ul>
+                              <a href="{% url 'marketing-use-cases-close-loop' %}" class='btn btn-outline-info btn-rounded'>Learn More</a>
+                          </div>
+                          <div class="col-lg-6 pb40 ml-auto">
+                            <div class='img-fluid text-right'>
+                              <a href="{% static 'images/help/close-loop/email-customers.png' %}"><img src="{% static 'images/help/close-loop/email-customers.png' %}" alt='' class='img-fluid center-img' style="border: 1px solid #aaa;"></a>
+                              <div class='font14 text-center pt10'>Quickly close the loop with customers</div>
+                            </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+            </section>
+
+
+            <!-- reviews -->
+
+            <section id="reviews" class="bg-primary-dark">
+                <div class="container pt90 pb50">
+
+                    <h3 class="section-title text-white">What customers say about Savio</h3>
+                    <div class="row mt30">
+                        <div class="col-md-10 mr-auto ml-auto">
+                            <div class="carousel-review owl-carousel owl-theme">
+                                <div class="item text-center">
+                                    <p class="text-white-gray">
+                                        “If you're collecting customer feedback (which you should be), you need a place to store, organize, and distribute that feedback. Savio does that really well.”
+                                    </p>
+                                    <img src="{% static 'images/social-proof/nelson-joyce.jpg' %}" alt="" class="img-fluid  rounded-circle">
+                                    <h5 class="text-center text-white">Nelson, Founder, Tettra</h5>
+                                </div>
+
+                                <div class="item text-center">
+                                    <p class="text-white-gray">
+                                        “Savio has given more visibility into the 'value' of our feature requests.  Having customer data about who submitted feature requests means we can make informed decisions when analyzing product improvements.”
+                                    </p>
+                                    <img src="{% static 'images/social-proof/abbey-weber.jpeg' %}" alt="" class="img-fluid  rounded-circle">
+                                    <h5 class="text-center text-white">Abbey, Program Analyst, Housecall Pro</h5>
+                                </div>
+<!--                                <div class="item text-center">
+                                    <p class="text-white-gray">
+                                        "Savio has been so immediately helpful for getting our feature request pipeline flowing again. Thank you!"
+                                    </p>
+                                    <img src="{% static 'images/social-proof/angie-meeker.jpeg' %}" alt="" class="img-fluid  rounded-circle">
+                                    <h5 class="text-center text-white">Angie, Director of Customer Success, OptinMonster</h5>
+                                </div> -->
+                                <div class="item text-center">
+                                    <p class="text-white-gray">
+                                        “Savio makes it much easier to keep track of all of my customer feedback and link these to feature requests, and now I'm able to prioritize features properly.”
+                                    </p>
+                                    <img src="{% static 'images/social-proof/nathan-broadbent.jpeg' %}" alt="" class="img-fluid  rounded-circle">
+                                    <h5 class="text-center text-white">Nathan, Founder, DocSpring</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+        <!--
+            <section id="faqs">
+                <div class="container pt90 pb50">
+
+                    <h6 class="section-subtitle text-center">Our support team help you 24/7</h6>
+                    <h3 class="section-title mb70">Frequently asked questions</h3>
+                    <div class="row">
+                        <div class="col-lg-4 mb40">
+                            <h5 class="mb10">How to install a template <i class="icon-bubble-question"></i></h5>
+                            <p>
+                                Nullam fringilla tristique elit id varius. Nulla lacinia quam nec venenatis dignissim. Vivamus volutpat tempus semper. Cras feugiat mi sit amet risus consectetur.
+                            </p>
+                        </div>
+                        <div class="col-lg-4 mb40">
+                            <h5 class="mb10">How to change site logo <i class="icon-bubble-question"></i></h5>
+                            <p>
+                                Nullam fringilla tristique elit id varius. Nulla lacinia quam nec venenatis dignissim. Vivamus volutpat tempus semper. Cras feugiat mi sit amet risus consectetur.
+                            </p>
+                        </div>
+                        <div class="col-lg-4 mb40">
+                            <h5 class="mb10">Is all templates are responsive <i class="icon-bubble-question"></i></h5>
+                            <p>
+                                Nullam fringilla tristique elit id varius. Nulla lacinia quam nec venenatis dignissim. Vivamus volutpat tempus semper. Cras feugiat mi sit amet risus consectetur.
+                            </p>
+                        </div>
+                        <div class="col-lg-4 mb40">
+                            <h5 class="mb10">Is all future updates are free <i class="icon-bubble-question"></i></h5>
+                            <p>
+                                Nullam fringilla tristique elit id varius. Nulla lacinia quam nec venenatis dignissim. Vivamus volutpat tempus semper. Cras feugiat mi sit amet risus consectetur.
+                            </p>
+                        </div>
+                        <div class="col-lg-4 mb40">
+                            <h5 class="mb10">Can i change footer copyright <i class="icon-bubble-question"></i></h5>
+                            <p>
+                                Nullam fringilla tristique elit id varius. Nulla lacinia quam nec venenatis dignissim. Vivamus volutpat tempus semper. Cras feugiat mi sit amet risus consectetur.
+                            </p>
+                        </div>
+                        <div class="col-lg-4 mb40">
+                            <h5 class="mb10">How to get support <i class="icon-bubble-question"></i></h5>
+                            <p>
+                                Nullam fringilla tristique elit id varius. Nulla lacinia quam nec venenatis dignissim. Vivamus volutpat tempus semper. Cras feugiat mi sit amet risus consectetur.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        -->
+        </main><!--main-content-->
+        {% include "includes/join_cta.html" %}
+
+        {% include "includes/footer.html" %}
+
+        <script type="text/javascript" src="{% static 'js/plugins/marketing_plugins.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/saas.products.custom.js' %}"></script>
+        {% include 'includes/intercom_widget.html' %}
+
+    </body>
+</html>

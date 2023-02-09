@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        {% include "includes/head-css-and-js.html" %}
+        {% include "includes/tracking.html" %}
+        <title>{%block title_tag %} Savio {%endblock%}</title>
+        <meta name="description" content="{% block meta_desc %}Savio{% endblock %}">
+
+        {%block head %}{%endblock%}
+
+    </head>
+    <body class='bg-light'>
+
+        <div class="page-wrapper" id="page-wrapper">
+
+            <main class="content">
+
+              {% include "includes/messages.html" %}
+
+                <div class="container flex d-flex">
+                    <div class='row flex align-items-center'>
+                        <div class='col-lg-5 mt-60 mb-60 col-md-8 col-sm-12 ml-auto mr-auto'>
+                            <div class="bg-white shadow-sm overflow-hidden rounded">
+                                <div class="p-4 text-center bg-dark-active text-white">
+            <img src="{% static 'images/logo600x187.png' %}" width="155" height="48">
+
+                                    <h5 class='text-center h5 pt-10 mb-0 text-white'>{% block title_content %} {% endblock %}</h5>
+                                </div>
+                                <div class="p-3 pt-30 pb-30">
+
+                                  {% block body_content %}You need to fill in body_content block {% endblock %}
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- main end-->
+                <footer class="content-footer bg-light b-t">
+                    <div class="d-flex flex align-items-center pl-15 pr-15">
+                        <div class="d-flex flex p-3 mr-auto ml-auto justify-content-center">
+                            <div class="text-muted">© Copyright 2018-2019. savio.io</div>
+                        </div>
+                    </div>
+                </footer><!-- footer end-->
+            </main><!-- page content end-->
+        </div><!-- app's main wrapper end -->
+    </body>
+    {% include 'includes/intercom_widget.html' %}
+</html>

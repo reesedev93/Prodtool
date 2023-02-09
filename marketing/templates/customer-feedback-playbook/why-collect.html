@@ -1,0 +1,389 @@
+{% extends "blog-page.html" %}
+{% load static %}
+{% block meta_title %}
+Why you should collect and use customer feedback
+{% endblock %}
+
+{% block meta_desc %}Four reasons to collet and customer feedback to grow your SaaS busines... and four reasons to NOT collect feedback{% endblock %}
+
+
+{% block head %}
+  <!-- open graph tags -->
+  <meta property="og:url" content="{{ request.build_absolute_uri }}" />
+  <meta property="og:title" content="Why your SaaS should collect and use customer feedback" /> <!-- 57 chars -->
+  <meta property="og:type" content="website" />
+  <meta property="og:description" content="Why your SaaS should collect and use customer feedback" /> <!-- 73 chars -->
+
+  <meta property="og:site_name" content="Savio" />
+  <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'images/savio-logo-1500x750.png' %}" />
+
+  <meta property="og:image:width" content="1500" />
+  <meta property="og:image:height" content="750" />
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:site" content="@savio_io" />
+
+  <!-- 115 chars max -->
+  <meta property="twitter:description" content="Four reasons why your SaaS should collect and use customer feedback (and four why you shouldn't)" />
+
+  <!-- end open graph -->
+
+  <!-- for content upgrade -->
+  <script src="https://sendfox.com/js/form.js"></script>
+{% endblock %}
+
+
+{% block content %}
+
+  <div class="col-md-12 blog blog-title text-center">
+    <h1>Why your SaaS should collect and use customer feedback</h1>
+    <h2>Four reasons to use feedback to drive your product (and four reasons why you shouldn't)</h2>
+
+  </div>
+  <div class="col-md-8 offset-md-2 blog">
+
+
+<p>
+You're heard all the reasons about why not to gather feedback: "I know what customers want".  Or "they'll just ask for faster horses".  Or "Steve Jobs didn't collect feedback".  I've heard 'em too.  Below, I'll talk about reasons people say they don't need to collect feedback (and why they're wrong).
+</p>
+<p>
+And I'll talk about the four reasons why you SHOULD gather and use feedback to drive your SaaS company's growth.  Read on for the goods.
+</p>
+
+<div id="toc">
+  <h2>Table of contents</h2>
+  <ul id="toc-list"></ul>
+</div>
+
+<p>
+First, let’s talk about what we mean by collecting and using customer feedback.
+It means having a process to send your customer feedback into a single place,
+and using it to make your product or service better.
+</p>
+<p>
+We’ll talk shortly about why it’s important to collect and use feedback.  But
+first let’s cover the reasons to NOT collect or use customer feedback to improve
+your product or service.
+</p>
+<h3>Reasons to NOT collect Customer Feedback</h3>
+<h4>1. You don’t care about customer feedback</h4>
+<p>
+This is straightforward: for whatever reason, you don’t care about collecting
+and using customer feedback.  You should keep reading to see if the reasons to
+collect customer feedback change your mind.
+</p>
+      <hr class="separator">
+<h4>2. You have a product vision and want to execute on that</h4>
+<p>
+This is a variation on Henry Ford’s apocryphal “faster horses” quote and Steve
+Jobs’ line that “people don’t know what they want until you show it to them.”
+When you’re building a category-creating product before it launches (like the
+first mass-market car or the iPhone), there <em>might</em> be an argument that
+customer feedback is too rooted in what customers know (like horses or the Razr
+phone) to provide useful feedback.
+</p>
+<p>
+But once a product is in customer hands, evidence shows that even Ford would
+have been better off listening to feedback.  <a
+href="https://hbr.org/2011/08/henry-ford-never-said-the-fast" target="_blank">As Patrick
+Vlaskovits explains</a>:
+</p>
+<blockquote><a
+href="http://ideas.repec.org/a/aea/aecrev/v83y1993i3p383-401.html" target="_blank">General
+Motors in the 1920s</a>… took the direct opposite of Henry Ford’s tack of “Any
+color … so long as it is black”. [It] is best summed up by Alfred Sloan’s
+consumer-research driven<a
+href="http://history.gmheritagecenter.com/wiki/index.php/1924,_%22A_Car_for_Every_Purse_and_Purpose%22" target="_blank">
+“A Car for Every Purse and Purpose,”</a> which aimed to produce cars for
+distinct market segments.</blockquote>
+<p>
+What happened to Ford when GM listened to its customers?  Vlaskovits explains:
+</p>
+<blockquote>In 1921, the Ford Motor Company sold about 2/3 of all the cars built in the
+U.S. By 1926, this share had fallen to approximately 1/3. And in 1927, when Ford
+belatedly responded (at tremendous financial cost and internal strife) to
+changes in the market’s tastes and competitive innovation by shutting down
+production temporarily to re-tool his factories and bring the Model A to the
+market, that percentage fell to about 15%.</blockquote>
+<p>
+People wanted better cars and better financing options (which GM offered).  GM
+listened and Ford didn’t; GM gained market share and Ford lost it.
+</p>
+<p>
+It’s often said that Steve Jobs didn’t listen to customer feedback.  In this
+interview with Inc magazine, <a
+href="https://www.forbes.com/sites/drewhansen/2013/12/19/myth-busted-steve-jobs-did-listen-to-customers/#3c26b2a787f3" target="_blank">Jobs
+said</a>:
+</p>
+<blockquote>It sounds logical to ask customers what they want and then give it to them.
+But they rarely wind up getting what they really want that way. I think really
+great products come from melding two points of view—the technology point of view
+and the customer point of view. You need both.</blockquote>
+<p>
+As <a href="https://www.youtube.com/watch?v=FF-tKLISfPE&feature=emb_logo" target="_blank">Jobs
+said at Apple’s 1997 Worldwide Developers Conference</a>:
+</p>
+<blockquote>You’ve got to start with the customer experience and work backwards to the
+technology.  <em>I’ve made this mistake probably more than anybody else in this
+room</em>.  As we have tried to come up with a strategy and a vision for Apple,
+it started with ‘What incredible benefits can we give to the customer? Where can
+we take the customer?’  I think that’s the right path to take.</blockquote>
+
+<p>
+The point is not so much to listen to feedback and give customers what they
+asked for as it is to understand the “why” behind the request.  If customers are
+asking for blue buttons instead of red, don’t simply give them blue buttons:
+first ask <em>why </em>customers want them (and keep asking why until you
+understand).
+</p>
+<p>
+Broadly, it’s important to have a product vision.  But even Ford and Jobs -- two
+of the greatest innovators of the 20th century -- did, in fact, listen to
+customer feedback.
+</p>
+      <hr class="separator">
+<h4>3. “Let the cream rise to the top”</h4>
+<p>
+This is the “marination” approach, where you read some or all feedback, let it
+wash over you, and somehow magically make good product decisions about what to
+build.
+</p>
+<p>
+Because we’re all fallible humans, this approach makes you subject to recency
+and availability biases.  When it’s time to build the next features, the ones
+that you bias towards are the ones that you most recently heard (thanks to recency bias), and the ones that quickly come to mind (thanks to availability bias)... not the ones that your customers need and will continue to pay you for if you build.
+</p>
+      <hr class="separator">
+<h4>4. It’s too much work or too expensive to collect customer feedback</h4>
+<p>
+This is a fair point: the cost of collecting and using feedback is higher than
+the value it provides.  There are two ways to address this:
+</p>
+<p>
+1. You can make it cheaper to collect and use customer feedback.  How you’d do
+this depends on your situation: you can do this by using a purpose built tool to
+collect and organize feedback that respects your team’s workflow.  You can
+integrate feedback into your team’s decision-making workflow instead of making
+it ad-hoc.  You can use cheaper tools.  Etc.
+</p>
+<p>
+2. You can test whether the value you get from feedback is as low as you assume.
+You could run an experiment to collect feedback for a month to understand
+whether having and using similar feedback would be useful on an on-going basis.
+You could review historical feedback.  In short, you could spend a little time
+understanding whether -- with the evidence of many successful companies who
+listen to customers -- your assumptions about the value of feedback are correct.
+</p>
+
+{% include "includes/customer-feedback-default-cta.html" %}
+
+<h3>Reasons to collect Customer Feedback</h3>
+<p>
+We’ve covered some reasons to NOT collect customer feedback.  Let’s talk about
+the reasons to collect and use customer feedback to improve your product of
+service.
+</p>
+<h4>1. Collect customer feedback to drive growth</h4>
+<p>
+If you don’t understand where your product or service isn’t meeting customer
+needs, how will you ever meet them?  We’re big believers in the “Jobs To Be
+Done” model (JTBD).  JTBD talks about how customers “hire” products to do “jobs”
+for them (as an example, I’m hiring Google Docs to give me a great experience
+writing this post).</p>
+<p>According to JTBD, there are some key jobs customers hire
+your product to do for them, some jobs your product could be doing better, and
+some more jobs your product <em>could</em> do.
+</p>
+<p>
+If you don’t collect or use feedback, you’re relying on intuition to understand
+the jobs that your customers need done (or done better).  Like in relationships, it’s frankly impossible to “just know” what customers are thinking: you need to <em>ask for and listen to</em> feedback to understand what customers need.
+</p>
+<p>
+And once you understand what customers need, you can use that knowledge to do
+<em>more</em> jobs for your customers, or the current jobs -- but <em>better</em>.  And when you
+help customers more, you’ll grow by retaining customers, and expanding your
+accounts.
+</p>
+<p>
+And retention and expansion revenue are <a
+href="https://www.savio.io/blog/why-customer-success-is-influencing-product-roadmaps/" target="_blank">the
+keys to SaaS growth</a>.
+</p>
+      <hr class="separator">
+<h4>2. Focus on the important things</h4>
+<p>
+Driving growth is a function of knowing what to focus on.  When you collect and
+organize your customer feedback <strong>so that it’s</strong> <strong>easy to
+get answers to important questions to help you prioritize.</strong>
+</p>
+<p>
+For example, imagine the business priority is to win more deals this quarter.
+Would it be helpful to quickly see “feedback from lost deals” so you could
+address some of it?
+</p>
+<p>
+Or what about if the priority was to reduce churn?  If you could see “feedback
+from churned customers”, would that be helpful?
+</p>
+<p>
+Or, since all feedback is not created equal, how helpful would it be to
+understand the plan, MRR, deal size, and other attributes for each person who
+left feedback?  And then be able to filter by it to see “feedback from customers
+on our Enterprise plan” or “feedback from customers in EMEA” (or feedback from
+whichever key customer segment you cared about)?
+</p>
+<p>
+With feedback from any customer segment at your fingertips -- along with the
+number of people and total revenue of accounts who left similar feedback --
+you’ve got a powerful tool to prioritize and focus on the things that will
+really move the dial.
+</p>
+      <hr class="separator">
+<h4>3. You can cut your research time to deliver an excellent solutions</h4>
+<p>
+When you know who left specific feedback, you can channel your inner Steve Jobs
+to reach out to understand the “why” behind the request, and to sanity-check
+your solution to their problem.
+</p>
+<p>
+Superhuman CEO Rahul Vohra <a
+href="https://capiche.com/q/what-tools-help-you-decide-what-to-build-next-prioritizetriage-feedback-whats-the-one-source-of-truth-for-you" target="_blank">describes
+how they use their homegrown customer feedback database</a>:
+</p>
+<blockquote>At the start of any feature, we can automatically generate a skeleton
+product requirements document that contains many thousands of words of verbatim
+customer quotes. This easily shaves a month or two of user research off any
+feature.</blockquote>
+<p>
+Think about the gains that would come from shaving days, weeks, or months of
+research time from your product development cycle.
+</p>
+      <hr class="separator">
+<h4>4. Surprise and delight customers by closing the loop</h4>
+<p>
+When you’ve built something for people who asked for it, you should get the
+credit!
+</p>
+<p>
+You <em>might</em> get the credit if your requesters see some of your product
+marketing (assuming you have some)!
+</p>
+<p>
+But the best way to get credit -- and surprise and delight customers -- is to
+send them a note about how you listened to them and built something they asked
+for.
+</p>
+<p>
+Here’s Vohra again on another advantage of collecting and using customer
+feedback to drive product development:
+</p>
+<blockquote>At the end of any feature, we can close the loop with anybody who ever
+talked about it — and on precisely the same email thread in which they brought
+it up. This becomes a lovely source of surprise and delight!</blockquote>
+<p>
+I have first-hand experience with this.  Slack won me as a delighted customer
+when I reported a bug in Nov 2016:
+</p>
+<p>
+
+  <img src="{% static 'images/blog/customer-feedback-playbook/slack-close-the-loop1.png' %}" alt="" class=" img-fluid img-border">
+</p>
+<p>
+And then replied to the same thread in Jan 2017 (two months later!) telling me they fixed it:
+</p>
+<p>
+  <img src="{% static 'images/blog/customer-feedback-playbook/slack-close-the-loop2.png' %}" alt="" class="img-fluid img-border">
+</p>
+<p>
+This was the first time a software company had cared enough to both address my
+feedback AND tell me.
+</p>
+<p class="text-center">
+This was me when I got that email:<br><img src="https://media.giphy.com/media/h2MLtoOjxtkGY/source.gif" class="img-fluid img-border">
+</p>
+      <hr class="separator">
+<h3>Summary</h3>
+<p>
+At this point hopefully you’re convinced that collecting and acting on customer
+feedback will help you grow your SaaS business.  From here you can <a href="https://sendfox.com/lp/1ro8gv">subscribe to get the next post when it drops</a>, read about
+<a href="{% url 'marketing-blog-feedback-guide' %}">how to set up a customer feedback system</a>, or <a href="{% url 'marketing-blog-cs-influence-roadmap' %}">learn why Customer Success should use feedback to drive your product roadmap</a>.
+</p>
+
+      <hr class="separator">
+
+
+    <i class="text-muted">Last updated July 3 2020</i>
+
+    <div class="inline-cta">
+      <p>This is an article in our Customer Feedback playbook.  <a href="{% url 'marketing-customer-feedback-playbook' %}">Read the rest of the playbook here→</a></p>
+    </div>
+
+
+    <div class="row mr0 ml0" >
+      <div class="col-md-3 mt40 pt30 pb30 mb40 info-block">
+          <img src="{% static 'images/founder-headshot-kareem.png' %}" alt="" class="headshot img-fluid" height="150" width="150">
+      </div>
+      <div class="col-md-9 mt40 pt30 pb30 mb40 info-block">
+          <h4 class="no-anchor">Kareem Mayan</h4>
+          <p class="small">Kareem is a co-founder at <a href="{% url 'marketing-home' %}">Savio</a>. He's been prioritizing customer feedback professionally since 2001. He likes tea and tea snacks, and dislikes refraining from eating lots of tea snacks.</p>
+      </div>
+    </div>
+
+    <form method="post" action="https://sendfox.com/form/1dze03/1y0wom" class="sendfox-form" id="1y0wom" data-async="true" style=" border: 1px solid #aaa; padding: 20px 20px; background-color: #eee; margin-bottom: 40px;">
+
+    <h4 class="mb20 alert-heading no-anchor">Want more articles like this?</h4>
+    <p>Leaders from Slack, Zapier, and Appcues read our newsletter to delight customers, lower churn, and grow expansion revenue.</p>
+    <p><input class="form-control" type="email" placeholder="Email Address" name="email" required /></p>
+
+    <!-- no botz please -->
+    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="a_password" tabindex="-1" value="" autocomplete="off" /></div>
+    <p class="text-center pb10"><button class="btn btn-primary" type="submit">Send me more articles like this</button></p>
+    <div class="text-muted text-center">Max 2 emails/month. Unsub anytime.</div>
+
+    </form>
+
+  </div>
+
+    {% include "includes/blog-cta.html" with title="Centralize customer feedback from all your tools" %}
+
+{% endblock %}
+
+
+{% block footer_scripts %}
+
+  <!-- for auto-creating anchor link -->
+  <script type="text/javascript" src="{% static 'jquery-anchorify/anchorify.js' %}"></script>
+
+  <script type="text/javascript" src="{% static 'jquery.toc/jquery.toc.js' %}"></script>
+
+  <script type="text/javascript">
+      $(document).ready(function() {
+
+        // This builds a table of contents including generating IDs for every H3 and H4 element that do NOT have a no-anchor class on them
+        $("#toc-list").toc({content: "div.container", headings: "h3,h4", excludedClass: "no-anchor"});
+
+        // This code displays anchor links when hovering over an
+        // h3 or h4 with an ID.
+        $("h4[id], h3[id]").each(function(index, e){
+          x = anchorById(e["id"]);
+          $(e).prepend(x);
+        })
+
+        function anchorById (id) {
+          // console.log(id)
+          var anchor = $('<a></a>');
+
+          anchor.attr({
+                  href: '#' + id,
+                  class: 'header-link'
+          });
+
+          anchor.html( '<svg aria-hidden="true" height="12" width="12" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 8"><path d="M5.88.03c-.18.01-.36.03-.53.09-.27.1-.53.25-.75.47a.5.5 0 1 0 .69.69c.11-.11.24-.17.38-.22.35-.12.78-.07 1.06.22.39.39.39 1.04 0 1.44l-1.5 1.5c-.44.44-.8.48-1.06.47-.26-.01-.41-.13-.41-.13a.5.5 0 1 0-.5.88s.34.22.84.25c.5.03 1.2-.16 1.81-.78l1.5-1.5c.78-.78.78-2.04 0-2.81-.28-.28-.61-.45-.97-.53-.18-.04-.38-.04-.56-.03zm-2 2.31c-.5-.02-1.19.15-1.78.75l-1.5 1.5c-.78.78-.78 2.04 0 2.81.56.56 1.36.72 2.06.47.27-.1.53-.25.75-.47a.5.5 0 1 0-.69-.69c-.11.11-.24.17-.38.22-.35.12-.78.07-1.06-.22-.39-.39-.39-1.04 0-1.44l1.5-1.5c.4-.4.75-.45 1.03-.44.28.01.47.09.47.09a.5.5 0 1 0 .44-.88s-.34-.2-.84-.22z" /></svg>' );
+
+          return anchor
+        }
+        // End Anchor display code
+
+
+      });
+  </script>
+{% endblock %}

@@ -1,0 +1,228 @@
+{% extends "blog-page.html" %}
+{% load static %}
+{% block meta_title %}
+Four ways to track product feedback from your customers
+{% endblock %}
+
+{% block meta_desc %}Here are the four lightweight ways you can track and use customer feedback to grow your SaaS product (with pro's and con's){% endblock %}
+
+
+{% block head %}
+  <!-- open graph tags -->
+  <meta property="og:url" content="{{ request.build_absolute_uri }}" />
+  <meta property="og:title" content="Four ways to track product feedback from your customers" /> <!-- 57 chars -->
+  <meta property="og:type" content="website" />
+  <meta property="og:description" content="Four ways to track product feedback from your customers" /> <!-- 73 chars -->
+
+  <meta property="og:site_name" content="Savio" />
+  <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'images/savio-logo-1500x750.png' %}" />
+
+  <meta property="og:image:width" content="1500" />
+  <meta property="og:image:height" content="750" />
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:site" content="@savio_io" />
+
+  <!-- 115 chars max -->
+  <meta property="twitter:description" content="Four lightweight ways to track and use customer feedback to grow your SaaS product (with pro's and con's)." />
+
+  <!-- end open graph -->
+
+  <!-- for content upgrade -->
+  <script src="https://sendfox.com/js/form.js"></script>
+{% endblock %}
+
+
+{% block content %}
+
+  <div class="col-md-12 blog blog-title text-center">
+    <h1>Four ways to organize user feedback</h1>
+    <h2>Here are the four systems you can put together to organize user feedback</h2>
+  </div>
+    <div class="col-md-8 offset-md-2 blog">
+
+    <p>You know you should be using your incoming user feedback to prioritize what to build next.</p>
+
+    <p>But organizing user feedback can overwhelming: it's a highly manual process, feedback falls through the cracks, and it's not structured in an ideal way to prioritize.</p>
+
+    <p>I've been organizing user feedback since 2001.  Here are the most effective approaches I've landed on to <a href="{% url 'marketing-customer-feedback-playbook' %}">organize customer feedback</a> (after much trial and error).</p>
+
+    <p>You can:</p>
+    <ol>
+        <li>"Marinate" in your feedback</li>
+      <li>Use a general-purpose tool</li>
+      <li>Use a home-grown solution</li>
+      <li>Use a purpose-built tool</li></ol>
+
+    <p>Plus, you can use teammates as "Feedback Champions" to ensure the necessary feedback gets tracked, <a href="{% url 'marketing-triage' %}">triaged</a>, and delivered to Product Management in a useful form.</p>
+
+    <p>In this article, you'll dive into and examine the pro's and con's of each approach, and you'll dig into the emerging role of how Feedback Champions are becoming critical to driving customer-centric product development.</p>
+
+<div id="toc">
+  <h2>Table of contents</h2>
+  <ul id="toc-list"></ul>
+</div>
+
+
+    <h3>1. "Marinate" in your user feedback</h3>
+    <p>The simplest approach is one that works well enough for very early stage companies.  You read your feedback, "marinate" in it, and use your gut and intuition to decide what to build next.  </p>
+
+    <p>To get started, you just need a way to read all the user feedback that comes in. This is easy to do when you have a single feedback channel (like a support tool)- you would read every customer support email that comes in.  Or if you’re a company that uses Slack, your support team could send all relevant feedback to a channel in Slack for you to review regularly. </p>
+
+    <p>If you have multiple feedback channels, this approach starts to break down.  For example, if you're getting feedback from a support tool, customer phone calls, customer emails, and a CRM, it can become challenging to read everything.</p>
+
+    <p>This approach also breaks down if you want to add more structure around using your feedback to prioritize feature requests. For example, if you want to know how many people asked for Feature 1, what the total MRR is of customers who asked for Feature 2, or the breakdown is of Enterprise vs. SMB customers who asked for Feature 3, you're going to be out of luck.</p>
+
+    <p>It's also difficult to <a href="{% url 'marketing-use-cases-close-loop' %}">close the loop</a> with customers when you've built a feature they asked for.</p>
+
+    <p>Finally, this approach leaves you susceptible to recency bias (building feature requests you heard about recently) and availability bias (building feature requests that come to mind quickly when you wonder what to build next).</p>
+
+    <hr class="separator">
+
+    <h3>2. Use a general purpose tool</h3>
+    <p>The key drivers that cause people to move to a general purpose tool like a spreadsheet or Trello board are:</p>
+
+    <ol><li>You have more than one support channel and it’s difficult to read all your feedback</li>
+    <li>You want to be able to see how many people have asked for a given feature</li>
+    <li>You want to close the loop with customers when you build features they’ve asked for</li></ol>
+
+    <p>Here’s the actual spreadsheet we used to collect and organizer user feedback in a previous business:</p>
+    <p>
+      <a href="{% static 'images/blog/feature-request-tracking-spreadsheet.png' %}"><img src="{% static 'images/blog/feature-request-tracking-spreadsheet.png' %}" class="img-fluid img-border mb30" /></a></li>
+    </p>
+
+    <p>A single Pivot Table will help you tally up what your customers care about:</p>
+
+    <a href="{% static 'images/blog/feature-request-tracking-pivot-table.png' %}"><img src="{% static 'images/blog/feature-request-tracking-pivot-table.png' %}" class="img-fluid img-border mb30" height="500" width="349" /></a>
+
+    <p>This approach is also relatively quick to get started with.  It's better than marinating because you're adding rigor to the process of analyzing your requests and makes you less likely to decide based on biases.  It's also cheap - tools like Trello and Google Sheets are free to use.</p>
+
+    <p>People usually start to feel pain in three ways when using a general purpose tool to organize user feedback:</p>
+    <ol>
+    <li>Moving feedback to your spreadsheet is a manual and time consuming process. Moving feedback from a support tool to a spreadsheet involves having both tools open while cutting and pasting several pieces of info from one to the other.  Because of this is a manual process, some feedback is bound to not be tracked.  This means you won't be able to make decisions based on a full grasp on all your customer feedback. </li>
+    <li>Since feedback won't be triaged, it's important for teammates to track good quality feedback.  If they don't, you'll have a lot of noisy, unhelpful feedback that'll make prioritization more painful.</li>
+
+    <li>Segmenting and sorting feature requests by customer attributes that you care about is still difficult in a general-purpose tool. At some point not being able to find "all feature request from Enterprise customers" becomes growth-limiting.</li>
+  </ol>
+
+    <p>There's also a variation of this approach where teams use Zapier and similar kinds of tools to automate feedback collection.  This can definitely make some of the manual pain go away.  Though if you're paying for a tool like Zapier it might make sense to pay for a <a href="{% url 'marketing-home' %}">purpose-built tool to collect and track feedback</a>.</p>
+      <hr class="separator">
+
+    {% include "includes/customer-feedback-default-cta.html" %}
+      <hr class="separator">
+
+
+    <h3>3. Use a home-grown solution</h3>
+
+    <p>If you have the resources and tech team to invest in building a tool to organize user feedback, this might be an approach to take.</p>
+    <p>The upside is that your v1 is exactly customized to how your team works.</p>
+
+    <p>The downside to this approach is that workflows change as you grow, and now you need to continue to invest in maintaining and changing a new tool that customers don't pay you for.</p>
+      <hr class="separator">
+
+    <h3>4. Use a purpose-build tool</h3>
+
+    <p>You know SaaS: the upside to this approach is that you pay a little bit of money every month and get a tool built and maintained by experts who are focused on providing a great experience for their customers. </p>
+
+    <p>There are a handful of tools on the market that do this (including ours, <a href="{% url 'marketing-home' %}">Savio</a>). Here are the basics to look for in a tool that organizes user feedback:</p>
+
+    <ol><li>Is it easy to get user feedback into your tool?  This is best accomplished by a native integration with the support tool, CRM, etc that you use.  A Chrome extension lets you put feedback in from unsupported tools.</li>
+    <li>Is there a Triage process to filter out feedback that you don’t care about?</li>
+    <li>Are you able to quickly sort by things like the cumulative MRR of a feature request?  Or the number of people that have asked for it?</li>
+    <li>Can you look at feedback from key user segments so you can build features that they care about?</li>
+    <li>Can you easily get the contact information of customers who’ve asked for a feature from the tool to dig deeper? </li>
+    <li>Can you close the loop with customers in a few clicks? </li></ol>
+
+    <p>These key workflows come from conversations with 100+ B2B SaaS Product Managers.  And (shameless plug) they’re workflows that <a href="{% url 'marketing-home'%}">Savio</a> supports. </p>
+
+    <p>Other things you might care about in a purpose-built tool:</p>
+    <ul><li>Can you share a roadmap of your features to customers or stakeholders?  Most Product Managers we’ve talked to would prefer to take their features and put them on a set of slides in a presentation that’s framed appropriately for the audience.  But some care about being able to create a beautiful Roadmap driven directly off the feedback.</li>
+    <li>Can you solicit feedback publicly from customers using a voting board?  Some people find that a tool that enables this channel is valuable, and some don’t want it. </li></ul>
+
+    <p>Ultimately, having a purpose-built tool is certainly the best option for most mature SaaS businesses.  It's also probably best for most startups and mid-market companies that are struggling to organize user feedback as they grow. That's because the investment is low, and the gain is high.</p>
+
+      <hr class="separator">
+
+    <h3>Bonus: Feedback Champions</h3>
+    <p>Many companies are moving to a model where there's a small number of people in Customer Support or Customer Success who are "feedback champions".  Part of their job is to collect and organize user feedback from their teammates to share it with Product Management on a regular basis.  These people might have a unique title like "Product Operations", "Voice of Customer Manager", "Program Analyst", or might simply have the title "Customer Success" or "Customer Support".</p>
+
+    <p>This role is becoming critical in forward-thinking SaaS businesses.  It's primarily responsible for the new trend we're seeing: <a href="{% url 'marketing-blog-cs-influence-roadmap' %}">Customer Success is driving more of the product roadmap than ever before</a>.</p>
+      <hr class="separator">
+
+    <h3>Summary</h3>
+
+    <p>There are four models you can use to track and organize user feedback: marinating, using a general-purpose tool, rolling your own tool, or using a purpose-built tool. Your approach will depend on your current requirements, and will change over time.  The key is to start, since a feedback system provides a structured and thoughtful approach to using product feedback to grow revenue.</p>
+
+    <i class="text-muted">Last updated August 13, 2020</i>
+
+      <hr class="separator">
+
+    <div class="inline-cta">
+      <p>This is an article in our Customer Feedback playbook.  <a href="{% url 'marketing-customer-feedback-playbook' %}">Read the rest of the playbook here→</a></p>
+    </div>
+
+
+    <div class="row mr0 ml0" >
+      <div class="col-md-3 mt40 pt30 pb30 mb40 info-block">
+          <img src="{% static 'images/founder-headshot-kareem.png' %}" style="border-radius: 50%;border: 1px solid #ccc;" alt="" class="img-fluid" height="150" width="150">
+      </div>
+      <div class="col-md-9 mt40 pt30 pb30 mb40 info-block">
+          <h4 class="no-anchor">Kareem Mayan</h4>
+          <p class="small">Kareem is a co-founder at <a href="{% url 'marketing-home' %}">Savio</a>. He's been prioritizing customer feedback professionally since 2001. He likes tea and tea snacks, and dislikes refraining from eating lots of tea snacks.</p>
+      </div>
+    </div>
+
+    <form method="post" action="https://sendfox.com/form/1dze03/1y0wom" class="sendfox-form" id="1y0wom" data-async="true" style=" border: 1px solid #aaa; padding: 20px 20px; background-color: #eee; margin-bottom: 40px;">
+
+    <h4 class="mb20 alert-heading no-anchor">Want more articles like this?</h4>
+    <p>Leaders from Slack, Zapier, and Appcues read our newsletter to delight customers, lower churn, and grow expansion revenue.</p>
+    <p><input class="form-control" type="email" placeholder="Email Address" name="email" required /></p>
+
+    <!-- no botz please -->
+    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="a_password" tabindex="-1" value="" autocomplete="off" /></div>
+    <p class="text-center pb10"><button class="btn btn-primary" type="submit">Send me more articles like this</button></p>
+    <div class="text-muted text-center">Max 2 emails/month. Unsub anytime.</div>
+
+    </form>
+
+  </div>
+
+    {% include "includes/blog-cta.html" with title="Start Tracking Feature Requests Today" %}
+{% endblock %}
+
+{% block footer_scripts %}
+  <!-- for auto-creating anchor link -->
+  <script type="text/javascript" src="{% static 'jquery-anchorify/anchorify.js' %}"></script>
+
+  <script type="text/javascript" src="{% static 'jquery.toc/jquery.toc.js' %}"></script>
+
+  <script type="text/javascript">
+      $(document).ready(function() {
+
+        // This builds a table of contents including generating IDs for every H3 and H4 element that do NOT have a no-anchor class on them
+        $("#toc-list").toc({content: "div.container", headings: "h3,h4", excludedClass: "no-anchor"});
+
+        // This code displays anchor links when hovering over an
+        // h3 or h4 with an ID.
+        $("h4[id], h3[id]").each(function(index, e){
+          x = anchorById(e["id"]);
+          $(e).prepend(x);
+        })
+
+        function anchorById (id) {
+          // console.log(id)
+          var anchor = $('<a></a>');
+
+          anchor.attr({
+                  href: '#' + id,
+                  class: 'header-link'
+          });
+
+          anchor.html( '<svg aria-hidden="true" height="12" width="12" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 8"><path d="M5.88.03c-.18.01-.36.03-.53.09-.27.1-.53.25-.75.47a.5.5 0 1 0 .69.69c.11-.11.24-.17.38-.22.35-.12.78-.07 1.06.22.39.39.39 1.04 0 1.44l-1.5 1.5c-.44.44-.8.48-1.06.47-.26-.01-.41-.13-.41-.13a.5.5 0 1 0-.5.88s.34.22.84.25c.5.03 1.2-.16 1.81-.78l1.5-1.5c.78-.78.78-2.04 0-2.81-.28-.28-.61-.45-.97-.53-.18-.04-.38-.04-.56-.03zm-2 2.31c-.5-.02-1.19.15-1.78.75l-1.5 1.5c-.78.78-.78 2.04 0 2.81.56.56 1.36.72 2.06.47.27-.1.53-.25.75-.47a.5.5 0 1 0-.69-.69c-.11.11-.24.17-.38.22-.35.12-.78.07-1.06-.22-.39-.39-.39-1.04 0-1.44l1.5-1.5c.4-.4.75-.45 1.03-.44.28.01.47.09.47.09a.5.5 0 1 0 .44-.88s-.34-.2-.84-.22z" /></svg>' );
+
+          return anchor
+        }
+        // End Anchor display code
+
+
+      });
+  </script>{% endblock %}

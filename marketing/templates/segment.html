@@ -1,0 +1,146 @@
+{% extends "basic_page.html" %}
+{% load static %}
+{% load filters %}
+
+{% block meta_title %}
+How to integrate Segment.com with Savio
+{% endblock %}
+
+{% block meta_desc %}Enrich your customer feedback by sending MRR, plan, and account to Savio from Segment.com{% endblock %}
+
+
+{% block title %}
+Segment Integration
+{% endblock %}
+
+{% block content %}
+  <div class="container pt90 pb90">
+    <div class="row">
+      <div class="col-md-9 docs">
+        <h2>Why connect Segment to Savio?</h2>
+        <p>
+        Savio centralizes your customers' feedback so you can do things like see features requested by customers on your (for example) 'Enterprise' plan, or decide between building Feature A or Feature B by seeing the Total MRR of customers who've asked for each one.</p>
+
+        <p>Your team centralizes customer feedback into Savio from anywhere they handle it: a support tool, CRM, survey tool, etc. Teammates use a Chrome Extension to enter feedback directly into Savio, which means they don't leave their support tool (or  CRM, etc)  to do it.  When your teammates enter customer feedback, they also pick the customer who sent it in.  This is where Segment comes in: when you connect Savio as a Segment Destination, Savio pulls in your list of customers, their MRR, and plan information (as long as you're sending customers, MRR, and plan information to Segment).  To have a list of customers to choose from when entering feedback, you need to tell Savio how to get them. So if they're in Segment, Savio makes a great Destination for them. </p>
+
+        <p>Savio can pull this data from Segment with about a minute's worth of set up. You just need to turn Savio on as a Segment Destination.</p>
+
+        <a name="integration"></a>
+        <h2>Set Up Savio as a Segment Destination</h2>
+        <p>Turning on Savio as a Segment Destination is straightforward.</p>
+
+        <h4>1. Find Savio in the Destinations Catalog</h4>
+        <p>
+          <a href="https://app.segment.com/" target="_blank">Open Segment here</a> and select the workspace where you want to install Savio:<br>
+          <img class="img-fluid image" src="{% static 'images/help/segment00-2.png' %}" width="800" height="341">
+        </p>
+
+        <h4>2. Select the Catalog</h4>
+        <p>
+          In Segment, click on the Catalog:<br>
+          <img class="img-fluid image" src="{% static 'images/help/segment00-1.png' %}" width="800" height="495">
+        </p>
+
+        <h4>3. Configure the Savio Destination</h4>
+        <p>
+          In Segment, click Configure to set up Savio as a Destination for your data.<br>
+          <img class="img-fluid image" src="{% static 'images/help/segment001.png' %}" width="800" height="531">
+        </p>
+
+
+        <h4>4. Choose Source and Confirm</h4>
+        <p>
+          In Segment, choose the source that has your Customer Names, Emails, MRR, Plan, and Accounts (if you use them).  You're going to send that info to Savio so you can see that information alongside each piece of customer feedback.<br>
+          <img class="img-fluid image" src="{% static 'images/help/segment002a.png' %}" width="800" height="248">
+        </p>
+        <p>
+          Once you've got your source selected, hit Confirm:<br>
+          <img class="img-fluid image"  src="{% static 'images/help/segment002b.png' %}" width="800" height="246">
+        </p>
+
+
+        {% from_onboarding as onboarding %}
+                              
+        {% if onboarding %}
+
+          <h4>5. Click API Key</h4>
+          <p>
+            In Segment, click "API Key". You're going to paste the API key that you just copied from Savio on the next page in Segment.<br>
+            <img class="img-fluid image"  src="{% static 'images/help/segment003.png' %}" width="800" height="465">
+          </p>
+
+
+          <h4>6. Paste your API Key into Segment</h4>
+          <p>
+            In Segment, paste the API key you've copied from Savio into the input box and click Save.<br>
+            <img class="img-fluid image" src="{% static 'images/help/segment006.png' %}" width="800" height="490">
+          </p>
+
+          <h4>7. Turn on Savio Destination</h4>
+          <p>
+            In Segment, toggle the switch to On. Your customer information will now flow into Savio so you can see it alongside the feedback they leave, as well as search and filter feedback and feature requests by Plan and MRR.<br>
+            <img class="img-fluid image" src="{% static 'images/help/segment007.png' %}" width="800" height="485">
+          </p>
+
+          <h4>8. Replay Customers (optional)</h4>
+          <p>
+            If you're on the Segment Business plan, you can use <a href="https://segment.com/docs/guides/destinations/what-are-my-data-export-options/#replay" target="_blank">the Replay feature</a> to send Savio all your customers in one go. If you don't use the Replay feature, your customers will be sent to Savio as they hit your site.<br>
+          </p>
+
+        {% else %}
+
+          <h4>5. Click API Key</h4>
+          <p>
+            In Segment, click "API Key". You're going to enter an API key that Savio provides you on the next page in Segment.<br>
+            <img class="img-fluid image"  src="{% static 'images/help/segment003.png' %}" width="800" height="465">
+          </p>
+
+          <h4>6. Open Savio Settings Page in a new Tab</h4>
+          <p>
+            In Segment, right-click the Savio Settings page and open it in a new tab. This is where the API key lives that you'll enter into Segment.<br>
+            <img class="img-fluid image" src="{% static 'images/help/segment004.png' %}" width="800" height="466">
+          </p>
+
+          <h4>7. Copy your Segment API Key</h4>
+          <p>
+            On the Savio settings page, copy your Segment API key.  You're going to paste it into Segment to enable Savio as a Segment Destination.<br>
+            <img class="img-fluid image" src="{% static 'images/help/segment005.png' %}" width="800" height="256">
+          </p>
+
+          <h4>8. Paste your API Key into Segment</h4>
+          <p>
+            In Segment, paste your API key into the input box and click Save.<br>
+            <img class="img-fluid image" src="{% static 'images/help/segment006.png' %}" width="800" height="490">
+          </p>
+
+          <h4>9. Turn on Savio Destination</h4>
+          <p>
+            In Segment, toggle the switch to On. Your customer information will now flow into Savio so you can see it alongside the feedback they leave, as well as search and filter feedback and feature requests by Plan and MRR.<br>
+            <img class="img-fluid image" src="{% static 'images/help/segment007.png' %}" width="800" height="485">
+          </p>
+
+          <h4>10. Replay Customers (optional)</h4>
+          <p>
+            If you're on the Segment Business plan, you can use <a href="https://segment.com/docs/guides/destinations/what-are-my-data-export-options/#replay" target="_blank">the Replay feature</a> to send Savio all your customers in one go. If you don't use the Replay feature, your customers will be sent to Savio as they hit your site.<br>
+          </p>
+      {% endif %}
+
+        <a name="disconnet"></a>
+        <h2>Disconnect Savio as a Segment Destination</h2>
+        <p>To turn off Savio as a Segment Destination:</p>
+        <ol>
+          <li>
+            <a href="https://app.segment.com/" target="_blank">Open your Segment account</a> and go to the workspace you want to disconnect.
+          </li>
+          <li>
+            Choose the Savio Destination and either delete it or toggle it off.
+          </li>
+        </ol>
+    </div>
+  </div>
+
+    {% include "includes/features-cta.html" %}
+
+  </div>
+
+{% endblock %}

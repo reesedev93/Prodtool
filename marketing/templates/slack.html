@@ -1,0 +1,204 @@
+{% extends "basic_page.html" %}
+{% load static %}
+{% load filters %}
+
+{% block head %}
+
+<meta property="og:url" content="{{ request.build_absolute_uri }}" />
+
+<!-- og:title should be 85 chars max -->
+<meta property="og:title" content="Track customer feature requests shared in Slack" />
+
+<meta property="og:type" content="article" />
+
+<!-- og:description should be 200 chars max. Make sure first 150 make sense. -->
+<meta property="og:description" content="Push feature requests from Slack to send them to your product team. With Savio, Product Leaders can make data-driven prioritization decisions with their feature requests." />
+<meta property="og:site_name" content="Savio" />
+
+<meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'images/slack-and-savio-512x1024.png' %}" />
+
+<meta property="og:image:width" content="1024" />
+<meta property="og:image:height" content="512" />
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:site" content="@savio_io" />
+
+<!-- 115 chars max -->
+<meta property="twitter:description" content="Push feature requests from Slack to your product team. Make data-driven decisions about what to build next." /> 
+
+{% endblock %}
+
+{% block meta_title %}
+Track Feature Requests shared in Slack
+{% endblock %}
+
+{% block meta_desc %}Track feature requests shared in Slack with your Product Managers. Make data-driven decisions about what to build next.{% endblock %}
+
+
+{% block title %}
+<div class="text-center">Track Feature Requests shared in Slack</div>
+{% endblock %}
+
+{% block content %}
+
+<div class="bg-white pt50">
+    <div class="container">
+
+        <div class="row">
+            <div class='col-lg-12 pb40 text-center' >
+                <h2>Centralize Feature Requests posted to Slack</h2>
+
+                <h4 class="mt20">Whether from co-workers or customers, don't lose your requests in the Slack firehose.</h4>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class='col-lg-12 pb40 text-center' >
+                <img class="img-fluid" src="{% static 'images/slack-and-savio-512x1024.png'  %}" width="500" height="200"><br>
+                <span class="text-muted">Slack, meet Savio</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="bg-faded pt50 pb50">
+    <div class="container">
+        <div class="row">
+            <div class='col-lg-12 pb40 text-center' >
+                <h3 class="pb40">Two ways to send Feature Requests from Slack</h3>
+
+                <h4 class="p10">1.Savio can listen in a single Slack channel for feature requests</h4>
+
+              <div class="pb50">
+                <iframe class="video" width="560" height="315" src="https://www.youtube.com/embed/KOwnybk_clU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+
+                <h4 class="pb10">2. You can send specific feature requests from any Slack channel to Savio</h4>
+
+                <iframe class="video" width="560" height="315" src="https://www.youtube.com/embed/DY7Ci5kUVG8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>              
+ 
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="bg-white pt50 pb50">
+    <div class="container">
+        <div class="row">
+            <div class='col-lg-12 pb40 text-center' >
+                <h3>Save Feature Requests from your #feedback channel, easy peasy</h3>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-5 ml-auto">
+              <p>How it works:</p>
+              <ul class="list-unstyled feature-list">
+                <li>Pick a Slack channel that Savio will listen to</li>
+                <li>When a teammate posts to this channel, SavioBot will ask them if they want to send the message to Savio</li>
+                <li>If so, Savio will pull in the message for your Product Team to act on</li>
+                <li>You can also send feature ideas from any Slack channel to Savio in two clicks</li>
+              </ul>
+            </div>
+            <div class='col-lg-6 pt40 text-center' >
+                <img class="img-fluid  " style="border: 1px solid #ddd" src="{% static 'images/help/slack/saviobot-ephemeral-message.png' %}">
+                <div class='font12 text-center pt10'>SavioBot will ask you if you want to send your Slack messages to Savio</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="bg-faded pt50 pb30">
+    <div class="container">
+
+        <div class="row">
+            <div class='col-lg-12 pb40 text-center' >
+                <h3>Ensure feature requests reach your Product Team</h3>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class='col-lg-6 text-center' >
+                <img class="img-fluid  " style="border: 1px solid #ddd" src="{% static 'images/help/slack/saviobot-thread.png' %}" width="350" height="377">
+                <div class='font12 text-center pt10'>Savio adds a message to the Slack thread to confirm it's received the feature request</div>
+            </div>
+            <div class="col-lg-6 ml-auto pb40">
+              <p>You can quickly see which feedback has been sent to Savio</p> 
+              <ul class="list-unstyled feature-list">
+                <li>When you push a feature request in Slack to Savio, SavioBot adds a message to the feature request's Slack thread</li>
+                <li>This is so the person who sent the message to Savio can be confident it's in your Product Team's hands</li>
+                <li>The rest of your team can quickly see the requests that have been pushed to Savio</li>
+              </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="bg-white pt50 pb50">
+    <div class="container">
+
+        <div class="row">
+            <div class='col-lg-12 pb40 text-center' >
+                <h3>All the context for your Product Managers. Without hallway conversations.</h3>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6">
+              <p>Your Product Managers can click through to the full Slack conversation from Savio.</p>
+              <p>If your PM needs to clarify the feedback, they can either ask your teammate directly in the Slack thread.</p>
+            </div>
+            <div class='col-lg-6 text-center' >
+                <img class="img-fluid  " style="border: 1px solid #ddd" src="{% static 'images/help/slack/savio-view-source-conversation.png' %}">
+                <div class='font12 text-center pt10'>Click to Slack to read the whole conversation</div>
+            </div>
+        </div>
+
+    </div>
+</div>  
+
+<div class="bg-faded pt50 pb50">
+    <div class="container">
+
+        <div class="row">
+            <div class='col-lg-12 pb40 text-center' >
+                <h3>Use ALL your qualitative customer feedback. Build better software.</h3>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class='col-lg-6 pb40 text-center' >
+              <img src="{% static 'images/screenshots/marketing/feature-requests-close-up.png' %}" style="border: 1px solid #aaa;" alt="" class="img-fluid">
+              <div class='font12 text-center pt10'>Filter your feature list by MRR, customer plan, and more</div>
+            </div>
+            <div class="col-lg-6 pb40">
+              <p>Use Savio to:
+              </p>
+
+              <ul class="feature-list list-unstyled">
+                <li><a href="{% url 'marketing-use-cases-collect-feedback' %}">Centralize product feedback from anywhere</a></li>
+                <li>Answer questions like "What features do my Enterprise customers want?" or "Which customers have asked for a better Search feature?"</li>
+                <li><a href="{% url 'marketing-product-planning' %}">Build features for the <em>right</em> customers</a></li>
+                <li>Close the loop with your customers</li></ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="bg-white pt10 pb10">
+    <div class="container">
+
+
+      {% include "includes/integration_logos.html" %}
+    </div>
+</div>
+  </div>
+{% endblock %}
+
+{% block footer_cta %}
+
+    {% include "includes/footer-cta.html" with app_name="Slack"  include_extra_copy=True %}
+
+
+
+{% endblock %}

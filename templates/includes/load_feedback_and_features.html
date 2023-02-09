@@ -1,0 +1,39 @@
+{% load guides %}
+{% show_guide 'LOAD_FEEDBACK' as show_load_feedback %}
+{% if show_load_feedback %}
+
+{% comment %}
+The next step here would be to refactor this include to be
+something like "show_pm_message.html" and then add a
+load_guide set. That way we could just have this one file
+where we show whatever current guide we want them to se.
+{% endcomment %}
+
+<script>
+$(document).ready(function() {
+  $("#load-feedback-dismiss").click(function () {
+    $.ajax({
+      url: "{% url 'guides-dismiss-for-user' %}",
+      data: {guide: 'LOAD_FEEDBACK'},
+      type: 'post',
+      dataType: 'json',
+      success: function (data) {
+        $("#guide-container").remove();
+      }
+    });
+  });
+});
+</script>
+
+<div id="guide-container" class="row mt-30">
+  <div class="col-lg-12">
+
+    <div class="alert alert-dark alert-dismissible fade show" role="alert" style="text-align: left">
+      Want to load feature requests or feedback into Savio? We'll import from a spreadsheet or API for you. <a href="mailto:founders@savio.io">Email us</a> and we'll help.
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span id="load-feedback-dismiss" aria-hidden="true">×</span>
+      </button>
+    </div>
+  </div>
+</div>
+{% endif %}

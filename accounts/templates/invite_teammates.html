@@ -1,0 +1,146 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block head %}
+{{ form.media }}
+{% endblock %}
+
+{% block body_content %}
+
+<div class="row align-items-center pt-30">
+    <div class="col-md-12 mr-auto ml-auto">
+        <div class="mb-0">
+          <h4>Invite Teammates to Savio</h4>
+        </div>
+    </div>
+</div>
+
+{% if request.user.customer.whitelisted_domain %}
+
+<div class="row">
+  <div class="col-lg-9">
+    <div class="mb-30">
+      <div class="portlet-box portlet-gutter ui-buttons-col mb-30">
+        <div class="portlet-header flex-row flex d-flex align-items-center b-b">
+          <div class="flex d-flex flex-column text-left">
+            <h3>Auto Join</h3>
+
+            <span class="portlet-subtitle">Allow anybody with your company's email address to join your Savio vault.</span>
+
+          </div>
+        </div>
+
+
+        <div class="portlet-body">
+          <h5>Auto Join enabled</h5>
+          <p>
+            Any teammates who have an email address ending in <mark>@{{request.user.customer.whitelisted_domain}}</mark> can join this account.
+          </p>
+
+          <h5>Email Your Teammates</h5>
+          <p>
+            Nobody likes automated emails, so here's copy you can email to teammates to invite to Savio.
+          </p>
+
+          <p>
+            <a href="#" data-clipboard-target="#email_copy" data-toggle="tooltip_manual" data-original-title="copied to clipboard!" class="clipboard_link btn btn-secondary">Copy below text to clipboard</a></p>
+            <textarea rows="10" cols="80" id="email_copy">Hi,
+
+We're using Savio.io to collect and make sense of customer feedback that comes from support, sales, customer success, and product teams.
+
+You can put feedback directly into Savio without leaving the tool where it lives by using the Savio Chrome Extension.  When you put feedback into Savio, my team will see your customer feedback and can use it to effectively prioritize what to build next.
+
+Please get started by installing the Chrome Extension here:
+https://www.savio.io/ce
+
+Thanks,
+- Your Name</textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+
+{% else %}
+
+<div class="row">
+  <div class="col-lg-9">
+    <div class="mb-30">
+      <div class="portlet-box portlet-gutter ui-buttons-col mb-30">
+        <div class="portlet-header flex-row flex d-flex align-items-center b-b">
+          <div class="flex d-flex flex-column text-left">
+            <h3>Invite Your Teammates</h3>
+          </div>
+        </div>
+
+        <div class="portlet-body">
+          <p>To invite your teammates to join Savio, <a href="{% url 'accounts-user-list' %}">first create their account(s)</a>, then give them <a href="{% url 'login' %}">this URL to log in to Savio</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-lg-9">
+    <div class="mb-30">
+      <div class="portlet-box portlet-gutter ui-buttons-col mb-30">
+        <div class="portlet-header flex-row flex d-flex align-items-center b-b">
+          <div class="flex d-flex flex-column text-left">
+            <h3>Auto Join</h3>
+
+            <span class="portlet-subtitle">Allow anybody with your company's email address to join your Savio vault.</span>
+
+          </div>
+        </div>
+
+        <div class="portlet-body">
+          <p>
+          Users can't join this account automatically.</p>
+
+          <h5>Enable Auto Join</h5>
+          <p>When you turn on Auto Join, anybody with an email address on a domain you specify can join your Savio account.</p>
+          <p>For example, if you whitelisted <mark>acmecorp.com</mark>, anybody with an <mark>@acmecorp.com</mark> email address could join this account.<br><br>
+            {% if user.customer.subscription.can_use_autojoin %}
+              <a class="btn btn-primary" href="{% url 'accounts-settings-whitelist-domain' %}">Turn on Auto Joining</a>
+            {% else %}
+
+              Audo Join is available on the Growth plan.
+              <a href="{% url 'accounts-settings-add-credit-card' %}?return={{request.get_full_path|urlencode}}{%if user.customer.subscription.no_card_on_file %}&add_card=1{% endif %}">Upgrade your plan here.</a>
+            {% endif %}
+          </p>
+
+        </div><!--portlet-->
+    </div>
+  </div>
+</div>
+  {% endif %}
+
+{% endblock %}
+
+{% block script %}
+<script type="text/javascript">
+$(document).ready(function() {
+    console.log("success");
+
+    // Set "Copied to clipboard" tooltips to open manually
+    $('[data-toggle="tooltip_manual"]').tooltip({trigger: "manual"});
+
+    // "Copy to clipboard" Links should not jump page
+    $(".clipboard_link").click(function(e) {
+        e.preventDefault();
+    })
+
+    // Copy email copy to clipboard
+    var clipboard = new ClipboardJS(".clipboard_link");
+
+    // Show and hide "copied to clipboard" tooltip
+    clipboard.on('success', function(e) {
+        var ele = $(e.trigger);
+        ele.tooltip("show");
+        setTimeout(function() { ele.tooltip('hide') } , 500);
+    });
+})
+</script>
+{% endblock %}

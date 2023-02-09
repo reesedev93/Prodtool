@@ -1,0 +1,172 @@
+<html>
+  <head>
+    <style type="text/css" rel="stylesheet" media="all">
+      table {
+        color: #333;
+        background: white;
+        border: 1px solid grey;
+        font-size: 12pt;
+        border-collapse: collapse;
+      }
+      table thead th,
+      table tfoot th {
+        color: #777;
+        background: rgba(0,0,0,.1);
+      }
+      table caption {
+        padding:.5em;
+      }
+      table th,
+      table td {
+        padding: .5em;
+        border: 1px solid lightgrey;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Trialing Subs</h1>
+    <table>
+      <thead>
+          <tr>
+              <th>Customer</th>
+              <th>Owner</th>
+              <th>Join Date</th>
+              <th>MRR</th>
+              <th>Total Feedback</th>
+              <th>Recent Feedback</th>
+              <th>Onboarding %</th>
+              <th>Card</th>
+              <th>Plan</th>
+          </tr>
+      </thead>
+      <tbody>
+        {% for sub in trialing_subs %}
+        <tr>
+          <td>{{sub.customer.name}}</td>
+          <td><a href="mailto:{{sub.customer.owner.email}}">{{sub.customer.owner.get_full_name}}</a></td>
+          <td>{{sub.created.date}}</td>
+          <td>{{sub.get_billing_amount}}</td>
+          <td>{{sub.total_feedback}}</td>
+          <td>{{sub.recent_feedback}}</td>
+          <td>{{sub.customer.onboarding_percent_complete}}%</td>
+          <td>{{sub.card_on_file}}</td>
+          <td>{{sub.get_plan_display}}</td>
+        </tr>
+        {% empty %}
+        <tr>
+          <td colspan="7">
+            No new subs :(
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <h1>Paying Subs (Card on file)</h1>
+    <table>
+      <thead>
+          <tr>
+              <th>Customer</th>
+              <th>Owner</th>
+              <th>Join Date</th>
+              <th>MRR</th>
+              <th>Total Feedback</th>
+              <th>Recent Feedback</th>
+              <th>Onboarding %</th>
+              <th>Card</th>
+              <th>Plan</th>
+          </tr>
+      </thead>
+      <tbody>
+        {% for sub in paying_subs %}
+        <tr>
+          <td>{{sub.customer.name}}</td>
+          <td><a href="mailto:{{sub.customer.owner.email}}">{{sub.customer.owner.get_full_name}}</a></td>
+          <td>{{sub.created.date}}</td>
+          <td>{{sub.get_billing_amount}}</td>
+          <td>{{sub.total_feedback}}</td>
+          <td>{{sub.recent_feedback}}</td>
+          <td>{{sub.customer.onboarding_percent_complete}}%</td>
+          <td>{{sub.card_on_file}}</td>
+          <td>{{sub.get_plan_display}}</td>
+        </tr>
+        {% empty %}
+        <tr>
+          <td colspan="7">
+            No active subs :(
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <h1>Non-trialing Free Subs</h1>
+    <table>
+      <thead>
+          <tr>
+              <th>Customer</th>
+              <th>Owner</th>
+              <th>Join Date</th>
+              <th>MRR</th>
+              <th>Total Feedback</th>
+              <th>Recent Feedback</th>
+              <th>Onboarding %</th>
+              <th>Plan</th>
+          </tr>
+      </thead>
+      <tbody>
+        {% for sub in free_subs %}
+        <tr>
+          <td>{{sub.customer.name}}</td>
+          <td><a href="mailto:{{sub.customer.owner.email}}">{{sub.customer.owner.get_full_name}}</a></td>
+          <td>{{sub.created.date}}</td>
+          <td>{{sub.get_billing_amount}}</td>
+          <td>{{sub.total_feedback}}</td>
+          <td>{{sub.recent_feedback}}</td>
+          <td>{{sub.customer.onboarding_percent_complete}}%</td>
+          <td>{{sub.get_plan_display}}</td>
+        </tr>
+        {% empty %}
+        <tr>
+          <td colspan="6">
+            No new subs :(
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <h1>Gone Bad Subs</h1>
+    <table>
+      <thead>
+          <tr>
+              <th>Customer</th>
+              <th>MRR</th>
+              <th>Total Feedback</th>
+              <th>Recent Feedback</th>
+              <th>Onboarding %</th>
+              <th>Card on File</th>
+              <th>Status</th>
+          </tr>
+      </thead>
+      <tbody>
+        {% for sub in gone_bad_subs %}
+        <tr>
+          <td>{{sub.customer.name}}</td>
+          <td>{{sub.get_billing_amount}}</td>
+          <td>{{sub.total_feedback}}</td>
+          <td>{{sub.recent_feedback}}</td>
+          <td>{{sub.customer.onboarding_percent_complete}}%</td>
+          <td>{{sub.card_on_file}}</td>
+          <td>{{sub.get_status_display}}</td>
+        </tr>
+        {% empty %}
+        <tr>
+          <td colspan="7">
+            No gone bad subs. Really!?
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </body>
+</html>

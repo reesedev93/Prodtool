@@ -1,0 +1,133 @@
+{% extends "basic_page.html" %}
+{% load static %}
+
+{% block meta_title %}
+How to integrate Intercom with Savio
+{% endblock %}
+
+{% block meta_desc %}Add a tag to an Intercom message to push product feedback to Savio{% endblock %}
+
+{% block title %}
+Intercom Integration
+{% endblock %}
+
+{% block content %}
+  <div class="container pt90 pb90 ">
+    <div class="row">
+      <div class="col-md-9 docs">
+        <h2>Why connect Intercom to Savio?</h2>
+        <p>
+          There are two reasons to connect Intercom to Savio:
+      <!-- anchor is higher than query section so that section appears on page -->
+        <a name="query"></a>
+          <ol>
+            <li>So your product team can <a href="#query">query feature requests by MRR and Plan in Savio</a></li>
+            <li>So your Intercom admins can <a href="#push">push customer feedback from Intercom to Savio</a> without needing a Savio account</li>
+          </ol> 
+        </p>
+
+        <h3>1. Querying Feature Requests by MRR and Plan</h3>
+        <p>Savio can show you things like "features requested by customers on your (for example) 'Enterprise' plan".  Or help you decide between building Feature A or Feature B by showing you the Total MRR of customers who've asked for each one.</p>
+      <!-- anchor is higher than push section so that section appears on page -->
+        <a name="push"></a>
+
+        <p>To do that, Savio needs the MRR and plan information for each customer who provides feedback. If you're sending customer MRR and plan information to Intercom, Savio can pull it from there with about a minute's worth of set up. See "<a href="#install">Connecting Intercom to Savio</a>", below.</p>
+
+        <h3>2. Pushing feedback from Intercom to Savio</h3>
+        <p>Customers are sharing insights about how to make your product better with your support, sales, and success teammates in Intercom.</p>
+
+        <p>As a product manager, you want to be able to read the important parts of those conversations.  And your support, sales, and success teammates want to share them with you (with minimum change to their workflow).</p>
+
+        <p>Savio's Intercom integration helps you accomplish both.</p>
+
+        <h4 class="mt30">What you get</h4>
+        <p>With the Savio app you and your team can:</p>
+        <ol><li>Tag individual customer messages in Intercom, which pushes them to Savio</li>
+        <li>Add a hashtag to internal Intercom notes, which pushes them to Savio</li>
+        <li>Push customer feedback to Savio from the Intercom mobile apps</li>
+        </ol>
+
+        <p><strong>No Savio Account Required</strong><br>
+        Note: the person who pushes feedback from Intercom to Savio does not require a Savio account.</p>
+
+
+        <h4 class="mt30">How it works</h4>
+
+        <p>Once you install the app, you tell Savio what tag you'll apply to Intercom messages that Savio should pull in:
+
+          <img class="img-fluid mb20 mt30" style="border: 1px solid #ddd" src="{% static 'images/help/intercom/savio-feedback-tag.png' %}"><br>
+        </p>
+
+
+        <p>You can then push feedback from Intercom conversations to Savio in two ways.</p>
+        
+        <h5>1. Tag a message in Intercom</h5>
+        <p>When you tag an Intercom message, Savio will import that message as new feedback.<br>
+        
+        <img class="img-fluid mt30 mb30" style="border: 1px solid #ddd" src="{% static 'images/help/intercom/intercom-inbox-with-feature-request-after-pushing-to-savio-no-ack-highlighted.png' %}"><br>
+
+        When you push a message to Savio, Savio will add a note to the Intercom conversation indicating that the feedback has been pushed successfully:
+
+        <img class="mt30 mb30 img-fluid" style="border: 1px solid #ddd" src="{% static 'images/help/intercom/intercom-inbox-with-feature-request-after-pushing-to-savio-with-ack-highlighted.png' %}"><br>
+
+
+        In Savio, you'll have a link back to the Intercom source conversation to see the full context, if necessary.
+
+        <img class="img-fluid mt30 mb30" style="border: 1px solid #ddd" src="{% static 'images/help/intercom/savio-link-to-source-app.png' %}"><br>
+
+        </p>
+        <h5>2. Hashtag an Intercom note</h5>
+        <p>When you use your tag as a hash tag in an Intercom note, Savio will import that note as feedback.</p>
+
+        <p>For example, if Savio is importing Intercom messages with the tag <code>product-feedback</code>, you'd add <code>#product-feedback</code> to a note for Savio to pull it in.</p>
+
+        <p>For example, imagine you have this conversation:<br>
+        <img class="img-fluid mb30 mt30" style="border: 1px solid #ddd" src="{% static 'images/help/intercom/intercom-multiple-messages.png' %}"><br>
+
+        There are three feature requests here, but your Product Managers wouldn't have a lot of context if you just pushed a single message for each of "date pickers on burndowns", "cycle time reports", and "cumulative flow charts".</p>
+
+        <p>So you could summarize the requests in a note and add the <code>#product-feedback</code> hashtag, which is what Savio is listening for:
+        <img class="img-fluid mb30 mt30" style="border: 1px solid #ddd" src="{% static 'images/help/intercom/intercom-summarized-feedback-in-internal-note.png' %}">
+      </p>
+
+      <h5>3. Push customer feedback from Intercom mobile apps</h5>
+      <!-- anchor is higher than install section so that section appears on page -->
+      <a name="install"></a> 
+
+      <p>The hashtag-in-note feature is also helpful when you're answering customer feedback using Intercom's mobile app.  You can't tag messages using Intercom's mobile apps (this is a limitation of their mobile apps).  But you can summarize the feedback in a note and add the hashtag in the Intercom mobile app.  Like when you hashtag a note in the Intercom web app, when you do it in the mobile app, Savio will pull the note in as feedback.</p>
+
+        <h3>Connecting Intercom to Savio</h3>
+        <p>Connecting Intercom to Savio is straightforward.</p>
+
+        <h4>1. Visit Savio Settings page</h4>
+        <p>
+          <a href="{{ settings.HOST }}{% url 'accounts-settings-list' %}" target="_blank">Visit your Savio Settings page</a> and click this button:<br>
+          <img class="img-fluid mb30 mt30" src="https://static.intercomassets.com/assets/oauth/primary@2x-0d69ca2141dfdfa0535634610be80994.png" width="206" height="40"><br>
+
+
+        </p>
+
+        <h4>2. Authorize access for Savio</h4>
+        <p>
+          Then hit the Authorize Access button:<br>
+          <img class="img-fluid mb30 mt30" style="border: 1px solid #ddd" src="{% static 'images/help/intercom001.png' %}" width="400" height="377">
+        </p>
+
+        <h4>3. Select the tag Savio should pull in</h4>
+        <p>
+          <img class="img-fluid mb30" style="border: 1px solid #ddd" src="{% static 'images/help/intercom/savio-feedback-tag.png' %}">
+        </p>
+
+        <h4>4. You're done!</h4>
+        <p>
+          Savio will import your customers and accounts and their MRR and plans.  You'll be able to use MRR and Plan to filter your feature requests and plan your roadmap with more confidence.<br><br>
+
+          You'll also be able to push messages or internal notes from Intercom to Savio when you add the tag you selected in step 3 to an Intercom message, or use the tag as a hashtag and add it to an Intercom note. 
+        </p>
+    </div>
+
+    </div>
+
+    {% include "includes/features-cta.html" %}
+  </div>
+{% endblock %}

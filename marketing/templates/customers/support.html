@@ -1,0 +1,231 @@
+{% extends "basic_page.html" %}
+{% load static %}
+
+{% block head %}
+
+<meta property="og:url" content="{{ request.build_absolute_uri }}" />
+
+<!-- og:title should be 85 chars max -->
+<meta property="og:title" content="Collect product feedback from your support tool" />
+
+<meta property="og:type" content="article" />
+
+<!-- og:description should be 200 chars max. Make sure first 150 make sense. -->
+<meta property="og:description" content="With Savio, Support teams can quickly track feature requests and send them to their Product team." />
+<meta property="og:site_name" content="Savio" />
+
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:site" content="@savio_io" />
+
+<!-- 115 chars max -->
+<meta property="twitter:description" content="Support teams can track feature requests directly in their support tool to send them to their product teams." />
+
+{% endblock %}
+
+{% block meta_title %}
+Feature request tracking tool for support teams
+{% endblock %}
+
+{% block meta_desc %}Feature request tracking tool for support teams. Centralize user feedback, prioritize features for Product Management, and close the loop with customers{% endblock %}
+
+{% block title %}<div class="text-center">
+Feature request tracking <br>for Support Teams</div>{% endblock %}
+
+{% block content %}
+
+<div class="bg-white pt70 pb20">
+    <div class="container">
+
+        <div class="row">
+            <div class='col-lg-12 pb40 text-center' >
+                <h2>Painlessly track feature requests for your Product Team</h2>
+
+                <h4 class="mt20">Focus on helping your customers, not digging through spreadsheets or Trello boards.</h4>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="bg-faded feature-img-section pt50 pb50">
+   <div class="container">
+        <div class="row">
+            <h2>Track feedback without leaving your support tool</h2>
+            <div class="col-lg-6">
+                <p>
+                  Centralize customer feedback in Savio for your Product Team to review.  Send feedback to Savio when you:
+                </p>
+                <ul class="list-unstyled feature-list">
+                    <li>Tag it in <a href="{% url 'marketing-integrations-intercom' %}">Intercom</a> or <a href="{% url 'marketing-integrations-helpscout' %}">Help Scout</a></li>
+                    <li>Save it with a Chrome Extension</li>
+                    <li>Email it to a secret Savio email address</li>
+                    <li>Send it <a href="{% url 'marketing-integrations-slack' %}">from a Slack channel</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-6">
+                <h5>See how to send Savio feedback from <a id="helpscout_switch" class="switch" href="#">👇Help Scout</a> or <a href="#" id="intercom_switch" class="switch">Intercom</a></h5>
+
+                <div id="helpscout_gif">
+                  <img class="img-fluid" style="border: 1px solid #ddd" src="{% static 'images/help/helpscout/helpscout-integration-animated.gif' %}">
+                </div>
+                <div id="intercom_gif" class="hide">
+                  <img class="img-fluid" style="border: 1px solid #ddd" src="{% static 'images/help/intercom/intercom-integration-animated.gif' %}">
+                </div>
+
+                <div class='font12 text-center pt10'>Tag a conversation to send it to Savio</div>
+              </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="bg-white feature-img-section pt50 pb50">
+   <div class="container">
+        <div class="row">
+            <div class="col-lg-6 pr30">
+              <div class='img-fluid text-right pt10'>
+                <img src="{% static 'images/screenshots/marketing/all-feedback-close-up.png' %}" alt='' class='img-fluid center-img' style="border: 1px solid #aaa;">
+                <div class='font12 text-center pt10'>Quickly centralize your feedback
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+                <h2>Better than Trello or a Spreadsheet</h2>
+                <p>
+                  Savio is purpose-built for tracking feedback, which means:
+                </p>
+                <ul class="list-unstyled feature-list">
+                    <li>You don't leave your support tool to track feedback</li>
+                    <li>No digging through rows or cards to upvote the right feature</li>
+                    <li>Feedback is automatically saved with the customer and account</li>
+                    <li>See a note in your support ticket that links to tracked feedback in Savio (if it's been tracked)</li>
+                    <li>No Savio account necessary for support reps if you track feedback from Help Scout or Intercom</li>
+                    <li>You can quickly email all customers telling them you built their feature (coming soon)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="bg-faded pt50 pb50">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+              <h2>All your feature requests in one place</h2>
+              <p>With all your feature requests in one place:</p>
+              <ul class="list-unstyled feature-list">
+                <li>Quickly see what your most popular feature requests are</li>
+                <li>Share possible solutions with your Product team</li>
+                <li>See requests sorted by cumulative customer revenue</li>
+                <li>See feature requests by person or account</li>
+              </ul>
+            </div>
+            <div class='col-lg-6 pb40 text-center' >
+                <img src="{% static 'images/screenshots/marketing/feature-requests-close-up.png' %}" style="border: 1px solid #aaa;" alt="" class="img-fluid">
+                <div class='font12 text-center pt10'>Centralize, sort, and filter your feature requests</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="bg-white pt50 pb50">
+    <div class="container">
+
+        <div class="row">
+            <div class='col-lg-6 pb40 text-center' >
+                <img class="img-fluid  " style="border: 1px solid #ddd" src="{% static 'images/help/helpscout/015-fat-link-to-helpscout-source-conversation.png' %}">
+                <div class='font12 text-center pt10'>Click to the source tool to read the whole conversation</div>
+            </div>
+            <div class="col-lg-6">
+              <h2>PMs can get all the context in the source conversation</h2>
+
+              <p>In Savio, your Product Managers can click through to the source tool to read the full conversation</p>
+              <p>If your PM needs to clarify the feedback, they can either ask the customer directly, or leave you an internal note to ask the customer on their behalf</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<div class="bg-faded pt50 pb50">
+    <div class="container">
+
+        <div class="row">
+            <div class='col-lg-12 pb40 text-center' >
+                <h3>Use ALL your qualitative customer feedback. Build better software.</h3>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-5 ml-auto pb40">
+              <p>Use Savio to:
+              </p>
+
+              <ul class="feature-list list-unstyled">
+                <li><a href="{% url 'marketing-use-cases-collect-feedback' %}">Centralize product feedback from anywhere</a></li>
+                <li>Answer questions like "What features do my Enterprise customers want?" or "Which customers have asked for a better Search feature?"</li>
+                <li><a href="{% url 'marketing-product-planning' %}">Build features for the <em>right</em> customers</a></li>
+                <li>Close the loop with your customers</li></ul>
+            </div>
+            <div class='col-lg-6 pb40 text-center' >
+              <img src="{% static 'images/screenshots/marketing/feature-requests-close-up.png' %}" style="border: 1px solid #aaa;" alt="" class="img-fluid">
+              <div class='font12 text-center pt10'>Filter your feature list by MRR, customer plan, and more</div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="bg-white pt50 pb50">
+    <div class="container">
+
+      {% include "includes/integration_logos.html" %}
+
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $("#helpscout_switch").click(function(e){
+        $("#helpscout_gif").removeClass("hide");
+        $("#intercom_gif").addClass("hide");
+        e.preventDefault();
+      })
+
+      $("#intercom_switch").click(function(e){
+        $("#helpscout_gif").addClass("hide");
+        $("#intercom_gif").removeClass("hide");
+        e.preventDefault();
+      })
+
+
+      $(".switch").hover(
+        function(){
+          $(".switch").each(function(){
+            $(this).text( $(this).text().replace("👇", ""));
+          })
+          $(this).prepend("👇");
+        },
+        function(){
+          $(".switch").each(function(){
+            $(this).text( $(this).text().replace("👇", ""));
+          })
+          if ($("#helpscout_gif").hasClass("hide")) {
+            $("#intercom_switch").prepend("👇");
+          } else {
+            $("#helpscout_switch").prepend("👇");
+          }
+        }
+      )
+    });
+  </script>
+{% endblock %}
+
+

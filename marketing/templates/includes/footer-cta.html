@@ -1,0 +1,21 @@
+{% load static %}
+
+<div  class="bg-parallax pt50 pb50" data-jarallax='{"speed": 0.2}' style='background-image: url("{% static 'images/bg2.jpg' %}")'>
+    <div class='parallax-overlay'></div>
+    <div class="container">
+
+      <div class="row">
+          <div class="col-md-12 mr-auto ml-auto text-center">
+             <h2 class="text-white font300 h2 mb40">Track Feature Requests from {{app_name}}
+            </h2>
+
+            {% if include_extra_copy %}
+            <h5 class="text-white mb20">You need a Savio account to use the {{app_name}} integration.</h5>
+            <h5 class="text-white mb40">You'll set up the {{app_name}} integration after joining Savio.</h5>
+            {% endif %}
+             <a class="btn btn-lg btn-primary btn-rounded" href="{% url 'accounts-join' %}">Try Savio Free →</a>
+            <p class="text-white pt20">Questions? <a href="mailto:help@savio.io?subject=Questions+about+{{app_name}}">Email us</a> here.</p>
+          </div>
+      </div>
+    </div>
+</div>

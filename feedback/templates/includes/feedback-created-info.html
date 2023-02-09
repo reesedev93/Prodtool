@@ -1,0 +1,12 @@
+                        <span class="text-muted">Created by 
+                        {% if feedback.get_friendly_creator_name %}
+                            {{ feedback.get_friendly_creator_name }}
+                        {% else %}
+                            Bot
+                        {% endif %}
+                        on <a href="{% url 'feedback-item' feedback.pk %}">{{feedback.created}}</a>
+
+                        {% if feedback.source_url %}
+                           | <a  target="_blank" href="{{ feedback.source_url}}">View in source app <i class="fa fa-external-link-alt" aria-hidden="true"></i></a>
+                        {% endif %}
+                        </span>

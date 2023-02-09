@@ -1,0 +1,377 @@
+{% extends "base.html" %}
+{% load humanize %}
+{% load gravatar %}
+{% load filters %}
+
+{% block title_tag %}Feature - {{feature_request}} | Savio{% endblock %}
+
+{% block body_content %}
+
+<div class="row mb-30 pt-30 ml-0">
+  <div class="col-lg-12 pl-0 ml-l">
+
+      {% if onboarding %}
+        <div class="alert alert-warning" role="alert">
+          <i class="fa fa-exclamation-triangle"></i> <strong>Your Feature Request's Details</strong>
+          <hr>
+          Here, you'll see a request's details (# votes, total MRR, and more) and customer verbatims about their problem.<br><br>
+          You can also <a href="{% url 'marketing-use-cases-close-loop' %}" target="_blank">close the loop</a> from this page.
+          <br><br>
+          When finished here, <a href="{% url 'accounts-onboarding-checklist' %}">head back to your checklist</a>.
+        </div>
+      {% endif %}
+
+    <div class="mb-0 pl-0">
+      <h4 class="mb-0 pb-0">{{feature_request}}&nbsp;&nbsp;
+        <a href="{% url 'feature-request-update-item' feature_request.pk %}?return={{request.get_full_path|urlencode}}" class="text-muted"><i data-toggle="tooltip" data-original-title="Edit Feature Request" class="fa fa-edit fs14"></i></a>
+        <a href="{% url 'feature-request-merge-item' %}?fr={{feature_request.pk}}&return={{request.get_full_path|urlencode}}" class="text-muted"><i data-toggle="tooltip" data-original-title="Merge Feature Request" class="fa fa-random fs14"></i>
+        </a>
+        <a href="{% url 'feature-request-delete-item' feature_request.pk %}" class="text-muted"><i data-toggle="tooltip" data-original-title="Delete Feature Request" class="fa fa-trash fs14"></i>
+        </a>
+      </h4>
+
+      <div>
+        <span class="badge badge-text badge-secondary mr-2 mb-2">Status: {{feature_request.get_state_display|default:"-"}}</span>
+
+        {% if feature_request.shipped_at %}
+          <span class="badge badge-text badge-secondary mr-2 mb-2">Marked Shipped on {{feature_request.shipped_at.date}}</span>
+        {% endif %}
+
+        <span class="badge badge-text badge-secondary mr-2 mb-2">Prio: {{feature_request.get_priority_display|default:"-"}}</span>
+
+        <span class="badge badge-text badge-secondary mr-2 mb-2"> Effort: {{feature_request.get_effort_display|default:"-"}}</span>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row pb-30">
+  <div class="col-sm-12">
+    <div class="portlet-box">
+
+      <div class="portlet-header flex-row flex d-flex align-items-center b-b">
+          <div class="flex d-flex flex-column">
+            <div class="row">
+              <div class="col-sm-2 truncate b-r text-center">
+                  <span class="fs14">Count</span><br>
+                  <span class="fs-14x">{{feature_request.total_feedback|default:"-"}} <span class="fs14">Feedback</span></span>
+              </div>
+              <div class="col-sm-2 truncate b-r text-center">
+                    <span class="fs14">From</span><br>
+                    <span class="fs-14x">{{feature_request.total_users|default:"-"}} <span class="fs14">{{ feature_request.total_users|pluralize:"Person,People" }}</span></span>
+              </div>
+              <div class="col-sm-2 truncate b-r text-center">
+                    <span class="fs14">At</span><br>
+                    <span class="fs-14x">{{feature_request.total_companies|default:"0"}} <span class="fs14">{{feature_request.total_companies|pluralize:"Company,Companies" }}</span></span>
+
+              </div>
+              <div class="col-sm-2 truncate b-r text-center">
+                    <span class="fs14">Total {{mrr_attribute.friendly_name}}</span><br>
+                    <span class="fs-14x">
+                      {{feature_request.total_mrr|floatformat:2|intcomma|default:"-"}}
+                  </span>
+              </div>
+              <div class="col-sm-2 truncate b-r text-center">
+                    <span class="fs14">Opened</span><br>
+                    <span class="fs-14x">
+                    {{days_open}} <span class="fs14">day{{days_open|pluralize}} ago</span></span>
+
+              </div>
+              <div class="col-sm-2 truncate text-center">
+                    <span class="fs14">Last requested</span><br>
+                    <span class="list-title fs-14x">
+                       {% if requested %}
+                          {{last_seen}} <span class="fs14">day{{last_seen|pluralize}} ago</span>
+                      {% else %}
+                          {{last_seen}}
+                      {% endif %}
+                    </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+<div class="row pb-30">
+  <div class="col-lg-12">
+    <div class="portlet-box">
+      <div class="portlet-header flex-row flex d-flex align-items-center b-b">
+          <div class="flex d-flex flex-column px-2">
+            <h3>Description</h3>
+          </div>
+      </div>
+
+      <div class="portlet-body px-4">
+        {% if feature_request.description %}
+            {{ feature_request.description|markdownify}}
+        {% else %}
+          No description yet.  <a href="{% url 'feature-request-update-item' feature_request.pk %}?return={{request.get_full_path|urlencode}}" class="text-muted">Add one here.</a>
+        {% endif %}
+
+        <div style="clear:both;"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Must keep feedback_div id or batch bar won't work -->
+<div class="row" id="feedback_div">
+  <div class="col-lg-12">
+
+    <div class="portlet-box mb-30">
+      <div class="portlet-header flex-row flex d-flex align-items-center b-b">
+        <div class="flex px-2">
+
+            {% if feedback_count_difference != 0 %}
+                <div class="row">
+                  <div class="col-lg-12">
+                    <div class="mt-30 alert alert-primary" role="alert">
+                      <i class="fa fa-exclamation-triangle"></i> {{feedback_count_difference}} more pieces of feedback are hidden by applied filters.  <a href="{% url 'feature-request-feedback-details' feature_request.pk %}">Remove  filters and show all feedback</a>.
+                    </div>
+                  </div>
+                </div>
+            {% endif %}
+          <h3>Feedback</h3>
+        </div>
+      </div> <!-- end portlet-header -->
+
+          {% if feature_request|has_feedback %}
+
+            <div class="portlet-header flex-row flex d-flex align-items-center b-b">
+              <form method="get" action="{% url 'feature-request-close-the-loop' %}">{% csrf_token %}
+                <input type="hidden" name="fr_id", value="{{feature_request.id}}">
+                <input type="hidden" name="return", value="{{request.get_full_path}}">
+
+
+                  <div class="flex px-2">
+                      <div class="row">
+                          <div class="col-lg-12">
+                            <!-- link to open batch bar.  Must keep batch_bar_link id -->
+                            <a href="#" id="batch_bar_link" >
+                               <div style="height: 1em; width: 1em; display: inline;">
+                                  <i class="far fa-square" style="position: absolute; top: 6px; left: 16px;"></i>
+                                  <i class="fas fa-square fa-inverse" style="position: absolute; top: 8px; left: 18px;"></i>
+                                  <i class="far fa-check-square" style="position: absolute; top: 9px; left: 19px;"></i>
+                              </div>
+                              <div class="ml-20">Select people to contact</div>
+                            </a>
+
+                            <div  id="batch_bar" class="hide">
+                              <!-- checkbox to select all.  Must keep select_all id. -->
+                              <input type="checkbox" id="select_all">
+                              <button type="submit" class="btn btn-primary ml-15" disabled id="contact_via_email"><i class="fas fa-envelope"></i> Email 0 Selected People</button>
+                              &nbsp;<button type="button" class="btn btn-secondary ml-15" disabled id="copy_email_addresses_button" data-toggle="tooltip_manual" data-original-title="Email addresses copied to clipboard!"><i class='fas fa-copy'></i> Copy <span id="num_emails"></span> Emails to Clipboard</button>
+<!--
+                              <a href="#" class="btn-icon btn btn-primary ml-15" disabled id="contact_via_email" value="Email 0 Selected People"><i class="fas fa-envelope"></i>&nbsp;Email 0 Selected People</a>
+                              &nbsp;
+                              <a href="#" class="btn btn-secondary ml-15" disabled id="copy_email_addresses_button" data-toggle="tooltip_manual" data-original-title="Email addresses copied to clipboard!"><i class="fas fa-copy"></i>&nbsp;Copy Emails to Clipboard</a>
+-->
+                            </div>
+                          </div>
+                      </div>
+                  </div>
+            </div>
+
+            {% for feedback in feature_feedback %}
+
+            <div class="portlet-body p-0">
+
+              <div class="p-4 b-b pt-0 pb-0 mt-0">
+
+                {% include "includes/feedback-user-info.html" %}
+
+
+                <div class="row content_row">
+                    <div class="col-sm-12">
+
+                        <div class="pt-4 pb-0">
+                          <span class="text-muted">Problem</span>
+                          <div class="fs18 mb-30">
+                              {{feedback.problem|default:"N/A"|markdownify}}
+                          </div>
+
+                          {% if feedback.themes.all.exists %}
+                              <div class="pb-30"><span class="text-muted">Tags</span><br>
+                                    {% for theme in feedback.themes.all %}
+                                        <a href="{% url 'feedback-list' %}?theme={{ theme.id }}"><span class="small-badge badge badge-text badge-light">{{ theme}}</span></a>
+                                    {% endfor %}
+                              </div>
+                          {% endif %}
+                      </div>
+                </div>
+
+                <div class="row content-row pl-0 ml-0 pb-10 pt-0 mt-0 mb-3">
+                    <div class="col-sm-12">
+                      <div class="ml-0">
+
+                        {% include "includes/feedback-created-info.html" %}
+
+                      </div>
+                    </div>
+                </div>
+                </div>
+              </div>
+            </div>
+
+              {% if forloop.last %}
+                  </div>
+              {% else %}
+                  </div>
+                  <div class="portlet-box mb-30">
+              {% endif %}
+
+            {% endfor %}
+        </form>
+
+          {% else %}
+
+          <div class="portlet-body p-0">
+
+            <div class="p-4 m-5 alert alert-primary" role="alert" style="text-align: left">
+              <h4>No Feedback Yet</h4>
+              You'll see feedback that you link to this feature request here. But you haven't linked any feedback to this feature request yet.<br><br>
+              <a href="{% url 'feedback-create-item' %}?feature_request_id={{ feature_request.id }}&return={{request.get_full_path|urlencode}}" class="btn btn-sm btn-primary">Add feedback to this feature</a> or <a href="{% url 'feedback-inbox-list' 'active' %}" class="btn btn-sm btn-secondary">Triage your feedback inbox</a>
+            </div>
+
+          {% endif %}
+
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+
+{% block script %}
+<script type="text/javascript">
+$(document).ready(function() {
+
+    // Set "Copied to clipboard" tooltips to open manually
+    $('[data-toggle="tooltip_manual"]').tooltip({trigger: "manual"});
+
+    // "Copy to clipboard" Links should not jump page
+    $(".clipboard_link").click(function(e) {
+        e.preventDefault();
+    })
+
+    // Copy single email address to clipboard
+    var clipboard = new ClipboardJS('.email_to_clipboard', {
+        text: function(trigger) {
+            return trigger.getAttribute('data-email-address');
+        }
+    });
+
+    // Copy multiple email addresses to clipboard
+    var clipboard_batch = new ClipboardJS('#copy_email_addresses_button', {
+        text: function(trigger) {
+          emails = ""
+          $(".contact-person").each(function(e) {
+            if ($(this).is(":checked")) {
+              ele = $(this).siblings("h6.person").find(".email_to_clipboard").data("email-address");
+              if (ele != undefined) {
+                emails = emails + ele + ",";
+              }
+            }
+          })
+          if (emails.length > 1) {
+            // Remove trailing comma
+            emails = emails.substring(emails.length-1, 0)
+          }
+          return emails;
+        }
+    });
+
+    // Show and hide "copied to clipboard" tooltip
+    clipboard.on('success', function(e) {
+        var ele = $(e.trigger);
+        ele.tooltip("show");
+        setTimeout(function() { ele.tooltip('hide') } , 500);
+    });
+
+    // Show and hide "copied to clipboard" tooltip
+    clipboard_batch.on('success', function(e) {
+        var ele = $(e.trigger);
+        ele.tooltip("show");
+        setTimeout(function() { ele.tooltip('hide') } , 500);
+    });
+
+    // When Batch Bar Link is clicked, show the batch bar
+    $("#batch_bar_link").click(function(t){
+        $("#batch_bar").removeClass("hide");
+        $("#batch_bar_link").addClass("hide");
+        $(".contact-person").removeClass("hide");
+        $(".content_row").addClass("pl-25");
+        $(".person").addClass("pl-10");
+        t.preventDefault();
+    })
+
+    // When a person's checkbox is clicked...
+    $(".contact-person").click(function(t){
+        updateContactButtonVal();   // Increment the Contact button text e.g.
+    // from "Contact 0 people" to "Contact 1 selected person"
+        updateSelectAllButton();    // If nobody's checked, uncheck Select All button
+    })
+
+    // When Select All checkbox is cliicked, check or uncheck all boxes
+    $("#select_all").click(function(t) {
+         if ($(t.currentTarget).is(":checked")) {
+           // Check em all
+           $(".contact-person").each(function() {
+              if (!$(this).prop("disabled")) {
+                $(this).prop("checked", true);
+              }
+           })
+        } else {
+            // Uncheck em all
+           $(".contact-person").each(function() {
+              $(this).prop("checked", false);
+           })
+        }
+        updateContactButtonVal();
+    })
+
+    // Helper method to update contact button value with the number of selected people.
+    function updateContactButtonVal() {
+        numChecked = $("#feedback_div").find(".contact-person").filter(":checked").length;
+        s = "<i class='fas fa-envelope'></i> Email " + numChecked;
+        if (numChecked === 1) {
+             s = s + " Selected Person";
+        } else {
+            s = s + " Selected People";
+        }
+        $("#contact_via_email").html(s);
+
+        if (numChecked === 0) {
+          $("#contact_via_email").prop("disabled", true);
+          $("#copy_email_addresses_button").prop("disabled", true);
+        } else if (numChecked > 0) {
+          $("#contact_via_email").prop("disabled", false);
+          $("#copy_email_addresses_button").prop("disabled", false);
+        }
+    }
+
+    function updateSelectAllButton() {
+      numChecked = $("#feedback_div").find(".contact-person").filter(":checked").length;
+      totalCheckboxes = $("#feedback_div").find(".contact-person").length;
+      if (numChecked == 0) {
+        $("#select_all").prop("checked", false);
+        $("#select_all").prop("indeterminate", false);
+      } else if (numChecked == totalCheckboxes) {
+        $("#select_all").prop("checked", true);
+        $("#select_all").prop("indeterminate", false);
+      } else {
+        $("#select_all").prop("indeterminate", true);
+        $("#select_all").prop("checked", false);
+      }
+    }
+});
+
+</script>
+{% endblock %}

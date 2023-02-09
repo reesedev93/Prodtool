@@ -1,0 +1,24 @@
+{% extends 'onboarding.html' %}
+{% load static %}
+
+{% block body_content %}
+<div class="row mb-30">
+  <div class="col-lg-12 ml-auto mr-auto">
+    <h2 class="mt-30 mb-30">Your Vault is Set Up</h2>
+
+      {% include "includes/onboarding-wizard.html" %}
+
+      <div class="wizard-content pb-40 pt-30">
+        <div class="col-sm-4 offset-sm-4">
+          <h4>Awesome Work!</h4>
+          <div class="alert alert-primary" role="alert">
+            <p>Your Vault is set up, so let's put some of your customer feedback into it.</p>
+          </div>
+          <div style="text-align: center">
+            <a class="btn btn-primary btn-lg"  href="{% url 'feedback-inbox-list' 'active' %}?onboarding_modal=1">Let's go →</a>
+          </div>
+        </div>
+      </div>
+</div>
+
+{% endblock %}

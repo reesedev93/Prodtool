@@ -1,0 +1,10 @@
+  <form method="post" action="{{sendfox_url}}" class="sendfox-form" id="{{sendfox_id}}" data-async="true" style=" border: 1px solid #aaa; padding: 0 40px 20px 40px; background-color: #eee; margin-bottom: 40px; margin-top: 40px;">
+
+  <h3 class="no-anchor">{{title}}</h3>
+  <p>{{lead_in_parg}}</p>
+  <p><input class="form-control" type="text" placeholder="Your First Name" name="first_name" required /></p>
+  <p><input class="form-control" type="email" placeholder="Email Address" name="email" required /></p>
+  <!-- no botz please -->
+  <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="a_password" tabindex="-1" value="" autocomplete="off" /></div>
+  <p class="text-center"><button class="btn btn-primary" type="submit">{{submit_button_cta}}</button></p>
+  </form>

@@ -1,0 +1,67 @@
+[Savio](https://www.savio.io) is boostrapped, so we have limited bandwidth and little time to waste.  So we need to be selective when deciding what features to invest in building.  When my business partner and I started our first company ([SocialWOD](https://web.archive.org/web/20160213201038/http://socialwod.com/)) in 2011, our decision making was poor.  We decided based on availability bias (features that came to mind) or recency bias (features I heard about recently) or just gut (features that - ugh - sounded fun to build).
+
+But through that experience running and selling SocialWOD and then buying, running, and selling [Codetree](https://codetree.com) (both SaaS and bootstrapped), we developed an approach to prioritizing features that's worked for us.   
+
+### Step 0: Set a goal
+
+We work hard to be customer focused.  Our current goal is "no churn".  Our hypothesis is that if our customers can be successful with Savio, they're less likely to churn.  So if there are jobs that customers can't do or are painful to do with Savio,  fixing that is a priority for us even if it means building new features.    
+
+With that in mind, here's the process we currently use.  (Note that we're using [Savio](https://www.indiehackers.com/product/savio) for this process because we're big believers in eating our own dogfood.  But you could easily use a spreadsheet).
+
+### Step 1: Triage your feedback
+
+We typically get customer feedback via Intercom, email, or taken in notes from phone calls.  This feedback often contains a problem that can be addressed by a feature request.  We stuff  this feedback into Savio (by tagging a conversation in Intercom, emailing it to Savio, or using the Chrome Extension to pull this data from notes taken in Google Docs).
+
+It sits in the Inbox until we triage it.  Triaging just means:
+
+1. Assigning the customer feedback to a feature request
+2. Specifying whether it's from an active customer, prospect, or churned customer
+3. Archiving it so it disappears from the inbox
+
+![](https://www.savio.io/static/images/indiehackers/001-triage.png)
+
+Once our inbox is cleared, we...
+
+### Step 2: Review Feature Candidates
+
+We filter our list to see requests from ONLY active customers:
+
+![](https://www.savio.io/static/images/indiehackers/002-filter-active-requests.png)
+
+Then we walk the list and assign a priority of "High" to features we'd consider building.  Typically these are obvious product gaps that would solve high-value jobs our customers need to do to be successful.  We also heavily weight number of requests and total MRR of the requesters.
+
+We may also click through to view a request's specific feedback to get a sense of what the actual customer problem is:
+
+![](https://www.savio.io/static/images/indiehackers/005-fr-details.png)  
+
+When we're done we have a list of potential features to build:
+
+![](https://www.savio.io/static/images/indiehackers/003-set-high-pri.png)  
+
+### Step 3: Estimate cost
+
+Then we filter the list down to the high-priority features and estimate effort (e.g. cost).  
+
+During estimation we'll talk about each screen we'd build, what it would do, what the implementation details and edge cases would look like, and may discuss whether / how to handle edge cases.   
+
+This walkthrough is super helpful to understand whether it's a fairly predictable path to build a feature or whether there are unknowns (risks) that could increase the cost.
+
+We focus on building as inexpensive a feature as possible that will still be valuable.  This is so we can get it  in the hands of customers quickly to get feedback (and so we don't over-invest in a solution that we might not need).
+
+![](https://www.savio.io/static/images/indiehackers/004-set-effort.png)
+
+### Step 4: Choose what to build
+
+We'll usually build high priority, low effort features.  Higher effort features will be a longer conversation, though we do build them!  
+
+At this point we decide who's going to own each feature, whether we need a spec, and whether there are any blockers to getting a feature started. 
+
+Then we put our features in Clubhouse (which only has stuff we're actually going to build) and it's off to the races!
+
+### How do you prioritize?
+
+This process works for us. But there are definitely places where it can be improved.  And it'll change as we grow.
+
+I'm curious - how do you decide what to build next?  What's worked for you, and what hasn't?
+
+Thanks for reading!

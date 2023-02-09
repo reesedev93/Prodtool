@@ -1,0 +1,16 @@
+{% load static %}
+
+    <div  class="bg-parallax pt50 pb50" data-jarallax='{"speed": 0.2}' style='background-image: url("{% static 'images/bg2.jpg' %}")'>
+        <div class='parallax-overlay'></div>
+        <div class="container">
+
+          <div class="row">
+              <div class="col-md-12 mr-auto ml-auto text-center">
+                 <h2 class="text-white font300 h2 mb40">Painlessly track feature requests today.
+                </h2>
+                 <a class="btn btn-lg btn-primary btn-rounded" href="{% url 'accounts-join' %}">Try Savio For Free →</a>
+                <p class="text-white pt20">Questions? <a href="mailto:help@savio.io?subject=Questions+about+Help+Scout">Email us</a> here.</p>
+              </div>
+          </div>
+        </div>
+    </div>

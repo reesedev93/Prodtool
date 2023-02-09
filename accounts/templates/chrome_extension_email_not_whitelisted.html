@@ -1,0 +1,11 @@
+{% extends 'registration/login.html' %}
+
+{% block body_content %}
+  <h2>Uh oh</h2>
+  <p>
+    There's no {{domain}} account to join. <a href="{% url 'accounts-join' %}" target="_blank">Click here to create a Savio account for your company</a>
+  </p>
+  <p>
+    If you're trying to join your company's account, contact your nearest friendly PM to get invited.
+  </p>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block title_tag %}Update Tag | Savio{% endblock %}
+
+{% block head %}
+{{ form.media }}
+{% endblock %}
+
+{% block body_content %}
+<div class="row align-items-center pt-30">
+    <div class="col-md-12 mr-auto ml-auto">
+        <div class="mb-0">
+          <h4>Edit Tag: {{ theme}} <a class="fs12 text-muted" href="{% url 'theme-delete-item' theme.pk %}"><i data-toggle="tooltip" data-original-title="Delete theme" class="fa fa-trash-alt"></i></a></h4>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-9">
+    <div class="mb-30">
+      <div class="portlet-box portlet-gutter ui-buttons-col mb-30">
+          <div class="portlet-body">
+
+            <form method="post">{% csrf_token %}
+              {{ form|crispy }}
+              <input type="submit" name="action" value="Save Tag" class="btn btn-primary">
+              or <a href="{{return}}">cancel</a>
+            </form>
+
+          </div>
+      </div><!--portlet-->
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,141 @@
+{% extends "base.html" %}
+{% load filters %}
+{% load static %}
+{% load gravatar %}
+{% load humanize %}
+{% block title_tag %}Feedback - {{feedback.get_problem_snippet}} | Savio{% endblock %}
+
+{% block head %}
+{{ form.media }}
+
+<!-- these CSS files included for problem splitter feature -->
+<link href="{% static 'tether/tether-147.css' %}" rel="stylesheet">
+<link href="{% static 'selectionMenu/selectionMenu.css' %}" rel="stylesheet">
+<!-- end problem splitter feature -->
+{% endblock %}
+
+{% block body_content %}
+<div class="row align-items-center pt-30">
+  <div class="col-md-12 mr-auto ml-auto">
+    <div class="mb-0">
+      <h4>Customer Feedback</h4>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-12">
+    <div class="portlet-box ">
+      <div class="portlet-body pt-0 pb-0">
+
+<!--
+        <form method="get">{% csrf_token %}
+          <div class="pb-3 pt-3 mb-0 mt-0 email-selected-container" style="display: none;">
+            <a href="#" class="btn btn-primary">
+              <i class="fa fa-copy"></i>&nbsp;&nbsp;Copy Selected Emails to Clipboard 
+            </a>
+          </div>
+-->
+            <div class="p-2 mt-0">
+                
+                {% include "includes/feedback-user-info.html" %}
+
+              
+              <div class="pt-4 pb-3">
+                <span class="text-muted">Problem</span><br>
+                <span class="fs18" id="problem">{{feedback.problem|default:"N/A"|markdownify}}</span>
+
+                <p>
+                  <span class="text-muted">Feature Request</span><br>
+                    {% if feedback.feature_request %}
+                      <a class="fs18" href="{% url 'feature-request-feedback-details' feedback.feature_request.pk %}">{{feedback.feature_request}}</a>
+                    {% else %}
+                      None
+                    {% endif %}
+                </p>
+
+                <p>
+                  <span class="text-muted">Tags</span><br>
+                    {% if feedback.themes.all.exists %}
+                        {% for theme in feedback.themes.all %}
+                          <a href="{% url 'feedback-list' %}?theme={{ theme.id }}"><span class="small-badge badge badge-text badge-light">{{ theme}}</span></a>
+                        {% endfor %}
+                    {% else %}
+                        None
+                    {% endif %}
+                </p>
+
+                <div class="row pl-0 ml-0 pb-10 pt-0 mt-0 mb-3">
+                  <div class="col-lg-12 ml-0 pl-0">
+                    <div class="ml-0">
+                        {% include "includes/feedback-created-info.html" %}
+                    </div>
+                  </div>
+                </div>
+
+                <p class="mt-10">
+                  {% if return %}
+                    <a class="small" href="{{return}}">back</a>
+                  {% else %}
+                    <a class="small" href="{% url 'feedback-list' %}">back to Feedback List</a>
+                  {% endif %}
+                </p>
+
+              </div>
+            </div>
+
+<!--
+          <div class="pb-3 pt-3 b-b mb-0 mt-0 email-selected-container" style="display: none;">
+            <a href="#" class="btn btn-primary">
+              <i class="fa fa-copy"></i>&nbsp;&nbsp;Copy Selected Emails to Clipboard 
+            </a>
+          </div>
+        </form>
+-->
+      </div>
+    </div>
+  </div>
+</div>
+
+{% include "includes/problem-splitter-menu.html" %}
+
+{% endblock %}
+
+
+{% block script %}
+<script type="text/javascript">
+$(document).ready(function() {
+
+    // Set "Copied to clipboard" tooltips to open manually 
+    $('[data-toggle="tooltip_manual"]').tooltip({trigger: "manual"});
+
+    // "Copy to clipboard" Links should not jump page  
+    $(".clipboard_link").click(function(e) {
+        e.preventDefault();
+    })
+
+    // Copy email address to clipboard
+    var clipboard = new ClipboardJS('.email_to_clipboard', {
+        text: function(trigger) {
+            return trigger.getAttribute('data-email-address');
+        }
+    });
+
+    // Show and hide "copied to clipboard" tooltip
+    clipboard.on('success', function(e) {
+        var ele = $(e.trigger);
+        ele.tooltip("show");
+        setTimeout(function() { ele.tooltip('hide') } , 500);
+    });
+});
+</script>
+
+
+<!-- these three scripts included for problem splitter feature -->
+<script src="{% static 'tether/tether-147.js' %}"></script>
+<script src="{% static 'selectionMenu/selectionMenu.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/problem-splitter.js' %}"></script> 
+<!-- end problem_splitter includes -->
+
+
+{% endblock %}

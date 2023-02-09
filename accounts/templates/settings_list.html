@@ -1,0 +1,225 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block head %}
+{{ form.media }}
+{% endblock %}
+
+{% block body_content %}
+
+<div class="row align-items-center pt-30">
+    <div class="col-md-12 mr-auto ml-auto">
+        <div class="mb-0">
+          <h4>Settings</h4>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-9">
+    <div class="mb-30">
+      <div class="portlet-box portlet-gutter ui-buttons-col mb-30">
+        <div class="portlet-header flex-row flex d-flex align-items-center b-b">
+          <div class="flex d-flex flex-column text-left">
+            <h3>Auto Join</h3>
+
+            <span class="portlet-subtitle">Allow anybody with your company's email address to join your Savio vault.</span>
+
+          </div>
+        </div>
+
+        <div class="portlet-body">
+            <p>
+              {% if whitelisting_enabled %}
+              <strong>Enabled</strong>. Anybody with an email address ending in
+              <mark>{{request.user.customer.whitelisted_domain}}</mark> can join your account. <a href="{% url 'accounts-settings-whitelist-domain' %}">Disable</a>.
+              {% else %}
+
+              {% if request.user.customer.subscription.can_use_autojoin %}
+                  <strong>Disabled</strong>.
+                  <a href="{% url 'accounts-settings-whitelist-domain' %}">Enable to allow anyone with a certain email address to join automatically</a>.
+                {% else %}
+                  You need to <a href="{% url 'accounts-settings-add-credit-card' %}{%if user.customer.subscription.no_card_on_file %}?add_card=1{% endif %}">upgrade your account to the Growth plan</a> to enable auto join</a>.
+                {% endif %}
+
+              {% endif %}
+            </p>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="portlet-box portlet-gutter ui-buttons-col mb-30">
+        <div class="portlet-header flex-row flex d-flex align-items-center b-b">
+          <div class="flex d-flex flex-column text-left">
+            <h3>Submitters can create feature requests</h3>
+            <span class="portlet-subtitle">Can teammates who use the Chrome Extension create feature requests?</span>
+          </div>
+        </div>
+
+        <div class="portlet-body">
+            <p>
+              {% if submitters_can_create_features %}
+              <strong>Enabled</strong>. Teammates with the "Submitter" role can create new Feature Requests from the Chrome Extension. <a href="{% url 'accounts-settings-submitters-can-create-features' %}">Disable</a>.
+              {% else %}
+              <strong>Disabled</strong>. Teammates with the "Submitter" role can assign feedback to an existing Feature Request from the Chrome Extension, but can't create a new Feature Request. <a href="{% url 'accounts-settings-submitters-can-create-features' %}">Enable</a>.
+              {% endif %}
+            </p>
+        </div>
+      </div>
+
+      <div class="portlet-box portlet-gutter ui-buttons-col mb-30">
+        <div class="portlet-header flex-row flex d-flex align-items-center b-b">
+          <div class="flex d-flex flex-column text-left">
+            <h3>Skip your feedback inbox</h3>
+          </div>
+        </div>
+
+        <div class="portlet-body">
+            <p>
+              {% if feedback_triage_settings.skip_inbox_if_feature_request_set %}
+              <strong>Enabled</strong>. Skip the Inbox when new Feedback is assigned to a Feature Request. <a href="{% url 'accounts-settings-feedback-triage' %}">Disable</a>.
+              {% else %}
+              <strong>Disabled</strong>. Send Feedback to the Inbox even when Teammates have already assigned the Feedback to a Feature Request. <a href="{% url 'accounts-settings-feedback-triage' %}">Enable</a>.
+              {% endif %}
+            </p>
+          </div>
+        </div>
+
+      <div class="portlet-box portlet-gutter ui-buttons-col mb-30">
+        <div class="portlet-header flex-row flex d-flex align-items-center b-b">
+          <div class="flex d-flex flex-column text-left">
+            <h3>Automatically Set "Feedback From" Field</h3>
+          </div>
+        </div>
+
+        <div class="portlet-body">
+            <p>
+              Set the value of "Feedback From" for new Feedback based on the value of People and Company Attributes.
+            </p>
+            <p>
+              <a href="{% url 'feedback-from-rule-update-item' feedback_from_rule.pk %}">Manage settings</a>
+            </p>
+        </div>
+      </div>
+
+      <div class="portlet-box portlet-gutter ui-buttons-col mb-30">
+        <div class="portlet-header flex-row flex d-flex align-items-center b-b">
+          <div class="flex d-flex flex-column text-left">
+            <h3>Invite Teammates</h3>
+          </div>
+        </div>
+
+        <div class="portlet-body">
+            <p>
+              You can <a href="{% url 'accounts-invite-teammates' %}">add your teammates to Savio here</a>.
+            </p>
+          </div>
+        </div>
+
+
+      <div class="portlet-box portlet-gutter ui-buttons-col mb-30">
+        <div class="portlet-header flex-row flex d-flex align-items-center b-b">
+          <div class="flex d-flex flex-column text-left">
+            <h3>People and Company Attributes</h3>
+          </div>
+        </div>
+
+        <div class="portlet-body">
+            <p>
+              Choose the attributes you'd like to filter feature requests by.
+            </p>
+            <p>
+              <a href="{% url 'filterable-attributes-list' %}">Manage attributes</a>
+            </p>
+        </div>
+      </div>
+
+      <div class="portlet-box portlet-gutter ui-buttons-col mb-30">
+        <div class="portlet-header flex-row flex d-flex align-items-center b-b">
+          <div class="flex d-flex flex-column text-left">
+            <h3>Feedback Template</h3>
+          </div>
+        </div>
+
+        <div class="portlet-body">
+            <p>
+              Create a template so contributors better structure Feedback that they send here from Slack or the Chrome Extension.</p>
+            <p>
+              <a href="{% url 'feedback-template-update-item' feedback_template.pk %}">Manage settings</a>
+            </p>
+          </div>
+        </div>
+
+      <a name="fr_notification_settings"></a>
+
+      <div class="portlet-box portlet-gutter ui-buttons-col mb-30">
+        <div class="portlet-header flex-row flex d-flex align-items-center b-b">
+          <div class="flex d-flex flex-column text-left">
+            <h3>Feature Request Email Notification Settings</h3>
+          </div>
+        </div>
+
+        <div class="portlet-body">
+            <p>
+              Manage reply-to, bcc and email template for Feature Request emails you send to requesters.
+            </p>
+            <p>
+              <a href="{% url 'accounts-settings-feature-request-notification-settings' fr_notification_settings.pk %}">Manage settings</a>
+            </p>
+        </div>
+      </div>
+
+      <div class="portlet-box portlet-gutter ui-buttons-col mb-30">
+        <div class="portlet-header flex-row flex d-flex align-items-center b-b">
+          <div class="flex d-flex flex-column text-left">
+            <h3>Billing</h3>
+          </div>
+        </div>
+
+        <div class="portlet-body">
+
+            {% if subscription %}
+              {% if subscription.trialing %}
+              <p>
+                Your trial expires on {{subscription.trial_end_date}}
+              </p>
+              {% endif %}
+
+              <p>
+                <strong>Plan</strong>: {{subscription.get_plan_display}}
+                <br>
+                <strong>Next Invoice Amount</strong>: ${{subscription.get_billing_amount|floatformat:2}}
+                <br>
+                <strong>Next Invoice date</strong>: {{subscription.get_next_billing_date}}
+
+                {% if subscription.is_recurring %}
+
+                  <br>
+                  {% if subscription.card_on_file %}
+                    <strong>Billed to</strong>: {{subscription.get_cc_brand}} ending in {{subscription.get_cc_last_four_digits}} expiring {{subscription.get_cc_expiry}}.
+                    <br><br>
+                    <a href="{% url 'accounts-settings-add-credit-card'%}?add_card=1">Change Card</a>
+                  {% else %}
+                    <br><a href="{% url 'accounts-settings-add-credit-card'%}?add_card=1">Add Card</a>
+                  {% endif %}
+
+                  {% if subscription.is_feature_tiered %}
+                  <!-- only feature tiered can change plans -->
+                    | <a href="{% url 'accounts-settings-add-credit-card'%}">Change Plan</a>
+                  {% endif %}
+                {% endif %}
+
+                <br>
+                <a href="mailto:support@savio.io?subject=Cancel my Savio.io subscription">Cancel subscription</a>
+              </p>
+            {% else %}
+              You're getting Savio for free because you don't have a subscription.
+            {% endif %}
+
+        </div><!--portlet-->
+    </div>
+  </div>
+</div>
+{% endblock %}

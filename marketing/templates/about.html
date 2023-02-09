@@ -1,0 +1,76 @@
+{% extends "basic_page.html" %}
+{% load static %}
+{% load filters %}
+
+{% block meta_title %}
+About Savio
+{% endblock %}
+
+{% block meta_desc %}About Savio{% endblock %}
+
+{% block title %}
+About Savio 
+{% endblock %}
+
+{% block content %}
+  <div class="container pt90 pb90">
+    <div class="row">
+      <div class="col-md-9">
+        <h2>The Savio Story</h2>
+        <p>
+            Savio was founded by Ryan Stocker and Kareem Mayan.  We were both were developers early in our careers and moved into Product Management along the way.  We both left larger companies over 10 years ago to run smaller technology companies (Ryan from Microsoft, and Kareem from ESPN.com and FOX Interactive Media/MySpace).
+        </p>
+
+        <p>
+            Savio is the third company we've run together.  In 2011 we started and sold a SaaS business in the fitness space, and in 2016 we <a href="https://blog.codetree.com/articles/what-its-like-buying-a-128k-side-project.html" target="_blank">bought</a> (and eventually sold) a company helping software development teams ship software.
+        </p>
+
+        <p>
+          We started Savio because we couldn't find a simple tool that helped us be better Product Managers without getting in the way.</p>
+
+          <p>Specifically, we wanted to:</p>
+          <ol>
+            <li>Make sure we had a <em>simple</em> system and workflow that our team could rely on to save and categorize our customer feedback</li>
+            <li>Be able to rely on the data in that tool when making decisions about what to build next</li>
+            <li>Be able to mine that feedback to figure out customer pain points in key segments</li>
+            <li>Use customer information like revenue, plan, and status (prospect? churned customer? lost deal?) when making prioritization decisions</li>
+            <li>Have customer contact info on hand to quickly reach out to customers when validating problem or solution, or to tell them we built something they asked for</li>
+          </ol>
+
+        <p>
+          Here are some beliefs that you'll see reflected in the way Savio conducts business:</p>
+          <ol>
+            <li>Show and share our work.  We've got scars to prove this isn't our first rodeo. If we can help others avoid pain, we've succeeded.</li>
+            <li>It's all about workflow.  You've got a job you're trying to do, and Savio's job is to make it easier.</li>
+            <li>Automate most of the things. Technology is leverage, so we use automation to make your life (and ours) easier.</li>
+            <li>Customer service is great business. We hate dealing with big faceless companies who don't care about their customers.  Everybody at our company does support, and we try and do it well.</li>
+            <li>You win by getting closest to your customer.  What matters is a deep understanding of your customers and their pain, so you can make it go away.</li>
+          </ol>
+        </p>  
+
+        <p>
+            Savio launched in early 2019 and we're just getting started.
+        </p>
+
+        <p>
+          Stay tuned!
+        </p>
+
+      <div class="row">
+        <div class="col-md-3 text-center">
+          <img src="{% static 'images/founder-headshot-ryan.jpeg' %}" style="border-radius: 50%;border: 1px solid #aaa;" alt="" class="img-fluid" height="100" width="100"><br>
+          Ryan Stocker
+        </div>
+
+        <div class="col-md-3 text-center">
+          <img src="{% static 'images/founder-headshot-kareem.png' %}" style="border-radius: 50%;border: 1px solid #aaa;" alt="" class="img-fluid" height="100" width="100"><br>
+          Kareem Mayan
+        </div>
+      </div>
+      </div>
+    </div>
+
+  </div>
+
+  </div>
+{% endblock %}

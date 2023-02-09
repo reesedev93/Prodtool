@@ -1,0 +1,12 @@
+Hi there,
+
+Your customer and company data has been imported into Savio. You'll now be able to pick from a list of these customers when you add feedback from inside Savio or from the browser extension.
+
+And when you track a customer's feedback, you'll see their revenue and plan alongside their feedback and the features they've requested.  Which is super handy when deciding what features to build next.  
+
+Happy feedback collecting,
+
+Ryan + Kareem
+Savio's Co-Founders
+
+PS> Got feedback?  Hit reply. We answer every email.

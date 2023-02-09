@@ -1,0 +1,337 @@
+{% extends "blog-page.html" %}
+{% load static %}
+{% block meta_title %}
+Aha.io vs. Savio: track feature requests with this Aha.io alternative
+{% endblock %}
+
+{% block meta_desc %}An Aha.io alternative to help software product managers track feature requests from Intercom and other tools{% endblock %}
+
+{% block head %}
+  <!-- open graph tags -->
+  <meta property="og:url" content="{{ request.build_absolute_uri }}" />
+  <meta property="og:title" content="Aha vs. Savio: Which tracks feature requests better?" /> <!-- 57 chars -->
+  <meta property="og:type" content="website" />
+  <meta property="og:description" content="Aha vs. Savio: Which tracks feature requests better?" /> <!-- 73 chars -->
+
+  <meta property="og:site_name" content="Savio" />
+  <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'images/alternatives/savio-or-aha.png' %}" />
+
+  <meta property="og:image:width" content="1500" />
+  <meta property="og:image:height" content="750" />
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:site" content="@savio_io" />
+
+  <!-- 115 chars max -->
+  <meta property="twitter:description" content="Compare how Aha and Savio track feature requests from tools like Intercom, Help Scout, and Slack." />
+
+  <!-- end open graph -->
+  {% endblock %}
+
+
+{% block content %}
+
+  <div class="col-md-12 blog blog-title text-center">
+    <h1>Aha vs. Savio: how do they compare?</h1>
+    <h2 class="text-muted">Savio is an Aha alternative to track feature requests</h2>
+    <img src="{% static 'images/alternatives/savio-or-aha.png' %}" class="image img-fluid" width="500"><br>
+  </div>
+    <div class="col-md-8 offset-md-2 blog">
+
+    <h3 class="pt40 no-anchor">Summary</h3>
+    <ul>
+      <li>Choose <strong>Aha</strong> if tracking customer feature requests is of little importance to you, you care about project management for a complex product development process, and you don't mind paying more. </li>
+      <li>Choose <strong>Savio</strong> if you want to track feature requests from customers, want a simple tool to prioritize requests, and want to pay less.</li>
+      <li>Read on for the full comparison</li></ul>
+    </ul>
+
+    <div id="toc">
+      <h2>Table of contents</h2>
+      <p>See how Aha and Savio compare across these dimensions.</p>
+      <ul id="toc-list"></ul>
+    </div>
+
+    <h3 class="pt20 pb20">Centralize feature requests from all your tools</h3>
+    {% include "includes/alternatives-table.html" with savio_rating="Good" competitor_image="images/alternatives/aha.png" comp_rating="Not Good" %}
+
+    <h4>Savio</h4>
+    <p>Savio centralizes feature requests from any place your team receives them.  You can <a href="{% url 'marketing-integrations-intercom-product'%}">track feature requests received in Intercom</a>, <a href="{% url 'marketing-integrations-helpscout-product'%}">Help Scout</a>, or posted <a href="{% url 'marketing-integrations-slack'%}">in Slack</a>.  You can use a <a href="{% url 'marketing-chrome-extension'%}">Chrome Extension to track feature requests</a> in any other web-based tool that your team uses (like a CRM).  You can <a href="{% url 'marketing-send-email'%}">send feature requests in via email</a>, <a href="{% url 'marketing-help-zapier'%}">send feature requests from any tool via Zapier</a>, or <a href="{% url 'marketing-help-api'%}">use an API to track feature requests</a>.  Each of these minimizes disruption when your support or sales teammates need to track feature requests.</p>
+    <p>Once centralized, you can prioritize your features knowing they're all in one place.</p>
+
+    <h4>Aha</h4>
+    <p>The only way you can collect customer feature requests in Aha is through a feedback portal.  When you create a feature request directly through the Aha back end, you can't log the name of the customer who gave you the feature request.
+
+    <div class="text-center">
+      <img class="img-fluid image" src="{% static 'images/alternatives/aha-new-idea.png'  %}">
+    </div>
+    <div class="text-center mb30">There's no way to relate a new feature request to a customer in Aha</div>
+
+    <p>
+      The main downsides of this approach are:
+      <ul>
+      <li>You and your team needs to cut and paste from each tool, which makes it less likely to happen</li>
+      <li>To understand the nuances of a feature you need to open several different tabs to read what customers wrote in the source tool (support tool, CRM, etc)</li>
+      <li>It treats each customer's vote as equal, and doesn't take into account their plan, MRR, or other attributes</li>
+    </ul>
+    </p>
+
+    <h3 class="pt40 pb20">Collect Feature Requests From Any Web-Based Tool</h3>
+    {% include "includes/alternatives-table.html" with savio_rating="Good" competitor_image="images/alternatives/aha.png" comp_rating="Not Good" %}
+    <h4>Savio</h4>
+    <p>You can <a href="{% url 'marketing-chrome-extension'%}">track feature requests from any tool with the Savio Chrome extension</a>.  This means that your teammate is able to stay in their support tool, CRM, etc when they send feature requests to Savio.  Just click the Chrome Extension, enter details about the feature request, and you're done.  You don't have to switch tools or tabs: minimal disruption.  </p>
+
+    <p>Savio's Chrome Extension ensures your teammates will track more feature requests because it's lower friction than cutting and pasting between different tabs.</p>
+
+    <h4>Aha</h4>
+    <p>The only way you can track feature requests in Aha is to send customers to your public Aha voting portal.  Any feature requests shared in your support tool, CRM, surveys, etc can't be related to customers when logged in Aha.  Additionally, logging these ideas will require cutting and pasting between tools.</p>
+
+
+    <h3 class="pt20 pb20">Automatically import customer data</h3>
+    {% include "includes/alternatives-table.html" with savio_rating="Good" competitor_image="images/alternatives/aha.png" comp_rating="Not Good" %}
+    <h4>Savio</h4>
+    <p>Since not all feedback is equal, Savio tracks WHO requests a feature. If you don't know details about who requested a feature, you're basing key decisions on things like number of upvotes.  You can't query for "all feature requests from Enterprise customers" or "feature requests from churned customers" or "feature requests from customers paying $300/m or more" like you can in Savio.</p>
+
+    <p>Savio can import customers, accounts, and related properties like MRR, Plan, and any other attributes you care about. You can <a href="{% url 'marketing-integrations-segment' %}">import your list of customers and properties from Segment</a>, from <a href="{% url 'marketing-integrations-intercom-product' %}">Intercom</a>, or from <a href="{% url 'marketing-integrations-helpscout' %}">Help Scout</a>.  It's just one click to import and to stay in sync as new customers join your app and their properties change.</p>
+
+    <h4>Aha</h4>
+    <p>Aha has no notion of a "customer". All feature requests are treated equally with the exception of number of votes submitted through your Aha idea portal (if you choose to use it).  You can't segment feature requests by customer or account info like MRR or Plan.  You also can't easily reach out to customers to validate problem and solution, or to tell them you built what they asked for.</p>
+
+    <h3 class="pt40 pb20">Collect feature requests from Help Scout</h3>
+    {% include "includes/alternatives-table.html" with savio_rating="Good" competitor_image="images/alternatives/aha.png" comp_rating="Not Good" %}
+
+    <h4>Savio</h4>
+    <p>Savio has a native integration that allows you to <a href="{% url 'marketing-integrations-helpscout-product' %}">track feature requests from Help Scout</a>.  When your support team gets a message with a Feature Request, they just add a predefined tag to the conversation.  Savio will then pull the feature request in.  Savio will also add a private note to the Help Scout Conversation to confirm that it's pulled the feature in. This means your teammates don't need to leave Help Scout to track feature requests in Savio, nor do they need a Savio account. </p>
+
+    <div class="text-center">
+      <img class="img-fluid image" src="{% static 'images/help/helpscout/helpscout-integration-animated.gif'  %}">
+    </div>
+    <div class="text-center mb30">Tag a conversation to send Feature Requests from Help Scout to Savio</div>
+
+    <h4>Aha</h4>
+    <p>Aha doesn't have a Help Scout integration.  So tracking feature requests from Help Scout in Aha is a manual process involving cutting and pasting.</p>
+
+    <h3 class="pt40 pb20">Collect feature requests from Intercom</h3>
+    {% include "includes/alternatives-table.html" with savio_rating="Good" competitor_image="images/alternatives/aha.png" comp_rating="Not Good" %}
+
+    <h4>Savio</h4>
+    <p>Savio has a native integration that allows you to <a href="{% url 'marketing-integrations-intercom-product' %}">track feature requests from Intercom</a>.  Similar to <a href="{% url 'marketing-integrations-helpscout-product' %}">tracking feature requests in Help Scout</a>, when your support team gets a message with a Feature Request, they just tag the messsage with a predefined tag for Savio to slurp the feature request in.  Savio will also add a private note to the Intercom conversation to confirm that it has the feature request. This means your teammates don't need to leave Intercom to track feature requests in Savio, nor do they need a Savio account. </p>
+
+    <div class="text-center">
+      <img class="img-fluid image" src="{% static '/images/help/intercom/intercom-integration-animated.gif'  %}">
+    </div>
+    <div class="text-center mb30">Tag a conversation to send Feature Requests from Intercom to Savio</div>
+
+    <h4>Aha</h4>
+    <p>Aha doesn't have an Intercom integration.  Tracking feature requests sent to Intercom using Aha involves a lot of cutting and pasting.</p>
+
+    <h3 class="pt40 pb20">Collect feature requests via Email</h3>
+    {% include "includes/alternatives-table.html" with savio_rating="Good" competitor_image="images/alternatives/aha.png" comp_rating="OK" %}
+
+    <h4>Savio</h4>
+    <p>When product feedback hits your inbox, you can email it directly to Savio.  Savio will pull out the name and email address of the person who sent YOU the feedback.  And it'll land in your Savio inbox, ready for you to <a href="{% url 'marketing-triage' %}">triage your feature requests</a>.</p>
+
+    <h4>Aha</h4>
+    <p>If you're using an idea portal you can email feature requests directly to your portal.  But Aha doesn't recommend forwarding customer emails to your portal because it will expose your customer's email address on the idea portal.</p>
+
+
+
+    <h3 class="pt40 pb20">Has feedback triage process</h3>
+    {% include "includes/alternatives-table.html" with savio_rating="Good" competitor_image="images/alternatives/aha.png" comp_rating="Not Good" %}
+
+    <h4>Savio</h4>
+    <p>You've heard of the phrase garbage in, garbage out?  Triaging ensures your feature request list quality stays high and you can base your decisions on vetted feedback.</p>
+
+    <p>When feedback is sent into Savio, it lands in your feedback inbox. Somebody on your team should <a href="{% url 'marketing-triage' %}">triage your product feedback</a> regularly.  Triaging means assigning a customer, choosing a feature request for the feedback, and determining whether the feedback was from an active customer, a churned customer, a lost deal, a prospect or a teammate.</p>
+    <p>This triage step means that every bit of data in Savio that you're going to base your valuable and important prioritization decisions on will have been vetted by somebody on your product team.</p>
+
+    <h4>Aha</h4>
+    <p>Aha has a landing spot for new feature requests called the "Ideas list". When you work this list, you can categorize them and promote them to a "Feature" which you'll put on your roadmap.</p>
+
+    <h3 class="pt40 pb20">Segment feature requests from customers you care about</h3>
+    {% include "includes/alternatives-table.html" with savio_rating="Good" competitor_image="images/alternatives/aha.png" comp_rating="Not Good" %}
+
+    <h4>Savio</h4>
+    <p>Some customers are simply more valuable to your business. Customers in your ideal customer profile are ones that you want to listen to more than others. </p>
+
+    <p>So when prioritizing, you often want to focus on building features for a certain set of customers. </p>
+
+    <p>Because Savio imports your customers, their MRR, their plan, and any other custom attributes you care about, you can segment your feature requests by plan, MRR, or by any of those attributes.</p>
+
+    <p>Savio respects that all customers and all feedback are not created equal.  Prioritizing based on number of requests is useful, but coarse.  You probably want to prioritize for what actually matters to the customers you care about.</p>
+
+    <h4>Aha</h4>
+    <p>Aha does not have the notion of a customer or attributes.  The only way you can segment features is to label them. And even then, it's impossible to run queries like you can in Savio to see "feature requests from churned customers" or "feature requests from customers on our Enterprise plan".</p>
+
+    <h3 class="pt40 pb20">Record customers' actual words about problems, not just votes</h3>
+    {% include "includes/alternatives-table.html" with savio_rating="Good" competitor_image="images/alternatives/aha.png" comp_rating="Not Good" %}
+    <h4>Savio</h4>
+    <p>In Savio, you can record and see the actual words that a customer used to describe their problem.  Additionally, each piece of customer feedback is a vote for a feature.  So you get BOTH votes AND actual customer words.</p>
+
+    <h4>Aha</h4>
+    <p>If you have a public portal, users can vote and leave comments on feature requests. But you often get a wide spread between the number of votes and the number of comments.</p>
+
+    <p>It can't be understated how important it is to have customers' words instead of just upvotes to make good prioritization decisions. A customers' words help you understand the context and boundaries of the problem to build a good solution.</p>
+
+    <h3 class="pt40 pb20">Public or private voting portal</h3>
+    {% include "includes/alternatives-table.html" with savio_rating="Not Good" competitor_image="images/alternatives/aha.png" comp_rating="Good" %}
+    <h4>Savio</h4>
+    <p>Savio does not have a public place where customers can see and vote on feature requests.</p>
+
+    <h4>Aha</h4>
+    <p>Aha has a voting portal that can be public, private for internal use, or submit only (which means customers can't see any features that have been requested).</p>
+
+    <p>The advantage of having a portal is that you get feedback without anybody on your team needing to handle it.</p>
+    <p>There are a few downsides to having a portal. Here are the main ones:</p>
+    <ul><li>Customers can get frustrated that you haven't built a feature ("This feature has been open for three years, why haven't you built it yet?!")</li>
+    <li>It gives your competition ideas about where your product is weak</li>
+    <li>it over-indexes for the "squeaky wheels". Are the people who leave feedback really representative of your customer base as a whole?</li></ul>
+
+    <p>If a public voting portal is what you're after, Savio's probably not the right fit for you.</p>
+
+    <h3 class="pt40 pb20">Close the loop with customers</h3>
+    {% include "includes/alternatives-table.html" with savio_rating="Good" competitor_image="images/alternatives/aha.png" comp_rating="OK" %}
+
+    <h4>Savio</h4>
+    <p>When you build a feature that a customer asked for and let them know, it's usually thrills them.  It shows you care about solving their problems AND letting them know you solved it.  Closing the loop is one of the best things you can do for customer loyalty.
+
+    <p>Closing the loop in Savio is easy.  When you click on a feature, you'll see each person that asked for it. You can either contact each person from there via email, or you can click through to the original Help Scout, Intercom, or other conversation thread where you first received the feature request.</p>
+
+    <img src="{% static 'images/alternatives/savio-close-loop-marked-up.png' %}" class="img-fluid img-border" /><br>
+    <div class="text-center">
+    <small>It's easy to close the loop with customers in Savio</small></div></p>
+
+    <h4>Aha</h4>
+    <p>Aha keeps track of a user's email address IF you're using a voting portal and a customer votes up a feature.  But there's no simple way to reach out to everybody who requested a feature once you've shipped it.</p>
+
+    <h3 class="pt40 pb20">See detailed feedback for every Feature Request</h3>
+    {% include "includes/alternatives-table.html" with savio_rating="Good" competitor_image="images/alternatives/aha.png" comp_rating="Not Good" %}
+
+    <h4>Savio</h4>
+    <p>With Savio, when you click on a feature request you'll see:</p>
+    <ul><li>everybody who asked for that feature
+      <li>each customer's exact words they used when they asked for the feature</li>
+      <li>their company, MRR, plan, and any other <a href="{% url 'marketing-customer-attributes'%}">customer attributes</a> you've sent in</li>
+      <li>whether they're churned, active, a lost deal, a prospect, or a teammate</li>
+      <li>And you can even click through to the source tool where the feedback came in from.</li>
+    </ul>
+
+    <div class="text-center">
+        <img class="img-fluid image" src="{% static 'images/help/product-planning/feature-request-feedback-close-up.png' %}">
+    </div>
+    <div class="text-center mb30">See all details about a feature in one place (in this case, a request for "Better Permissions")</div>
+
+    <h4>Aha</h4>
+    <p>Since Aha doesn't focus on capturing verbatim feedback from customers, you don't get a great summarized view of customer feedback when you're looking at a feature request.  If you're using a public voting portal, the best you can do is get a list of the comments voters have left.  These are often more along the lines of "I want this too!" rather than a description of the problem.</p>
+
+    <h3 class="pt40 pb20">Easily reach out to customers that provided feedback</h3>
+    {% include "includes/alternatives-table.html" with savio_rating="Good" competitor_image="images/alternatives/aha.png" comp_rating="Not Good" %}
+
+    <h4>Savio</h4>
+    <p>In Savio, you can easily reach out to customers that have asked for a specific feature to better understand their problem and validate your solution. Every user's email address is on the page that describes your feature request.</p>
+
+    <h4>Aha</h4>
+    <p>If you're using a voting portal, you can see who has voted up an idea.  Emailing these people is straightforward.</p>
+
+   <h3 class="pt40 pb20">Designed for collecting feedback</h3>
+    {% include "includes/alternatives-table.html" with savio_rating="Good" competitor_image="images/alternatives/aha.png" comp_rating="Not Good" %}
+
+    <h4>Savio</h4>
+    <p>Savio is purpose-built for tracking and prioritizing feature requests.  It helps with the jobs and workflows to solve that problem: you need to collect feedback, bucket it into feature requests, prioritize requests, track features through the planning lifecycle, reach out to requesters to validate problem and solution, and close the loop with them once built.</p>
+
+    <p>If you're interested in a tool that focuses on providing a simple mechanisms to capture your customer feedback and use it to figure out what features to build next, Savio is probably a great fit.</p>
+
+    <h4>Aha</h4>
+    <p>Aha started out as a roadmapping tool and morphed to be a tool to manage the Product Management development cycle.  It does not excel at collecting and tracking customer feature requests. </p>
+
+
+    <h3 class="pt20 pb20">Track requests from users at different points in customer journey</h3>
+    {% include "includes/alternatives-table.html" with savio_rating="Good" competitor_image="images/alternatives/aha.png" comp_rating="Not Good" %}
+    <h4>Savio</h4>
+    <p>With Savio, you can track when a feature request comes from a churned user, active user, lost deal, prospect, or teammate.</p>
+    <p>So when you're trying to reduce churn you can see all feature requests from churned customers, and then build some of them.  Or if you're trying to lose fewer deals, you can build features from lost deals. This information is entered when a feature request is captured, so there's no technical integration necessary.</p>
+    <div class="text-center">
+    <img src="{% static 'images/alternatives/savio-feedback-type.png' %}" class="img-fluid  img-border" /></div>
+    <div class="text-center mb30">In Savio, select who the feature request is from when you enter it.<br>No technical integration necessary.</div>
+
+    <h4>Aha</h4>
+    <p>There's no way to determine what point a customer is at in their journey with your app when they leave a feature request. Which means it's impossible to see things like "feature requests from churned customers" or "feature requests from active customers".</a></p>
+
+
+    <h3 class="pt40 pb20">Users are first-class citizens</h3>
+    {% include "includes/alternatives-table.html" with savio_rating="Good" competitor_image="images/alternatives/aha.png" comp_rating="Not Good" %}
+    <h4>Savio</h4>
+    <p>Savio respects that users make feature requests.  Users belong to accounts, and have properties that you may want to segment your feature requests by (like MRR and Plan).  You may want to contact users, so Savio displays their email addresses for you.</p>
+
+    <h4>Aha</h4>
+    <p>A user in Aha consists of an email address (but only if you're using the voting portal).  Users don't have properties like Account, MRR, or Plan. Which makes it difficult to make good decisions about who you're building features for.</p>
+
+    <h3 class="pt40 pb20">Friendly Support</h3>
+    {% include "includes/alternatives-table.html" with savio_rating="Good" competitor_image="images/alternatives/aha.png" comp_rating="OK" %}
+
+    <h4>Savio</h4>
+    <p>Savio is run by <a href="{% url 'marketing-about' %}">Ryan Stocker and Kareem Mayan</a>. We're two developers-turned-product managers-turned-founders who've been building software since 2001.  We're also the people who answer your support requests!</p>
+
+    <p>We built Savio, and we know how it works inside and out. Which means we can write code ourselves to fix the problems that you have.  We care passionately about making sure that you're successful, because if you are successful, we're successful. You're not just another number who's going to get support from somebody who's five levels away from the CEO or three levels away from the developers and whose requests have to go through a product team to be prioritized. </p>
+
+    <h4>Aha</h4>
+    <p>Aha is a large company with a large support team.  Support is friendly, but given the people answering your support requests aren't the people writing code, you'll probably have to wait longer to get your problems solved.</p>
+
+    <h3 class="pt40 pb20">Can your sales and support team capture feedback without leaving their tools?</h3>
+    {% include "includes/alternatives-table.html" with savio_rating="Good" competitor_image="images/alternatives/aha.png" comp_rating="Not Good" %}
+    <h4>Savio</h4>
+    <p>With Savio there are two ways that you can capture feedback from an existing tool.  One is with a native integration with Help Scout, Intercom, or Slack.  If you're using one of those tools, your teammates do not need a Savio account and they don't need to leave the support tool or CRM. They just add a tag and move on with their life.  If you get feedback in other tools, your teammates can use the Chrome Extension to send relevant feature requests to Savio without leaving the tool where the feedback arrived.</p>
+
+    <p>These two approaches mean your team's workflow is barely (or not at all) disrupted, and it increases the liklihood that you'll capture good quality feature requests.</p>
+
+    <h4>Aha</h4>
+    <p>If you're using a voting portal, your team will have to open the portal, find the feature, and click "upvote" to vote up a feature request from a customer.  This is a more disruptive workflow for your teammates.  And if you're not using a voting portal, there's no way for your team to track customer feature requests.</p>
+
+    <h3 class="pt40 pb20">Can your support team add feedback on behalf of a customer?</h3>
+    {% include "includes/alternatives-table.html" with savio_rating="Good" competitor_image="images/alternatives/aha.png" comp_rating="OK" %}
+    <h4>Savio</h4>
+    <p>Nothing is more frustrating as a customer than to send a feature request to support, and have support tell you to go to another tool to input that feature request. It makes you feel like the company doesn't care about your feature requests because they won't do it themselves - they ask you to send in that feedback twice.</p>
+    <p>With Savio that never happens. Customer can send feature requests to support and your support rep can send that feedback directly into Savio.</p>
+
+    <h4>Aha</h4>
+    <p>When you use Aha to track your feature requests, your support rep either has to log into Aha themselves and upvote the Feature Request on the customer's behalf (but can't leave the customer's verbatim feedback), OR they have to tell the customer to go to the Aha public portal, search for their Feature Request, and to upvote it there.  Your support rep cannot add the customer's feedback on behalf of the customer (they can just add an upvote). The customer has to do it themself.</p>
+
+    <h3 class="pt40 pb20">Reasonable pricing</h3>
+    {% include "includes/alternatives-table.html" with savio_rating="Good" competitor_image="images/alternatives/aha.png" comp_rating="OK" %}
+    <h4>Savio</h4>
+    <p>Savio charges a fee for each user who logs into the web app (called "Admins").  There is no fee for anybody on your support, success, or sales teams to submit feedback (called "Submitters").  Your fees are predictable, transparent, and will only go up when you decide to add a new Admin. You can also afford to pay for them with a credit card.  You can <a href="{% url 'marketing-pricing' %}">see Savio's pricing here.</a></p>
+
+    <h4>Aha</h4>
+    <p>Aha's pricing is straightforward but more expensive than Savio.  Aha's price start at $74/m/seat and go up from there.</p>
+
+   <h3 class="pt40 pb20">Simple Roadmapping</h3>
+    {% include "includes/alternatives-table.html" with savio_rating="Good" competitor_image="images/alternatives/aha.png" comp_rating="Not Good" %}
+
+    <h4>Savio</h4>
+    <p>Roadmapping is important when you're planning what your development team is going to build.  Savio doesn't have roadmap dependencies, multiple versions of roadmaps, Gantt charts, objectives, or shareable roadmaps (other than printing it out or logging in to check it!).  All that stuff is complicated and unnecessary for most teams.</p>
+    <p>If you need to create a complicated roadmap or roadmaps for different audiences (like your sales team, executive team, and a customer advisory board), the best place to do that is in Powerpoint or Keynote (or similar).  Using a web-based tool is more complicated than it needs to be.  Most teams just need simple roadmapping so they can focus on shipping great software.</p>
+
+    <h4>Aha</h4>
+    <p>Aha's roadmaps are complex and powerful.  You can display features by objective, share roadmaps privately or publicly, make different versions for different groups of stakeholders, show features by marketing release, and more.  But with that customizability comes a cost.  Do you really need to manage three different roadmaps, or do you need to understand customer problems and support your dev team to ship key features?</p>
+
+    <div class="row mr0 ml0" >
+      <div class="col-md-12 mt40 pt30 pb30 mb40 text-center info-block">
+          <h4 class="no-anchor">Import your Aha Data</h4>
+          <p>Looking to switch from Aha? We'll import your data for free.</p>
+          <img src="{% static 'images/alternatives/aha-to-savio.png' %}" class="img-fluid pb30" height="300" width="150">
+          <p><a class="btn btn-primary" href="mailto:founders@savio.io?Import+Aha+data">Contact Us to Import Data</a>
+      </div>
+    </div>
+
+    {% include "includes/blog-cta.html" with title="Switch from Aha Today" %}
+
+  </div>
+{% endblock %}
+
+{% block footer_scripts %}
+
+  <script type="text/javascript" src="{% static 'jquery.toc/jquery.toc.js' %}"></script>
+  <script type="text/javascript">
+      $(document).ready(function() {
+        $("#toc-list").toc({content: "div.container", headings: "h3", excludedClass: "no-anchor"});
+      });
+  </script>
+{% endblock %}

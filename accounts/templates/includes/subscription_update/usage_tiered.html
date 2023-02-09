@@ -1,0 +1,27 @@
+            {% if inactive_subscription %}
+              <!-- most per seat customers will fall in here  -->
+              <h5>Please add a valid credit card</h5>
+              <p>You've tracked <mark>{{ feedback_count }}</mark> pieces of feedback with Savio.</p>
+              <p>
+                To reactivate your account please add a valid credit card. If you think this is a mistake (yikes... sorry about that!) or you've decided not to use Savio and want to export your feedback, please <a href="mailto:help@savio.io?subject=Help reactivating account">contact us.</a>
+              </p>
+              <hr>
+            {% elif over_free_feedback_limit_and_needs_to_pay %}
+
+                <h5>To continue tracking feedback with Savio, please upgrade</h5>
+                <p>You've tracked <mark>{{ feedback_count }}</mark> pieces of feedback so far. You can track up to <mark>20</mark> pieces of feedback on the free plan.</p> 
+
+                <p>Add your credit card below to track up to <mark>{{ next_plan_feedback_count }}</mark> pieces of feedback and upgrade to the <mark>${{ next_plan_price }}/m</mark> plan (<a href="{% url 'marketing-pricing' %}" target="_blank">see pricing</a>).</p>
+
+                <p>If you think this is a mistake (yikes... sorry about that!) or you've decided not to use Savio and want to export your feedback, please <a href="mailto:help@savio.io?subject=Help upgrading">contact us.</a>
+                </p>
+
+            {% else %}
+                <h5>Add your credit card to keep tracking feedback</h5>
+                <p>You've tracked <mark>{{ feedback_count }}</mark> pieces of feedback so far.  You can track up to <mark>{{ current_plan_feedback_count }}</mark> pieces of feedback on your current ${{ current_plan_price }}/m plan. 
+
+                <p>Add your credit card below to track up to <mark>{{ next_plan_feedback_count }}</mark> pieces of feedback and upgrade to the <mark>${{ next_plan_price }}/m</mark> plan.</p>
+
+                <p>If you have questions, please <a href="mailto:help@savio.io?subject=Help upgrading">contact us.</a>
+                </p>
+            {% endif %}

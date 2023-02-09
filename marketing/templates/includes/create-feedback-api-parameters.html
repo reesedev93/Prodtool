@@ -1,0 +1,98 @@
+            <table class="table mb-0" style="width: 100%; min-height: 0px;">
+                <thead>
+                    <tr>
+                        <th class="pt-0 bt-0" width="20%">Parameter</th>
+                        <th class="pt-0 bt-0" width="30%">Required</th>
+                        <th class="pt-0 bt-0" width="50%">Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="feedback-item">
+                        <td>problem</td>
+                        <td>Yes</td>
+                        <td>The text describing the problem the user is having.</td>
+                    </tr>
+                    <tr class="feedback-item">
+                        <td>feedback_type</td>
+                        <td>Yes</td>
+                        <td>
+                            The type of customer that provided the feedback.<br><br>
+                            Valid values are:
+                            <ul>
+                                <li>
+                                    <code>ACTIVE</code><br>Active customer
+                                </li>
+                                <li>
+                                    <code>CHURNED</code><br>Churned customer
+                                </li>
+                                <li>
+                                    <code>INTERNAL</code><br>Internal user
+                                </li>
+                                <li>
+                                    <code>LOST DEAL</code><br>Lost deal
+                                </li>
+                                <li>
+                                    <code>PROSPECT</code><br>Prospect
+                                </li>
+                                <li>
+                                    <code>OTHER</code><br>Other
+                                </li>
+                            </ul>
+                          </td>
+                    </tr>
+                    <tr class="feedback-item">
+                        <td>state</td>
+                        <td>No<br>Defaults to ACTIVE</td>
+                        <td>
+                            The triage state of this piece of feedback.<br><br>
+                            Valid values are:
+                            <ul>
+                                <li>
+                                    <code>ACTIVE</code><br>Show in Inbox
+                                </li>
+                                <li>
+                                    <code>PENDING</code><br>Snoozed
+                                </li>
+                                <li>
+                                    <code>ARCHIVED</code><br>Skip Inbox
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr class="feedback-item">
+                        <td>source_url</td>
+                        <td>No</td>
+                        <td>
+                            An optional URL that links back to the original source of the feedback.
+                        </td>
+                    </tr>
+                    <tr class="feedback-item">
+                        <td>person_email</td>
+                        <td>No</td>
+                        <td>
+                            The email address of the person the feedback came from. If there is an existing person with that email address the feedback will be linked to that person. If there isn't an existing person with that email address a new person will be created.
+                        </td>
+                    </tr>
+                    <tr class="feedback-item">
+                        <td>person_name</td>
+                        <td>No</td>
+                        <td>
+                            The full name of the person the feedback came from. If there isn't a person with that a new person will be created.
+                        </td>
+                    </tr>
+                    <tr class="feedback-item">
+                        <td>feature_request_title</td>
+                        <td>No</td>
+                        <td>
+                            The title of the feature request to link the new piece of feedback to. If a feature request that that title already exists the existing feature request will be used. Otherwise a new feature request will be created.
+                        </td>
+                    </tr>
+                    <tr class="feedback-item">
+                        <td>tags</td>
+                        <td>No</td>
+                        <td>
+                            A list of strings that are the titles of the tags you link to the new piece of feedback. If the tags don't exist they will be created.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>

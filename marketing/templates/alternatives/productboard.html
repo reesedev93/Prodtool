@@ -1,0 +1,266 @@
+{% extends "blog-page.html" %}
+{% load static %}
+
+{% block meta_title %}Simple Productboard alternative | The best alternative to Productboard | Savio{% endblock %}
+
+{% block meta_desc %}Is Productboard overkill? See why Savio is the best simple Productboard alternative to track feature requests.{% endblock %}
+
+{% block head %}
+  <!-- open graph tags -->
+  <meta property="og:url" content="{{ request.build_absolute_uri }}" />
+  <meta property="og:title" content="Savio is a Productboard alternative for tracking feature requests" /> <!-- 57 chars -->
+  <meta property="og:type" content="website" />
+  <meta property="og:description" content="See why Savio is the best simple alternative to Uservoice to track feature requests" /> <!-- 73 chars -->
+
+  <meta property="og:site_name" content="Savio" />
+  <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'images/alternatives/savio-or-productboard.png' %}" />
+
+  <meta property="og:image:width" content="1500" />
+  <meta property="og:image:height" content="750" />
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:site" content="@savio_io" />
+
+  <!-- 115 chars max -->
+  <meta property="twitter:description" content="See why Savio is the best simple alternative to Productboard to track feature requests" />
+
+  <!-- end open graph -->
+  {% endblock %}
+
+
+{% block content %}
+
+  <div class="col-md-12 blog blog-title text-center">
+    <h1>The best alternative to Productboard to track feature requests</h1>
+    <h2 class="text-muted">Productboard vs Savio: how they compare</h2>
+    <img src="{% static 'images/alternatives/savio-or-productboard.png' %}" class="image img-fluid" width="500"><br>
+  </div>
+    <div class="col-md-8 offset-md-2 blog">
+
+    <h3 class="no-anchor pt40">Summary</h3>
+    <ul>
+      <li>Both tools are strong at capturing feature requests from Intercom and have a Chrome Extension</li>
+      <li>Choose <strong>Productboard</strong> if you want a powerful but complex tool with concepts like drivers, initiatives, and objectives, are willing to a pay more, care about public roadmaps, or want a tight integration with JIRA</li>
+      <li>Choose <strong>Savio</strong> if you want a simpler tool, want to segment feature requests by user and account properties (like MRR and Plan), want to track feature requests from Help Scout, if closing the loop with customers is important, or want to pay less</li>
+      <li>Read on for the full comparison</li></ul>
+    </ul>
+
+    <div id="toc">
+      <h2>Table of contents</h2>
+      <p>See how Productboard and Savio compare across these dimensions.</p>
+      <ul id="toc-list"></ul>
+    </div>
+
+    <h3 class="pt20 pb20">Centralize feature requests from all your tools</h3>
+    {% include "includes/alternatives-table.html" with savio_rating="Good" competitor_image="images/alternatives/productboard.png" comp_rating="Good" %}
+
+    <h4>Savio</h4>
+    <p>Savio centralizes feature requests from any place your team receives them.  You can track feature requests sent to <a href="{% url 'marketing-integrations-intercom-product'%}">Intercom</a>, <a href="{% url 'marketing-integrations-helpscout-product'%}">Help Scout</a>, or posted <a href="{% url 'marketing-integrations-slack'%}">in Slack</a>.  You can use a <a href="{% url 'marketing-chrome-extension'%}">Chrome Extension to track feature requests</a> in any other web-based tool that your team uses (like a CRM).  You can <a href="{% url 'marketing-send-email'%}">send feature requests in via email</a>, <a href="{% url 'marketing-help-zapier'%}">send feature requests from any tool via Zapier</a>, or <a href="{% url 'marketing-help-api'%}">use an API to track feature requests</a>.  Each of these minimizes disruption when your support or sales teammates need to track feature requests.</p>
+    <p>Once centralized, you can prioritize your features knowing they're all in one place.</p>
+
+    <div class="text-center">
+    <img class="img-fluid image" src="{% static 'images/help/intercom/intercom-integration-animated.gif' %}" width="600" height="375"><br>
+    <div class="text-center mb30">Tag a feature request in Intercom to send it to Savio.</div>
+  </div>
+
+
+    <h4>Productboard</h4>
+    <p>Productboard tracks feature requests from Intercom, Zendesk, and by letting users upvote Feature Requests in a public voting portal.  If you have feature requests that live in your CRM, or are taken during calls in a tool like Google Docs, or an NPS tool, or a tool like Typeform or SurveyMonkey, your team can use Productboard's Chrome Extension track those requests.</p>
+
+    <h3 class="pt20 pb20">Automatically import customer data</h3>
+    {% include "includes/alternatives-table.html" with savio_rating="Good" competitor_image="images/alternatives/productboard.png" comp_rating="Not Good" %}
+    <h4>Savio</h4>
+    <p>Savio will import your customers, accounts, and related properties like MRR, Plan, and any other attributes you care about. You can <a href="{% url 'marketing-integrations-segment' %}">import your list of customers and properties from Segment</a>, <a href="{% url 'marketing-integrations-intercom-product' %}">Intercom</a>, or <a href="{% url 'marketing-integrations-helpscout' %}">Help Scout</a>.  It's just one click to import (and to stay in sync). </p>
+
+    <p>Savio does this because not all feedback is created equal. If you don't know details about who requested a feature, you're basing key decisions on things like number of upvotes.  You can't query for "all feature requests from Enterprise customers" or "feature requests from churned customers" or "feature requests from customers paying $300/m or more".</p>
+
+  <h4>Productboard</h4>
+   <p>Productboard's notion of a customer is a name and company.  There's no identifying attribute (like email address) and no customer attributes (like Plan or MRR).  Which not only means all feature requests are treated equally, but it means you can't reach out to customers to validate problem and solution, or to tell them you built what they asked for.</p>
+
+    <h3 class="pt40 pb20">Collect feature requests from Help Scout</h3>
+    {% include "includes/alternatives-table.html" with savio_rating="Good" competitor_image="images/alternatives/productboard.png" comp_rating="Not Good" %}
+
+    <h4>Savio</h4>
+    <p>Savio has a native integration that allows you to <a href="{% url 'marketing-integrations-helpscout-product' %}">track feature requests from Help Scout</a>.  When your teammates in support get a message with a Feature Request, they just add a predefined tag to the conversation for Savio will pull the feature request in.  Savio will also add an internal note to the Help Scout Conversation to confirm that it's pulled the feature in. This means your teammates don't need to leave Help Scout to track feature requests in Savio, nor do they need a Savio account. </p>
+
+    <div class="text-center">
+      <img class="img-fluid image" src="{% static 'images/help/helpscout/helpscout-integration-animated.gif'  %}">
+    </div>
+    <div class="text-center mb30">Tag a conversation to send Feature Requests from Help Scout to Savio</div>
+
+    <h4>Productboard</h4>
+    <p>Productboard doesn't have a Help Scout integration.  So tracking feature requests from Help Scout in Producboard is a manual process. It also might be possible with Zapier.</p>
+
+    <h3 class="pt40 pb20">Segment feature requests from customers you care about</h3>
+    {% include "includes/alternatives-table.html" with savio_rating="Good" competitor_image="images/alternatives/productboard.png" comp_rating="OK" %}
+
+    <h4>Savio</h4>
+    <p>Some customers are just inherently more valuable to your business. Customers in your ideal customer profile are ones that you want to listen to more than other customers. </p>
+
+    <p>So when you prioritize, you want to do so for a certain set of customers. </p>
+
+    <p>Because Savio imports your customers, their MRR, their plan, and any other custom attributes you care about, you can segment your feature requests by plan, MRR, or by any of those attributes.  </p>
+
+    <p>Savio respects that all customers and all feedback are not created equal.  Prioritizing based on number of requests is useful, but coarse.  You probably want to prioritize for what actually matters to the customers you care about.</p>
+
+    <h4>Productboard</h4>
+    <p>Productboard does not have the notion of a customer attribute.  But you can segment feature requests in two ways.  First, you can create separate voting portals for your segments and make sure each segment votes on the right portal.  You can then segment your feature requests based on the portal it came through.  And second, when customers request a feature, they specify whether a request is a must have, should have, or nice to have.  Other than these dimensions, all feature requests are treated as equal.</p>
+
+    <h3 class="pt40 pb20">Add Feature Requests via API</h3>
+    {% include "includes/alternatives-table.html" with savio_rating="Good" competitor_image="images/alternatives/productboard.png" comp_rating="Not Good" %}
+
+    <h4>Savio</h4>
+    <p>
+    If you collect in-app feedback, you may get feature requests that you want to track.  With Savio, you can <a href="{% url 'marketing-help-api' %}">track feature requests with an API</a> programmatically.  Feature Requests are sent directky to Savio - no need to export a CSV and send it to us or not track your feature requests collected in-app.
+    </p>
+
+    <h4>Productboard</h4>
+    <p>Productboard doesn't have a public API to track feature requests.</p>
+
+   <h3 class="pt40 pb20">Public or private voting portal</h3>
+    {% include "includes/alternatives-table.html" with savio_rating="Not Good" competitor_image="images/alternatives/productboard.png" comp_rating="Good" %}
+    <h4>Savio</h4>
+    <p>Savio does not have a public place where customers can see and vote on feature requests.</p>
+
+    <h4>Productboard</h4>
+    <p>Productboard has a voting portal that can be public or private.</p>
+    <p>The advantage of having a portal is that you get feedback without anybody on your team needing to screen or vet it.</p>
+    <p>There are a few downsides to having a portal.  Chief among them are:</p>
+    <ul><li>Customers can get frustrated that you haven't built a feature ("This feature has been open for two years.  Why haven't you built it yet!")</li>
+    <li>It gives your competition ideas about where your product is weak</li>
+    <li>It over-indexes for "squeaky wheels". Are the people who leave feedback really representative of your customer base as a whole?</li></ul>
+
+    <p>If a voting portal is what you're after, Savio's probably not the right fit for you.</p>
+
+
+   <h3 class="pt40 pb20">Simple Roadmapping</h3>
+    {% include "includes/alternatives-table.html" with savio_rating="Good" competitor_image="images/alternatives/productboard.png" comp_rating="Not Good" %}
+
+    <h4>Savio</h4>
+    <p>Roadmapping is important when you're planning what your development team is going to build.  Savio doesn't have roadmap dependencies, multiple versions of roadmaps, Gantt charts, objectives, or shareable roadmaps (other than printing it out or logging in to check it!).  All that stuff is complicated and unnecessary for most teams.</p>
+    <p>If you need to create a complicated roadmap or roadmaps for different audiences (like your sales team, executive team, and a customer advisory board), the best place to do that is in Powerpoint or Keynote (or similar).  Using a web-based tool is more complicated than it needs to be.  Most teams just need simple roadmapping so they can focus on shipping great software.  This simplicity makes Savio a great Productboard alternative.</p>
+
+    <h4>Productboard</h4>
+    <p>Productboard's roadmaps are complex and powerful.  You can display features by objective, share roadmaps privately or publicly, make different versions for different groups of stakeholders, show features by marketing release, and more.  With that customizability comes a cost.  Do you really need to manage three different roadmaps, or do you need to understand customer problems and support your dev team to ship the right features?</p>
+
+    <h3 class="pt40 pb20">Customer-facing roadmap</h3>
+    {% include "includes/alternatives-table.html" with savio_rating="Not Good" competitor_image="images/alternatives/productboard.png" comp_rating="Good" %}
+
+    <h4>Savio</h4>
+    <p>With Savio, there's no public roadmap option. Of course, you have the option to share what you're building privately with customers.</p>
+
+    <h4>Productboard</h4>
+    <p>Productboard has an option to share your roadmap publicly with your customers.</p>
+
+    <p>The two big downsides to sharing your roadmap publicly are:</p>
+    <ul>
+      <li>Competitors can see what you're working on and considering</li>
+      <li>Priorities change so you can set the wrong expectations with customers</li>
+    </ul>
+
+    <p>If it's important to you to have a public roadmap in the same tool that you track feature requests, Savio might not be the right fit.  If you're comfortable using two different tools - one to track feature requests and one for a public Roadmap, we find Trello to be a good Roadmapping option.</p>
+
+    <h3 class="pt40 pb20">Close the loop with customers</h3>
+    {% include "includes/alternatives-table.html" with savio_rating="Good" competitor_image="images/alternatives/productboard.png" comp_rating="Not Good" %}
+
+    <h4>Savio</h4>
+    <p>When you build a feature that a customer asked for and let them know, it's usually thrills them.  It shows you care about solving their problems AND letting them know you solved it.  Closing the loop is one of the best things you can do for customer loyalty.
+
+    <p>Closing the loop in Savio is trivial.  When you click on a feature, you'll see each person that asked for it. You can either contact each person from there via email, or you can click through to the original Help Scout, Intercom, or other conversation thread where you first received the feature request.</p>
+
+    <img src="{% static 'images/alternatives/savio-close-loop.png' %}" class="img-fluid img-border" /><br>
+    <div class="text-center">
+    <small>It's trivial to close the loop with customers in Savio</small></div></p>
+
+    <h4>Productboard</h4>
+    <p>Since Productboard doesn't keep track of a user's email address or where a feature request was first captured, it's next to impossible to close the loop with customers when you build a feature they asked for.</p>
+
+    <h3 class="pt40 pb20">Users can provide feedback without logging in</h3>
+    {% include "includes/alternatives-table.html" with savio_rating="Good" competitor_image="images/alternatives/productboard.png" comp_rating="OK" %}
+    <h4>Savio</h4>
+    <p>Your support reps can send any feedback directly to Savio. Customers don't need to login or create an account to login to a voting portal tool they don't have a relationship with (Productboard).  This feature makes Savio an attractive alternative to Productboard.</p>
+
+    <h4>Productboard</h4>
+    <p>When a user wants to leave feedback publicly with Productboard, they must leave their email address with them even though they have to relationship with them:<br>
+    <img src="{% static 'images/alternatives/productboard-leave-email.png' %}" class="img-fluid img-border" /><br>
+    <div class="text-center">
+    <small>Your customers must leave their email address with Productboard to create a new Feature Request or Upvote an existing one</small></div></p>
+
+
+   <h3 class="pt40 pb20">Friendly Support</h3>
+    {% include "includes/alternatives-table.html" with savio_rating="Good" competitor_image="images/alternatives/productboard.png" comp_rating="OK" %}
+
+    <h4>Savio</h4>
+    <p>Savio is run by us, Ryan Stocker and Kareem Mayan. We're two developers-turned-product managers-turned-founders who've been building software since 2001.  We're also the people who answer your support requests!</p>
+
+    <p>We built Savio, and we know how it works inside and out. Which means we can write code ourselves to fix the problems that you have.  We care passionately about making sure that you're successful, because if you are successful, we're successful. You're not just another number who's going to get support from somebody who's five levels away from the CEO or three levels away from the developers and whose requests have to go through a product team to be prioritized. </p>
+
+    <h4>Productboard</h4>
+    <p>Productboard is a large company with a large support team.  Support is friendly, but given the people answering your support requests aren't the people writing code, you'll probably have to wait longer to get your problems solved.</p>
+
+   <h3 class="pt40 pb20">Designed for collecting feedback</h3>
+    {% include "includes/alternatives-table.html" with savio_rating="Good" competitor_image="images/alternatives/productboard.png" comp_rating="OK" %}
+
+    <h4>Savio</h4>
+    <p>Savio is purpose-built for tracking and prioritizing feature requests.  It helps with the jobs and workflows to solve that problem: you need to collect feedback, bucket it into feature requests, prioritize requests, track features through the planning lifecycle, reach out to requesters to validate problem and solution, and close the loop with them once built.</p>
+
+    <p>If you're' interested in a tool that focuses on providing a simple mechanisms to capture your customer feedback and use it to figure out what features to build next, Savio is probably a great fit.</p>
+
+    <h4>Productboard</h4>
+    <p>Productboard started as a roadmapping tool and its roots show.  It does do  feedback collection, but doesn't support some key workflows very well.  Specifically, it doesn't capture user and account information so you can't segment feature requests.  And you can't reach out to users to validate problem/solution or close the loop.</p>
+
+    <p>There's also overhead (and complexity) that comes with supporting roadmapping and other non-feedback-collection-related features.  If you need abstract concepts like objectives, initiatives, and drivers (things that aren't necessarily focused on helping you ship good quality software) then Savio is probably not the right fit for you.</p>
+
+    <h3 class="pt40 pb20">Export your data to CSV</h3>
+    {% include "includes/alternatives-table.html" with savio_rating="Good" competitor_image="images/alternatives/productboard.png" comp_rating="OK" %}
+    <h4>Savio</h4>
+   <p>With Savio, it's straightforward to export your data to a CSV.  You just click a link and you'll be emailed a CSV within minutes containing all of your feature requests, customer feedback, user names, accounts, MRR, Plan, tags, etc. It's your data and you should be able to take it out whenever you want.</p>
+
+    <h4>Productboard</h4>
+    <p>With Productboard, you have to dig in the help docs to find the link to download your data.  When you download it, your feature requests aren't related to the raw feedback about them or the people who asked for them.  So doing analysis on them or using them in any meaningful way is challenging.  </p>
+
+
+    <h3 class="pt40 pb20">Users are first-class citizens</h3>
+    {% include "includes/alternatives-table.html" with savio_rating="Good" competitor_image="images/alternatives/productboard.png" comp_rating="Not Good" %}
+    <h4>Savio</h4>
+    <p>Savio respects that users relate to feature requests.  Users belong to accounts, and have properties that you may want to segment your feature requests by (like MRR and Plan).  You may want to contact users, so Savio displays their email addresses.  This feature makes Savio a great alternative to Productboard.</p>
+
+    <h4>Productboard</h4>
+    <p>A user in Productboard consists of a name and company name.  Users don't have properties and you can't contact them.</p>
+
+
+    <h3 class="pt20 pb20">Track requests from users at different points in customer journey</h3>
+    {% include "includes/alternatives-table.html" with savio_rating="Good" competitor_image="images/alternatives/productboard.png" comp_rating="Not Good" %}
+    <h4>Savio</h4>
+    <p>With Savio, you can track when a feature request comes from a churned user, active user, lost deal, prospect, or teammate.</p>
+    <p>So when you're trying to reduce churn you can see all feature requests from churned customers, and then build some of them.  Or if you're trying to lose fewer deals, you can build features from lost deals. This information is entered when a feature request is captured, so there's no technical integration necessary.</p>
+    <div class="text-center">
+    <img src="{% static 'images/alternatives/savio-feedback-type.png' %}" class="img-fluid  img-border" /><br><br></div>
+    <div class="text-center mb30">In Savio, select who the feature request is from when you enter it.<br>No technical integration necessary.</div>
+
+    <h4>Productboard</h4>
+    <p>There's no way to determine what point a customer is at in their journey with your app when they leave a feature request. Which means it's impossible to see things like "feature requests from churned customers" or "feature requests from active customers".</a></p>
+
+
+    <div class="row mr0 ml0" >
+      <div class="col-md-12 mt40 pt30 pb30 mb40 text-center info-block">
+          <h4 class="no-anchor">Import your Productboard Data</h4>
+          <p>Looking for a Productboard alternative? We'll import your data for free.</p>
+          <img src="{% static 'images/alternatives/pb-to-savio.png' %}" class="img-fluid pb30" height="300" width="150">
+          <p><a class="btn btn-primary" href="mailto:founders@savio.io?Import+Productboard+data">Contact Us to Import Data</a>
+      </div>
+    </div>
+
+    {% include "includes/blog-cta.html" with title="Switch from Productboard Today" %}
+
+  </div>
+{% endblock %}
+
+{% block footer_scripts %}
+
+  <script type="text/javascript" src="{% static 'jquery.toc/jquery.toc.js' %}"></script>
+  <script type="text/javascript">
+      $(document).ready(function() {
+        $("#toc-list").toc({content: "div.container", headings: "h3", excludedClass: "no-anchor"});
+      });
+  </script>
+{% endblock %}

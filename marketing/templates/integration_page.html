@@ -1,0 +1,236 @@
+{% extends "basic_page.html" %}
+{% load static %}
+
+{% block head %}
+
+<meta property="og:url" content="{{ request.build_absolute_uri }}" />
+
+<!-- og:title should be 85 chars max -->
+<meta property="og:title" content="{{story.content.og_title}}" />
+
+<meta property="og:type" content="article" />
+
+<!-- og:description should be 200 chars max. Make sure first 150 make sense. -->
+<meta property="og:description" content="{{story.content.og_description}}" />
+<meta property="og:site_name" content="Savio" />
+
+<meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{{story.content.product_plus_savio_image}}" />
+
+<meta property="og:image:width" content="1024" />
+<meta property="og:image:height" content="512" />
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:site" content="@savio_io" />
+
+<!-- 115 chars max -->
+<meta property="twitter:description" content="{{story.content.og_description}}" />
+
+{% endblock %}
+
+{% block meta_title %}{{story.content.meta.title}}{% endblock %}
+
+{% block meta_desc %}{{story.content.meta.description}}{% endblock %}
+
+{% block title %}
+<div class="text-center">
+    {{story.content.title}}
+</div>
+{% endblock %}
+
+{% block content %}
+
+
+
+
+{% if story.content.show_product_leader_header %}
+<div class="bg-white pt70">
+    <div class="container">
+        <div class="row">
+            <div class='col-lg-12 pb40 text-center' >
+              <h5>Are you a Product Leader?</h5>
+                <a href="{% url 'marketing-integrations-intercom-product' %}" class="btn btn-sm btn-info">See how the integration helps you →</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+<div class="bg-white pt50">
+    <div class="container">
+
+        <div class="row">
+            <div class='col-lg-12 pb40 text-center' >
+                <h2>Effortlessly centralize customer feedback from {{story.content.product_name}}.</h2>
+
+                <h4 class="mt20">
+                    No more spreadsheets or digging through Trello cards. No more fighting with endless tags or labels.
+                </h4>
+                <h4 class="mt20">
+                    Get back to supporting customers.
+                </h4>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class='col-lg-12 pb40 text-center' >
+                <img class="img-fluid" src="{{story.content.product_plus_savio_image}}" width="500" height="200"><br>
+                <span class="text-muted">{{story.content.product_name}}, meet Savio</span>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-lg-12 ml-auto pb40">
+              <p>
+                {% if story.content.unique_content %}
+                    {{story.content.unique_content}}
+                {% else %}
+                Don't let valuable customer feedback stay locked up in {{story.content.product_name}}. With the click of a button in {{story.content.product_name}} you'll consolidate customer feedback in Savio and make data driven product decisions.
+                {% endif %}
+              </p>
+        </div>
+    </div>
+</div>
+
+<div class="bg-faded pt50 pb50">
+    <div class="container">
+        <div class="row">
+            <div class='col-lg-12 pb40 text-center' >
+                <h3 class="pb40">Use the Savio Chrome Extension to quickly send feedback from {{story.content.product_name}} directly into Savio.</h3>
+                <img class="img-fluid" style="border: 1px solid #ddd" src="{{story.content.product_plus_ce_image}}" width="600" height="375"><br>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="bg-white pt50 pb50">
+    <div class="container">
+        <div class="row">
+            <div class='col-lg-12 pb40 text-center' >
+                <h2>👋 See ya, spreadsheets. Hello, supporting customers.</h2>
+            </div>
+
+            <div class='col-lg-12 pb40 text-center'>
+                <h3>
+                    Start capturing {{story.content.product_name}} feedback in 10 seconds.
+                </h3>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-5 ml-auto pb40">
+              <p>How it works:</p>
+              <ul class="list-unstyled feature-list">
+                <li>When a customer sends a feature request to {{story.content.product_name}} open up the Savio Chrome Extension</li>
+                <li>Fill in the feedback</li>
+                <li>Add any addtional info including the customer that submitted the feedback</li>
+                <li>Submit the feedback to Savio</li>
+                <li>Now you've got a single master list of product feedback you can use to make data driven product decisions</li>
+              </ul>
+            </div>
+            <div class='col-lg-6 pb40 text-center' >
+                <img width="250" class="img-fluid" style="border: 1px solid #ddd" src="{% static 'images/screenshots/marketing/chrome-extension.png' %}">
+                <div class='font12 text-center pt10'>Submit feedback directly from {{story.content.product_name}}</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="bg-faded pt50 pb50">
+    <div class="container">
+        <div class="row">
+            <div class='col-lg-12 pb40 text-center' >
+                <h2>Track customer feedback. Build better products.</h2>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class='col-lg-12 pb40 text-center' >
+                <h3>Keep and prioritize a single list of feature requests.</h3>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class='col-lg-6 pb40 text-center' >
+                <img src="{% static 'images/screenshots/marketing/feature-requests-close-up.png' %}" class="img-fluid" style="border: 1px solid #aaa;">
+                <div class='font12 text-center pt10'>A trusted place for your feature requests.</div>
+            </div>
+            <div class="col-lg-5 ml-auto pb40">
+                <p>Ditch the spreadsheets and Trello boards. With Savio you'll be able to easily centralize feedback you receive in {{story.content.product_name}} into a single list.</p>
+
+                <p>With a single list you can:</p>
+                  <ul class="list-unstyled feature-list">
+                      <li>Compare how many customers asked for a feature</li>
+                      <li>Compare the cumulative MRR for each feature</li>
+                      <li>Sort and filter feature requests by customer plan or MRR, priority, effort, tags, keyword, and more</li>
+                  </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="bg-white pt90 pb50">
+    <div class="container">
+
+        <div class="row">
+            <div class='col-lg-12 pb40 text-center' >
+                <h3>All the context for your Product Managers. Without hallway conversations.</h3>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class='col-lg-6 pb40 text-center' >
+                <img class="img-fluid  " style="border: 1px solid #ddd" src="{% static 'images/help/intercom/fat-link-to-helpscout-source-conversation.png' %}">
+                <div class='font12 text-center pt10'>Click to {{story.content.product_name}} to read the whole conversation.</div>
+            </div>
+            <div class="col-lg-5 ml-auto pb40">
+              <p>Your Product Managers can read the full {{story.content.product_name}} conversation from Savio.</p>
+              <p>If your PM needs to clarify the feedback, they can either ask the customer directly in {{story.content.product_name}}, or leave you an internal {{story.content.product_name}} note to ask the customer on their behalf.</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="bg-faded pt90 pb50">
+    <div class="container">
+
+        <div class="row">
+            <div class='col-lg-12 pb40 text-center' >
+                <h2>Capture feedback from more than just {{story.content.product_name}}</h2>
+            </div>
+
+            <div class='col-lg-12 pb40 text-center' >
+                <h3>Collect and organize feedback to push the product in the right direction</h3>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-5 ml-auto pb40">
+              <p>Use Savio to:
+              </p>
+
+                {% include "includes/feature-list.html" %}
+
+            </div>
+            <div class='col-lg-6 pb40 text-center' >
+              <img src="{% static 'images/screenshots/marketing/feature-requests-close-up.png' %}" style="border: 1px solid #aaa;" alt="" class="img-fluid">
+              <div class='font12 text-center pt10'>Filter your feature list by MRR, customer plan, and more.</div>
+            </div>
+        </div>
+
+      {% include "includes/integration_logos.html" %}
+
+
+
+    </div>
+</div>
+  </div>
+{% endblock %}
+
+{% block footer_cta %}
+    {% with app_name=story.content.product_name %}
+        {% include "includes/footer-cta.html" %}
+    {% endwith %}
+{% endblock %}

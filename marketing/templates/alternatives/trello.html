@@ -1,0 +1,406 @@
+{% extends "blog-page.html" %}
+{% load static %}
+{% block meta_title %}
+Trello vs. Savio: track feature requests with this Trello alternative 
+{% endblock %}
+
+{% block meta_desc %}A Trello alternative to help software product managers track feature requests from Intercom and other tools{% endblock %}
+
+{% block head %}
+  <!-- open graph tags -->
+  <meta property="og:url" content="{{ request.build_absolute_uri }}" />
+  <meta property="og:title" content="Trello vs. Savio: Which tracks feature requests better?" /> <!-- 57 chars -->
+  <meta property="og:type" content="website" />
+  <meta property="og:description" content="Trello vs. Savio: Which tracks feature requests better?" /> <!-- 73 chars -->
+
+  <meta property="og:site_name" content="Savio" />
+  <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'images/alternatives/savio-or-trello.png' %}" />
+
+  <meta property="og:image:width" content="1500" />
+  <meta property="og:image:height" content="750" />
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:site" content="@savio_io" />
+
+  <!-- 115 chars max -->
+  <meta property="twitter:description" content="Compare how Trello and Savio track feature requests from tools like Intercom, Help Scout, and Slack." /> 
+
+  <!-- end open graph -->
+  {% endblock %}
+
+
+{% block content %}
+
+  <div class="col-md-12 blog blog-title text-center">
+    <h1>Trello vs. Savio: how do they compare?</h1>
+    <h2 class="text-muted">Savio is a Trello alternative to track feature requests</h2>
+    <img src="{% static 'images/alternatives/savio-or-trello.png' %}" class="image img-fluid" width="500"><br>
+  </div>
+    <div class="col-md-8 offset-md-2 blog">
+  
+    <h3 class="pt40 no-anchor">Summary</h3>
+    <ul>
+      <li>Choose <strong>Trello</strong> if you don't mind doing manual work to cut and paste between your different sources of feature requests, or you want a public voting board or a customer facing roadmap, and if a free tool is important to you</li>
+      <li>Choose <strong>Savio</strong> if you want native integrations that makes tracking features from Intercom, Help Scout, or Slack easy, want to segment feature requests by user and account properties (like MRR and Plan), want to close the loop with customers, and don't mind paying some money to save time</li>
+      <li>Read on for the full comparison</li></ul>
+    </ul>
+
+    <div id="toc">
+      <h2>Table of contents</h2>
+      <p>See how Trello and Savio compare across these dimensions.</p>
+      <ul id="toc-list"></ul>
+    </div>
+
+    <h3 class="pt20 pb20">Centralize feature requests from all your tools</h3>
+    {% include "includes/alternatives-table.html" with savio_rating="Good" competitor_image="images/alternatives/trello.png" comp_rating="Not Good" %}
+
+    <h4>Savio</h4>
+    <p>Savio centralizes feature requests from any place your team receives them.  You can <a href="{% url 'marketing-integrations-intercom-product'%}">track feature requests received in Intercom</a>, <a href="{% url 'marketing-integrations-helpscout-product'%}">Help Scout</a>, or posted <a href="{% url 'marketing-integrations-slack'%}">in Slack</a>.  You can use a <a href="{% url 'marketing-chrome-extension'%}">Chrome Extension to track feature requests</a> in any other web-based tool that your team uses (like a CRM).  You can <a href="{% url 'marketing-send-email'%}">send feature requests in via email</a>, <a href="{% url 'marketing-help-zapier'%}">send feature requests from any tool via Zapier</a>, or <a href="{% url 'marketing-help-api'%}">use an API to track feature requests</a>.  Each of these minimizes disruption when your support or sales teammates need to track feature requests.</p>
+    <p>Once centralized, you can prioritize your features knowing they're all in one place.</p>
+
+    <h4>Trello</h4>
+    <p>Centralizing your feature requests from different tools in Trello involves a lot of cutting and pasting.  The easiest way is to:</p>
+    <ul>
+      <li>Have each Trello card represent a feature</li>
+      <li>Paste the link to the source conversation in the Trello description</li>
+      <li>Put the number of requests in the card's title so you can see how many requests each Feature has when you're looking at all the cards</li>
+    </ul>
+    <div class="text-center">
+      <img class="img-fluid image" src="{% static 'images/alternatives/trello-track-feature-requests.png'  %}">
+    </div>
+    <div class="text-center mb30">How to track feature requests in Trello</div>
+    <p>
+      The main downsides of this approach are:
+      <ul>
+      <li>You and your team needs to cut and paste from each tool, which makes it less likely to happen</li>
+      <li>To understand the nuances of a feature you need to open several different tabs to read what customers wrote in the source tool (support tool, CRM, etc)</li>
+      <li>It treats each customer's vote as equal, and doesn't take into account their plan, MRR, or other attributes</li>
+    </ul> 
+    </p>
+
+    <h3 class="pt40 pb20">Collect Feature Requests From Any Web-Based Tool</h3>
+    {% include "includes/alternatives-table.html" with savio_rating="Good" competitor_image="images/alternatives/trello.png" comp_rating="Not Good" %}
+    <h4>Savio</h4>
+    <p>You can <a href="{% url 'marketing-chrome-extension'%}">track feature requests from any tool with the Savio Chrome extension</a>.  This means that your teammate is able to stay in their support tool, CRM, etc when they send feature requests to Savio.  Just click the Chrome Extension, enter details about the feature request, and you're done.  You don't have to switch tools or tabs: minimal disruption.  </p>
+
+    <p>Savio's Chrome Extension ensures your teammates will track more feature requests because it's lower friction than cutting and pasting between different tabs.</p>
+
+    <h4>Trello</h4>
+    <p>Since Trello has no native integrations, tracking features from other tools gets complicated.  To track a feature request, your sales, success, or support team has to be bought into the process.  Assuming you can get buy-in from your other teams, your teammates must have both tools open in two different windows, and will have to cut and paste between the two windows to track a feature request in Trello. </p>
+
+
+    <h3 class="pt20 pb20">Automatically import customer data</h3>
+    {% include "includes/alternatives-table.html" with savio_rating="Good" competitor_image="images/alternatives/trello.png" comp_rating="Not Good" %}
+    <h4>Savio</h4>
+    <p>Since not all feedback is equal, Savio tracks WHO requests a feature. If you don't know details about who requested a feature, you're basing key decisions on things like number of upvotes.  You can't query for "all feature requests from Enterprise customers" or "feature requests from churned customers" or "feature requests from customers paying $300/m or more" like you can in Savio.</p>
+
+    <p>Savio can import customers, accounts, and related properties like MRR, Plan, and any other attributes you care about. You can <a href="{% url 'marketing-integrations-segment' %}">import your list of customers and properties from Segment</a>, from <a href="{% url 'marketing-integrations-intercom-product' %}">Intercom</a>, or from <a href="{% url 'marketing-integrations-helpscout' %}">Help Scout</a>.  It's just one click to import and to stay in sync as new customers join your app and their properties change.</p>
+
+    <h4>Trello</h4>
+    <p>Trello has no notion of a "customer". Which means all feature requests are treated equally.  You can't segment feature requests by customer or account info like MRR or Plan.  You also can't easily reach out to customers to validate problem and solution, or to tell them you built what they asked for.</p>
+
+    <h3 class="pt40 pb20">Collect feature requests from Help Scout</h3>
+    {% include "includes/alternatives-table.html" with savio_rating="Good" competitor_image="images/alternatives/trello.png" comp_rating="Not Good" %}
+
+    <h4>Savio</h4>
+    <p>Savio has a native integration that allows you to <a href="{% url 'marketing-integrations-helpscout-product' %}">track feature requests from Help Scout</a>.  When your support team gets a message with a Feature Request, they just add a predefined tag to the conversation.  Savio will then pull the feature request in.  Savio will also add a private note to the Help Scout Conversation to confirm that it's pulled the feature in. This means your teammates don't need to leave Help Scout to track feature requests in Savio, nor do they need a Savio account. </p>
+
+    <div class="text-center">
+      <img class="img-fluid image" src="{% static 'images/help/helpscout/helpscout-integration-animated.gif'  %}">
+    </div>
+    <div class="text-center mb30">Tag a conversation to send Feature Requests from Help Scout to Savio</div>
+
+    <h4>Trello</h4>
+    <p>Trello doesn't have a Help Scout integration.  So tracking feature requests from Help Scout in Trello is a manual process involving cutting and pasting.</p>
+
+    <h3 class="pt40 pb20">Collect feature requests from Intercom</h3>
+    {% include "includes/alternatives-table.html" with savio_rating="Good" competitor_image="images/alternatives/trello.png" comp_rating="Not Good" %}
+
+    <h4>Savio</h4>
+    <p>Savio has a native integration that allows you to <a href="{% url 'marketing-integrations-intercom-product' %}">track feature requests from Intercom</a>.  Similar to <a href="{% url 'marketing-integrations-helpscout-product' %}">tracking feature requests in Help Scout</a>, when your support team gets a message with a Feature Request, they just tag the messsage with a predefined tag for Savio to slurp the feature request in.  Savio will also add a private note to the Intercom conversation to confirm that it has the feature request. This means your teammates don't need to leave Intercom to track feature requests in Savio, nor do they need a Savio account. </p>
+
+    <div class="text-center">
+      <img class="img-fluid image" src="{% static '/images/help/intercom/intercom-integration-animated.gif'  %}">
+    </div>
+    <div class="text-center mb30">Tag a conversation to send Feature Requests from Intercom to Savio</div>
+
+    <h4>Trello</h4>
+    <p>Trello doesn't have an Intercom integration.  Tracking feature requests sent to Intercom using Trello involves a lot of cutting and pasting.</p>
+
+    <h3 class="pt40 pb20">Collect feature requests from Slack</h3>
+    {% include "includes/alternatives-table.html" with savio_rating="Good" competitor_image="images/alternatives/trello.png" comp_rating="Not Good" %}
+
+    <h4>Savio</h4>
+    <p>Savio has a native integration with Slack. With it you can <a href="{% url 'marketing-integrations-slack' %}">collect feature requests from Slack</a> and send them to Savio with the click of a button.  So when your teammates share feedback or feature requests from customers in Slack, those feature requests won't be lost.  They'll be centralized with feature requests from other tools, and you can use them later on to prioritize what features to build.</p>
+
+    <div class="text-center">
+      <iframe class="video" width="560" height="315" src="https://www.youtube.com/embed/KOwnybk_clU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <div class="text-center mb30">Savio can listen to a Slack channel for feature requests</div>
+
+    <h4>Trello</h4>
+
+    <p>With Trello there's no straightforward way to track feature requests shared in Slack.</p>
+
+
+    <h3 class="pt40 pb20">Collect feature requests via Email</h3>
+    {% include "includes/alternatives-table.html" with savio_rating="Good" competitor_image="images/alternatives/trello.png" comp_rating="Good" %}
+
+    <h4>Savio</h4>
+    <p>When product feedback hits your inbox, you can email it directly to Savio.  Savio will pull out the name and email address of the person who sent YOU the feedback.  And it'll land in your Savio inbox, ready for you to <a href="{% url 'marketing-triage' %}">triage it</a>.</p>
+
+    <h4>Trello</h4>
+    <p>You can email feedback directly to your private Trello email address.  When you do, it appears in a Trello list for you to triage later.</p>
+
+
+    <h3 class="pt40 pb20">Has feedback triage process</h3>
+    {% include "includes/alternatives-table.html" with savio_rating="Good" competitor_image="images/alternatives/trello.png" comp_rating="Not Good" %}
+
+    <h4>Savio</h4>
+    <p>You've heard of the phrase garbage in, garbage out?  Triaging ensures your feature request list quality stays high and you can base your decisions on vetted feedback.</p>
+
+    <p>When feedback is sent into Savio, it lands in your feedback inbox. Somebody on your team should <a href="{% url 'marketing-triage' %}">triage your product feedback</a> regularly.  Triaging means assigning a customer, choosing a feature request for the feedback, and determining whether the feedback was from an active customer, a churned customer, a lost deal, a prospect or a teammate.</p>
+    <p>This triage step means that every bit of data in Savio that you're going to base your valuable and important prioritization decisions on will have been vetted by somebody on your product team.</p>
+
+    <h4>Trello</h4>
+    <p>The easiest way to use Trello is without a Triage step: your success team opens Trello, finds the card that represents a feature request, and adds a link to a new conversation to it.  There is no triage step, which means there's more noise and less signal. So when you're making decisions about what to build next, you'll be basing your decisions on data that has not been vetted by your product team.</p>
+
+    <p>Now, you can use Trello with a Triage step, but it makes it harder to do.  All feedback would go into a single column, and then you'd triage feedback and move requests to existing Trello cards (or create new ones if they were new Feature Requests).  Note that sending feedback intro Trello by email forces this behavior - all emailed feedback ends up in a single Trello column.</p>
+
+    <h3 class="pt40 pb20">Segment feature requests from customers you care about</h3>
+    {% include "includes/alternatives-table.html" with savio_rating="Good" competitor_image="images/alternatives/trello.png" comp_rating="Not Good" %}
+
+    <h4>Savio</h4>
+    <p>Some customers are simply more valuable to your business. Customers in your ideal customer profile are ones that you want to listen to more than others. </p>
+
+    <p>So when prioritizing, you often want to focus on building features for a certain set of customers. </p>
+
+    <p>Because Savio imports your customers, their MRR, their plan, and any other custom attributes you care about, you can segment your feature requests by plan, MRR, or by any of those attributes.</p>
+
+    <p>Savio respects that all customers and all feedback are not created equal.  Prioritizing based on number of requests is useful, but coarse.  You probably want to prioritize for what actually matters to the customers you care about.</p>
+
+    <h4>Trello</h4>
+    <p>Trello does not have the notion of a customer or attributes.  The only way you can segment features is to label them. And even then, it's impossible to run queries like you can in Savio to see "feature requests from churned customers" or "feature requests from customers on our Enterprise plan".</p>
+
+    <h3 class="pt40 pb20">Public or private voting portal</h3>
+    {% include "includes/alternatives-table.html" with savio_rating="Not Good" competitor_image="images/alternatives/trello.png" comp_rating="Good" %}
+    <h4>Savio</h4>
+    <p>Savio does not have a public place where customers can see and vote on feature requests.</p>
+
+    <h4>Trello</h4>
+    <p>Trello has a voting portal that can be public or private.</p>
+    <p>The advantage of having a portal is that you get feedback without anybody on your team needing to handle it.</p>
+    <p>There are a few downsides to having a portal. Here are the main ones:</p>
+    <ul><li>Customers can get frustrated that you haven't built a feature ("This feature has been open for three years, why haven't you built it yet?!")</li>
+    <li>It gives your competition ideas about where your product is weak</li>
+    <li>it over-indexes for the "squeaky wheels". Are the people who leave feedback really representative of your customer base as a whole?</li></ul>
+
+    <p>If a public voting portal is what you're after, Savio's probably not the right fit for you.</p>
+
+
+    <h3 class="pt40 pb20">Customer-facing roadmap</h3>
+    {% include "includes/alternatives-table.html" with savio_rating="Not Good" competitor_image="images/alternatives/trello.png" comp_rating="Good" %}
+
+    <h4>Savio</h4>
+    <p>With Savio, there's no public roadmap option. Of course, you have the option to share what you're building privately with customers.</p>
+
+    <h4>Trello</h4>
+    <p>Trello gives you a public roadmap to share with your customers.</p>
+    
+    <p>The two big downsides to sharing your roadmap publicly are:</p>
+    <ul>
+      <li>Competitors can see what you're planning and working on</li>
+      <li>Priorities change so you can set the wrong expectations with customers</li>
+    </ul>
+
+    <p>If it's important to you to have a public roadmap in the same tool that you track feature requests, Savio might not be the right fit.</p> 
+
+    <h3 class="pt40 pb20">Close the loop with customers</h3>
+    {% include "includes/alternatives-table.html" with savio_rating="Good" competitor_image="images/alternatives/trello.png" comp_rating="OK" %}
+
+    <h4>Savio</h4>
+    <p>When you build a feature that a customer asked for and let them know, it's usually thrills them.  It shows you care about solving their problems AND letting them know you solved it.  Closing the loop is one of the best things you can do for customer loyalty.  
+
+    <p>Closing the loop in Savio is easy.  When you click on a feature, you'll see each person that asked for it. You can either contact each person from there via email, or you can click through to the original Help Scout, Intercom, or other conversation thread where you first received the feature request.</p>
+
+    <img src="{% static 'images/alternatives/savio-close-loop-marked-up.png' %}" class="img-fluid img-border" /><br>
+    <div class="text-center">
+    <small>It's easy to close the loop with customers in Savio</small></div></p>
+
+    <h4>Trello</h4>
+    <p>Trello doesn't keep track of a user's email address or where a feature request was first captured.  If you save links to where your feature requests are received, you can open a Trello card and click each link to close the loop with them.  If you don't take this approach to tracking feature requests in Trello, it'll be more difficult to close the loop with them.</p>
+
+    <img src="{% static 'images/alternatives/trello-close-loop.png' %}" class="img-fluid img-border" /><br>
+    <div class="text-center">
+    <small>If you save links to feature requests in Trello, you should be able to close the loop</small></div>
+
+    <h3 class="pt40 pb20">See detailed feedback for every Feature Request</h3>
+    {% include "includes/alternatives-table.html" with savio_rating="Good" competitor_image="images/alternatives/trello.png" comp_rating="Not Good" %}
+    
+    <h4>Savio</h4>
+    <p>With Savio, when you click on a feature request you'll see:</p>
+    <ul><li>everybody who asked for that feature
+      <li>each customer's exact words they used when they asked for the feature</li>
+      <li>their company, MRR, plan, and any other <a href="{% url 'marketing-customer-attributes'%}">customer attributes</a> you've sent in</li>
+      <li>whether they're churned, active, a lost deal, a prospect, or a teammate</li>
+      <li>And you can even click through to the source tool where the feedback came in from.</li>
+    </ul>
+
+    <div class="text-center">
+        <img class="img-fluid image" src="{% static 'images/help/product-planning/feature-request-feedback-close-up.png' %}">
+    </div>
+    <div class="text-center mb30">See all details about a feature in one place (in this case, a request for "Better Permissions")</div>
+
+    <h4>Trello</h4>
+    <p>In Trello, what you see when you view a Feature Request will depend on how you use it.  You may see a list of links to (for example) Help Scout conversations.  You may see cut and pasted customer feedback.  Since Trello is configurable any way you want, it's up to you to figure out how you want to track features and stay consistent.  But you definitely won't get as much context about who requested features or the nature of their feature request in Trello as you would with Savio.</p>
+
+    <h3 class="pt40 pb20">Easily reach out to customers that provided feedback</h3>
+    {% include "includes/alternatives-table.html" with savio_rating="Good" competitor_image="images/alternatives/trello.png" comp_rating="Not Good" %}
+    
+    <h4>Savio</h4>
+    <p>In Savio, you can easily reach out to customers that have asked for a specific feature to better understand their problem and validate your solution. Every user's email address is on the page that describes your feature request.</p>
+
+    <h4>Trello</h4>
+    <p>Since Trello is configurable it's up to you whether you want to cut and paste a user's email address in addition to their feedback, or whether you want to just save a link to a (for example) Intercom conversation, or whether you just want to +1 a feature with no other context. So in theory it possible to save email addresses of your requesters to reach out.  But that will take discipline when you save feedback.</p>
+
+    <h3 class="pt40 pb20">Import users without adding and customizing Javascript</h3>
+    {% include "includes/alternatives-table.html" with savio_rating="Good" competitor_image="images/alternatives/trello.png" comp_rating="Not Good" %}
+    <h4>Savio</h4>
+    <p>In Savio, you can import users without adding custom JavaScript to your site.  This means that you can import customers without needing a developer. You can either import your users from Intercom or you can import your users from Segment, just by clicking a few buttons. You can get up and running in seconds rather than hours or even days.</p>
+
+    <h4>Trello</h4>
+    <p>Since Trello does not have the notion of a user, you can't track who left feedback for a feature without manual work.</p>
+
+
+   <h3 class="pt40 pb20">Designed for collecting feedback</h3>
+    {% include "includes/alternatives-table.html" with savio_rating="Good" competitor_image="images/alternatives/trello.png" comp_rating="Not Good" %}
+
+    <h4>Savio</h4>
+    <p>Savio is purpose-built for tracking and prioritizing feature requests.  It helps with the jobs and workflows to solve that problem: you need to collect feedback, bucket it into feature requests, prioritize requests, track features through the planning lifecycle, reach out to requesters to validate problem and solution, and close the loop with them once built.</p>
+
+    <p>If you're interested in a tool that focuses on providing a simple mechanisms to capture your customer feedback and use it to figure out what features to build next, Savio is probably a great fit.</p>
+
+    <h4>Trello</h4>
+    <p>Trello is a general-purpose tool that you can use for lots of things.  Tracking features is one of them. Since Trello doesn't give you "guard rails" to ensure you and your team regularly walk the "happy path" when tracking features, it takes discipline on behalf of your whole team to ensure you're consistent about tracking your requests. For example, you need to define a way to track your requests.  You need to be diligent about copying and pasting requests in the right format. And since tracking in Trello is a highly manual process, you need to be diligent about tracking in the first place!</p>
+
+    <p>Additionally, since Trello is a general purpose tool, there are just some things you can't do with Trello that you can do with a purpose built tool.  For example, you can't segment your list of feature requests by Plan or MRR (or other attributes). You won't get a daily summary email of all new tracked feature requests.</p>
+    <p>And if you're using Trello as a private way to track features, you can't see something as important as the number of people who want a feature when you're looking at your list of features (unless you're diligent about tracking it manually).</p>
+    <div class="text-center">
+        <img class="img-fluid image" src="{% static 'images/alternatives/trello-feature-list.png' %}">
+    </div>
+    <div class="text-center mb30">Which feature has more requests? You need to manually record and update this in the Card's title to know.</div>
+
+
+    <h3 class="pt40 pb20">Export your data to CSV</h3>
+    {% include "includes/alternatives-table.html" with savio_rating="Good" competitor_image="images/alternatives/trello.png" comp_rating="OK" %}
+    <h4>Savio</h4>
+   <p>With Savio, it's straightforward to export your data to a CSV.  You just click a link and you'll be emailed a CSV within minutes containing all of your feature requests, customer feedback, name, email address account, MRR, Plan, tags, etc. It's your data and you should be able to take it out whenever you want.</p>
+
+    <h4>Trello</h4>
+    <p>With Trello you have to upgrade to a paid plan to export your data to a CSV.</p>
+
+    <img class="img-fluid image" src="{% static 'images/alternatives/trello-export-csv-2.png' %}">
+    <div class="text-center mb30">You can only export data to CSV on a paid  Trello plan</div>
+
+
+    <h3 class="pt40 pb20">Can users provide feedback without logging in</h3>
+    {% include "includes/alternatives-table.html" with savio_rating="Good" competitor_image="images/alternatives/trello.png" comp_rating="Not Good" %}
+    <h4>Savio</h4>
+    <p>Since Savio doesn't have a public voting portal, when a customer sends feedback to support, your rep can send that feedback directly to Savio. The customer doesn't need to login or create an account for a tool they don't have a relationship with (e.g. Trello).</p>
+
+    <h4>Trello</h4>
+    <p>When a user wants to leave feedback publicly with Trello, they must create a  account in order to vote or leave feedback:</p>
+    <img src="{% static 'images/alternatives/trello-upvote.png' %}" class="img-fluid img-border" /><br>
+    <div class="text-center mb30">
+    <small>Your customers only see this button if they're logged into Trello.</small></div>
+    <p>If your customers aren't logged into Trello, there's no way for them to know that they can upvote a feature since there's not even a callout to log in to upvote.</p>
+    <img src="{% static 'images/alternatives/trello-upvote-2.png' %}" class="img-fluid img-border" /><br>
+    <div class="text-center mb30">
+    <small>There's no callout to log in to Trello to vote.</small></div>
+
+
+    <h3 class="pt20 pb20">Track requests from users at different points in customer journey</h3>
+    {% include "includes/alternatives-table.html" with savio_rating="Good" competitor_image="images/alternatives/trello.png" comp_rating="Not Good" %}
+    <h4>Savio</h4>
+    <p>With Savio, you can track when a feature request comes from a churned user, active user, lost deal, prospect, or teammate.</p>
+    <p>So when you're trying to reduce churn you can see all feature requests from churned customers, and then build some of them.  Or if you're trying to lose fewer deals, you can build features from lost deals. This information is entered when a feature request is captured, so there's no technical integration necessary.</p>
+    <div class="text-center">
+    <img src="{% static 'images/alternatives/savio-feedback-type.png' %}" class="img-fluid  img-border" /></div>
+    <div class="text-center mb30">In Savio, select who the feature request is from when you enter it.<br>No technical integration necessary.</div>
+
+    <h4>Trello</h4>
+    <p>There's no way to determine what point a customer is at in their journey with your app when they leave a feature request. Which means it's impossible to see things like "feature requests from churned customers" or "feature requests from active customers".</a></p>
+
+
+    <h3 class="pt40 pb20">Users are first-class citizens</h3>
+    {% include "includes/alternatives-table.html" with savio_rating="Good" competitor_image="images/alternatives/trello.png" comp_rating="Not Good" %}
+    <h4>Savio</h4>
+    <p>Savio respects that users make feature requests.  Users belong to accounts, and have properties that you may want to segment your feature requests by (like MRR and Plan).  You may want to contact users, so Savio displays their email addresses for you.</p>
+
+    <h4>Trello</h4>
+    <p>A user in Trello consists of a name and company name.  Users don't have properties and you can't contact them.</p>
+
+    <h3 class="pt40 pb20">Record customers' actual words about problems, not just votes</h3>
+    {% include "includes/alternatives-table.html" with savio_rating="Good" competitor_image="images/alternatives/trello.png" comp_rating="OK" %}
+    <h4>Savio</h4>
+    <p>In Savio, you can record and see the actual words that a customer used to describe their problem.  Additionally, each piece of customer feedback is a vote for a feature.  So you get BOTH votes AND actual customer words.</p>
+
+    <h4>Trello</h4>
+    <p>With Trello, you get votes and users can leave comments. But you often get a wide spread between the number of votes and the number of comments.<br><br>
+    <img src="{% static 'images/alternatives/trello-verbatims.png' %}" class="img-fluid img-border" /><br>
+    <div class="text-center">How do the 298 people who voted but didn't leave a useful comment think the Slack integration should work?</div></p>
+
+    <p>It can't be understated how important it is to have customers' words instead of just upvotes to make good prioritization decisions. A customers' words help you understand the context and boundaries of the problem to build a good solution.</p>
+
+    <h3 class="pt40 pb20">Friendly Support</h3>
+    {% include "includes/alternatives-table.html" with savio_rating="Good" competitor_image="images/alternatives/trello.png" comp_rating="OK" %}
+
+    <h4>Savio</h4>
+    <p>Savio is run by <a href="{% url 'marketing-about' %}">Ryan Stocker and Kareem Mayan</a>. We're two developers-turned-product managers-turned-founders who've been building software since 2001.  We're also the people who answer your support requests!</p>
+
+    <p>We built Savio, and we know how it works inside and out. Which means we can write code ourselves to fix the problems that you have.  We care passionately about making sure that you're successful, because if you are successful, we're successful. You're not just another number who's going to get support from somebody who's five levels away from the CEO or three levels away from the developers and whose requests have to go through a product team to be prioritized. </p>
+
+    <h4>Trello</h4>
+    <p>Trello is owned by Atlassian, a large company with a large support team.  Support is friendly, but given the people answering your support requests aren't the people writing code, you'll probably have to wait longer to get your problems solved. Especially if you're not a paying Trello customer.</p>
+
+
+    <h3 class="pt40 pb20">Can your sales and support team capture feedback without leaving their tools?</h3>
+    {% include "includes/alternatives-table.html" with savio_rating="Good" competitor_image="images/alternatives/trello.png" comp_rating="Not Good" %}
+    <h4>Savio</h4>
+    <p>With Savio there are two ways that you can capture feedback from an existing tool.  One is with a native integration with Help Scout, Intercom, or Slack.  If you're using one of those tools, your teammates do not need a Savio account and they don't need to leave the support tool or CRM. They just add a tag and move on with their life.  If you get feedback in other tools, your teammates can use the Chrome Extension to send relevant feature requests to Savio without leaving the tool where the feedback arrived.</p> 
+
+    <p>These two approaches mean your team's workflow is barely (or not at all) disrupted, and it increases the liklihood that you'll capture good quality feature requests.</p> 
+
+    <h4>Trello</h4>
+    <p>With Trello there's no avoiding the fact that there will be a lot of cutting and pasting between the support, success, or sales tools and Trello.  This is a more disruptive workflow for your teammates.</p> 
+
+    <h3 class="pt40 pb20">Daily email digest of new feature requests</h3>
+    {% include "includes/alternatives-table.html" with savio_rating="Good" competitor_image="images/alternatives/trello.png" comp_rating="Not Good" %}
+    <h4>Savio</h4>
+    <p>You get a daily email and that shows you all the new feedback and all the new feature requests that were received in the last 24 hours. It's easy to keep your finger on the pulse of your new feature requests when they hit your inbox every day.</p>
+
+    <h4>Trello</h4>
+    <p>In Trello, you can't get notifications about new cards that are added or when card descriptions are updated.  Which means you're flying blind in terms of getting updates about what new feedback and feature requests you're getting.</p>
+
+    <div class="row mr0 ml0" >
+      <div class="col-md-12 mt40 pt30 pb30 mb40 text-center info-block">
+          <h4 class="no-anchor">Import your Trello Data</h4>
+          <p>Looking to switch from Trello? We'll import your data for free.</p>
+          <img src="{% static 'images/alternatives/trello-to-savio.png' %}" class="img-fluid pb30" height="300" width="150">
+          <p><a class="btn btn-primary" href="mailto:founders@savio.io?Import+Trello+data">Contact Us to Import Data</a>
+      </div>
+    </div>
+
+    {% include "includes/blog-cta.html" with title="Switch from Trello Today" %}
+
+  </div>
+{% endblock %}
+
+{% block footer_scripts %}
+
+  <script type="text/javascript" src="{% static 'jquery.toc/jquery.toc.js' %}"></script>
+  <script type="text/javascript">
+      $(document).ready(function() {
+        $("#toc-list").toc({content: "div.container", headings: "h3", excludedClass: "no-anchor"});
+      });
+  </script>
+{% endblock %}

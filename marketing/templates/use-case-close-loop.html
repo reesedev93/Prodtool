@@ -1,0 +1,121 @@
+{% extends "basic_page.html" %}
+{% load static %}
+{% load filters %}
+
+{% block head %}
+
+<meta property="og:url" content="{{ request.build_absolute_uri }}" />
+
+<!-- og:title should be 85 chars max -->
+<meta property="og:title" content="Close the loop - let customers know when you build features they asked for" />
+
+<meta property="og:type" content="article" />
+
+<!-- og:description should be 200 chars max. Make sure first 150 make sense. -->
+<meta property="og:description" content="Lower churn when you close the loop and tell customers that you built a feature they asked for." />
+<meta property="og:site_name" content="Savio" />
+
+<!-- 115 chars max -->
+<meta property="twitter:description" content="Lower churn when you close the loop and tell customers that you built a feature they asked for." /> 
+
+{% endblock %}
+
+{% block meta_title %}
+Close the Loop With Customers
+{% endblock %}
+
+{% block meta_desc %}When you build a feature your customers have requested, quickly email them to close the loop.{% endblock %}
+
+
+{% block title %}
+<div class="text-center">Close the Loop with Feature Requesters</div>
+{% endblock %}
+
+{% block content %}
+
+<div class="bg-white pt90">
+    <div class="container">
+
+        <div class="row">
+            <div class='col-lg-12 pb40 text-center' >
+                <h2>Reduce Churn when you close the loop with customers</h2>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class='col-lg-12 pb40 text-center' >
+              <h3>Easily see shipped features so you can close the loop with requesters</h3>
+              <img class="img-fluid image" src="{% static 'images/help/close-loop/fr-list-shipped-features.png' %}" width="800">
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="bg-faded pt50 pb30">
+    <div class="container">
+
+        <div class="row">
+            <div class='col-lg-12 pb40 text-center' >
+              <h3>Quickly notify requesters at scale</h3>
+              <h5 class="pt40">Close the loop with everybody who asked for a feature in just a few clicks</h5>
+              <img class="img-fluid image" src="{% static 'images/help/close-loop/select-users.gif' %}"  width="593">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="bg-white pt50 pb30">
+    <div class="container">
+
+        <div class="row">
+            <div class='col-lg-12 pb40 text-center' >
+                <h3>Notify even faster with a "close the loop" email template</h3>
+
+                <img class="img-fluid image" src="{% static 'images/help/close-loop/email-customers.png' %}" width="800">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="bg-faded pt50 pb50">
+    <div class="container">
+
+        <div class="row">
+            <div class='col-lg-12 pb40 text-center' >
+                <h3>Fits your workflow</h3>
+                <h5 class="pt40">BCC your CRM to track who you contacted.  Set replies go to your help desk (or someone else).</h5>
+                <img class="img-fluid image" src="{% static 'images/help/close-loop/reply-to-and-bcc.png' %}" width="700">
+            </div>
+        </div>
+    </div>
+</div>  
+
+<div class="bg-white pt50 pb50">
+    <div class="container">
+
+        <div class="row">
+            <div class='col-lg-12 pb40 text-center' >
+                <h3>Keep track of which customers have been notified</h3>
+                <img class="img-fluid image" src="{% static 'images/help/close-loop/track-who-you-notified.png' %}" width="500">
+            </div>
+        </div>
+
+    </div>
+</div>  
+
+<div class="bg-white mt50 mb70 ">
+  <div class="container">
+    <div class="row   ml-auto mr-auto text-center">
+      <div class="col-md-4 pt20">
+        <a href="{% url 'marketing-use-cases-use-feedback' %}" class="btn btn-primary">← Use your feature requests</a>
+
+      </div>
+      <div class="col-md-4 offset-md-4 pt20">
+        <a href="{% url 'marketing-pricing' %}" class="btn btn-primary">Pricing →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,5 @@
+  {% if tooltip_text %}
+    <p class="feature" data-toggle="tooltip" data-original-title="{{ tooltip_text }}">{{feature_name}} <i class="fa fa-question-circle text-muted" ></i></p>
+  {% else %}
+    <p class="feature">{{feature_name}} <i class="fa fa-question-circle text-muted"></i></p>
+  {% endif %}

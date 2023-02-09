@@ -1,0 +1,205 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Helping SaaS teams increase retention and expansion revenue | Savio</title>
+
+        <meta name="description" content="Time-tested no-fluff tactics to build customer-centric software.">
+
+        <!-- Plugins CSS -->
+        <link href="{% static 'css/plugins/marketing_plugins.css' %}" rel="stylesheet">
+        <link href="{% static 'linearicons/fonts.css' %}" rel="stylesheet">
+        <link href="{% static 'font-awesome/css/all.min.css' %}" rel="stylesheet">
+        <link href="{% static 'css/style-saas-landing.css' %}" rel="stylesheet">
+        <link rel="icon" type="image/png" href="{% static 'images/favicon_48.png' %}" />
+
+        <meta property="fb_app_id" content="333752754211489" />
+        <meta name="slack-app-id" content="AHB04HNE9">
+
+        {% block head %}{% endblock %}
+
+        {% include "includes/tracking.html" with hide_recording=True %}
+
+    </head>
+
+    <body >
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-white navbar-transparent-light navbar-sticky fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="/">
+                    <img src="{% static 'images/logo-black-no-background.png' %}" alt="" height="70" class='logo-scroll'>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#landingkit-navbar" aria-controls="landingkit-navbar" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                {% include 'includes/topnav-linkbar.html' %}
+
+              </div>
+        </nav>
+
+
+        <main class="main-content">
+          <section id="content" class='gradient-faded'>
+            <div class="container pt90 pb90">
+              <div class="row">
+                <div class="col-md-8">
+
+                  <div class="col-md-12 blog pb90">
+                    <h2><a href="{{ settings.HOST }}/blog/improving-email-deliverability-from-43-percent-spam-to-1-percent/">We improved email deliverability from 43.7% spam to 1.4% after a spammer exploited our SaaS</a></h2>
+                    <p>
+
+                    <p>Spammers exploited our "close the loop" feature to send 20,000 unsolicited emails.  Which meant that some paying customers sent close the loop emails to their customers, but those emails ended up in spam folders.</p>
+                    <p>
+                      Here's how we diagnosed and solved our email deliverability problem.
+
+                    </p>
+
+                    <p>
+                      <a class="btn btn-primary" href="{{ settings.HOST }}/blog/improving-email-deliverability-from-43-percent-spam-to-1-percent/">Read More →</a>
+                    </p>
+                  </div>
+
+                  <div class="col-md-12 blog pb90">
+                    <h2><a href="{{ settings.HOST }}{% url 'marketing-blog-cs-influence-roadmap' %}">Why Customer Success should own more of your Product Roadmap</a></h2>
+                    <p>
+
+                    <p>Customer Success has the insights necessary to understand their customers' problems.  Customer Success is often responsible for retention and expansion revenue (the keys to net negative revenue churn and SaaS growth).  Because of this, it's inevitable Customer Success will own more of the product roadmap over time.</p>
+                    <p>
+                      Plus, hear how 17 Customer Success leaders from companies like AppCues, Catalyst, Proposify, Help Scout, Yopto (and more) influence the product roadmap at their organizations.
+                    </p>
+
+                    <p>
+                      <a class="btn btn-primary" href="{{ settings.HOST }}{% url 'marketing-blog-cs-influence-roadmap' %}">Read More →</a>
+                    </p>
+                  </div>
+
+                  <div class="col-md-12 blog pb90">
+                    <h2><a href="{% url 'marketing-blog-feedback-guide' %}">Use customer feedback to drive growth: a guide for SaaS Product Leaders</a></h2>
+                    <p>This guide is a comprehensive overview of why and how you should use a system to gather and use customer feedback to build better software and drive growth at your company.  </p>
+
+                    <p>It’s for Product Leaders at B2B SaaS companies.</p>
+
+                    <p>It’s based on in-depth conversations with hundreds of Product Managers at B2B SaaS companies that make products - great products - that you know and love.</p>
+
+                    <p>It’s also born from our experience working on and running product and engineering teams at large companies like Microsoft and ESPN.com, startups like Predictable Revenue, and our own bootstrapped companies.</p>
+
+                    <p>We’ve started and sold multiple businesses, and felt the pain of trying to use customer feedback to make good product decisions.</p>
+
+                    <p>Sure, we’d cobbled together piecemeal solutions.  But we always felt nagging doubts. Perhaps we could be building things that our customers wanted MORE than the things we were building.</p>
+
+                    <p>It seemed like the answer to that question lay in getting a more comprehensive picture of our feedback.  </p>
+
+                    <p>And after talking to Product Leaders at some of the world’s fastest growing and customer-focused companies, it was clear they felt the same way.  </p>
+
+                    <p>So, below is the guide we wish we had when we were starting our careers.</p>
+
+                    <p>
+                      <a class="btn btn-primary" href="{{ settings.HOST }}{% url 'marketing-blog-feedback-guide' %}">Read More → </a>
+                    </p>
+                  </div>
+
+                  <div class="col-md-12 blog pb90">
+                    <h2><a href="{{ settings.HOST }}{% url 'marketing-blog-savio-segment' %}">Enrich your customer feedback with data from Segment</a></h2>
+                    <p>
+                      <a href="https://segment.com" target="_blank">Segment</a> is an incredible platform that collects, cleans, and stores your customer data.  You install a single snippet of Javascript on your site, and then can send customer information (like name, user_id, email address, MRR, plan, account name, and more) and event information (did_some_key_action) to other platforms with <em>no additional coding.</em>
+                    </p>
+
+                    <p>And as of today, you can send your customer data from Segment to Savio.</p>
+
+                    <p>
+                      <a class="btn btn-primary" href="{{ settings.HOST }}{% url 'marketing-blog-savio-segment' %}">Read More about Segment →</a>
+                    </p>
+                  </div>
+
+                  <div class="col-md-12 blog pb90">
+                    <h2><a href="{{ settings.HOST }}{% url 'marketing-blog-track-feature-requests-in-typeform' %}">Track feature requests from Typeform surveys</a></h2>
+                    <p>
+                      Typeform is a fantastic tool to collect feedback from your customers.  You can use it to collect NPS, CSAT, churn, and other types of customer feedback.</p>
+                      <p>But when those responses contain feature requests, you can ensure they get sent to Savio to be prioritized alongside requests from all your other tools.  Learn how to <a href="{{ settings.HOST }}{% url 'marketing-blog-track-feature-requests-in-typeform' %}">track feature requests from Typeform in Savio</a> in this article.
+                    </p>
+
+                    <p>
+                      <a class="btn btn-primary" href="{{ settings.HOST }}{% url 'marketing-blog-track-feature-requests-in-typeform' %}">Track Requests from Typeform →</a>
+                    </p>
+                  </div>
+                  <div class="col-md-12 blog pb90">
+                    <h2><a href="{% url 'marketing-blog-tracking-feature-requests-in-intercom' %}">Tracking feature requests in Intercom</a></h2>
+                    <p>
+                      If you are using Intercom as your support tool or to communicate with prospects you’re almost certainly getting messages that include valuable customer feedback and product feature requests. Those messages are pure gold. Are you tracking them?
+                    <p>
+                      <a class="btn btn-primary" href="{% url 'marketing-blog-tracking-feature-requests-in-intercom' %}">Read More →</a>
+                    </p>
+                  </div>
+
+                  <div class="col-md-12 blog pb90">
+                    <h2><a href="{% url 'marketing-blog-tracking-feature-requests-in-helpscout' %}">Tracking feature requests in Help Scout</a></h2>
+                    <p>
+                      If you are using Help Scout as your support tool you’re almost certainly getting messages that include valuable customer feedback and product feature requests. Learn how to setup a process for tracking them.
+                    <p>
+                      <a class="btn btn-primary" href="{% url 'marketing-blog-tracking-feature-requests-in-helpscout' %}">Read More →</a>
+                    </p>
+                  </div>
+
+                  <div class="col-md-12 blog pb90">
+                    <h2><a href="{% url 'marketing-blog-tracking-feature-requests-from-slack' %}">Tracking feature requests from Slack</a></h2>
+                    <p>
+                      Slack makes an excellent hub for collecting customer feature requests especially from internal teams. Learn how to setup a streamlined process for collecting feature requests via Slack
+                    <p>
+                      <a class="btn btn-primary" href="{% url 'marketing-blog-tracking-feature-requests-from-slack' %}">Read More →</a>
+                    </p>
+                  </div>
+
+                  <div class="col-md-12 blog pb90">
+                    <h2><a href="{% url 'marketing-blog-using-zapier-to-collect-customer-feedback' %}">Using Zapier to collect customer feedback</a></h2>
+                    <p>
+                      Learn how to use Zapier and the Savio API to automate sending feedback from a variety of tools to your centralized feedback vault.
+                    <p>
+                      <a class="btn btn-primary" href="{% url 'marketing-blog-using-zapier-to-collect-customer-feedback' %}">Read More →</a>
+                    </p>
+                  </div>
+
+                  <div class="col-md-12 blog pb90">
+                    <h2><a href="{% url 'marketing-blog-tracking-feature-requests-from-hubspot-crm' %}">Tracking Feature Requests from Hubspot CRM</a></h2>
+                    <p>
+                      Do you have customer feature requests stored in Hubspot CRM?  Learn how to centralize them in Savio alongside feature requests from your other tools.</p>
+                    <p>
+                      <a class="btn btn-primary" href="{% url 'marketing-blog-tracking-feature-requests-from-hubspot-crm' %}">Read More →</a>
+                    </p>
+                  </div>
+                </div>
+
+                <div class="col-md-4">
+                  <div class="alert alert-primary mb40 blog-cta">
+                    <h4 class="alert-heading">Centralize customer feedback</h4>
+                    <p>Use Savio to centralize and organize product feedback from <a href="{% url 'marketing-integrations-helpscout-product' %}">Help Scout</a>, <a href="{% url 'marketing-integrations-intercom' %}">Intercom</a>, <a href="{% url 'marketing-integrations-slack' %}">Slack</a>, or any other tool (with a Chrome Extension).</p>
+
+                    <p>Then, prioritize feature requests by things like number of votes, MRR, and Plan.</p>
+                    <p>Share verbatims with your product and dev teams.</p>
+                    <p>And close the loop with customers.</p><p class="text-center pb10"><button class="btn btn-primary" type="submit">Learn more about Savio</button></p>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </section>
+        </main>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="text-center copyright">
+                    <span>&copy; Copyright Savio.io 2018-{% now "Y" %}</span>
+                </div>
+            </div>
+        </footer>
+
+        <!-- jQuery first, then Tether, then Bootstrap JS. -->
+        <script type="text/javascript" src="{% static 'js/plugins/marketing_plugins.js' %}"></script>
+        <!--tweet-scroller-->
+        <script type="text/javascript" src="{% static 'js/saas.products.custom.js' %}"></script>
+        {% include 'includes/intercom_widget.html' %}
+    </body>
+</html>

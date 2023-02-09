@@ -1,0 +1,33 @@
+<textarea name="{{ widget.name }}"{% include "django/forms/widgets/attrs.html" %}>
+{% if widget.value %}{{ widget.value }}{% endif %}</textarea>
+<script>
+{% if widget.attrs.autofocus %}
+autofocus = true;
+{% else %}
+autofocus = false;
+{% endif %}
+var easyMDE = new EasyMDE({
+    element: $('#id_{{widget.name}}')[0],
+    hideIcons: ['fullscreen', 'side-by-side'],
+    forceSync: true,
+    status: false,
+    autofocus: autofocus
+});
+
+{% comment %}
+// By default Django uses html5's require attribute to give a nice "require"
+// error message and won't allow you to submit the form unless you fill the
+// textarea in.
+// EasyMDE uses Codemirror under the covers and also hides our "real" textarea
+// CodeMirror doens't like html5s require attribute.
+// We are just manually removing the required attribute. This means you'll be
+// able to post the form without filling in the textarea but server side validation
+// will catch this and you'll get a grosser bit of red error text.
+// We could do a fancier fix there with some custom js that checks if the
+// user hasn't filled a value and then displays something nice but lets
+// just be cheap for now.
+{% endcomment %}
+if($('#id_{{widget.name}}').attr('required')) {
+    $('#id_{{widget.name}}').attr('required', false);
+}
+</script>

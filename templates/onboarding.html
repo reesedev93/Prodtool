@@ -1,0 +1,38 @@
+{% load static %}
+{% load filters %}
+<!DOCTYPE html>
+<html>
+    <head>
+
+        {% include "includes/head-css-and-js.html" %}
+        <link href="{% static 'css/wizard-custom.css' %}" rel="stylesheet">
+        <title>{% block title_tag %}Savio{% endblock %}</title>
+
+        {% block head %}{% endblock %}
+        {% include "includes/tracking.html" %}
+    </head>
+    <body>
+      <div class="page-wrapper" id="page-wrapper">
+
+        <!-- sidenav -->
+        {% include "includes/sidenav.html" %}
+
+        <main class="content">
+          {% include "includes/header.html" %}
+          <!-- page-content.html -->
+          <div class="page-content">
+            <div class="container-fluid">
+
+              {% include "includes/messages.html" %}
+
+              {% block body_content %}You need to fill in body_content block {% endblock %}
+
+            </div>
+          </div>
+        </main>
+      </div>
+      {% block script %}{% endblock %}
+      {% include "includes/headway.html" %}
+      {% include 'includes/intercom_widget.html' %}
+    </body>
+</html>

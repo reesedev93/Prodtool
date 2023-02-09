@@ -1,0 +1,145 @@
+{% extends 'onboarding.html' %}
+{% load static %}
+
+{% block body_content %}
+<div class="row mb-30">
+  <div class="col-lg-12 ml-auto mr-auto">
+    <h2 class="mt-30 mb-30">Import Customers</h2>
+
+      {% include "includes/onboarding-wizard.html" %}
+
+      <div class="wizard-content pb-40 pt-30">
+        <div class="col-md-12">
+            {% if intercom_connected %}
+              <div class="row">
+                <div class="col-md-5 offset-md-3 mt-30" style="text-align: center;">
+                  <img src="{% static 'images/intercom.png' %}" width="150" height="150">
+                  <h5>You're connected to Intercom!</h5>
+                  <a href="{% url 'accounts-onboarding-chrome-extension' %}" class="btn btn-large btn-primary">Onward →</a>
+                </div>
+              </div>
+            {% elif helpscout_connected %}
+              <div class="row">
+                <div class="col-md-5 offset-md-3 mt-30" style="text-align: center;">
+                  <img src="{% static 'images/helpscout-icon-blue-800.png' %}" width="150" height="150">
+                  <h5>You're connected to Help Scout!</h5>
+                  <a href="{% url 'accounts-onboarding-chrome-extension' %}" class="btn btn-large btn-primary">Onward →</a>
+                </div>
+              </div>
+            {% else %}
+
+              <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <h4>Where should we import Customer names, emails, MRR, and plan info from?</h4>
+                <div class="row">
+                  <div class="col-md-4 mt-30" style="text-align: center;">
+                    <a href="https://app.intercom.io/oauth?client_id={{intercom_client_id}}&state=onboarding"><img src="{% static 'images/intercom.png' %}" width="150" height="150"></a>
+                    <h5>Intercom</h5>
+                  </div>
+                  <div class="col-md-4 mt-30" style="text-align: center;">
+                    <a href="https://secure.helpscout.net/authentication/authorizeClientApplication?client_id={{helpscout_client_id}}&state=onboarding"><img src="{% static 'images/helpscout-icon-blue-800.png' %}" width="150" height="150"></a>
+                    <h5>Help Scout</h5>
+                  </div>
+                  <div class="col-md-4  mt-30" style="text-align: center;">
+                    <a href="#" id="segment_link"><img src="{% static 'images/segment.png' %}" width="150" height="150"></a>
+                    <h5>Segment</h5>
+                    <div class="segment" style="display: none; text-align: left;  ">
+                      <p>
+                      <small><strong>Step 1</strong><br>Copy this API key.  You'll paste this into Segment to activate the integration:
+                      <input type="text" class="copy-to-clipboard form-control form-control-sm" style="width: 50%; display: inline" value="{{segment_cfis.webhook_secret}}" data-clipboard-text="{{segment_cfis.webhook_secret}}" data-toggle="tooltip_manual" data-original-title="Copied to clipboard!"><br><br>
+
+                      <strong>Step 2</strong><br>Follow the steps in the <a target="_blank" href="{% url 'marketing-integrations-segment' %}?from=onboarding#integration">Segment integration guide</a>.</small>
+                      </p>
+
+                      <div style="text-align: center" class="pt-40">
+                        <a class="btn btn-primary"  href="{% url 'accounts-onboarding-chrome-extension' %}">I'm done connecting Segment →</a>
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="col-md-4 mt-30" style="text-align: center;">
+                    <a href="#" class="not_avail"><img src="{% static 'images/savio-square-symbol-300x300.png' %}" width="150" height="150"></a>
+                    <h5>Your own servers</h5>
+                    <p class="coming_soon" style="display: none"><span class="badge badge-text badge-primary">Coming Soon!</span></p>
+                    <p class="mt-0 pt-0 text-muted">Using the Savio API</p>
+                  </div>
+                </div>
+
+              <div class="row">
+                <div class="col-md-12 mt-30" style="text-align: center" >
+                  <p><a href="#" id="faq_link">Why should I import this data?</a> </p>
+                  <p><a class="text-muted" href="{% url 'accounts-onboarding-chrome-extension' %}">I'll do this later</a></p>
+
+                </div>
+              </div>
+              
+              <div class="row" id="faq" style="display: none;">
+                <div class="col-md-6 mt-30">
+                    <p><strong>Why should I import this data?</strong><br>
+                    When you import your customer information into Savio, you can use it to prioritize your feature requests. You can see who wants a specific feature and have their email address at hand to reach out. You can also search features by MRR and plan name.  For example, you can easily find all features that people on your Enterprise plan want.</p>
+                    <p><strong>I have another question.</strong><br>
+                    <a href="mailto:founders@savio.io">Drop Savio's founders a line here</a>.</p>
+                </div>
+
+                <div class="col-md-5 mt-30">
+                  <p><strong>What do you import?</strong><br>
+                  We import a customer's name, email address, MRR and plan name. We also import a customer's company name (if you use it). We do NOT use the data for any other purpose, and we'll delete it when you ask us to.</p>
+
+                  <p><strong>I want to skip this step.</strong><br>
+                  You can <a href="{% url 'accounts-onboarding-chrome-extension' %}">skip this step here</a>.  But we'd appreciate it if you <a href="mailto:founders@savio.io">let us know why</a> - without this step, you miss out on a lot of how Savio can help you.  Thanks 🙏</p>
+              </div>
+            </div>
+
+          </form>
+        {% endif %}
+
+      </div>
+
+<!--
+      <div class="row">
+        <div class="col-md-12 mt-40">
+          <a class="btn btn-primary"  href="{% url 'accounts-onboarding-customer-data' %}">Sounds great! Let's Import My Customers →</a>
+        </div>
+      </div>
+  </div>
+-->
+</div>
+
+{% endblock %}
+
+
+{% block script %}
+<script type="text/javascript">
+$(document).ready(function() {
+
+  $('#segment_link').click(function(e) {
+    $(".segment").show();
+    e.preventDefault();
+  })
+
+  $('.not_avail').click(function(e) {
+    $(e.currentTarget).siblings(".coming_soon").first().show();
+    e.preventDefault();
+  })
+
+  $('#faq_link').click(function(e) {
+    $('#faq').toggle();
+  })
+
+  // Set "Copied to clipboard" tooltips to open manually 
+  $('[data-toggle="tooltip_manual"]').tooltip({trigger: "manual"});
+
+  // Copy email copy to clipboard
+  var clipboard = new ClipboardJS(".copy-to-clipboard");
+
+  // Show and hide "copied to clipboard" tooltip
+  clipboard.on('success', function(e) {
+    var ele = $(e.trigger);
+    ele.tooltip("show");
+    setTimeout(function() { ele.tooltip('hide') } , 500);
+  });
+
+})
+</script>
+{% endblock %}

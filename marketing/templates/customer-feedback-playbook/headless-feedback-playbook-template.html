@@ -1,0 +1,148 @@
+{% extends "blog-page.html" %}
+{% load static %}
+{% load filters %}
+
+{% block meta_title %}
+{{story.content.title}}
+{% endblock %}
+
+{% block meta_desc %}{{story.content.description}}{% endblock %}
+
+{% block head %}
+  <!-- open graph tags -->
+  <meta property="og:url" content="{{ request.build_absolute_uri }}" />
+  <meta property="og:title" content="{{story.content.og_title}}" /> <!-- 57 chars -->
+  <meta property="og:type" content="website" />
+  <meta property="og:description" content="{{story.content.og_description}}" /> <!-- 73 chars -->
+
+  <meta property="og:site_name" content="Savio" />
+  <meta property="og:image" content="{{story.content.og_image}}" />
+
+  <meta property="og:image:width" content="1500" />
+  <meta property="og:image:height" content="750" />
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:site" content="@savio_io" />
+
+  <!-- 115 chars max -->
+  <meta property="twitter:description" content="{{story.content.twitter_description}}" />
+
+  <!-- end open graph -->
+
+  <!-- for content upgrade -->
+  <script src="https://sendfox.com/js/form.js"></script>
+{% endblock %}
+
+
+{% block content %}
+
+  <div class="col-md-12 blog blog-title text-center">
+    <h1>{{story.content.h1_title}}</h1>
+    <h2>{{story.content.h2_subhead}}</h2>
+
+  </div>
+  <div class="col-md-8 offset-md-2 blog">
+
+
+  {% headless_markdownify story.content.intro %}
+
+<div id="toc">
+  <h2>Table of contents</h2>
+  <ul id="toc-list"></ul>
+</div>
+
+
+{% for item in story.content.body1 %}
+  {% if item.component == "ContentUpgradeCTA" %}
+    {% include "includes/customer-feedback-playbook-email-cta.html" with sendfox_url=item.sendfox_url sendfox_id=item.sendfox_id submit_button_cta=item.submit_button_cta lead_in_parg=item.lead_in_parg title=item.title %}
+  {% else %}
+    {% headless_markdownify item.content %}
+  {% endif %}
+  <hr class="separator">
+{% endfor %}
+
+{% for item in story.content.body2 %}
+  {% if item.component == "ContentUpgradeCTA" %}
+    {% include "includes/customer-feedback-playbook-email-cta.html" with sendfox_url=item.sendfox_url sendfox_id=item.sendfox_id submit_button_cta=item.submit_button_cta lead_in_parg=item.lead_in_parg title=item.title %}
+  {% else %}
+    {% headless_markdownify item.content %}
+  {% endif %}
+  <hr class="separator">
+{% endfor %}
+
+
+    <i class="text-muted">Last updated {{story.content.last_updated}}</i>
+
+    <div class="inline-cta">
+      <p>This is an article in our Customer Feedback playbook.  <a href="{% url 'marketing-customer-feedback-playbook' %}">Read the rest of the playbook here→</a></p>
+    </div>
+
+
+    <div class="row mr0 ml0" >
+      <div class="col-md-3 mt40 pt30 pb30 mb40 info-block">
+          <img src="{% static 'images/founder-headshot-kareem.png' %}" alt="" class="headshot img-fluid" height="150" width="150">
+      </div>
+      <div class="col-md-9 mt40 pt30 pb30 mb40 info-block">
+          <h4 class="no-anchor">Kareem Mayan</h4>
+          <p class="small">Kareem is a co-founder at <a href="{% url 'marketing-home' %}">Savio</a>. He's been prioritizing customer feedback professionally since 2001. He likes tea and tea snacks, and dislikes refraining from eating lots of tea snacks.</p>
+      </div>
+    </div>
+
+    <form method="post" action="https://sendfox.com/form/1dze03/1y0wom" class="sendfox-form" id="1y0wom" data-async="true" style=" border: 1px solid #aaa; padding: 20px 20px; background-color: #eee; margin-bottom: 40px;">
+
+    <h4 class="mb20 alert-heading no-anchor">Want more articles like this?</h4>
+    <p>Leaders from Slack, Zapier, and Appcues read our newsletter to delight customers, lower churn, and grow expansion revenue.</p>
+    <p><input class="form-control" type="email" placeholder="Email Address" name="email" required /></p>
+
+    <!-- no botz please -->
+    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="a_password" tabindex="-1" value="" autocomplete="off" /></div>
+    <p class="text-center pb10"><button class="btn btn-primary" type="submit">Send me more articles like this</button></p>
+    <div class="text-muted text-center">Max 2 emails/month. Unsub anytime.</div>
+
+    </form>
+
+  </div>
+
+    {% include "includes/blog-cta.html" with title="Centralize customer feedback from all your tools" %}
+
+{% endblock %}
+
+
+{% block footer_scripts %}
+
+  <!-- for auto-creating anchor link -->
+  <script type="text/javascript" src="{% static 'jquery-anchorify/anchorify.js' %}"></script>
+
+  <script type="text/javascript" src="{% static 'jquery.toc/jquery.toc.js' %}"></script>
+
+  <script type="text/javascript">
+      $(document).ready(function() {
+
+        // This builds a table of contents including generating IDs for every H3 and H4 element that do NOT have a no-anchor class on them
+        $("#toc-list").toc({content: "div.container", headings: "h3,h4", excludedClass: "no-anchor"});
+
+        // This code displays anchor links when hovering over an
+        // h3 or h4 with an ID.
+        $("h4[id], h3[id]").each(function(index, e){
+          x = anchorById(e["id"]);
+          $(e).prepend(x);
+        })
+
+        function anchorById (id) {
+          // console.log(id)
+          var anchor = $('<a></a>');
+
+          anchor.attr({
+                  href: '#' + id,
+                  class: 'header-link'
+          });
+
+          anchor.html( '<svg aria-hidden="true" height="12" width="12" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 8"><path d="M5.88.03c-.18.01-.36.03-.53.09-.27.1-.53.25-.75.47a.5.5 0 1 0 .69.69c.11-.11.24-.17.38-.22.35-.12.78-.07 1.06.22.39.39.39 1.04 0 1.44l-1.5 1.5c-.44.44-.8.48-1.06.47-.26-.01-.41-.13-.41-.13a.5.5 0 1 0-.5.88s.34.22.84.25c.5.03 1.2-.16 1.81-.78l1.5-1.5c.78-.78.78-2.04 0-2.81-.28-.28-.61-.45-.97-.53-.18-.04-.38-.04-.56-.03zm-2 2.31c-.5-.02-1.19.15-1.78.75l-1.5 1.5c-.78.78-.78 2.04 0 2.81.56.56 1.36.72 2.06.47.27-.1.53-.25.75-.47a.5.5 0 1 0-.69-.69c-.11.11-.24.17-.38.22-.35.12-.78.07-1.06-.22-.39-.39-.39-1.04 0-1.44l1.5-1.5c.4-.4.75-.45 1.03-.44.28.01.47.09.47.09a.5.5 0 1 0 .44-.88s-.34-.2-.84-.22z" /></svg>' );
+
+          return anchor
+        }
+        // End Anchor display code
+
+
+      });
+  </script>
+{% endblock %}

@@ -1,0 +1,95 @@
+{% extends "blog-page.html" %}
+{% load static %}
+{% block meta_title %}
+The guide to using customer feedback to grow your SaaS
+{% endblock %}
+
+{% block meta_desc %}Here's the playbook to use Customer Feedback to grow your SaaS business. Strategy, tactics, templates, tools, and more.{% endblock %}
+
+
+{% block head %}
+  <!-- open graph tags -->
+  <meta property="og:url" content="{{ request.build_absolute_uri }}" />
+  <meta property="og:title" content="The customer feedback playbook to grow your SaaS business" /> <!-- 57 chars -->
+  <meta property="og:type" content="website" />
+  <meta property="og:description" content="The guide to using customer feedback to grow your SaaS " /> <!-- 73 chars -->
+
+  <meta property="og:site_name" content="Savio" />
+  <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'images/savio-logo-1500x750.png' %}" />
+
+  <meta property="og:image:width" content="1500" />
+  <meta property="og:image:height" content="750" />
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:site" content="@savio_io" />
+
+  <!-- 115 chars max -->
+  <meta property="twitter:description" content="Here's the playbook to use Customer Feedback to grow your SaaS business. Strategy, tactics, templates, tools, and more." />
+
+  <!-- end open graph -->
+
+  <!-- for content upgrade -->
+  <script src="https://sendfox.com/js/form.js"></script>
+{% endblock %}
+
+
+{% block content %}
+
+  <div class="col-md-12 blog blog-title text-center">
+    <h1>The guide to using customer feedback to grow your SaaS </h1>
+    <h2>Here's the Customer Feedback Playbook on growing your SaaS business. Strategy, tactics, templates, tools, and more.</h2>
+
+  </div>
+  <div class="col-md-8 offset-md-2 blog">
+
+  <p>If you want a playbook on how to use feedback to grow, you're in the right place.  Here's where you'll find strategy, tactics, templates, scripts, tools, expert interviews, and more.</p>
+
+  <p>This is a work in progress, so <a href="https://sendfox.com/lp/1ro8gv">subscribe to get the next posts as they drop</a>.</p>
+
+  <h3>Table of Contents</h3>
+  <ul>
+    <li><a href="{% url 'marketing-customer-feedback-playbook-why-collect' %}">Why you should collect and use customer feedback to drive product development</a></li>
+    <li><a href="{% url 'marketing-customer-feedback-playbook-four-systems' %}">How to organize user feedback</a></li>
+    <li><a href="{% url 'marketing-blog-feedback-guide' %}">How to set up a customer feedback system</a></li>
+    <li>Where should you gather customer feedback from?</li>
+    <li>How do others collect customer feedback (with examples from the wild)</li>
+    <li>What should you tell customers when they ask for a feature?</li>
+    <li><a href="/customer-feedback/pros-and-cons-of-public-voting-boards/">Seven reasons to not collect feedback with a public voting board</a></li>
+    <li><a href="/customer-feedback/ask-for-user-feedback-saas-customer-journey/">When to ask users for feedback in the SaaS customer journey</a></li>
+    <li><a href="/customer-feedback/saas-teams-that-get-product-feedback/">Five teams to collect product feedback from in a SaaS company</a></li>
+    <li>How to collect feedback received over the phone or video chat</li>
+    <li>How to painlessly centralize customer feedback</li>
+    <li>How to automate collecting customer feedback</li>
+    <li>When and what kind of customer feedback should you track</li>
+    <li>How to share customer feedback with Product Management team and other stakeholders (devs, execs, etc)</li>
+    <li>What questions should you ask when you're asking for feedback?</li>
+    <li>How to organize your customer feedback to be useful?</li>
+    <li>How to prioritize customer feedback on your product roadmap?</li>
+    <li>How much time should you spend on customer features vs. “strategic” features?</li>
+    <li>How to use customer feedback to build a good feature</li>
+    <li>How to track customer-requested features through your development pipeline</li>
+    <li>How to close the loop on customer-requested features</li>
+    <li>How Junior employees can wield undue influence over the product roadmap</li>
+   <li><a href="{% url 'marketing-blog-cs-influence-roadmap' %}">How and why Customer Success should drive more of your product roadmap</a></li>
+  </ul>
+
+  <h4>Track feedback from your tools</h4>
+  <ul>
+    <li><a href="{% url 'marketing-blog-tracking-feature-requests-from-hubspot-crm' %}">Tracking Feedback from Hubspot CRM</a></li>
+    <li><a href="{% url 'marketing-blog-tracking-feature-requests-from-slack' %}">Collecting feedback with Slack</a></li>
+    <li><a href="{% url 'marketing-blog-tracking-feature-requests-in-helpscout' %}">Tracking feature requests from Help Scout</a></li>
+    <li><a href="{% url 'marketing-blog-tracking-feature-requests-in-intercom' %}">Tracking feature requests from Intercom</a></li>
+    <li><a href="{% url 'marketing-blog-track-feature-requests-in-typeform' %}">Tracking customer feedback from Typeform</a></li>
+
+    <li><a href="{% url 'marketing-blog-using-zapier-to-collect-customer-feedback' %}">Tracking customer feedback using Zapier</a></li>
+  </ul>
+
+    <i class="text-muted">Last updated August 12, 2020</i>
+
+    {% include "includes/customer-feedback-default-cta.html" %}
+
+  </div>
+
+
+    {% include "includes/blog-cta.html" with title="Centralize customer feedback from all your tools" %}
+
+{% endblock %}

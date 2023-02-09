@@ -1,0 +1,30 @@
+/* Example menu styling */
+
+.selection-menu {
+    background: #2c2d3a;
+    border-radius: 4px;
+    padding: 20px 15px 5px 15px;
+}
+
+.selection-menu ul {
+    padding-inline-start: 0;
+    margin-bottom: 0;
+    list-style-type: none;
+}
+
+/* Menu item styling */
+.selection-menu a {
+    /* It's important to set the font explicitly, because the user might select heading text, and we don't want heading text font size in the menu */
+    font: 1rem arial, sans-serif;
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+}
+.selection-menu a:last-child {
+    border-bottom: 0;
+}
+
+.selection-menu a:hover {
+    text-decoration: underline;
+}

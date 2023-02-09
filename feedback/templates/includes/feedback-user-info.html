@@ -1,0 +1,128 @@
+<!-- close loop -->
+{% load gravatar %}
+{% load filters %}
+{% load humanize %}
+{% get_feedback_page as feedback_page %}
+
+
+  <div class="row">
+        <div class="col-sm-12 pt-3 pb-0"  style="padding: 0.5rem 1rem">
+
+          {% if feedback_page == "inbox" or feedback_page == "feedback_details"%}
+
+            <div class="float-right">
+              {% if feedback_page == "inbox" and not onboarding %}
+                <a class="text-muted" href="{% url 'feedback_inbox_update_item' feedback.pk %}"><i class="fa fa-edit fa-lg" data-toggle="tooltip" data-original-title="Edit feedback"></i></a>
+                <a class="text-muted" href="{% url 'feedback-delete-item' feedback.pk %}?return={% url 'feedback-inbox-list' 'active' %}"><i  data-toggle="tooltip" data-original-title="Delete feedback" class="fa-lg fa fa-trash-alt"></i></a>
+              {% elif feedback_page == "feedback_details" %}
+                <a class="text-muted " href="{% url 'feedback-update-item' feedback.pk %}"><i  data-toggle="tooltip" data-original-title="Edit feedback" class="fa-lg fa fa-edit"></i></a>
+                <a class="text-muted " href="{% url 'feedback-delete-item' feedback.pk %}"><i  data-toggle="tooltip" data-original-title="Delete feedback" class="fa-lg fa fa-trash-alt"></i></a>
+              {% endif %}
+            </div>
+          {% endif %}
+
+
+          {% if feedback_page != "inbox" and feedback_page != "feedback_details" %}
+              {% if feedback.user.email %}
+                <input class="form-check-label hide contact-person" type="checkbox" name="feedback_ids" value="{{feedback.id}}">
+              {% else %}
+                <input class="form-check-label hide contact-person" style="pointer-events: auto;" type="checkbox" name="feedback_ids" value="{{feedback.id}}" disabled data-toggle="tooltip" data-original-title="You can't email this person because they don't have an email address on file.">
+              {% endif %}
+          {% endif %}
+              <h6 class="mb-1 person" style="display: inline-block;">
+                {% if feedback.user.email %}
+                  <a href="{% url 'feature-request-list' %}?user={{ feedback.user.id }}&filter=1">{{feedback.user.get_name_or_email|default:"No name"}}</a>
+                {% else %}
+                  {{feedback.user.get_name_or_email|default:"No name"}}
+                {% endif %}
+                <span class="action-links hide">
+                  {% if feedback.user.email and not onboarding %}
+                    <a href="#" class="text-muted fs12 clipboard_link"><i class="fa fa-copy email_to_clipboard" data-toggle="tooltip_manual" data-original-title="Email copied to clipboard!" data-email-address="{{ feedback.user.email }}"></i></a>
+                  {% endif %}
+                  {% if feedback.user and not onboarding %}
+                    <a class="text-muted pl-5" href="{% url 'app-user-update-item' feedback.user.pk %}?return={{request.get_full_path|urlencode}}&{{filter_params}}"><i data-toggle="tooltip" data-original-title="Edit Person" class="fa fa-edit fs14"></i></a>
+                  {% endif %}
+
+                </span>
+
+                <span class="text-muted">from</span>
+
+                {% if feedback.user.company %}
+                  <a href="{% url 'feature-request-list' %}?company={{ feedback.user.company.id }}&filter=1">
+                  {{feedback.user.company.name|default:"No name"}}</a>
+
+                  {% if not onboarding %}
+                  <span class="action-links hide">
+                    <a class="text-muted pl-5" href="{% url 'app-company-update-item' feedback.user.company.pk %}?return={{request.get_full_path|urlencode}}&{{filter_params}}"><i data-toggle="tooltip" data-original-title="Edit Company" class="fa fa-edit fs14"></i></a>
+                  </span>
+                  {% endif %}
+                {% else %}
+                  Unknown Company
+                {% endif %}
+
+                <span class="small-badge badge badge-text badge-{{  feedback.feedback_type|badge}}">
+                  <strong>{{ feedback.feedback_type }}</strong>
+                </span>
+              </h6>
+        </div>
+  </div>
+
+  <div class="row content_row">
+        <div class="col-sm-12" style="padding-left: 17px;">
+
+          <span class="ml-0">
+            {% get_mrr feedback.user mrr_attribute as mrr %}
+            {% get_plan feedback.user plan_attribute as plan %}
+
+              <span class="badge badge-text badge-light">
+              {% if mrr %}
+                {{mrr_attribute.friendly_name}}: <a href="{% url 'feature-request-list' %}?_uc_mrr={{mrr}}">{{mrr|floatformat:2|intcomma}} </a>
+              {% else %}
+                {{mrr_attribute.friendly_name|default:"MRR"}}: Unknown
+              {% endif %}
+              </span>
+
+              <span class="badge badge-text badge-light">
+              {% if plan %}
+                {{plan_attribute.friendly_name}}: <a href="{% url 'feature-request-list' %}?{{plan_attribute.name}}={{plan}}">{{plan}}</a>
+              {% else %}
+                {{plan_attribute.friendly_name|default:"Plan"}}: Unknown
+              {% endif %}
+              </span>
+          </span>
+
+          <span class="ml-0">
+          {% get_display_attributes feedback.user.company company_display_attributes as attr_values %}
+          {% for label, value in attr_values %}
+              <span class="badge badge-text badge-light">{{label}}: <span class="text-muted">{{value}}</span></span>
+          {% endfor %}
+          </span>
+
+          {% get_display_attributes feedback.user user_display_attributes as attr_values %}
+          {% for label, value in attr_values %}
+              <span class="badge badge-text badge-light">{{label}}: <span class="text-muted">{{value}}</span></span>
+          {% endfor %}
+          </span>
+
+          {% if feedback.notified_at %}
+          <p class="text-muted small mt-2">
+          <i class="fa fa-envelope"></i>
+          Notified {{feedback.notified_at.date}} by {{feedback.notified_by.get_full_name}}</p>
+          {% endif %}
+
+
+      </div>
+    </div>
+
+<script>
+  $(document).ready(function() {
+    $(".person").hover(
+      function() {
+        $( this ).find(".action-links").removeClass( "hide" );
+      },
+      function() {
+        $( this ).find(".action-links").addClass( "hide" );
+      }
+    );
+  });
+</script>

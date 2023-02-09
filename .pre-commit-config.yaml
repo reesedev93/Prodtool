@@ -1,0 +1,24 @@
+repos:
+-   repo: https://github.com/asottile/seed-isort-config
+    rev: v1.9.3
+    hooks:
+    - id: seed-isort-config
+-   repo: https://github.com/pre-commit/mirrors-isort
+    rev: v4.3.21
+    hooks:
+    - id: isort
+-   repo: https://github.com/psf/black
+    rev: stable
+    hooks:
+    -   id: black
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v2.4.0
+    hooks:
+    -   id: check-yaml
+    -   id: debug-statements
+    -   id: flake8
+-   repo: https://github.com/rstocker99/pre-commit-django-migrations
+    rev: master
+    hooks:
+    -   id: pre-commit-django-migrations
+

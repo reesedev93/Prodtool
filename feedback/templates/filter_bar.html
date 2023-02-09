@@ -1,0 +1,38 @@
+{% load filters %}
+
+<div class="row flex d-flex flex-column pl-4">
+  <form name="filter_form" method="GET" class="form-filter">
+    <input type="hidden" name="filter" value="1">
+    {% for field in filter_form %}
+          {% if field.is_hidden %}
+             {{ field }}
+          {% else %}
+            {% if field.html_name in filter_form.fields %}
+              <div class="form-row">
+                {% if field.field.widget.adds_own_form_group_div %}
+                  <div class="col-md-12">
+                    <label>{{ field.label }}</label>
+                  </div>
+                  {{ field }}
+                  {{ field.errors }}
+                  <small id="hint_id_{{ field.name}}" class="form-text text-danger text-muted">{{ field.help_text|safe }}</small>
+                {% else %}
+                <div class="form-group form-filter">
+                  <label>{{ field.label }}</label>
+                  {{ field }}
+                  {{ field.errors }}
+                  <small id="hint_id_{{ field.name}}" class="form-text text-danger text-muted">{{ field.help_text|safe }}</small>
+                </div>
+                {% endif %}
+              </div>
+            {% endif %}
+          {% endif %}
+    {% endfor %}
+
+    <div class="form-row mb-30">
+      <div>
+        <input type="submit" value="Filter" class="btn btn-secondary btn-sm" />&nbsp;&nbsp;or&nbsp;<a href="{% url clear_url_name %}?filter=1">clear</a>
+      </div>
+    </div>
+  </form>
+</div>

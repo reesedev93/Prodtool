@@ -1,0 +1,66 @@
+{% extends "basic_page.html" %}
+{% load static %}
+
+{% block meta_title %}
+What you can do with Savio 
+{% endblock %}
+
+{% block meta_desc %}See the things you can do with Savio to build better software{% endblock %}
+
+{% block title %}
+Savio's Use Cases
+{% endblock %}
+
+{% block content %}
+  <div class="container pt90 pb90 ">
+    <div class="row">
+      <div class="col-md-9 docs">
+        <h2>What can Savio do for you?</h2>
+        <p>Savio is designed to make Product Managers' lives easier. It provides a system and helps simplify key workflows around capturing customer feedback to decide what to build. Below is the list of everything Savio helps with.</p>
+        <h4>Import Your Customers, their MRR, and Plan</h4>
+        <p>All feature requests are not created equal.  To help you understand who's asking for what, Savio imports your customers' names, email addresses, MRR, plan, and account information. This is so you can filter your feature requests by MRR, plan, etc.</p>
+
+        <p>Once you've imported your customers and added some feedback, you can easily see (for example) "all features requested by customers on your Enterprise plan".</p>  
+        <ul>
+          <li>You can <a href="{% url 'marketing-integrations-segment' %}">import customer data from Segment</a> or <a href="{% url 'marketing-integrations-intercom' %}#query">import customer data from Intercom</a></li>
+          <li>Once customer have been imported, you should <a href="{% url 'marketing-customer-attributes' %}">choose your customers' attributes to filter feature requests by →</a></li>
+        </ul>
+
+        <h4>Collect Feedback from different Channels</h4>
+        <p>
+          There are lots of ways to push feedback from the tools you and your team use to Savio.  Here's the list:</p>
+          <ul>
+            <li>Send feedback <a href="{% url 'marketing-integrations-slack' %}">to Savio from Slack →</a></li>
+            <li>Tag a message <a href="{% url 'marketing-integrations-intercom' %}#push">in Intercom and it'll appear in Savio →</a></li>
+            <li>Tag a message <a href="{% url 'marketing-integrations-helpscout' %}#push">in Help Scout and it'll appear in Savio →</a></li>
+            <li>Use the <a href="{% url 'marketing-chrome-extension' %}">Savio Chrome Extension</a> to add feedback to Savio →</li>
+            <li><a href="{% url 'marketing-send-email' %}">Send feedback in an email</a> to Savio →</li>
+            <li>Add feedback to Savio using the Savio API</li>
+            <li>Add feedback directly in Savio</li>
+            <li>Add feedback to Savio from Zendesk (coming soon)</li>
+            <li>Add feedback to Savio from Hubspot CRM (coming soon)</li>
+          </ul>
+
+        <h4>Analyze Feedback in Savio</h4>
+        <p>Once feedback is in Savio, you can use it to figure out what to build.  Here's how you'll do that:</p>
+          <ul>
+            <li>When feedback hits Savio, you'll want to read it and <a href="{% url 'marketing-triage' %}">triage your customer feedback →</a></li>
+            <li>If you need clarification about untriaged feedback, you can snooze your feedback and triage it until you get clarification.</li>
+            <li>Once feedback is triaged, you can <a href="{% url 'marketing-product-planning' %}#segment">segment your feature requests by customer information like MRR, plan, and more →</a></li>
+            <li>You can also <a href="{% url 'marketing-product-planning' %}#prio">find low-hanging feature requests that are low effort, high priority →</a></li>
+          </ul>
+
+        <h4>Use Feedback to validate your solutions</h4>
+        <p>Once you've got a good idea about what you might build, you can use Savio to:</p>
+          <ul>
+            <li>Dig into <a href="{% url 'marketing-feature-request' %}">all the customer feedback for an existing feature request →</a></li>
+            <li><a href="{% url 'marketing-use-cases-use-feedback' %}#sharing">Get your team on the same page about the features you're building by sharing feedback with them →</a></li>
+            <li>Email customers to <a href="{% url 'marketing-use-cases-use-feedback' %}#contact">validate their problem and your solution →</a></li>
+            <li>Once a feature is built, <a href="{% url 'marketing-use-cases-use-feedback' %}#close">email the customers who asked for it and tell them you built their feature →</a></li>
+          </ul>
+    </div>
+  </div>
+
+  {% include "includes/features-cta.html" %}
+</div>
+{% endblock %}

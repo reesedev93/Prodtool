@@ -1,0 +1,156 @@
+{% extends "basic_page.html" %}
+{% load static %}
+
+{% block meta_title %}
+Filter Feature Requests by Customer Attributes
+{% endblock %}
+
+{% block meta_desc %}Filter feature requests by user and company attributes{% endblock %}
+
+{% block title %}
+Filter by Customer Attributes
+{% endblock %}
+
+{% block content %}
+  <div class="container pt90 pb90 ">
+    <div class="row">
+      <div class="col-md-9 docs">
+        <h2>Filter Feature Requests by Customer Attributes</h2>
+          <p>When Savio imports your customers from <a href="{% url 'marketing-integrations-intercom' %}">Intercom</a> or <a href="{% url 'marketing-integrations-segment' %}">Segment</a>, Savio also pulls in any attributes attached to the customer or account.  Some of these are attributes that you've sent to those tools, and some are created by Intercom (for example, Intercom has an attribute called <code>session_count</code> that counts the number of times a user has used your product.</p>
+
+          <p>With Savio, you can filter your feature requests by these attributes.  This is an extremely powerful feature.  Because you know that not all feedback is created equal: who the feedback comes from factors in how your weigh it.</p>
+
+          <h4>An example</h4>
+          <p>For example, you may have user roles in your app (like Admin or User).  And because you want your Intercom reps to know the role of the customer they're talking to, you send role to Intercom as a <a href="https://www.intercom.com/help/configure-intercom/customize-intercom-to-be-about-your-users/send-custom-user-attributes-to-intercom" target="_blank">custom attribute</a>.</p>
+
+          <p>In this case, Savio would pull in the fact that you had a custom attribute called "Role", and that you have users with different values for "Role". </p>
+
+          <p>
+            You'd see a "Role" dropdown in the filter on the Feature Request page with the list of values that you can choose:<br>
+            <img class="img-fluid image" src="{% static 'images/help/product-planning/filterable-attributes-role.png' %}">
+          </p>
+          <p>
+            You could then filter your feature requests to see, for example, requests from only your customers with the "admin" role:<br>
+            <img class="img-fluid image" src="{% static 'images/help/product-planning/filterable-attributes-admin-role-feature-requests.png' %}">
+          </p>
+
+          <h4>Listing Your Custom Attributes</h4>
+
+          <p>Once you've imported your customers, go to <code>Settings</code> => <code>People and Company Attributes</code> => <code>Manage Attributes</code> (or <a href="{% url 'filterable-attributes-list' %}">visit the page directly</a>).</p>  
+
+          <p>On this page you'll see a table that shows attributes that hang off People and Companies (a Company has many People).  Here's what the table looks like:<br>
+            <img class="img-fluid image" src="{% static 'images/help/product-planning/user-attributes-close-up.png' %}">
+          </p>
+
+          <p>
+            Here's a description of the fields:
+          </p>
+
+          <table class="table">
+            <tr>
+              <td width="20%">
+                Attribute
+              </td>
+              <td>
+                This is the name of the attribute is the source system.  If the attribute is called e.g. "<code>session_count</code>" in Intercom or Segment, that's what you'll see here.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Savio Name
+              </td>
+              <td>
+                This is how you want the attribute to appear in Savio.  The attribute name in the source tool is developer-friendly, so think of this as a human-friendly display name.
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                Filters
+              </td>
+              <td>
+                Describes where this attribute filters People or Companies.
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                Type
+              </td>
+              <td>
+                This is the data type of the attribute. Savio will pull in attributes with all data types, but you can only currently filter on true/false fields, numbers, and strings.   
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+          <a name="special"></a>
+                Show in Filters
+              </td>
+              <td>
+                You'll see a <i class="text-muted fas fa-check"></i> here if you've told Savio that you want to be able to filter by these attributes, or an <i class="text-muted fas fa-times"></i> if you don't.   
+              </td>
+            </tr>
+          </table>
+
+          <h4>Special Attributes: MRR and Plan</h4>
+
+          <p>
+            You'll also notice two icons, one beside <code>plan</code> and one beside <code>monthly_spend</code>:<br>
+
+            <img class="img-fluid image mb20" src="{% static 'images/help/product-planning/special-custom-attributes.png' %}"><br>
+
+            Savio shows a customer's Plan and MRR in many places throughout the site. So you can tell Savio which attribute it can find Plan in, and which it can find MRR in.  When an attribute has the "Invoice" icon beside it(<i class="fas fa-file-invoice-dollar fa-sm"></i>), Savio will pull Plan from that attribute (in the above example, "<code>plan</code>").  And when an attribute has the "Dollar" icon beside it (<i class="fas fa-dollar-sign fa-sm"></i>), Savio will pull MRR from that attribute (above, "<code>monthly_spend</code>").
+          </p>
+
+          <h4>Editing an Attribute</h4>
+          <p>
+            When you click on an attribute name, you see a screen where you can change five properties about each attribute:
+          </p>
+          <ul>
+            <li>The human-friendly attribute name</li>
+            <li>Whether the attribute should be displayed in filters</li>
+            <li>Whether Savio should look at this attribute for your customer's MRR</li>
+            <li>Whether Savio should look at this attribute for your customer's Plan</li>
+            <li>The type of dropdown that appears in a filter</li>
+          </ul>
+
+          <p>
+            Here's what the screen looks like:<br>
+            <img class="img-fluid image mb20" src="{% static 'images/help/product-planning/edit-attribute.png' %}"><br>
+
+            These are all fairly self-explanatory except for Dropdown Type, which we haven't talked about yet.  If you elect to have this attribute appear in a filter, it can be one of two types:</p>
+
+            <a name="grouped"></a>
+            <h5>1. Select List</h5>
+            <p>This is your run of the mill dropdown.</p>
+            <h5>2. Grouped Select List</h5>
+            <p>This is useful for lists with many numbers. Savio will pick some thresholds for the select list that you can use to filter.  For example, if you elect to have MRR displayed as a Grouped Select List, you'd see something like this when you clicked on the MRR dropdown to filter your feature requests:
+
+            <img class="img-fluid image " src="{% static 'images/help/product-planning/grouped-select-list-close-up.png' %}">
+          </p>  
+          <h4>Filtering by Custom Attributes</h4>
+          <p>
+            Every attribute that you've selected to "Show in Filter" will be appended to your filter bar on your <a href="{% url 'marketing-product-planning' %}">feature request list</a> and feedback list pages.  In the below example, we've added three attributes that you would use to filter feature requests:</p>
+          <ol>
+            <li>Monthly Spend (which filters Companies)</li>
+            <li>Role (which filters People)</li>
+            <li>Plan (which filters Companies)</li>
+          </ol>
+
+          <p>
+            These three Dropdowns will be added to the bottom of the filter bar which you can use to filter feature requests or feedback <a href="{% url 'marketing-use-cases-prioritize-feedback' %}">just like any other filters</a>.
+            <img class="img-fluid image" src="{% static 'images/help/product-planning/custom-attributes-filter-bar-close-up.png' %}">
+          </p>
+    </div>
+  </div>
+
+      <div class="row mt30">
+      <div class="col-md-4 offset-md-4">
+        <a href="{% url 'marketing-features' %}" class="btn btn-primary">Savio's Features ↑</a>
+      </div>
+    </div>
+
+
+</div>
+{% endblock %}

@@ -1,0 +1,123 @@
+{% extends "basic_page.html" %}
+{% load static %}
+
+{% block meta_title %}
+How to integrate Help Scout with Savio
+{% endblock %}
+
+{% block meta_desc %}Add a tag to a Help Scout message to push product feedback to Savio{% endblock %}
+
+{% block title %}
+Help Scout Integration
+{% endblock %}
+
+{% block content %}
+  <div class="container pt90 pb90 ">
+    <div class="row">
+      <div class="col-md-9 docs">
+        <h2>Why connect Help Scout to Savio?</h2>
+        <p>
+            When you connect Help Scout to Savio, your support team can push customer feedback from Help Scout to Savio simply by adding a tag to a Help Scout conversation.
+        </p>
+
+        <p>
+            You eliminate meeting, spreadsheets, and Trello boards. And most of the manual labour is removed, you guarantee that valuable customer feedback will be seen by your product team.
+        </p>
+
+        <h3>Save product feedback from Help Scout</h3>
+        <p>Customers regularly send your support team insights about how to improve your product.</p>
+
+        <p>As a product manager, you want to be able to read the important parts of those conversations.  And your teammates in support want to share them with you so you fix them and they start hearing about NEW requests from customers (with minimum change to their workflow, of course).</p>
+
+        <p>Savio's Help Scout integration helps you accomplish both.</p>
+
+        <h4 class="mt30">What you get</h4>
+        <p>With the Savio Help Scout app you and your team can:</p>
+        <ol><li>Tag a customer conversation in Help Scout, which pushes it to Savio</li>
+        <li>Add a hashtag to an internal Help Scout note, which pushes it to Savio</li>
+        </ol>
+
+        <p><strong>No Savio Account Required</strong><br>
+        Note: the person who pushes feedback from Help Scout to Savio does not require a Savio account.</p>
+
+        <h4 class="mt30">How it works</h4>
+
+        <p>Once you install the app, you pick a Help Scout tag.  When you apply this tag to a Help Scout conversation, Savio will pull it in for your product team to read and triage:<br>
+
+          <img class="img-fluid mb20 mt30" style="border: 1px solid #ddd" src="{% static 'images/help/helpscout/001-pick-helpscout-tag.png' %}"><br>
+        </p>
+
+
+        <p>You can then push feedback from Help Scout conversations to Savio in two ways.</p>
+        
+        <h5>1. Tag a Help Scout conversation</h5>
+        <p>When you add the preselected tag to a Help Scout conversation, Savio will import that conversation as new feedback.<br>
+        
+        <img class="img-fluid mt30 mb30" style="border: 1px solid #ddd" src="{% static 'images/help/helpscout/002-tag-helpscout-message.png' %}"><br>
+
+        When you push a message to Savio, Savio will add a note to the Help Scout conversation indicating that the feedback has been pushed successfully:
+
+        <img class="mt30 mb30 img-fluid" style="border: 1px solid #ddd" src="{% static 'images/help/helpscout/003-tag-helpscout-message-ack.png' %}"><br>
+
+
+        In Savio, you'll have a link back to the Help Scout conversation to see the full context, if necessary.
+
+        <img class="img-fluid mt30 mb30" style="border: 1px solid #ddd" src="{% static 'images/help/helpscout/004-link-to-helpscout-source-conversation.png' %}"><br>
+
+        </p>
+        <h5>2. Hashtag a Help Scout note</h5>
+        <p>When you use your tag as a hashtag in an Help Scout note, Savio will import that note as feedback.</p>
+
+        <p>For example, if Savio is importing Help Scout messages with the tag <code>feedback</code>, you'd add <code>#feedback</code> to a Help Scout note for Savio to pull it in.</p>
+
+        <p>Imagine you have this conversation:<br>
+        <img class="img-fluid mb30 mt30" style="border: 1px solid #ddd" src="{% static 'images/help/helpscout/005-source-conversation-note.png' %}"><br>
+
+        There are two feature requests here. If your support team was being kind, they would separate this into two different pieces of feedback.</p>
+
+        <p>So they could add two Help Scout notes and add the <code>#feedback</code> hashtag to each:
+        <img class="img-fluid mb30 mt30" style="border: 1px solid #ddd" src="{% static 'images/help/helpscout/006-internal-note-1.png' %}">
+
+        <img class="img-fluid mb30 mt30" style="border: 1px solid #ddd" src="{% static 'images/help/helpscout/007-internal-note-2.png' %}">
+
+        In this case, Savio would have two new pieces of feedback:
+
+        <img class="img-fluid mb30 mt30" style="border: 1px solid #ddd" src="{% static 'images/help/helpscout/008-savio-new-feedback-from-notes.png' %}">
+
+      </p>
+
+      <a name="install"></a> 
+
+        <h3>Connecting Help Scout to Savio</h3>
+        <p>Connecting Help Scout to Savio is straightforward.</p>
+
+        <h4>1. Visit Savio Settings page</h4>
+        <p>
+          <a href="{{ settings.HOST }}{% url 'accounts-settings-list' %}" target="_blank">Visit your Savio Settings page</a> and click this button:<br>
+          <img class="img-fluid mb30 mt30" src="{% static 'images/help/helpscout/009-helpscout-button.png' %}" width="200"><br>
+
+        </p>
+
+        <h4>2. Authorize access for Savio</h4>
+        <p>
+          Then Authorize Savio to access your Help Scout account:<br>
+          <img class="img-fluid mb30 mt30" style="border: 1px solid #ddd" src="{% static 'images/help/helpscout/010-oauth-helpscout.png' %}">
+        </p>
+
+        <h4>3. Select the tag Savio should pull in</h4>
+        <p>
+          <img class="img-fluid mb30" style="border: 1px solid #ddd" src="{% static 'images/help/helpscout/001-pick-helpscout-tag.png' %}">
+        </p>
+
+        <h4>4. You're done!</h4>
+        <p>
+          Your support team will be able to push messages or internal notes from Help Scout to Savio. This will happen when they add the tag you selected in step 3 to a Help Scout conversation, or when they use it as a hashtag in a Help Scout note.
+        </p>
+    </div>
+
+    </div>
+
+    {% include "includes/features-cta.html" %}
+  
+  </div>
+{% endblock %}

@@ -1,0 +1,93 @@
+{% extends "blog-page.html" %}
+{% load static %}
+{% block meta_title %}
+Tracking feature requests from Slack
+{% endblock %}
+
+{% block meta_desc %}Learn how to setup a high quality feature request tracking system for customer feedback that comes in via Slack.{% endblock %}
+
+
+{% block head %}
+  <!-- open graph tags -->
+  <meta property="og:url" content="{{ request.build_absolute_uri }}" />
+  <meta property="og:title" content="A guide to setting up feature request tracking from Slack" /> <!-- 57 chars -->
+  <meta property="og:type" content="website" />
+  <meta property="og:description" content="Learn how to use Slack as a feature request tracking hub." /> <!-- 73 chars -->
+
+  <meta property="og:site_name" content="Savio" />
+  <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'images/savio-logo-1500x750.png' %}" />
+
+  <meta property="og:image:width" content="1500" />
+  <meta property="og:image:height" content="750" />
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:site" content="@savio_io" />
+
+  <!-- 115 chars max -->
+  <meta property="twitter:description" content="Learn how to use Slack as a feature reuqest tracking hub." /> 
+
+  <!-- end open graph -->
+  
+  <!-- for content upgrade --> 
+  <script src="https://sendfox.com/js/form.js"></script>
+{% endblock %}
+
+
+{% block content %}
+
+  <div class="col-md-12 blog blog-title text-center">
+    <h1>Tracking feature requests from Slack</h1>
+  </div>
+    <div class="col-md-8 offset-md-2 blog">
+
+<p>If your company runs on Slack there is a good chance you’re regularly receiving feature requests and customer feedback from internal teams via messages in Slack.</p>
+
+<p>
+  <img class="img-fluid  " style="border: 1px solid #ddd" src="/static/images/help/slack/saviobot-ephemeral-message.png">
+</p>
+
+<p>Slack makes an excellent hub for collecting customer feature requests for a number of reasons:</p>
+<ol><li>No special tools means less friction and more feedback. Slack is used across teams. If a sales rep talks to a prospect and the prospect makes a feature request it’s easy for the sales rep to shoot a Slack message like, “ACME Corp says they won’t purchase without SAML support” and know that the product team will see it.</li>
+<li>Slack is a messaging tool which means not only can you share feedback but it’s easy to have a discussion around that feedback right in Slack. Maybe the product already has that feature or maybe there is a workaround. Maybe the product team needs additional clarification on what the core use case is. All of those conversations can be had right there in Slack and in context with the original feature request.</li>
+<li>Slack isn’t just great for submitting feature requests but it’s also a great way to passively hear about what customers care about. You can subscribe to a channel and dip your toe in as you have time to stay on top of what people care about.</li></ol>
+
+<p>Each of the above factors makes Slack a great feedback hub. Unfortunately it’s not without its problems. If you feel like your current Slack-based feedback process lets things fall through the cracks or makes it hard to analyze your feedback you’re not alone.</p>
+<h2>How Companies Use Slack to Stay on Top of Customer Feedback</h2>
+<p>The typical <a href="{% url 'marketing-integrations-slack' %}">Slack feature request tracking</a> process is to create a channel like #feedback and then socialize that channel with all of the various internal teams that want to communicate feature requests to the product team.</p>
+
+<p>For example, when sales or support hear feedback from customers or prospects they shoot a message to the #feedback channel in Slack. The product team monitors the #feedback channel. If clarification is required the discussion happens right there in Slack.</p>
+
+<p>Although this is super convenient for people submitting feature requests to Slack it’s not great for the product team that needs to collate and act on all of that feedback. A few problems quickly become apparent:</p>
+<ol><li>There’s no easy way to rollup feature requests and keep track of which ones are most common.</li>
+<li>You can’t easily <a href="{% url 'marketing-product-planning' %}">segment feature requests</a> and see which are the most important with different segments e.g. which feature requests are most important with our enterprise customers?</li>
+<li>It’s not easy to follow up with customer vs. the internal user that submitted the request. Imagine you implement a particular feature request that has been submitted many times to your #feedback channel in Slack. How will you notify all of the customers who asked for it?</li></ol>
+<h2>Improving Feature Request Tracking in Slack</h2>
+<p>Is there a way to keep the simplicity of submitting feedback via Slack while not having the process be hard to manage and having things fall through the cracks?</p>
+
+<p>The key benefit we don’t want to lose in a Slack-based process is the simplicity of having different teams submitting feedback via Slack to a well known #feedback channel.</p>
+
+<p>
+  <img class="img-fluid  " style="border: 1px solid #ddd" src="/static/images/help/slack/saviobot-thread.png" width="350" height="377">
+</p>
+<p>What we want is to add a layer of management on top of that so that things don’t get lost and so that additional analysis can be done. That’s where Savio’s Slack integration comes in. With Savio’s Slack integration you can:</p>
+<ol><li>Send feedback from Slack directly to your centralized Savio Feedback Vault with the click of a button.</li>
+<li>Group related feature requests together so you can easily spot trends.</li>
+<li>Link feedback to the user and company that provided the feedback.</li>
+<li>Segment feedback on key information like plan or MRR so you can see which feature requests are the most important to different segments.</li></ol>
+
+<p>With this extra management layer in place you can have the best of both worlds: a simple process where internal teams can keep using Slack the way they are used to, while you can easily roll that feedback up, pull it together with feedback from other channels like Email and Intercom and segment it to improve you analysis and understanding. With this in place you’ll be in a better position to use feedback to drive future product direction and increase customer happiness.</p>
+
+  </div>
+
+    {% include "includes/blog-cta.html" with title="Start Tracking Feature Requests Today" %}
+{% endblock %}
+
+{% block footer_scripts %}
+  <!-- for auto-creating anchor link --> 
+  <script type="text/javascript" src="{% static 'jquery-anchorify/anchorify.js' %}"></script>
+
+  <script type="text/javascript">
+      $(document).ready(function() {
+          jQuery('body').anchorify();
+      });
+  </script>
+{% endblock %}
